@@ -32,7 +32,7 @@
 </head>
 <body>
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
-  <p>Cada lista tiene su <strong>propio manifest</strong>. Agrega las listas y pulsa <strong>Guardar listas</strong> antes de copiar la URL en Stremio.</p>
+  <p>Agrega listas con <strong>+ Agregar lista</strong>. Al guardar, <strong>no se borran las anteriores</strong> — cada una tiene su manifest.</p>
 
   <h2>Agregar listas</h2>
   <div id="lists"></div>
@@ -69,6 +69,12 @@
       });
     }
 
+    function reloadForm(lists) {
+      listsEl.innerHTML = '';
+      lists.forEach((l) => addList(l.url, l.name || '', l.id));
+      renderSavedManifests(lists);
+    }
+
     function renderSavedManifests(lists) {
       if (!lists?.length) {
         savedManifestsEl.style.display = 'none';
@@ -79,9 +85,26 @@
         <div class="saved-item">
           <strong>${(l.name || l.id).replace(/</g, '&lt;')}</strong>
           <p style="margin:0.4rem 0"><code>${l.manifest}</code></p>
-          <button type="button" class="btn-copy" onclick="copyText('${l.manifest}')">Copiar manifest</button>
+          <div class="row">
+            <button type="button" class="btn-copy" onclick="copyText('${l.manifest}')">Copiar manifest</button>
+            <button type="button" class="btn-red" onclick="removeList('${l.id}')">Eliminar</button>
+          </div>
         </div>
       `).join('');
+    }
+
+    async function removeList(id) {
+      if (!confirm('Eliminar esta lista del servidor?')) return;
+      const r = await fetch('/api/lists/' + encodeURIComponent(id), { method: 'DELETE' });
+      const d = await r.json();
+      if (!r.ok) {
+        msgEl.className = 'msg err';
+        msgEl.textContent = d.error || 'Error al eliminar';
+        return;
+      }
+      reloadForm(d.lists);
+      msgEl.className = 'msg ok';
+      msgEl.textContent = 'Lista eliminada.';
     }
 
     function updateItemPreviewNote(item, id, title, count) {
@@ -165,9 +188,9 @@
         const d = await r.json();
         if (!r.ok) throw new Error(d.error);
 
-        renderSavedManifests(d.lists);
+        reloadForm(d.lists);
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'Guardado (v' + (d.version || appVersion || '?') + '). Instala cada manifest por separado en Stremio.';
+        msgEl.textContent = 'Guardado (v' + (d.version || appVersion || '?') + '). ' + d.lists.length + ' lista(s) activas.';
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;
@@ -186,12 +209,8 @@
     });
 
     fetch('/api/lists').then(r => r.json()).then(d => {
-      if (d.lists?.length) {
-        d.lists.forEach(l => addList(l.url, l.name || '', l.id));
-        renderSavedManifests(d.lists);
-      } else {
-        addList('https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/', 'for when you want to feel something', 'list-for-when-you-want-to-feel-something');
-      }
+      if (d.lists?.length) reloadForm(d.lists);
+      else addList();
     });
   </script>
 </body>

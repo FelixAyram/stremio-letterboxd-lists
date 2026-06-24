@@ -41,6 +41,28 @@ function listsWithManifests(req) {
   }));
 }
 
+async function resolveIncomingLists(raw) {
+  const lists = [];
+  for (const l of (raw || []).filter((x) => x.url && x.url.includes('letterboxd.com'))) {
+    const url = normalizeListUrl(l.url);
+    let name = (l.name || '').trim();
+    try {
+      name = await fetchListTitle(url);
+    } catch {
+      if (!name) name = undefined;
+    }
+    lists.push({ url, name, id: listIdFromUrl(url) });
+  }
+  return lists;
+}
+
+function activateLists(lists) {
+  lists.forEach((l) => {
+    getInterfaceForList(l.id);
+    getListMetas(l).catch((e) => console.error('[preload]', l.id, e.message));
+  });
+}
+
 // Un addon Stremio por lista: /list/{id}/manifest.json
 app.use('/list/:listId', (req, res, next) => {
   const listId = req.params.listId;
@@ -83,29 +105,31 @@ app.get('/api/lists', (req, res) => {
 });
 
 app.post('/api/lists', async (req, res) => {
-  const raw = (req.body.lists || []).filter((l) => l.url && l.url.includes('letterboxd.com'));
+  const incoming = await resolveIncomingLists(req.body.lists);
+  if (!incoming.length) return res.status(400).json({ error: 'Agrega al menos una URL de Letterboxd' });
 
-  const lists = [];
-  for (const l of raw) {
-    const url = normalizeListUrl(l.url);
-    let name = (l.name || '').trim();
-    try {
-      name = await fetchListTitle(url);
-    } catch {
-      if (!name) name = undefined;
-    }
-    lists.push({ url, name, id: listIdFromUrl(url) });
+  let finalLists;
+  if (req.body.replace) {
+    finalLists = incoming;
+  } else {
+    const byId = new Map(readLists().lists.map((l) => [l.id, l]));
+    for (const list of incoming) byId.set(list.id, list);
+    finalLists = [...byId.values()];
   }
 
-  if (!lists.length) return res.status(400).json({ error: 'Agrega al menos una URL de Letterboxd' });
-
-  writeLists({ lists });
+  writeLists({ lists: finalLists });
   clearRuntimeCache();
-  lists.forEach((l) => {
-    getInterfaceForList(l.id);
-    getListMetas(l).catch((e) => console.error('[preload]', l.id, e.message));
-  });
+  activateLists(finalLists);
 
+  res.json({ ok: true, version: VERSION, lists: listsWithManifests(req) });
+});
+
+app.delete('/api/lists/:id', (req, res) => {
+  const id = req.params.id;
+  const finalLists = readLists().lists.filter((l) => l.id !== id);
+  writeLists({ lists: finalLists });
+  clearRuntimeCache();
+  activateLists(finalLists);
   res.json({ ok: true, version: VERSION, lists: listsWithManifests(req) });
 });
 
@@ -136,6 +160,7 @@ const server = app.listen(PORT, HOST, () => {
   console.log('');
 
   preloadLists();
+  readLists().lists.forEach((l) => getInterfaceForList(l.id));
 
   const localUrl = `http://127.0.0.1:${PORT}/configure.html`;
   if (process.argv.includes('--install')) {

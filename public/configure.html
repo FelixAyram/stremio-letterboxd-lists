@@ -8,70 +8,103 @@
     * { box-sizing: border-box; }
     body { font-family: system-ui, sans-serif; max-width: 720px; margin: 2rem auto; padding: 0 1rem; background: #14181c; color: #e8e8e8; }
     h1 { color: #00e054; font-size: 1.4rem; }
+    h2 { font-size: 1rem; color: #00e054; margin-top: 2rem; }
     p { line-height: 1.5; color: #9ab; }
     label { display: block; margin-top: 1rem; font-size: 0.85rem; color: #9ab; }
     input { width: 100%; padding: 0.6rem; margin-top: 0.3rem; border: 1px solid #456; border-radius: 6px; background: #1c2228; color: #fff; }
     .row { display: flex; gap: 0.5rem; margin-top: 0.5rem; align-items: center; flex-wrap: wrap; }
-    .row input { flex: 1; }
     button { padding: 0.55rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
     .btn-green { background: #00e054; color: #14181c; }
     .btn-red { background: #456; color: #fff; font-size: 0.8rem; }
     .btn-blue { background: #40bcf4; color: #14181c; margin-top: 1rem; }
-    .btn-copy { background: #456; color: #fff; font-size: 0.85rem; margin-top: 0.5rem; }
+    .btn-copy { background: #456; color: #fff; font-size: 0.8rem; padding: 0.35rem 0.7rem; }
     .list-item { background: #1c2228; padding: 1rem; border-radius: 8px; margin-top: 0.75rem; border: 1px solid #2a3440; }
+    .manifest-box { margin-top: 0.75rem; padding: 0.75rem; background: #0d1a24; border-radius: 6px; border: 1px solid #2a3440; }
+    .manifest-box strong { font-size: 0.85rem; color: #9ab; }
     .msg { margin-top: 1rem; padding: 0.75rem; border-radius: 6px; }
     .ok { background: #0d3d1f; color: #00e054; }
     .err { background: #3d0d0d; color: #ff6b6b; }
-    code { background: #1c2228; padding: 0.2rem 0.4rem; border-radius: 4px; word-break: break-all; }
-    .install { margin-top: 1.5rem; padding: 1rem; background: #1c2228; border-radius: 8px; border: 1px solid #2a3440; }
+    code { background: #14181c; padding: 0.2rem 0.4rem; border-radius: 4px; word-break: break-all; font-size: 0.85rem; }
+    .saved-manifests { margin-top: 1.5rem; }
+    .saved-item { background: #1c2228; padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid #2a3440; }
     a { color: #40bcf4; }
   </style>
 </head>
 <body>
   <h1>Letterboxd Lists para Stremio</h1>
-  <p>Pega URLs de listas publicas de Letterboxd. Funciona en la nube: PC, Android, TV o web. Sin instalar nada en tu PC.</p>
+  <p>Cada lista de Letterboxd tiene su <strong>propio manifest</strong>. Instala solo las que quieras en Stremio.</p>
 
-  <div class="install">
-    <strong>Tu addon (manifest)</strong>
-    <p style="margin:0.5rem 0 0"><code id="manifestUrl"></code></p>
-    <button type="button" class="btn-copy" onclick="copyManifest()">Copiar URL</button>
-    <p style="font-size:0.85rem;margin-top:0.75rem">
-      En Stremio: <strong>Addons</strong> → <strong>+</strong> → pega la URL → <strong>Install</strong>.
-      Tambien en <a id="stremioLink" href="https://web.stremio.com" target="_blank" rel="noopener">web.stremio.com</a>.
-    </p>
-  </div>
-
-  <h2 style="font-size:1rem;color:#00e054;margin-top:2rem">Tus listas</h2>
-
+  <h2>Agregar listas</h2>
   <div id="lists"></div>
-
   <button type="button" class="btn-green" onclick="addList()">+ Agregar lista</button>
   <button type="button" class="btn-blue" onclick="save()">Guardar listas</button>
-
   <div id="msg"></div>
+
+  <div class="saved-manifests" id="savedManifests" style="display:none">
+    <h2>Tus manifests (instalar en Stremio)</h2>
+    <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. Tambien en <a href="https://web.stremio.com" target="_blank" rel="noopener">web.stremio.com</a>.</p>
+    <div id="manifestList"></div>
+  </div>
 
   <script>
     const listsEl = document.getElementById('lists');
     const msgEl = document.getElementById('msg');
-    const manifestUrl = location.origin + '/manifest.json';
+    const manifestListEl = document.getElementById('manifestList');
+    const savedManifestsEl = document.getElementById('savedManifests');
 
-    document.getElementById('manifestUrl').textContent = manifestUrl;
-    document.getElementById('stremioLink').href =
-      'https://web.stremio.com/#/addons?addon=' + encodeURIComponent(manifestUrl);
+    function listIdFromUrl(url) {
+      const m = (url || '').match(/\/list\/([^/?#]+)/);
+      return m ? `list-${m[1]}` : null;
+    }
 
-    function copyManifest() {
-      navigator.clipboard.writeText(manifestUrl).then(() => {
+    function manifestForId(id) {
+      return location.origin + '/list/' + id + '/manifest.json';
+    }
+
+    function copyText(text) {
+      return navigator.clipboard.writeText(text).then(() => {
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'URL copiada al portapapeles.';
-      }).catch(() => {
-        msgEl.className = 'msg err';
-        msgEl.textContent = 'No se pudo copiar. Selecciona la URL manualmente.';
+        msgEl.textContent = 'URL copiada.';
       });
     }
 
-    function addList(url = '', name = '') {
+    function renderSavedManifests(lists) {
+      if (!lists?.length) {
+        savedManifestsEl.style.display = 'none';
+        return;
+      }
+      savedManifestsEl.style.display = 'block';
+      manifestListEl.innerHTML = lists.map(l => `
+        <div class="saved-item">
+          <strong>${(l.name || l.id).replace(/</g, '&lt;')}</strong>
+          <p style="margin:0.4rem 0"><code>${l.manifest}</code></p>
+          <button type="button" class="btn-copy" onclick="copyText('${l.manifest}')">Copiar manifest</button>
+        </div>
+      `).join('');
+    }
+
+    function updateItemManifest(item, id) {
+      let box = item.querySelector('.manifest-box');
+      if (!id) {
+        if (box) box.remove();
+        return;
+      }
+      const url = manifestForId(id);
+      if (!box) {
+        box = document.createElement('div');
+        box.className = 'manifest-box';
+        item.appendChild(box);
+      }
+      box.innerHTML = `
+        <strong>Manifest de esta lista</strong>
+        <p style="margin:0.4rem 0"><code class="murl">${url}</code></p>
+        <button type="button" class="btn-copy" onclick="copyText('${url}')">Copiar</button>`;
+    }
+
+    function addList(url = '', name = '', id = '') {
       const div = document.createElement('div');
       div.className = 'list-item';
+      div.dataset.listId = id || '';
       div.innerHTML = `
         <label>Nombre (opcional)</label>
         <input type="text" class="name" placeholder="Mi lista favorita" value="${name.replace(/"/g, '&quot;')}">
@@ -83,6 +116,12 @@
           <span class="preview"></span>
         </div>`;
       listsEl.appendChild(div);
+      if (id) updateItemManifest(div, id);
+      div.querySelector('.url').addEventListener('change', () => {
+        const newId = listIdFromUrl(div.querySelector('.url').value.trim());
+        div.dataset.listId = newId || '';
+        updateItemManifest(div, newId);
+      });
     }
 
     async function preview(btn) {
@@ -97,6 +136,8 @@
         if (!r.ok) throw new Error(d.error);
         span.textContent = ` ✓ "${d.title}" — ${d.count} pelis`;
         if (!item.querySelector('.name').value) item.querySelector('.name').value = d.title;
+        item.dataset.listId = d.id;
+        updateItemManifest(item, d.id);
       } catch (e) {
         span.textContent = ' ✗ ' + e.message;
       }
@@ -116,7 +157,7 @@
       }
 
       msgEl.className = 'msg';
-      msgEl.textContent = 'Guardando... La primera carga de cada lista puede tardar unos minutos.';
+      msgEl.textContent = 'Guardando... La primera carga puede tardar unos minutos.';
 
       try {
         const r = await fetch('/api/lists', {
@@ -127,8 +168,9 @@
         const d = await r.json();
         if (!r.ok) throw new Error(d.error);
 
+        renderSavedManifests(d.lists);
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'Listas guardadas. En Stremio: quita el addon y vuelve a instalarlo con la misma URL, o reinicia la app.';
+        msgEl.textContent = 'Guardado. Instala cada manifest por separado en Stremio.';
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;
@@ -136,8 +178,12 @@
     }
 
     fetch('/api/lists').then(r => r.json()).then(d => {
-      if (d.lists?.length) d.lists.forEach(l => addList(l.url, l.name || ''));
-      else addList('https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/', 'for when you want to feel something');
+      if (d.lists?.length) {
+        d.lists.forEach(l => addList(l.url, l.name || '', l.id));
+        renderSavedManifests(d.lists);
+      } else {
+        addList('https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/', 'for when you want to feel something', 'list-for-when-you-want-to-feel-something');
+      }
     });
   </script>
 </body>

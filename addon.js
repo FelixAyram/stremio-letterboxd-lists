@@ -5,6 +5,7 @@ const { readLists, readListCache, writeListCache } = require('./src/store');
 
 const listCache = new Map();
 const loading = new Map();
+const interfaceCache = new Map();
 
 async function getListMetas(listConfig) {
   if (listConfig.id) {
@@ -32,8 +33,7 @@ async function getListMetas(listConfig) {
       if (n % 25 === 0 || n === t) console.log(`  ${n}/${t}`);
     });
 
-    const imdbCount = metas.length;
-    console.log(`[ok] ${imdbCount} peliculas — "${list.title}"`);
+    console.log(`[ok] ${metas.length} peliculas — "${list.title}"`);
 
     listCache.set(list.id, metas);
     writeListCache(list.id, { title: list.title, url: list.url, metas });
@@ -48,39 +48,46 @@ async function getListMetas(listConfig) {
   }
 }
 
-function buildManifest() {
-  const { lists } = readLists();
+function findListConfig(listId) {
+  return readLists().lists.find((l) => l.id === listId);
+}
+
+function buildManifestForList(listConfig) {
+  const name = listConfig.name || listConfig.title || 'Letterboxd List';
   return {
-    id: 'community.letterboxd.lists',
-    version: '1.3.0',
-    name: 'Letterboxd Lists',
-    description: 'Listas publicas de Letterboxd como catalogos en Stremio (IDs IMDb para metadatos y streams)',
+    id: `community.letterboxd.${listConfig.id}`,
+    version: '1.4.0',
+    name,
+    description: `Lista de Letterboxd: ${name}`,
     logo: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     background: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     resources: ['catalog', 'meta'],
     types: ['movie'],
     idPrefixes: ['tt'],
-    catalogs: lists.map((l, i) => ({
+    catalogs: [{
       type: 'movie',
-      id: l.id || `list-pending-${i}`,
-      name: l.name || l.title || 'Letterboxd List',
+      id: listConfig.id,
+      name,
       extra: [{ name: 'skip', isRequired: false }]
-    })),
+    }],
     behaviorHints: { configurable: false, configurationRequired: false }
   };
 }
 
-function createBuilder() {
-  const builder = new addonBuilder(buildManifest());
+function createBuilderForList(listId) {
+  const listConfig = findListConfig(listId);
+  if (!listConfig) throw new Error(`Lista no encontrada: ${listId}`);
+
+  const builder = new addonBuilder(buildManifestForList(listConfig));
 
   builder.defineCatalogHandler(async ({ type, id, extra }) => {
-    if (type !== 'movie') return { metas: [] };
+    if (type !== 'movie' || id !== listId) return { metas: [] };
 
-    const listConfig = readLists().lists.find((l) => l.id === id);
-    if (!listConfig) return { metas: [] };
+    const config = findListConfig(listId);
+    if (!config) return { metas: [] };
 
     const skip = parseInt(extra?.skip || '0', 10) || 0;
-    const metas = await getListMetas(listConfig);
+    const metas = await getListMetas(config);
     const valid = metas.filter((m) => m.id && m.id.startsWith('tt'));
     return { metas: valid.slice(skip, skip + 100) };
   });
@@ -99,8 +106,22 @@ function createBuilder() {
   return builder;
 }
 
-function getInterface() {
-  return createBuilder().getInterface();
+function getInterfaceForList(listId) {
+  const config = findListConfig(listId);
+  if (!config) return null;
+
+  const cached = interfaceCache.get(listId);
+  if (cached) return cached;
+
+  const iface = createBuilderForList(listId).getInterface();
+  interfaceCache.set(listId, iface);
+  return iface;
+}
+
+function buildManifest(listId) {
+  const config = findListConfig(listId);
+  if (!config) return null;
+  return buildManifestForList(config);
 }
 
 function preloadLists() {
@@ -112,6 +133,15 @@ function preloadLists() {
 function clearRuntimeCache() {
   listCache.clear();
   loading.clear();
+  interfaceCache.clear();
 }
 
-module.exports = { getInterface, buildManifest, preloadLists, clearRuntimeCache, getListMetas };
+module.exports = {
+  getInterfaceForList,
+  buildManifest,
+  buildManifestForList,
+  preloadLists,
+  clearRuntimeCache,
+  getListMetas,
+  findListConfig
+};

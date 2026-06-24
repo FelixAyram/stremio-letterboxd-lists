@@ -107,9 +107,8 @@ async function resolveFilm(film) {
   return metaFromImdb(imdbId, film, fullMeta || hit);
 }
 
-async function resolveFilms(films, onProgress) {
+async function resolveFilms(films, onProgress, concurrency = 3) {
   const out = [];
-  const concurrency = 3;
 
   for (let i = 0; i < films.length; i += concurrency) {
     const batch = films.slice(i, i + concurrency);
@@ -118,7 +117,7 @@ async function resolveFilms(films, onProgress) {
       if (m) out.push(m);
     }
     if (onProgress) onProgress(Math.min(i + concurrency, films.length), films.length);
-    await sleep(200);
+    if (i + concurrency < films.length) await sleep(100);
   }
 
   return out;

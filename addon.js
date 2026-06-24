@@ -1,12 +1,71 @@
 const { addonBuilder } = require('stremio-addon-sdk');
-const { fetchFullList } = require('./src/letterboxd');
+const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
 const { resolveFilms, fetchMeta, getImdbForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache } = require('./src/cinemeta');
 const { VERSION } = require('./src/version');
-const { readLists, readListCache, writeListCache } = require('./src/store');
+const { readLists, readListCache, writeListCache, readFilmListCache, writeFilmListCache } = require('./src/store');
 
 const listCache = new Map();
+const filmListCache = new Map();
 const loading = new Map();
 const interfaceCache = new Map();
+
+const PAGE_SIZE = 50;
+
+async function getFilmList(listConfig) {
+  const listId = listConfig.id || listIdFromUrl(listConfig.url);
+  if (filmListCache.has(listId)) return filmListCache.get(listId);
+
+  const cached = readFilmListCache(listId);
+  if (cached?.films?.length) {
+    filmListCache.set(listId, cached);
+    return cached;
+  }
+
+  const loadKey = `films:${listConfig.url}`;
+  if (loading.has(loadKey)) return loading.get(loadKey);
+
+  const promise = (async () => {
+    console.log(`[letterboxd] Leyendo lista: ${listConfig.url}`);
+    const list = await fetchFullList(listConfig.url);
+    const data = {
+      id: list.id,
+      title: list.title,
+      url: list.url,
+      films: list.films
+    };
+    filmListCache.set(list.id, data);
+    writeFilmListCache(list.id, data);
+    console.log(`[letterboxd] ${list.films.length} peliculas en "${list.title}"`);
+    return data;
+  })();
+
+  loading.set(loadKey, promise);
+  try {
+    return await promise;
+  } finally {
+    loading.delete(loadKey);
+  }
+}
+
+async function getCatalogMetas(listConfig, skip = 0, limit = PAGE_SIZE) {
+  const listId = listConfig.id;
+
+  const disk = readListCache(listId);
+  if (disk?.metas?.length) {
+    loadPosterMapFromCache(disk.metas);
+    listCache.set(listId, disk.metas);
+    const valid = disk.metas.filter((m) => m.id?.startsWith('lbx:'));
+    if (valid.length > skip) return valid.slice(skip, skip + limit);
+  }
+
+  const { films, title } = await getFilmList(listConfig);
+  const batch = films.slice(skip, skip + limit);
+  if (!batch.length) return [];
+
+  console.log(`[catalog] "${title}" — resolviendo ${skip + 1}-${skip + batch.length} de ${films.length}`);
+  const metas = await resolveFilms(batch, null, 6);
+  return metas.filter((m) => m.id?.startsWith('lbx:'));
+}
 
 async function getListMetas(listConfig) {
   if (listConfig.id) {
@@ -19,25 +78,18 @@ async function getListMetas(listConfig) {
     if (listCache.has(listConfig.id)) return listCache.get(listConfig.id);
   }
 
-  const loadKey = listConfig.url;
+  const loadKey = `full:${listConfig.url}`;
   if (loading.has(loadKey)) return loading.get(loadKey);
 
   const promise = (async () => {
-    console.log(`[letterboxd] Cargando: ${listConfig.url}`);
-    const list = await fetchFullList(listConfig.url);
-    listConfig.id = list.id;
-    listConfig.title = list.title;
-    listConfig.name = listConfig.name || list.title;
-
-    console.log(`[letterboxd] ${list.films.length} peliculas — resolviendo IMDb...`);
-    const metas = await resolveFilms(list.films, (n, t) => {
-      if (n % 25 === 0 || n === t) console.log(`  ${n}/${t}`);
+    const { films, title, url, id } = await getFilmList(listConfig);
+    console.log(`[letterboxd] Resolviendo todas (${films.length}) — "${title}"`);
+    const metas = await resolveFilms(films, (n, t) => {
+      if (n % 50 === 0 || n === t) console.log(`  ${n}/${t}`);
     });
-
-    console.log(`[ok] ${metas.length} peliculas — "${list.title}"`);
-
-    listCache.set(list.id, metas);
-    writeListCache(list.id, { title: list.title, url: list.url, metas });
+    console.log(`[ok] ${metas.length} peliculas — "${title}"`);
+    listCache.set(id, metas);
+    writeListCache(id, { title, url, metas });
     return metas;
   })();
 
@@ -88,9 +140,8 @@ function createBuilderForList(listId) {
     if (!config) return { metas: [] };
 
     const skip = parseInt(extra?.skip || '0', 10) || 0;
-    const metas = await getListMetas(config);
-    const valid = metas.filter((m) => m.id && m.id.startsWith('lbx:'));
-    return { metas: valid.slice(skip, skip + 100) };
+    const metas = await getCatalogMetas(config, skip, PAGE_SIZE);
+    return { metas, cacheMaxAge: 3600 };
   });
 
   builder.defineMetaHandler(async ({ type, id }) => {
@@ -143,12 +194,13 @@ function buildManifest(listId) {
 
 function preloadLists() {
   readLists().lists.forEach((list) => {
-    getListMetas(list).catch((e) => console.error('[preload]', e.message));
+    getFilmList(list).catch((e) => console.error('[preload]', e.message));
   });
 }
 
 function clearRuntimeCache() {
   listCache.clear();
+  filmListCache.clear();
   loading.clear();
   interfaceCache.clear();
 }
@@ -160,5 +212,6 @@ module.exports = {
   preloadLists,
   clearRuntimeCache,
   getListMetas,
+  getFilmList,
   findListConfig
 };

@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const opn = require('opn');
 const { getRouter } = require('stremio-addon-sdk');
-const { getInterfaceForList, preloadLists, clearRuntimeCache, findListConfig, getListMetas } = require('./addon');
+const { getInterfaceForList, preloadLists, clearRuntimeCache, findListConfig, getFilmList } = require('./addon');
 const { fetchFullList, fetchListTitle, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
 const { VERSION } = require('./src/version');
 const { readLists, writeLists } = require('./src/store');
@@ -59,23 +59,29 @@ async function resolveIncomingLists(raw) {
 function activateLists(lists) {
   lists.forEach((l) => {
     getInterfaceForList(l.id);
-    getListMetas(l).catch((e) => console.error('[preload]', l.id, e.message));
+    getFilmList(l).catch((e) => console.error('[preload]', l.id, e.message));
   });
 }
 
 // Un addon Stremio por lista: /list/{id}/manifest.json
 app.use('/list/:listId', (req, res, next) => {
+  sendCors(res);
   const listId = req.params.listId;
   if (!findListConfig(listId)) {
-    sendCors(res);
     return res.status(404).json({ err: 'lista no encontrada' });
   }
   const iface = getInterfaceForList(listId);
   if (!iface) {
-    sendCors(res);
     return res.status(404).json({ err: 'lista no encontrada' });
   }
-  getRouter(iface)(req, res, next);
+  getRouter(iface)(req, res, (err) => {
+    sendCors(res);
+    if (err && !res.headersSent) {
+      res.status(500).json({ err: 'error del addon' });
+    } else if (!res.headersSent) {
+      next(err);
+    }
+  });
 });
 
 app.get('/manifest.json', (req, res) => {

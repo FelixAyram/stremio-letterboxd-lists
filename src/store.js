@@ -80,4 +80,30 @@ function writeListCache(listId, payload) {
   fs.writeFileSync(cachePath(listId), JSON.stringify({ ...payload, cachedAt: Date.now() }, null, 2));
 }
 
-module.exports = { readLists, writeLists, readListCache, writeListCache, LISTS_FILE };
+function filmListCachePath(listId) {
+  return path.join(CACHE_DIR, `${listId}-films.json`);
+}
+
+function readFilmListCache(listId) {
+  const p = filmListCachePath(listId);
+  if (!fs.existsSync(p)) return null;
+  try {
+    return JSON.parse(fs.readFileSync(p, 'utf8'));
+  } catch {}
+  return null;
+}
+
+function writeFilmListCache(listId, payload) {
+  ensureDirs();
+  fs.writeFileSync(filmListCachePath(listId), JSON.stringify({ ...payload, cachedAt: Date.now() }, null, 2));
+}
+
+module.exports = {
+  readLists,
+  writeLists,
+  readListCache,
+  writeListCache,
+  readFilmListCache,
+  writeFilmListCache,
+  LISTS_FILE
+};

@@ -11,54 +11,63 @@
     p { line-height: 1.5; color: #9ab; }
     label { display: block; margin-top: 1rem; font-size: 0.85rem; color: #9ab; }
     input { width: 100%; padding: 0.6rem; margin-top: 0.3rem; border: 1px solid #456; border-radius: 6px; background: #1c2228; color: #fff; }
-    .row { display: flex; gap: 0.5rem; margin-top: 0.5rem; align-items: center; }
+    .row { display: flex; gap: 0.5rem; margin-top: 0.5rem; align-items: center; flex-wrap: wrap; }
     .row input { flex: 1; }
     button { padding: 0.55rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
     .btn-green { background: #00e054; color: #14181c; }
     .btn-red { background: #456; color: #fff; font-size: 0.8rem; }
     .btn-blue { background: #40bcf4; color: #14181c; margin-top: 1rem; }
+    .btn-copy { background: #456; color: #fff; font-size: 0.85rem; margin-top: 0.5rem; }
     .list-item { background: #1c2228; padding: 1rem; border-radius: 8px; margin-top: 0.75rem; border: 1px solid #2a3440; }
     .msg { margin-top: 1rem; padding: 0.75rem; border-radius: 6px; }
     .ok { background: #0d3d1f; color: #00e054; }
     .err { background: #3d0d0d; color: #ff6b6b; }
     code { background: #1c2228; padding: 0.2rem 0.4rem; border-radius: 4px; word-break: break-all; }
-    .install { margin-top: 1.5rem; padding: 1rem; background: #1c2228; border-radius: 8px; }
+    .install { margin-top: 1.5rem; padding: 1rem; background: #1c2228; border-radius: 8px; border: 1px solid #2a3440; }
     a { color: #40bcf4; }
   </style>
 </head>
 <body>
   <h1>Letterboxd Lists para Stremio</h1>
-  <p>Pega URLs de listas publicas de Letterboxd. Cada lista aparece como un catalogo en Stremio con portada, descripcion, fondo y enlaces a otros addons (Torrentio, etc.) via IMDb.</p>
+  <p>Pega URLs de listas publicas de Letterboxd. Funciona en la nube: PC, Android, TV o web. Sin instalar nada en tu PC.</p>
 
-  <div style="background:#0d3d1f;border:1px solid #0e4;padding:0.75rem;border-radius:8px;margin:1rem 0">
-    <strong>URLs de instalacion</strong>
-    <ul style="margin:0.5rem 0 0 1rem;color:#9f9">
-      <li><strong>PC / Desktop:</strong> <code id="urlPc">http://127.0.0.1:7731/manifest.json</code></li>
-      <li><strong>Android / TV:</strong> <code id="urlLan">http://TU-IP-LOCAL:7731/manifest.json</code></li>
-    </ul>
-    <p style="color:#9f9;font-size:0.85rem;margin:0.5rem 0 0">Android: misma WiFi que la PC. Ejecuta <code>Abrir-Firewall.bat</code> como admin.</p>
+  <div class="install">
+    <strong>Tu addon (manifest)</strong>
+    <p style="margin:0.5rem 0 0"><code id="manifestUrl"></code></p>
+    <button type="button" class="btn-copy" onclick="copyManifest()">Copiar URL</button>
+    <p style="font-size:0.85rem;margin-top:0.75rem">
+      En Stremio: <strong>Addons</strong> → <strong>+</strong> → pega la URL → <strong>Install</strong>.
+      Tambien en <a id="stremioLink" href="https://web.stremio.com" target="_blank" rel="noopener">web.stremio.com</a>.
+    </p>
   </div>
+
+  <h2 style="font-size:1rem;color:#00e054;margin-top:2rem">Tus listas</h2>
 
   <div id="lists"></div>
 
   <button type="button" class="btn-green" onclick="addList()">+ Agregar lista</button>
-  <button type="button" class="btn-blue" onclick="save()">Guardar y generar manifest</button>
+  <button type="button" class="btn-blue" onclick="save()">Guardar listas</button>
 
   <div id="msg"></div>
-
-  <div class="install" id="installBox" style="display:none">
-    <strong>Instalar en Stremio</strong>
-    <p>1. Copia esta URL del manifest:</p>
-    <p><code id="manifestUrl"></code></p>
-    <p>2. En Stremio <strong>escritorio</strong>: <strong>Addons</strong> → icono <strong>+</strong> → pega la URL → Install</p>
-    <p>O ejecuta <code>Instalar-en-Stremio.bat</code> (inicia servidor + abre Stremio)</p>
-    <p>O abri (solo staging web): <a id="stremioLink" href="#">staging.strem.io</a></p>
-    <p><small>El servidor debe estar corriendo (<code>npm start</code>) mientras uses el addon.</small></p>
-  </div>
 
   <script>
     const listsEl = document.getElementById('lists');
     const msgEl = document.getElementById('msg');
+    const manifestUrl = location.origin + '/manifest.json';
+
+    document.getElementById('manifestUrl').textContent = manifestUrl;
+    document.getElementById('stremioLink').href =
+      'https://web.stremio.com/#/addons?addon=' + encodeURIComponent(manifestUrl);
+
+    function copyManifest() {
+      navigator.clipboard.writeText(manifestUrl).then(() => {
+        msgEl.className = 'msg ok';
+        msgEl.textContent = 'URL copiada al portapapeles.';
+      }).catch(() => {
+        msgEl.className = 'msg err';
+        msgEl.textContent = 'No se pudo copiar. Selecciona la URL manualmente.';
+      });
+    }
 
     function addList(url = '', name = '') {
       const div = document.createElement('div');
@@ -107,7 +116,7 @@
       }
 
       msgEl.className = 'msg';
-      msgEl.textContent = 'Guardando... (la primera carga puede tardar unos minutos)';
+      msgEl.textContent = 'Guardando... La primera carga de cada lista puede tardar unos minutos.';
 
       try {
         const r = await fetch('/api/lists', {
@@ -118,13 +127,8 @@
         const d = await r.json();
         if (!r.ok) throw new Error(d.error);
 
-        const manifest = location.origin + '/manifest.json';
-        document.getElementById('manifestUrl').textContent = manifest;
-        document.getElementById('stremioLink').href =
-          'https://staging.strem.io#?addonOpen=' + encodeURIComponent(manifest);
-        document.getElementById('installBox').style.display = 'block';
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'Guardado. Reinicia el addon en Stremio si ya estaba instalado (Remove + Install).';
+        msgEl.textContent = 'Listas guardadas. En Stremio: quita el addon y vuelve a instalarlo con la misma URL, o reinicia la app.';
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;
@@ -135,10 +139,6 @@
       if (d.lists?.length) d.lists.forEach(l => addList(l.url, l.name || ''));
       else addList('https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/', 'for when you want to feel something');
     });
-    fetch('/api/info').then(r => r.json()).then(d => {
-      if (d.lanUrl) document.getElementById('urlLan').textContent = d.lanUrl;
-      if (d.localUrl) document.getElementById('urlPc').textContent = d.localUrl;
-    }).catch(() => {});
   </script>
 </body>
 </html>

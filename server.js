@@ -49,13 +49,15 @@ app.get('/configure.html', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'configure.html'));
 });
 
-app.get('/api/info', (_, res) => {
-  const lan = getLanIp();
-  res.json({
-    localUrl: `http://127.0.0.1:${PORT}/manifest.json`,
-    lanUrl: `http://${lan}:${PORT}/manifest.json`,
-    port: PORT
-  });
+function manifestUrl(req) {
+  const proto = req.get('x-forwarded-proto') || req.protocol || 'https';
+  const host = req.get('x-forwarded-host') || req.get('host');
+  return `${proto}://${host}/manifest.json`;
+}
+
+app.get('/api/info', (req, res) => {
+  const url = manifestUrl(req);
+  res.json({ manifestUrl: url, configureUrl: url.replace('/manifest.json', '/configure.html') });
 });
 
 app.get('/api/lists', (_, res) => res.json(readLists()));
@@ -74,7 +76,7 @@ app.post('/api/lists', (req, res) => {
   clearRuntimeCache();
   addonInterface = getInterface();
 
-  res.json({ ok: true, lists, manifest: `http://127.0.0.1:${PORT}/manifest.json` });
+  res.json({ ok: true, lists, manifest: manifestUrl(req) });
 });
 
 app.get('/api/preview', async (req, res) => {
@@ -92,19 +94,16 @@ app.get('/', (_, res) => {
 });
 
 const server = app.listen(PORT, HOST, () => {
-  const lan = getLanIp();
-  const localUrl = `http://127.0.0.1:${PORT}/manifest.json`;
-  const lanUrl = `http://${lan}:${PORT}/manifest.json`;
-
   console.log('');
   console.log('  Letterboxd Lists — Addon Stremio v1.3');
   console.log('  =====================================');
-  console.log(`  PC (desktop):  ${localUrl}`);
-  console.log(`  Android/TV:    ${lanUrl}`);
-  console.log(`  Configurar:    http://127.0.0.1:${PORT}/configure.html`);
-  console.log('');
-  console.log('  ANDROID: usa la URL de red (192.168...), NO 127.0.0.1');
-  console.log('  Misma WiFi que la PC. Ejecuta Abrir-Firewall.bat si no conecta.');
+  if (process.env.RENDER_EXTERNAL_URL) {
+    console.log(`  Configurar:  ${process.env.RENDER_EXTERNAL_URL}/configure.html`);
+    console.log(`  Manifest:    ${process.env.RENDER_EXTERNAL_URL}/manifest.json`);
+  } else {
+    console.log(`  Configurar:  http://127.0.0.1:${PORT}/configure.html`);
+    console.log(`  Manifest:    http://127.0.0.1:${PORT}/manifest.json`);
+  }
   console.log('');
 
   preloadLists();

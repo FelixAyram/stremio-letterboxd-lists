@@ -132,7 +132,7 @@
         const d = await r.json();
         if (!r.ok) throw new Error(d.error);
         span.textContent = ` ✓ "${d.title}" — ${d.count} pelis`;
-        if (!item.querySelector('.name').value) item.querySelector('.name').value = d.title;
+        item.querySelector('.name').value = d.title;
         item.dataset.listId = d.id;
         updateItemPreviewNote(item, d.id, d.title, d.count);
       } catch (e) {

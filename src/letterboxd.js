@@ -127,6 +127,12 @@ async function fetchListPage(url) {
   };
 }
 
+async function fetchListTitle(listUrl) {
+  const base = normalizeListUrl(listUrl);
+  const page = await fetchListPage(base);
+  return page.title;
+}
+
 async function fetchFullList(listUrl) {
   const base = normalizeListUrl(listUrl);
   const allFilms = [];
@@ -166,6 +172,7 @@ module.exports = {
   normalizeListUrl,
   listIdFromUrl,
   fetchFullList,
+  fetchListTitle,
   parseTitleYear,
   fetchImdbId,
   fetchFilmPage,

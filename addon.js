@@ -126,11 +126,12 @@ function getInterfaceForList(listId) {
   const config = findListConfig(listId);
   if (!config) return null;
 
-  const cached = interfaceCache.get(listId);
+  const cacheKey = `${listId}|${config.url}|${config.name || ''}`;
+  const cached = interfaceCache.get(cacheKey);
   if (cached) return cached;
 
   const iface = createBuilderForList(listId).getInterface();
-  interfaceCache.set(listId, iface);
+  interfaceCache.set(cacheKey, iface);
   return iface;
 }
 

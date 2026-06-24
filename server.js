@@ -4,7 +4,7 @@ const cors = require('cors');
 const opn = require('opn');
 const { getRouter } = require('stremio-addon-sdk');
 const { getInterfaceForList, preloadLists, clearRuntimeCache, findListConfig, getListMetas } = require('./addon');
-const { fetchFullList, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
+const { fetchFullList, fetchListTitle, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
 const { VERSION } = require('./src/version');
 const { readLists, writeLists } = require('./src/store');
 
@@ -82,13 +82,20 @@ app.get('/api/lists', (req, res) => {
   res.json({ lists: listsWithManifests(req) });
 });
 
-app.post('/api/lists', (req, res) => {
-  const lists = (req.body.lists || [])
-    .filter((l) => l.url && l.url.includes('letterboxd.com'))
-    .map((l) => {
-      const url = normalizeListUrl(l.url);
-      return { url, name: (l.name || '').trim() || undefined, id: listIdFromUrl(url) };
-    });
+app.post('/api/lists', async (req, res) => {
+  const raw = (req.body.lists || []).filter((l) => l.url && l.url.includes('letterboxd.com'));
+
+  const lists = [];
+  for (const l of raw) {
+    const url = normalizeListUrl(l.url);
+    let name = (l.name || '').trim();
+    try {
+      name = await fetchListTitle(url);
+    } catch {
+      if (!name) name = undefined;
+    }
+    lists.push({ url, name, id: listIdFromUrl(url) });
+  }
 
   if (!lists.length) return res.status(400).json({ error: 'Agrega al menos una URL de Letterboxd' });
 

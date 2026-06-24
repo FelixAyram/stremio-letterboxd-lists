@@ -108,6 +108,7 @@ const server = app.listen(PORT, HOST, () => {
 
   preloadLists();
 
+  const localUrl = `http://127.0.0.1:${PORT}/manifest.json`;
   if (process.argv.includes('--install')) {
     opn(localUrl.replace('http://', 'stremio://'));
   }

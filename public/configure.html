@@ -27,11 +27,11 @@
     code { background: #14181c; padding: 0.2rem 0.4rem; border-radius: 4px; word-break: break-all; font-size: 0.85rem; }
     .saved-manifests { margin-top: 1.5rem; }
     .saved-item { background: #1c2228; padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid #2a3440; }
-    a { color: #40bcf4; }
+    .version-badge { display: inline-block; margin-left: 0.5rem; padding: 0.15rem 0.5rem; font-size: 0.75rem; font-weight: 600; color: #00e054; background: #0d3d1f; border: 1px solid #0e4; border-radius: 999px; vertical-align: middle; }
   </style>
 </head>
 <body>
-  <h1>Letterboxd Lists para Stremio</h1>
+  <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
   <p>Cada lista de Letterboxd tiene su <strong>propio manifest</strong>. Instala solo las que quieras en Stremio.</p>
 
   <h2>Agregar listas</h2>
@@ -43,6 +43,7 @@
   <div class="saved-manifests" id="savedManifests" style="display:none">
     <h2>Tus manifests (instalar en Stremio)</h2>
     <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. Tambien en <a href="https://web.stremio.com" target="_blank" rel="noopener">web.stremio.com</a>.</p>
+    <p style="font-size:0.8rem;color:#6a8" id="manifestVersionNote"></p>
     <div id="manifestList"></div>
   </div>
 
@@ -170,12 +171,23 @@
 
         renderSavedManifests(d.lists);
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'Guardado. Instala cada manifest por separado en Stremio.';
+        msgEl.textContent = 'Guardado (v' + (d.version || appVersion || '?') + '). Instala cada manifest por separado en Stremio.';
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;
       }
     }
+
+    let appVersion = '';
+
+    fetch('/api/info').then(r => r.json()).then(d => {
+      if (d.version) {
+        appVersion = d.version;
+        document.getElementById('appVersion').textContent = 'v' + d.version;
+        const note = document.getElementById('manifestVersionNote');
+        if (note) note.textContent = 'Manifests en esta version del servidor: v' + d.version;
+      }
+    });
 
     fetch('/api/lists').then(r => r.json()).then(d => {
       if (d.lists?.length) {

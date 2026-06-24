@@ -5,7 +5,7 @@ const opn = require('opn');
 const { getRouter } = require('stremio-addon-sdk');
 const { getInterfaceForList, buildManifest, preloadLists, clearRuntimeCache, findListConfig } = require('./addon');
 const { fetchFullList, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
-const { readLists, writeLists } = require('./src/store');
+const { VERSION } = require('./src/version');
 
 const PORT = process.env.PORT || 7731;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -71,6 +71,7 @@ app.get('/configure.html', (_, res) => {
 
 app.get('/api/info', (req, res) => {
   res.json({
+    version: VERSION,
     configureUrl: `${baseUrl(req)}/configure.html`,
     lists: listsWithManifests(req)
   });
@@ -94,7 +95,7 @@ app.post('/api/lists', (req, res) => {
   clearRuntimeCache();
   lists.forEach((l) => getInterfaceForList(l.id));
 
-  res.json({ ok: true, lists: listsWithManifests(req) });
+  res.json({ ok: true, version: VERSION, lists: listsWithManifests(req) });
 });
 
 app.get('/api/preview', async (req, res) => {
@@ -114,7 +115,7 @@ app.get('/', (_, res) => {
 
 const server = app.listen(PORT, HOST, () => {
   console.log('');
-  console.log('  Letterboxd Lists — Addon Stremio v1.4');
+  console.log('  Letterboxd Lists — Addon Stremio v' + VERSION);
   console.log('  =====================================');
   const base = process.env.RENDER_EXTERNAL_URL || `http://127.0.0.1:${PORT}`;
   console.log(`  Configurar:  ${base}/configure.html`);

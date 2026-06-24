@@ -1,7 +1,7 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList } = require('./src/letterboxd');
 const { resolveFilms, fetchMeta, getImdbForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache } = require('./src/cinemeta');
-const { readLists, readListCache, writeListCache } = require('./src/store');
+const { VERSION } = require('./src/version');
 
 const listCache = new Map();
 const loading = new Map();
@@ -56,7 +56,7 @@ function buildManifestForList(listConfig) {
   const name = listConfig.name || listConfig.title || 'Letterboxd List';
   return {
     id: `community.letterboxd.${listConfig.id}`,
-    version: '1.4.1',
+    version: VERSION,
     name,
     description: `Lista de Letterboxd: ${name}`,
     logo: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',

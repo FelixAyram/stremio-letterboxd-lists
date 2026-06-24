@@ -97,7 +97,7 @@ const server = app.listen(PORT, HOST, () => {
   const lanUrl = `http://${lan}:${PORT}/manifest.json`;
 
   console.log('');
-  console.log('  Letterboxd Lists — Addon Stremio v1.2');
+  console.log('  Letterboxd Lists — Addon Stremio v1.3');
   console.log('  =====================================');
   console.log(`  PC (desktop):  ${localUrl}`);
   console.log(`  Android/TV:    ${lanUrl}`);

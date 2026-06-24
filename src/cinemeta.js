@@ -1,7 +1,11 @@
 const CINEMETA = 'https://v3-cinemeta.strem.io';
-const { fetchImdbId, sleep } = require('./letterboxd');
+const { fetchFilmPage, sleep } = require('./letterboxd');
 
-const cache = new Map();
+const searchCache = new Map();
+const posterByImdb = new Map();
+const backgroundByImdb = new Map();
+
+const EMPTY_POSTER = 'https://s.ltrbxd.com/static/img/empty-poster-230.png';
 
 function normalizeName(s) {
   return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
@@ -9,7 +13,7 @@ function normalizeName(s) {
 
 async function searchMovie(title, year, retries = 3) {
   const key = `${title}|${year || ''}`;
-  if (cache.has(key)) return cache.get(key);
+  if (searchCache.has(key)) return searchCache.get(key);
 
   const query = year ? `${title} ${year}` : title;
   const url = `${CINEMETA}/catalog/movie/top/search=${encodeURIComponent(query)}.json`;
@@ -33,14 +37,14 @@ async function searchMovie(title, year, retries = 3) {
       if (!best) best = metas[0];
 
       const result = best?.id?.startsWith('tt') ? best : null;
-      cache.set(key, result);
+      searchCache.set(key, result);
       return result;
     } catch {
       await sleep(300 * (attempt + 1));
     }
   }
 
-  cache.set(key, null);
+  searchCache.set(key, null);
   return null;
 }
 
@@ -56,47 +60,42 @@ async function fetchMeta(imdbId) {
   }
 }
 
-function letterboxdPoster(slug, size = 230) {
-  return `https://letterboxd.com/film/${slug}/image-${size}/`;
-}
-
-function resolvePoster(film, cinemetaHit) {
-  if (film.poster) return film.poster.replace('/image-150/', '/image-230/');
-  if (film.slug) return letterboxdPoster(film.slug);
-  if (cinemetaHit?.poster) return cinemetaHit.poster;
-  return 'https://s.ltrbxd.com/static/img/empty-poster-230.png';
+function letterboxdPosterUrl(film) {
+  if (film.poster && film.poster.includes('ltrbxd.com')) return film.poster;
+  return null;
 }
 
 function metaFromImdb(imdbId, film, cinemetaHit) {
-  const name = cinemetaHit?.name || film.name;
-  const year = cinemetaHit?.releaseInfo || film.year || '';
+  const poster = letterboxdPosterUrl(film) || posterByImdb.get(imdbId) || EMPTY_POSTER;
+  const background = film.background || backgroundByImdb.get(imdbId) || cinemetaHit?.background;
+
   return {
     id: imdbId,
     type: 'movie',
-    name,
-    poster: resolvePoster(film, cinemetaHit),
-    background: cinemetaHit?.background || undefined,
+    name: cinemetaHit?.name || film.name,
+    poster,
+    background,
     posterShape: 'poster',
-    releaseInfo: year,
+    releaseInfo: cinemetaHit?.releaseInfo || film.year || '',
     imdbRating: cinemetaHit?.imdbRating,
     description: cinemetaHit?.description
   };
 }
 
 async function resolveFilm(film) {
-  let hit = await searchMovie(film.name, film.year);
+  const lbx = await fetchFilmPage(film.slug);
+  if (lbx.poster) film.poster = lbx.poster;
+  if (lbx.background) film.background = lbx.background;
 
-  if (!hit) {
-    const imdbId = await fetchImdbId(film.slug);
-    if (imdbId) {
-      const meta = await fetchMeta(imdbId);
-      return metaFromImdb(imdbId, film, meta);
-    }
-    return null;
-  }
+  const hit = await searchMovie(film.name, film.year);
+  const imdbId = hit?.id || lbx.imdbId;
+  if (!imdbId) return null;
 
-  const fullMeta = await fetchMeta(hit.id);
-  return metaFromImdb(hit.id, film, fullMeta || hit);
+  if (film.poster) posterByImdb.set(imdbId, film.poster);
+  if (film.background) backgroundByImdb.set(imdbId, film.background);
+
+  const fullMeta = hit ? await fetchMeta(hit.id) : await fetchMeta(imdbId);
+  return metaFromImdb(imdbId, film, fullMeta || hit);
 }
 
 async function resolveFilms(films, onProgress) {
@@ -110,10 +109,33 @@ async function resolveFilms(films, onProgress) {
       if (m) out.push(m);
     }
     if (onProgress) onProgress(Math.min(i + concurrency, films.length), films.length);
-    await sleep(150);
+    await sleep(200);
   }
 
   return out;
 }
 
-module.exports = { searchMovie, fetchMeta, resolveFilm, resolveFilms, letterboxdPoster };
+function getLetterboxdPoster(imdbId) {
+  return posterByImdb.get(imdbId);
+}
+
+function getLetterboxdBackground(imdbId) {
+  return backgroundByImdb.get(imdbId);
+}
+
+function loadPosterMapFromCache(metas) {
+  for (const m of metas || []) {
+    if (m.id && m.poster?.includes('ltrbxd.com')) posterByImdb.set(m.id, m.poster);
+    if (m.id && m.background?.includes('ltrbxd.com')) backgroundByImdb.set(m.id, m.background);
+  }
+}
+
+module.exports = {
+  searchMovie,
+  fetchMeta,
+  resolveFilm,
+  resolveFilms,
+  getLetterboxdPoster,
+  getLetterboxdBackground,
+  loadPosterMapFromCache
+};

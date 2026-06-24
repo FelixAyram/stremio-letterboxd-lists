@@ -11,6 +11,12 @@ function ensureDirs() {
 }
 
 function readLists() {
+  if (process.env.LISTS_JSON) {
+    try {
+      return JSON.parse(process.env.LISTS_JSON);
+    } catch {}
+  }
+
   ensureDirs();
   if (!fs.existsSync(LISTS_FILE)) {
     const defaultLists = {
@@ -42,7 +48,12 @@ function readListCache(listId) {
   if (!fs.existsSync(p)) return null;
   try {
     const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-    if (Date.now() - data.cachedAt < 6 * 60 * 60 * 1000) return data;
+    if (Date.now() - data.cachedAt > 6 * 60 * 60 * 1000) return null;
+    const badPoster = data.metas?.some(
+      (m) => m.poster && !m.poster.includes('ltrbxd.com') && !m.poster.includes('empty-poster')
+    );
+    if (badPoster) return null;
+    return data;
   } catch {}
   return null;
 }

@@ -2,6 +2,8 @@ const cheerio = require('cheerio');
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
+const filmPageCache = new Map();
+
 function normalizeListUrl(url) {
   let u = url.trim();
   if (!u.startsWith('http')) u = 'https://' + u;
@@ -39,16 +41,12 @@ function parseFilmsFromHtml(html) {
     if (!slug || seen.has(slug)) return;
     seen.add(slug);
 
-    let poster = node.attr('data-poster-url') || '';
-    if (poster && poster.startsWith('/')) poster = `https://letterboxd.com${poster}`;
-
     const parsed = parseTitleYear(name);
     films.push({
       slug,
       name: parsed.title,
       year: parsed.year,
-      displayName: name,
-      poster
+      displayName: name
     });
   });
 
@@ -61,7 +59,7 @@ function parseTitleYear(text) {
   return { title: (text || '').trim(), year: null };
 }
 
-function getNextPageUrl(html, currentUrl) {
+function getNextPageUrl(html) {
   const $ = cheerio.load(html);
   const next = $('.paginate-nextprev a.next').attr('href');
   if (!next) return null;
@@ -77,6 +75,38 @@ function getListTitle(html) {
   return h1.trim() || 'Letterboxd List';
 }
 
+function parseFilmPage(html) {
+  const imdb = html.match(/imdb\.com\/title\/(tt\d+)/i);
+  const imdbId = imdb ? imdb[1] : null;
+
+  const posters = [...html.matchAll(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s<>]+/g)];
+  let poster = posters.length ? posters[0][0] : null;
+
+  if (!poster) {
+    const og = html.match(/property="og:image" content="([^"]+)"/);
+    poster = og ? og[1] : null;
+  }
+
+  const backdrop = html.match(/data-backdrop="([^"]+)"/);
+  const background = backdrop ? backdrop[1] : null;
+
+  return { imdbId, poster, background };
+}
+
+async function fetchFilmPage(slug) {
+  if (filmPageCache.has(slug)) return filmPageCache.get(slug);
+  try {
+    const html = await fetchHtml(`https://letterboxd.com/film/${slug}/`);
+    const data = parseFilmPage(html);
+    filmPageCache.set(slug, data);
+    return data;
+  } catch {
+    const empty = { imdbId: null, poster: null, background: null };
+    filmPageCache.set(slug, empty);
+    return empty;
+  }
+}
+
 async function fetchListPage(url) {
   const html = await fetchHtml(url);
   return {
@@ -89,12 +119,6 @@ async function fetchListPage(url) {
 
 async function fetchFullList(listUrl) {
   const base = normalizeListUrl(listUrl);
-  let pageUrl = base.includes('/page/') ? base : base;
-  if (!pageUrl.match(/\/page\/\d+\/$/)) {
-    pageUrl = base + (base.endsWith('/') ? '' : '/') ;
-    if (!pageUrl.includes('/page/')) pageUrl = base; // page 1 is base url
-  }
-
   const allFilms = [];
   const seen = new Set();
   let title = 'Letterboxd List';
@@ -123,18 +147,9 @@ function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
 
-function letterboxdPoster(slug, size = 230) {
-  return `https://letterboxd.com/film/${slug}/image-${size}/`;
-}
-
 async function fetchImdbId(slug) {
-  try {
-    const html = await fetchHtml(`https://letterboxd.com/film/${slug}/`);
-    const m = html.match(/imdb\.com\/title\/(tt\d+)/i);
-    return m ? m[1] : null;
-  } catch {
-    return null;
-  }
+  const { imdbId } = await fetchFilmPage(slug);
+  return imdbId;
 }
 
 module.exports = {
@@ -143,6 +158,6 @@ module.exports = {
   fetchFullList,
   parseTitleYear,
   fetchImdbId,
-  letterboxdPoster,
+  fetchFilmPage,
   sleep
 };

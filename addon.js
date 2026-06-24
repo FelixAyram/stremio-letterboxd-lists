@@ -1,6 +1,6 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList } = require('./src/letterboxd');
-const { resolveFilms, fetchMeta } = require('./src/cinemeta');
+const { resolveFilms, fetchMeta, getLetterboxdPoster, getLetterboxdBackground, loadPosterMapFromCache } = require('./src/cinemeta');
 const { readLists, readListCache, writeListCache } = require('./src/store');
 
 const listCache = new Map();
@@ -10,6 +10,7 @@ async function getListMetas(listConfig) {
   if (listConfig.id) {
     const cached = readListCache(listConfig.id);
     if (cached?.metas) {
+      loadPosterMapFromCache(cached.metas);
       listCache.set(listConfig.id, cached.metas);
       return cached.metas;
     }
@@ -51,7 +52,7 @@ function buildManifest() {
   const { lists } = readLists();
   return {
     id: 'community.letterboxd.lists',
-    version: '1.2.0',
+    version: '1.3.0',
     name: 'Letterboxd Lists',
     description: 'Listas publicas de Letterboxd como catalogos en Stremio (IDs IMDb para metadatos y streams)',
     logo: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
@@ -87,7 +88,12 @@ function createBuilder() {
   builder.defineMetaHandler(async ({ type, id }) => {
     if (type !== 'movie' || !id.startsWith('tt')) return { meta: null };
     const meta = await fetchMeta(id);
-    return meta ? { meta } : { meta: null };
+    if (!meta) return { meta: null };
+    const lbxPoster = getLetterboxdPoster(id);
+    if (lbxPoster) meta.poster = lbxPoster;
+    const lbxBg = getLetterboxdBackground(id);
+    if (lbxBg) meta.background = lbxBg;
+    return { meta };
   });
 
   return builder;

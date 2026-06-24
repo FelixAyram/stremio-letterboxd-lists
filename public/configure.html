@@ -39,13 +39,13 @@
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
 
   <div id="loginPanel">
-    <p>Inicia sesion para ver y guardar <strong>tus</strong> listas. Cada usuario tiene sus propios manifests en Stremio.</p>
+    <p>Inicia sesion para ver y guardar <strong>tus</strong> listas. Cada lista recibe una <strong>URL privada</strong> (sin tu usuario ni el nombre de la lista).</p>
     <div class="auth-box">
       <h2 id="authTitle">Iniciar sesion</h2>
       <label>Usuario</label>
       <input type="text" id="authUser" placeholder="tu_usuario" autocomplete="username">
       <label>Contrasena</label>
-      <input type="password" id="authPass" placeholder="••••" autocomplete="current-password">
+      <input type="password" id="authPass" placeholder="min. 8 caracteres" autocomplete="current-password" minlength="8">
       <div class="row">
         <button type="button" class="btn-green" id="authSubmit">Entrar</button>
       </div>
@@ -68,15 +68,14 @@
     <div id="msg"></div>
 
     <div class="saved-manifests" id="savedManifests" style="display:none">
-      <h2>Tus manifests (instalar en Stremio)</h2>
-      <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. Tambien en <a href="https://web.stremio.com" target="_blank" rel="noopener">web.stremio.com</a>.</p>
+      <h2>Tus URLs para Stremio</h2>
+      <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. La URL es privada — no muestra tu usuario ni el nombre de la lista.</p>
       <p style="font-size:0.8rem;color:#6a8" id="manifestVersionNote"></p>
       <div id="manifestList"></div>
     </div>
   </div>
 
   <script>
-    const TOKEN_KEY = 'lbx_token';
     const listsEl = document.getElementById('lists');
     const msgEl = document.getElementById('msg');
     const manifestListEl = document.getElementById('manifestList');
@@ -89,24 +88,19 @@
     const authToggle = document.getElementById('authToggle');
 
     let appVersion = '';
-    let authToken = localStorage.getItem(TOKEN_KEY) || '';
-    let currentUserId = '';
     let registerMode = false;
-
-    function authHeaders() {
-      return authToken ? { Authorization: 'Bearer ' + authToken } : {};
-    }
 
     async function api(path, options = {}) {
       const r = await fetch(path, {
+        credentials: 'include',
         ...options,
-        headers: { ...authHeaders(), ...(options.headers || {}) }
+        headers: { ...(options.headers || {}) }
       });
       const text = await r.text();
       let data;
       try { data = JSON.parse(text); } catch { data = {}; }
-      if (r.status === 401 && authToken) {
-        logout(false);
+      if (r.status === 401 && !path.includes('/auth/login') && !path.includes('/auth/register')) {
+        showLogin();
         throw new Error('Sesion expirada. Vuelve a iniciar sesion.');
       }
       return { r, data, text };
@@ -119,24 +113,23 @@
     }
 
     function showApp(user) {
-      currentUserId = user.id;
       document.getElementById('currentUser').textContent = user.username;
       loginPanel.style.display = 'none';
       appPanel.style.display = 'block';
       loadLists();
     }
 
-    function logout(clearMsg = true) {
-      authToken = '';
-      localStorage.removeItem(TOKEN_KEY);
-      currentUserId = '';
+    function showLogin() {
       appPanel.style.display = 'none';
       loginPanel.style.display = 'block';
       listsEl.innerHTML = '';
       savedManifestsEl.style.display = 'none';
-      if (clearMsg) {
-        showAuthMsg('Sesion cerrada.', true);
-      }
+    }
+
+    async function logout() {
+      await api('/api/auth/logout', { method: 'POST' }).catch(() => {});
+      showLogin();
+      showAuthMsg('Sesion cerrada.', true);
     }
 
     authToggle.addEventListener('click', () => {
@@ -163,8 +156,6 @@
           body: JSON.stringify({ username, password })
         });
         if (!r.ok) throw new Error(data.error || 'Error de autenticacion');
-        authToken = data.token;
-        localStorage.setItem(TOKEN_KEY, authToken);
         showApp(data.user);
         msgEl.className = 'msg ok';
         msgEl.textContent = registerMode ? 'Cuenta creada. Tus listas se guardan solo para este usuario.' : 'Bienvenido de nuevo.';
@@ -333,7 +324,7 @@
       }
     }
 
-    fetch('/api/info').then(r => r.json()).then(d => {
+    fetch('/api/info', { credentials: 'include' }).then(r => r.json()).then(d => {
       if (d.version) {
         appVersion = d.version;
         document.getElementById('appVersion').textContent = 'v' + d.version;
@@ -343,14 +334,10 @@
     });
 
     (async function init() {
-      if (!authToken) return;
       try {
         const { r, data } = await api('/api/auth/me');
         if (r.ok && data.user) showApp(data.user);
-        else logout(false);
-      } catch {
-        logout(false);
-      }
+      } catch {}
     })();
   </script>
 </body>

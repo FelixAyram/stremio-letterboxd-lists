@@ -1,11 +1,28 @@
 const crypto = require('crypto');
+const { promisify } = require('util');
 const fs = require('fs');
 const path = require('path');
+
+const scryptAsync = promisify(crypto.scrypt);
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const SESSION_DAYS = 30;
-const SECRET = process.env.SESSION_SECRET || 'cambiar-en-render-session-secret';
+const COOKIE_NAME = 'lbx_session';
+const SCRYPT_N = 16384;
+const SCRYPT_R = 8;
+const SCRYPT_P = 1;
+const SCRYPT_KEYLEN = 64;
+
+const SECRET = process.env.SESSION_SECRET;
+if (!SECRET && process.env.RENDER) {
+  console.warn('[auth] SESSION_SECRET no definido — las sesiones se invalidan en cada reinicio');
+}
+const SESSION_SECRET = SECRET || crypto.randomBytes(32).toString('hex');
+
+const loginAttempts = new Map();
+const RATE_WINDOW_MS = 15 * 60 * 1000;
+const RATE_MAX = 12;
 
 function ensureDataDir() {
   fs.mkdirSync(DATA_DIR, { recursive: true });
@@ -22,19 +39,29 @@ function validateUsername(username) {
 }
 
 function validatePassword(password) {
-  if (!password || password.length < 4) throw new Error('Contrasena: minimo 4 caracteres');
+  if (!password || password.length < 8) {
+    throw new Error('Contrasena: minimo 8 caracteres');
+  }
 }
 
-function hashPassword(password) {
+async function hashPassword(password) {
   const salt = crypto.randomBytes(16).toString('hex');
-  const hash = crypto.scryptSync(password, salt, 64).toString('hex');
+  const hash = (await scryptAsync(password, salt, SCRYPT_KEYLEN, {
+    N: SCRYPT_N,
+    r: SCRYPT_R,
+    p: SCRYPT_P
+  })).toString('hex');
   return `${salt}:${hash}`;
 }
 
-function verifyPassword(password, stored) {
+async function verifyPassword(password, stored) {
   const [salt, hash] = stored.split(':');
   if (!salt || !hash) return false;
-  const test = crypto.scryptSync(password, salt, 64).toString('hex');
+  const test = (await scryptAsync(password, salt, SCRYPT_KEYLEN, {
+    N: SCRYPT_N,
+    r: SCRYPT_R,
+    p: SCRYPT_P
+  })).toString('hex');
   try {
     return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(test, 'hex'));
   } catch {
@@ -57,12 +84,37 @@ function writeUsersDb(data) {
   fs.writeFileSync(USERS_FILE, JSON.stringify(data, null, 2));
 }
 
-function findUser(username) {
-  const id = normalizeUsername(username);
-  return readUsersDb().users.find((u) => u.id === id) || null;
+function findUserById(userId) {
+  return readUsersDb().users.find((u) => u.id === userId) || null;
 }
 
-function register(username, password) {
+function findUser(username) {
+  const id = normalizeUsername(username);
+  return findUserById(id);
+}
+
+function clientIp(req) {
+  return (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket?.remoteAddress || 'unknown';
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const entry = loginAttempts.get(ip);
+  if (!entry || now > entry.resetAt) {
+    loginAttempts.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return;
+  }
+  entry.count += 1;
+  if (entry.count > RATE_MAX) {
+    throw new Error('Demasiados intentos. Espera 15 minutos.');
+  }
+}
+
+function resetRateLimit(ip) {
+  loginAttempts.delete(ip);
+}
+
+async function register(username, password) {
   const id = validateUsername(username);
   validatePassword(password);
   const db = readUsersDb();
@@ -72,7 +124,7 @@ function register(username, password) {
   const user = {
     id,
     username: id,
-    passwordHash: hashPassword(password),
+    passwordHash: await hashPassword(password),
     createdAt: new Date().toISOString()
   };
   db.users.push(user);
@@ -80,20 +132,22 @@ function register(username, password) {
   return user;
 }
 
-function login(username, password) {
+async function login(username, password, ip) {
+  checkRateLimit(ip);
   const id = validateUsername(username);
-  validatePassword(password);
+  if (!password) throw new Error('Usuario o contrasena incorrectos');
   const user = findUser(id);
-  if (!user || !verifyPassword(password, user.passwordHash)) {
+  if (!user || !(await verifyPassword(password, user.passwordHash))) {
     throw new Error('Usuario o contrasena incorrectos');
   }
+  resetRateLimit(ip);
   return user;
 }
 
 function signToken(userId) {
   const exp = Date.now() + SESSION_DAYS * 24 * 60 * 60 * 1000;
   const payload = `${userId}:${exp}`;
-  const sig = crypto.createHmac('sha256', SECRET).update(payload).digest('base64url');
+  const sig = crypto.createHmac('sha256', SESSION_SECRET).update(payload).digest('base64url');
   return Buffer.from(`${payload}:${sig}`).toString('base64url');
 }
 
@@ -107,19 +161,45 @@ function verifyToken(token) {
     const exp = parts.pop();
     const userId = parts.join(':');
     const payload = `${userId}:${exp}`;
-    const expected = crypto.createHmac('sha256', SECRET).update(payload).digest('base64url');
+    const expected = crypto.createHmac('sha256', SESSION_SECRET).update(payload).digest('base64url');
     if (sig !== expected || Date.now() > Number(exp)) return null;
-    if (!findUser(userId)) return null;
+    if (!findUserById(userId)) return null;
     return userId;
   } catch {
     return null;
   }
 }
 
+function parseCookie(req, name) {
+  const raw = req.headers.cookie || '';
+  for (const part of raw.split(';')) {
+    const [k, ...v] = part.trim().split('=');
+    if (k === name) return decodeURIComponent(v.join('='));
+  }
+  return null;
+}
+
 function authFromRequest(req) {
   const header = req.headers.authorization || '';
-  const token = header.startsWith('Bearer ') ? header.slice(7) : null;
-  return verifyToken(token);
+  const bearer = header.startsWith('Bearer ') ? header.slice(7) : null;
+  return verifyToken(bearer || parseCookie(req, COOKIE_NAME));
+}
+
+function setSessionCookie(res, token) {
+  const secure = process.env.NODE_ENV === 'production' || !!process.env.RENDER;
+  const maxAge = SESSION_DAYS * 24 * 60 * 60;
+  res.setHeader('Set-Cookie', [
+    `${COOKIE_NAME}=${encodeURIComponent(token)}`,
+    'Path=/',
+    'HttpOnly',
+    'SameSite=Lax',
+    `Max-Age=${maxAge}`,
+    secure ? 'Secure' : ''
+  ].filter(Boolean).join('; '));
+}
+
+function clearSessionCookie(res) {
+  res.setHeader('Set-Cookie', `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0`);
 }
 
 function listUserIds() {
@@ -131,7 +211,12 @@ function listUserIds() {
   });
 }
 
+function publicUser(user) {
+  return { username: user.username };
+}
+
 module.exports = {
+  COOKIE_NAME,
   normalizeUsername,
   validateUsername,
   register,
@@ -139,6 +224,11 @@ module.exports = {
   signToken,
   verifyToken,
   authFromRequest,
+  setSessionCookie,
+  clearSessionCookie,
   findUser,
-  listUserIds
+  findUserById,
+  listUserIds,
+  publicUser,
+  clientIp
 };

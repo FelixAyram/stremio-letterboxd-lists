@@ -79,12 +79,22 @@ function parseFilmPage(html) {
   const imdb = html.match(/imdb\.com\/title\/(tt\d+)/i);
   const imdbId = imdb ? imdb[1] : null;
 
-  const posters = [...html.matchAll(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s<>]+/g)];
-  let poster = posters.length ? posters[0][0] : null;
+  let poster = null;
+
+  const filmPosters = [...html.matchAll(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s<>]+/g)];
+  if (filmPosters.length) {
+    const vertical = filmPosters.find((m) => m[0].includes('230-0-345'));
+    poster = vertical ? vertical[0] : filmPosters[0][0];
+  }
 
   if (!poster) {
-    const og = html.match(/property="og:image" content="([^"]+)"/);
-    poster = og ? og[1] : null;
+    const schemaImage = html.match(/\{"image":"(https:\/\/a\.ltrbxd\.com\/[^"]+)"[^}]*"@type":"Movie"/);
+    if (schemaImage) poster = schemaImage[1];
+  }
+
+  if (!poster) {
+    const vertical = html.match(/https:\/\/a\.ltrbxd\.com\/resized\/[^"'\s<>]*-0-230-0-345-crop[^"'\s<>]*/);
+    if (vertical) poster = vertical[0];
   }
 
   const backdrop = html.match(/data-backdrop="([^"]+)"/);

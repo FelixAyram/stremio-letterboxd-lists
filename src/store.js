@@ -53,7 +53,10 @@ function readListCache(listId) {
       (m) => m.poster && !m.poster.includes('ltrbxd.com') && !m.poster.includes('empty-poster')
     );
     const oldIds = data.metas?.some((m) => m.id?.startsWith('tt'));
-    if (badPoster || oldIds) return null;
+    const landscapePoster = data.metas?.some(
+      (m) => m.poster && (m.poster.includes('675-675-crop') || m.poster.includes('1200-1200-675'))
+    );
+    if (badPoster || oldIds || landscapePoster) return null;
     return data;
   } catch {}
   return null;

@@ -1,6 +1,6 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList } = require('./src/letterboxd');
-const { resolveFilms, fetchMeta, getLetterboxdPoster, getLetterboxdBackground, loadPosterMapFromCache } = require('./src/cinemeta');
+const { resolveFilms, fetchMeta, getImdbForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache } = require('./src/cinemeta');
 const { readLists, readListCache, writeListCache } = require('./src/store');
 
 const listCache = new Map();
@@ -56,14 +56,14 @@ function buildManifestForList(listConfig) {
   const name = listConfig.name || listConfig.title || 'Letterboxd List';
   return {
     id: `community.letterboxd.${listConfig.id}`,
-    version: '1.4.0',
+    version: '1.4.1',
     name,
     description: `Lista de Letterboxd: ${name}`,
     logo: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     background: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     resources: ['catalog', 'meta'],
     types: ['movie'],
-    idPrefixes: ['tt'],
+    idPrefixes: ['lbx'],
     catalogs: [{
       type: 'movie',
       id: listConfig.id,
@@ -88,17 +88,32 @@ function createBuilderForList(listId) {
 
     const skip = parseInt(extra?.skip || '0', 10) || 0;
     const metas = await getListMetas(config);
-    const valid = metas.filter((m) => m.id && m.id.startsWith('tt'));
+    const valid = metas.filter((m) => m.id && m.id.startsWith('lbx:'));
     return { metas: valid.slice(skip, skip + 100) };
   });
 
   builder.defineMetaHandler(async ({ type, id }) => {
-    if (type !== 'movie' || !id.startsWith('tt')) return { meta: null };
-    const meta = await fetchMeta(id);
+    if (type !== 'movie') return { meta: null };
+
+    let imdbId = null;
+    let slug = null;
+
+    if (id.startsWith('lbx:')) {
+      slug = id.slice(4);
+      imdbId = getImdbForSlug(slug);
+    } else if (id.startsWith('tt')) {
+      imdbId = id;
+    }
+
+    if (!imdbId) return { meta: null };
+
+    const meta = await fetchMeta(imdbId);
     if (!meta) return { meta: null };
-    const lbxPoster = getLetterboxdPoster(id);
+
+    meta.id = imdbId;
+    const lbxPoster = (slug && getLetterboxdPosterBySlug(slug)) || getLetterboxdPoster(imdbId);
     if (lbxPoster) meta.poster = lbxPoster;
-    const lbxBg = getLetterboxdBackground(id);
+    const lbxBg = getLetterboxdBackground(imdbId);
     if (lbxBg) meta.background = lbxBg;
     return { meta };
   });

@@ -9,5 +9,7 @@ services:
     envVars:
       - key: NODE_VERSION
         value: "20"
+      - key: SESSION_SECRET
+        generateValue: true
       - key: LISTS_JSON
         value: '{"lists":[{"url":"https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/","name":"for when you want to feel something","id":"list-for-when-you-want-to-feel-something"}]}'

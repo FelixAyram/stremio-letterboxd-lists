@@ -11,21 +11,26 @@ const interfaceCache = new Map();
 
 const PAGE_SIZE = 50;
 
-async function getFilmList(listConfig) {
-  const listId = listConfig.id || listIdFromUrl(listConfig.url);
-  if (filmListCache.has(listId)) return filmListCache.get(listId);
+function cacheKey(userId, suffix) {
+  return `${userId}:${suffix}`;
+}
 
-  const cached = readFilmListCache(listId);
+async function getFilmList(userId, listConfig) {
+  const listId = listConfig.id || listIdFromUrl(listConfig.url);
+  const memKey = cacheKey(userId, listId);
+  if (filmListCache.has(memKey)) return filmListCache.get(memKey);
+
+  const cached = readFilmListCache(userId, listId);
   if (cached?.films?.length) {
-    filmListCache.set(listId, cached);
+    filmListCache.set(memKey, cached);
     return cached;
   }
 
-  const loadKey = `films:${listConfig.url}`;
+  const loadKey = cacheKey(userId, `films:${listConfig.url}`);
   if (loading.has(loadKey)) return loading.get(loadKey);
 
   const promise = (async () => {
-    console.log(`[letterboxd] Leyendo lista: ${listConfig.url}`);
+    console.log(`[${userId}] Leyendo lista: ${listConfig.url}`);
     const list = await fetchFullList(listConfig.url);
     const data = {
       id: list.id,
@@ -33,9 +38,9 @@ async function getFilmList(listConfig) {
       url: list.url,
       films: list.films
     };
-    filmListCache.set(list.id, data);
-    writeFilmListCache(list.id, data);
-    console.log(`[letterboxd] ${list.films.length} peliculas en "${list.title}"`);
+    filmListCache.set(memKey, data);
+    writeFilmListCache(userId, list.id, data);
+    console.log(`[${userId}] ${list.films.length} peliculas en "${list.title}"`);
     return data;
   })();
 
@@ -47,49 +52,52 @@ async function getFilmList(listConfig) {
   }
 }
 
-async function getCatalogMetas(listConfig, skip = 0, limit = PAGE_SIZE) {
+async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) {
   const listId = listConfig.id;
 
-  const disk = readListCache(listId);
+  const disk = readListCache(userId, listId);
   if (disk?.metas?.length) {
     loadPosterMapFromCache(disk.metas);
-    listCache.set(listId, disk.metas);
+    listCache.set(cacheKey(userId, listId), disk.metas);
     const valid = disk.metas.filter((m) => m.id?.startsWith('lbx:'));
     if (valid.length > skip) return valid.slice(skip, skip + limit);
   }
 
-  const { films, title } = await getFilmList(listConfig);
+  const { films, title } = await getFilmList(userId, listConfig);
   const batch = films.slice(skip, skip + limit);
   if (!batch.length) return [];
 
-  console.log(`[catalog] "${title}" — resolviendo ${skip + 1}-${skip + batch.length} de ${films.length}`);
+  console.log(`[${userId}] [catalog] "${title}" — ${skip + 1}-${skip + batch.length} de ${films.length}`);
   const metas = await resolveFilms(batch, null, 6);
   return metas.filter((m) => m.id?.startsWith('lbx:'));
 }
 
-async function getListMetas(listConfig) {
-  if (listConfig.id) {
-    const cached = readListCache(listConfig.id);
+async function getListMetas(userId, listConfig) {
+  const listId = listConfig.id;
+  const memKey = cacheKey(userId, listId);
+
+  if (listId) {
+    const cached = readListCache(userId, listId);
     if (cached?.metas) {
       loadPosterMapFromCache(cached.metas);
-      listCache.set(listConfig.id, cached.metas);
+      listCache.set(memKey, cached.metas);
       return cached.metas;
     }
-    if (listCache.has(listConfig.id)) return listCache.get(listConfig.id);
+    if (listCache.has(memKey)) return listCache.get(memKey);
   }
 
-  const loadKey = `full:${listConfig.url}`;
+  const loadKey = cacheKey(userId, `full:${listConfig.url}`);
   if (loading.has(loadKey)) return loading.get(loadKey);
 
   const promise = (async () => {
-    const { films, title, url, id } = await getFilmList(listConfig);
-    console.log(`[letterboxd] Resolviendo todas (${films.length}) — "${title}"`);
+    const { films, title, url, id } = await getFilmList(userId, listConfig);
+    console.log(`[${userId}] Resolviendo todas (${films.length}) — "${title}"`);
     const metas = await resolveFilms(films, (n, t) => {
       if (n % 50 === 0 || n === t) console.log(`  ${n}/${t}`);
     });
     console.log(`[ok] ${metas.length} peliculas — "${title}"`);
-    listCache.set(id, metas);
-    writeListCache(id, { title, url, metas });
+    listCache.set(memKey, metas);
+    writeListCache(userId, id, { title, url, metas });
     return metas;
   })();
 
@@ -101,8 +109,8 @@ async function getListMetas(listConfig) {
   }
 }
 
-function findListConfig(listId) {
-  return readLists().lists.find((l) => l.id === listId);
+function findListConfig(userId, listId) {
+  return readLists(userId).lists.find((l) => l.id === listId);
 }
 
 function buildManifestForList(listConfig) {
@@ -127,8 +135,8 @@ function buildManifestForList(listConfig) {
   };
 }
 
-function createBuilderForList(listId) {
-  const listConfig = findListConfig(listId);
+function createBuilderForList(userId, listId) {
+  const listConfig = findListConfig(userId, listId);
   if (!listConfig) throw new Error(`Lista no encontrada: ${listId}`);
 
   const builder = new addonBuilder(buildManifestForList(listConfig));
@@ -136,11 +144,11 @@ function createBuilderForList(listId) {
   builder.defineCatalogHandler(async ({ type, id, extra }) => {
     if (type !== 'movie' || id !== listId) return { metas: [] };
 
-    const config = findListConfig(listId);
+    const config = findListConfig(userId, listId);
     if (!config) return { metas: [] };
 
     const skip = parseInt(extra?.skip || '0', 10) || 0;
-    const metas = await getCatalogMetas(config, skip, PAGE_SIZE);
+    const metas = await getCatalogMetas(userId, config, skip, PAGE_SIZE);
     return { metas, cacheMaxAge: 3600 };
   });
 
@@ -173,28 +181,28 @@ function createBuilderForList(listId) {
   return builder;
 }
 
-function getInterfaceForList(listId) {
-  const config = findListConfig(listId);
+function getInterfaceForList(userId, listId) {
+  const config = findListConfig(userId, listId);
   if (!config) return null;
 
-  const cacheKey = `${listId}|${config.url}|${config.name || ''}`;
-  const cached = interfaceCache.get(cacheKey);
+  const key = `${userId}|${listId}|${config.url}|${config.name || ''}`;
+  const cached = interfaceCache.get(key);
   if (cached) return cached;
 
-  const iface = createBuilderForList(listId).getInterface();
-  interfaceCache.set(cacheKey, iface);
+  const iface = createBuilderForList(userId, listId).getInterface();
+  interfaceCache.set(key, iface);
   return iface;
 }
 
-function buildManifest(listId) {
-  const config = findListConfig(listId);
+function buildManifest(userId, listId) {
+  const config = findListConfig(userId, listId);
   if (!config) return null;
   return buildManifestForList(config);
 }
 
-function preloadLists() {
-  readLists().lists.forEach((list) => {
-    getFilmList(list).catch((e) => console.error('[preload]', e.message));
+function preloadLists(userId) {
+  readLists(userId).lists.forEach((list) => {
+    getFilmList(userId, list).catch((e) => console.error(`[preload:${userId}]`, e.message));
   });
 }
 

@@ -18,6 +18,7 @@
     .btn-red { background: #456; color: #fff; font-size: 0.8rem; }
     .btn-blue { background: #40bcf4; color: #14181c; margin-top: 1rem; }
     .btn-copy { background: #456; color: #fff; font-size: 0.8rem; padding: 0.35rem 0.7rem; }
+    .btn-link { background: transparent; color: #40bcf4; padding: 0; margin-top: 0.75rem; font-weight: 500; }
     .list-item { background: #1c2228; padding: 1rem; border-radius: 8px; margin-top: 0.75rem; border: 1px solid #2a3440; }
     .manifest-box { margin-top: 0.75rem; padding: 0.75rem; background: #0d1a24; border-radius: 6px; border: 1px solid #2a3440; }
     .manifest-box strong { font-size: 0.85rem; color: #9ab; }
@@ -28,39 +29,155 @@
     .saved-manifests { margin-top: 1.5rem; }
     .saved-item { background: #1c2228; padding: 1rem; border-radius: 8px; margin-top: 0.5rem; border: 1px solid #2a3440; }
     .version-badge { display: inline-block; margin-left: 0.5rem; padding: 0.15rem 0.5rem; font-size: 0.75rem; font-weight: 600; color: #00e054; background: #0d3d1f; border: 1px solid #0e4; border-radius: 999px; vertical-align: middle; }
+    .auth-box { background: #1c2228; padding: 1.25rem; border-radius: 8px; border: 1px solid #2a3440; margin-top: 1rem; }
+    .user-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; padding: 0.75rem 1rem; background: #1c2228; border-radius: 8px; border: 1px solid #2a3440; }
+    .user-bar strong { color: #00e054; }
+    #appPanel { display: none; }
   </style>
 </head>
 <body>
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
-  <p>Agrega listas con <strong>+ Agregar lista</strong>. Al guardar, <strong>no se borran las anteriores</strong> — cada una tiene su manifest.</p>
 
-  <h2>Agregar listas</h2>
-  <div id="lists"></div>
-  <button type="button" class="btn-green" onclick="addList()">+ Agregar lista</button>
-  <button type="button" class="btn-blue" onclick="save()">Guardar listas</button>
-  <div id="msg"></div>
+  <div id="loginPanel">
+    <p>Inicia sesion para ver y guardar <strong>tus</strong> listas. Cada usuario tiene sus propios manifests en Stremio.</p>
+    <div class="auth-box">
+      <h2 id="authTitle">Iniciar sesion</h2>
+      <label>Usuario</label>
+      <input type="text" id="authUser" placeholder="tu_usuario" autocomplete="username">
+      <label>Contrasena</label>
+      <input type="password" id="authPass" placeholder="••••" autocomplete="current-password">
+      <div class="row">
+        <button type="button" class="btn-green" id="authSubmit">Entrar</button>
+      </div>
+      <button type="button" class="btn-link" id="authToggle">Crear cuenta nueva</button>
+      <div id="authMsg" class="msg" style="display:none"></div>
+    </div>
+  </div>
 
-  <div class="saved-manifests" id="savedManifests" style="display:none">
-    <h2>Tus manifests (instalar en Stremio)</h2>
-    <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. Tambien en <a href="https://web.stremio.com" target="_blank" rel="noopener">web.stremio.com</a>.</p>
-    <p style="font-size:0.8rem;color:#6a8" id="manifestVersionNote"></p>
-    <div id="manifestList"></div>
+  <div id="appPanel">
+    <div class="user-bar">
+      <span>Sesion: <strong id="currentUser"></strong></span>
+      <button type="button" class="btn-red" onclick="logout()">Cerrar sesion</button>
+    </div>
+    <p>Agrega listas con <strong>+ Agregar lista</strong>. Al guardar, <strong>no se borran las anteriores</strong> — cada una tiene su manifest.</p>
+
+    <h2>Agregar listas</h2>
+    <div id="lists"></div>
+    <button type="button" class="btn-green" onclick="addList()">+ Agregar lista</button>
+    <button type="button" class="btn-blue" onclick="save()">Guardar listas</button>
+    <div id="msg"></div>
+
+    <div class="saved-manifests" id="savedManifests" style="display:none">
+      <h2>Tus manifests (instalar en Stremio)</h2>
+      <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. Tambien en <a href="https://web.stremio.com" target="_blank" rel="noopener">web.stremio.com</a>.</p>
+      <p style="font-size:0.8rem;color:#6a8" id="manifestVersionNote"></p>
+      <div id="manifestList"></div>
+    </div>
   </div>
 
   <script>
+    const TOKEN_KEY = 'lbx_token';
     const listsEl = document.getElementById('lists');
     const msgEl = document.getElementById('msg');
     const manifestListEl = document.getElementById('manifestList');
     const savedManifestsEl = document.getElementById('savedManifests');
+    const loginPanel = document.getElementById('loginPanel');
+    const appPanel = document.getElementById('appPanel');
+    const authMsg = document.getElementById('authMsg');
+    const authTitle = document.getElementById('authTitle');
+    const authSubmit = document.getElementById('authSubmit');
+    const authToggle = document.getElementById('authToggle');
 
-    function listIdFromUrl(url) {
-      const m = (url || '').match(/\/list\/([^/?#]+)/);
-      return m ? `list-${m[1]}` : null;
+    let appVersion = '';
+    let authToken = localStorage.getItem(TOKEN_KEY) || '';
+    let currentUserId = '';
+    let registerMode = false;
+
+    function authHeaders() {
+      return authToken ? { Authorization: 'Bearer ' + authToken } : {};
     }
 
-    function manifestForId(id) {
-      return location.origin + '/list/' + id + '/manifest.json';
+    async function api(path, options = {}) {
+      const r = await fetch(path, {
+        ...options,
+        headers: { ...authHeaders(), ...(options.headers || {}) }
+      });
+      const text = await r.text();
+      let data;
+      try { data = JSON.parse(text); } catch { data = {}; }
+      if (r.status === 401 && authToken) {
+        logout(false);
+        throw new Error('Sesion expirada. Vuelve a iniciar sesion.');
+      }
+      return { r, data, text };
     }
+
+    function showAuthMsg(text, ok) {
+      authMsg.style.display = 'block';
+      authMsg.className = 'msg ' + (ok ? 'ok' : 'err');
+      authMsg.textContent = text;
+    }
+
+    function showApp(user) {
+      currentUserId = user.id;
+      document.getElementById('currentUser').textContent = user.username;
+      loginPanel.style.display = 'none';
+      appPanel.style.display = 'block';
+      loadLists();
+    }
+
+    function logout(clearMsg = true) {
+      authToken = '';
+      localStorage.removeItem(TOKEN_KEY);
+      currentUserId = '';
+      appPanel.style.display = 'none';
+      loginPanel.style.display = 'block';
+      listsEl.innerHTML = '';
+      savedManifestsEl.style.display = 'none';
+      if (clearMsg) {
+        showAuthMsg('Sesion cerrada.', true);
+      }
+    }
+
+    authToggle.addEventListener('click', () => {
+      registerMode = !registerMode;
+      authTitle.textContent = registerMode ? 'Crear cuenta' : 'Iniciar sesion';
+      authSubmit.textContent = registerMode ? 'Registrarse' : 'Entrar';
+      authToggle.textContent = registerMode ? 'Ya tengo cuenta' : 'Crear cuenta nueva';
+      authMsg.style.display = 'none';
+    });
+
+    authSubmit.addEventListener('click', async () => {
+      const username = document.getElementById('authUser').value.trim();
+      const password = document.getElementById('authPass').value;
+      if (!username || !password) {
+        showAuthMsg('Usuario y contrasena requeridos', false);
+        return;
+      }
+      authSubmit.disabled = true;
+      try {
+        const endpoint = registerMode ? '/api/auth/register' : '/api/auth/login';
+        const { r, data } = await api(endpoint, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password })
+        });
+        if (!r.ok) throw new Error(data.error || 'Error de autenticacion');
+        authToken = data.token;
+        localStorage.setItem(TOKEN_KEY, authToken);
+        showApp(data.user);
+        msgEl.className = 'msg ok';
+        msgEl.textContent = registerMode ? 'Cuenta creada. Tus listas se guardan solo para este usuario.' : 'Bienvenido de nuevo.';
+      } catch (e) {
+        showAuthMsg(e.message, false);
+      } finally {
+        authSubmit.disabled = false;
+      }
+    });
+
+    document.getElementById('authPass').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') authSubmit.click();
+    });
 
     function copyText(text) {
       return navigator.clipboard.writeText(text).then(() => {
@@ -86,25 +203,34 @@
           <strong>${(l.name || l.id).replace(/</g, '&lt;')}</strong>
           <p style="margin:0.4rem 0"><code>${l.manifest}</code></p>
           <div class="row">
-            <button type="button" class="btn-copy" onclick="copyText('${l.manifest}')">Copiar manifest</button>
-            <button type="button" class="btn-red" onclick="removeList('${l.id}')">Eliminar</button>
+            <button type="button" class="btn-copy" onclick="copyText(${JSON.stringify(l.manifest)})">Copiar manifest</button>
+            <button type="button" class="btn-red" onclick="removeList(${JSON.stringify(l.id)})">Eliminar</button>
           </div>
         </div>
       `).join('');
     }
 
+    async function loadLists() {
+      try {
+        const { r, data } = await api('/api/lists');
+        if (!r.ok) throw new Error(data.error || 'Error al cargar listas');
+        if (data.lists?.length) reloadForm(data.lists);
+        else { listsEl.innerHTML = ''; addList(); }
+      } catch (e) {
+        msgEl.className = 'msg err';
+        msgEl.textContent = e.message;
+      }
+    }
+
     async function removeList(id) {
       if (!confirm('Eliminar esta lista del servidor?')) return;
-      const r = await fetch('/api/lists/' + encodeURIComponent(id), { method: 'DELETE' });
-      const text = await r.text();
-      let d;
-      try { d = JSON.parse(text); } catch { d = {}; }
+      const { r, data } = await api('/api/lists/' + encodeURIComponent(id), { method: 'DELETE' });
       if (!r.ok) {
         msgEl.className = 'msg err';
-        msgEl.textContent = d.error || 'Error al eliminar';
+        msgEl.textContent = data.error || 'Error al eliminar';
         return;
       }
-      reloadForm(d.lists);
+      reloadForm(data.lists);
       msgEl.className = 'msg ok';
       msgEl.textContent = 'Lista eliminada.';
     }
@@ -153,13 +279,12 @@
       if (!url) return;
       span.textContent = ' cargando...';
       try {
-        const r = await fetch('/api/preview?url=' + encodeURIComponent(url));
-        const d = await r.json();
-        if (!r.ok) throw new Error(d.error);
-        span.textContent = ` ✓ "${d.title}" — ${d.count} pelis`;
-        item.querySelector('.name').value = d.title;
-        item.dataset.listId = d.id;
-        updateItemPreviewNote(item, d.id, d.title, d.count);
+        const { r, data } = await api('/api/preview?url=' + encodeURIComponent(url));
+        if (!r.ok) throw new Error(data.error);
+        span.textContent = ` ✓ "${data.title}" — ${data.count} pelis`;
+        item.querySelector('.name').value = data.title;
+        item.dataset.listId = data.id;
+        updateItemPreviewNote(item, data.id, data.title, data.count);
       } catch (e) {
         span.textContent = ' ✗ ' + e.message;
       }
@@ -179,33 +304,34 @@
       }
 
       msgEl.className = 'msg';
-      msgEl.textContent = 'Guardando... La primera carga puede tardar unos minutos.';
+      msgEl.textContent = 'Guardando...';
 
       try {
-        const r = await fetch('/api/lists', {
+        const { r, data, text } = await api('/api/lists', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ lists })
         });
-        const text = await r.text();
-        let d;
-        try {
-          d = JSON.parse(text);
-        } catch {
-          throw new Error(r.ok ? 'Respuesta invalida del servidor' : (r.status === 502 || r.status === 504 ? 'El servidor tardo demasiado (timeout). Vuelve a pulsar Guardar.' : 'Error del servidor (' + r.status + '). Espera un momento y reintenta.'));
+        if (!r.ok) {
+          let err = data.error;
+          if (!err) {
+            try { JSON.parse(text); } catch {
+              err = r.status === 502 || r.status === 504
+                ? 'El servidor tardo demasiado. Vuelve a pulsar Guardar.'
+                : 'Error del servidor (' + r.status + ')';
+            }
+          }
+          throw new Error(err || 'Error al guardar');
         }
-        if (!r.ok) throw new Error(d.error || 'Error al guardar');
 
-        reloadForm(d.lists);
+        reloadForm(data.lists);
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'Guardado (v' + (d.version || appVersion || '?') + '). ' + d.lists.length + ' lista(s) activas.';
+        msgEl.textContent = 'Guardado (v' + (data.version || appVersion || '?') + '). ' + data.lists.length + ' lista(s) activas.';
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;
       }
     }
-
-    let appVersion = '';
 
     fetch('/api/info').then(r => r.json()).then(d => {
       if (d.version) {
@@ -216,10 +342,16 @@
       }
     });
 
-    fetch('/api/lists').then(r => r.json()).then(d => {
-      if (d.lists?.length) reloadForm(d.lists);
-      else addList();
-    });
+    (async function init() {
+      if (!authToken) return;
+      try {
+        const { r, data } = await api('/api/auth/me');
+        if (r.ok && data.user) showApp(data.user);
+        else logout(false);
+      } catch {
+        logout(false);
+      }
+    })();
   </script>
 </body>
 </html>

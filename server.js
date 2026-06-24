@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const opn = require('opn');
 const { getRouter } = require('stremio-addon-sdk');
-const { getInterfaceForList, buildManifest, preloadLists, clearRuntimeCache, findListConfig } = require('./addon');
+const { getInterfaceForList, preloadLists, clearRuntimeCache, findListConfig, getListMetas } = require('./addon');
 const { fetchFullList, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
 const { VERSION } = require('./src/version');
 const { readLists, writeLists } = require('./src/store');
@@ -94,7 +94,10 @@ app.post('/api/lists', (req, res) => {
 
   writeLists({ lists });
   clearRuntimeCache();
-  lists.forEach((l) => getInterfaceForList(l.id));
+  lists.forEach((l) => {
+    getInterfaceForList(l.id);
+    getListMetas(l).catch((e) => console.error('[preload]', l.id, e.message));
+  });
 
   res.json({ ok: true, version: VERSION, lists: listsWithManifests(req) });
 });

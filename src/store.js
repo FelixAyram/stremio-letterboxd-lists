@@ -10,28 +10,41 @@ function ensureDirs() {
   fs.mkdirSync(CACHE_DIR, { recursive: true });
 }
 
+function defaultLists() {
+  return {
+    lists: [
+      {
+        url: 'https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/',
+        name: 'for when you want to feel something',
+        id: 'list-for-when-you-want-to-feel-something'
+      }
+    ]
+  };
+}
+
 function readLists() {
-  if (process.env.LISTS_JSON) {
+  ensureDirs();
+
+  if (fs.existsSync(LISTS_FILE)) {
     try {
-      return JSON.parse(process.env.LISTS_JSON);
+      const data = JSON.parse(fs.readFileSync(LISTS_FILE, 'utf8'));
+      if (data.lists?.length) return data;
     } catch {}
   }
 
-  ensureDirs();
-  if (!fs.existsSync(LISTS_FILE)) {
-    const defaultLists = {
-      lists: [
-        {
-          url: 'https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/',
-          name: 'for when you want to feel something',
-          id: 'list-for-when-you-want-to-feel-something'
-        }
-      ]
-    };
-    fs.writeFileSync(LISTS_FILE, JSON.stringify(defaultLists, null, 2));
-    return defaultLists;
+  if (process.env.LISTS_JSON) {
+    try {
+      const data = JSON.parse(process.env.LISTS_JSON);
+      if (data.lists?.length) {
+        writeLists(data);
+        return data;
+      }
+    } catch {}
   }
-  return JSON.parse(fs.readFileSync(LISTS_FILE, 'utf8'));
+
+  const data = defaultLists();
+  writeLists(data);
+  return data;
 }
 
 function writeLists(data) {

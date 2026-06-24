@@ -32,7 +32,7 @@
 </head>
 <body>
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
-  <p>Cada lista de Letterboxd tiene su <strong>propio manifest</strong>. Instala solo las que quieras en Stremio.</p>
+  <p>Cada lista tiene su <strong>propio manifest</strong>. Agrega las listas y pulsa <strong>Guardar listas</strong> antes de copiar la URL en Stremio.</p>
 
   <h2>Agregar listas</h2>
   <div id="lists"></div>
@@ -84,22 +84,20 @@
       `).join('');
     }
 
-    function updateItemManifest(item, id) {
+    function updateItemPreviewNote(item, id, title, count) {
       let box = item.querySelector('.manifest-box');
       if (!id) {
         if (box) box.remove();
         return;
       }
-      const url = manifestForId(id);
       if (!box) {
         box = document.createElement('div');
         box.className = 'manifest-box';
         item.appendChild(box);
       }
       box.innerHTML = `
-        <strong>Manifest de esta lista</strong>
-        <p style="margin:0.4rem 0"><code class="murl">${url}</code></p>
-        <button type="button" class="btn-copy" onclick="copyText('${url}')">Copiar</button>`;
+        <strong>Vista previa: ${title.replace(/</g, '&lt;')} (${count} pelis)</strong>
+        <p style="margin:0.4rem 0;font-size:0.85rem;color:#fa6">Pulsa <strong>Guardar listas</strong> abajo para activar el manifest en Stremio.</p>`;
     }
 
     function addList(url = '', name = '', id = '') {
@@ -117,11 +115,9 @@
           <span class="preview"></span>
         </div>`;
       listsEl.appendChild(div);
-      if (id) updateItemManifest(div, id);
       div.querySelector('.url').addEventListener('change', () => {
-        const newId = listIdFromUrl(div.querySelector('.url').value.trim());
-        div.dataset.listId = newId || '';
-        updateItemManifest(div, newId);
+        const box = div.querySelector('.manifest-box');
+        if (box) box.remove();
       });
     }
 
@@ -138,7 +134,7 @@
         span.textContent = ` ✓ "${d.title}" — ${d.count} pelis`;
         if (!item.querySelector('.name').value) item.querySelector('.name').value = d.title;
         item.dataset.listId = d.id;
-        updateItemManifest(item, d.id);
+        updateItemPreviewNote(item, d.id, d.title, d.count);
       } catch (e) {
         span.textContent = ' ✗ ' + e.message;
       }

@@ -10,5 +10,4 @@ services:
       - key: NODE_VERSION
         value: "20"
       - key: LISTS_JSON
-        sync: false
         value: '{"lists":[{"url":"https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/","name":"for when you want to feel something","id":"list-for-when-you-want-to-feel-something"}]}'

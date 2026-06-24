@@ -2,6 +2,7 @@ const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList } = require('./src/letterboxd');
 const { resolveFilms, fetchMeta, getImdbForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache } = require('./src/cinemeta');
 const { VERSION } = require('./src/version');
+const { readLists, readListCache, writeListCache } = require('./src/store');
 
 const listCache = new Map();
 const loading = new Map();

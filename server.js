@@ -6,6 +6,7 @@ const { getRouter } = require('stremio-addon-sdk');
 const { getInterfaceForList, buildManifest, preloadLists, clearRuntimeCache, findListConfig } = require('./addon');
 const { fetchFullList, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
 const { VERSION } = require('./src/version');
+const { readLists, writeLists } = require('./src/store');
 
 const PORT = process.env.PORT || 7731;
 const HOST = process.env.HOST || '0.0.0.0';

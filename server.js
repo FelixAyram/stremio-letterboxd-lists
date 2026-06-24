@@ -42,18 +42,25 @@ function listsWithManifests(req) {
 }
 
 async function resolveIncomingLists(raw) {
-  const lists = [];
-  for (const l of (raw || []).filter((x) => x.url && x.url.includes('letterboxd.com'))) {
+  const existing = new Map(readLists().lists.map((l) => [l.id, l]));
+  const items = (raw || []).filter((x) => x.url && x.url.includes('letterboxd.com'));
+
+  return Promise.all(items.map(async (l) => {
     const url = normalizeListUrl(l.url);
-    let name = (l.name || '').trim();
-    try {
-      name = await fetchListTitle(url);
-    } catch {
-      if (!name) name = undefined;
+    const id = listIdFromUrl(url);
+    const prev = existing.get(id);
+    let name = (l.name || '').trim() || prev?.name || '';
+
+    if (!name) {
+      try {
+        name = await fetchListTitle(url);
+      } catch {
+        name = prev?.name || id.replace(/^list-/, '').replace(/-/g, ' ');
+      }
     }
-    lists.push({ url, name, id: listIdFromUrl(url) });
-  }
-  return lists;
+
+    return { url, name, id };
+  }));
 }
 
 function activateLists(lists) {

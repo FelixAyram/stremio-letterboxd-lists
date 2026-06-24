@@ -96,7 +96,9 @@
     async function removeList(id) {
       if (!confirm('Eliminar esta lista del servidor?')) return;
       const r = await fetch('/api/lists/' + encodeURIComponent(id), { method: 'DELETE' });
-      const d = await r.json();
+      const text = await r.text();
+      let d;
+      try { d = JSON.parse(text); } catch { d = {}; }
       if (!r.ok) {
         msgEl.className = 'msg err';
         msgEl.textContent = d.error || 'Error al eliminar';
@@ -185,8 +187,14 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ lists })
         });
-        const d = await r.json();
-        if (!r.ok) throw new Error(d.error);
+        const text = await r.text();
+        let d;
+        try {
+          d = JSON.parse(text);
+        } catch {
+          throw new Error(r.ok ? 'Respuesta invalida del servidor' : (r.status === 502 || r.status === 504 ? 'El servidor tardo demasiado (timeout). Vuelve a pulsar Guardar.' : 'Error del servidor (' + r.status + '). Espera un momento y reintenta.'));
+        }
+        if (!r.ok) throw new Error(d.error || 'Error al guardar');
 
         reloadForm(d.lists);
         msgEl.className = 'msg ok';

@@ -1,17 +1,12 @@
 const crypto = require('crypto');
-const { promisify } = require('util');
 const fs = require('fs');
 const path = require('path');
-
-const scryptAsync = promisify(crypto.scrypt);
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
 const SESSION_DAYS = 30;
 const COOKIE_NAME = 'lbx_session';
-const SCRYPT_N = 16384;
-const SCRYPT_R = 8;
-const SCRYPT_P = 1;
+const SCRYPT_OPTS = { N: 16384, r: 8, p: 1 };
 const SCRYPT_KEYLEN = 64;
 
 const SECRET = process.env.SESSION_SECRET;
@@ -44,24 +39,17 @@ function validatePassword(password) {
   }
 }
 
-async function hashPassword(password) {
+function hashPassword(password) {
   const salt = crypto.randomBytes(16).toString('hex');
-  const hash = (await scryptAsync(password, salt, SCRYPT_KEYLEN, {
-    N: SCRYPT_N,
-    r: SCRYPT_R,
-    p: SCRYPT_P
-  })).toString('hex');
-  return `${salt}:${hash}`;
+  const hash = crypto.scryptSync(password, salt, SCRYPT_KEYLEN, SCRYPT_OPTS).toString('hex');
+  return `${salt}$${hash}`;
 }
 
-async function verifyPassword(password, stored) {
-  const [salt, hash] = stored.split(':');
+function verifyPassword(password, stored) {
+  const sep = stored.includes('$') ? '$' : ':';
+  const [salt, hash] = stored.split(sep);
   if (!salt || !hash) return false;
-  const test = (await scryptAsync(password, salt, SCRYPT_KEYLEN, {
-    N: SCRYPT_N,
-    r: SCRYPT_R,
-    p: SCRYPT_P
-  })).toString('hex');
+  const test = crypto.scryptSync(password, salt, SCRYPT_KEYLEN, SCRYPT_OPTS).toString('hex');
   try {
     return crypto.timingSafeEqual(Buffer.from(hash, 'hex'), Buffer.from(test, 'hex'));
   } catch {
@@ -114,7 +102,7 @@ function resetRateLimit(ip) {
   loginAttempts.delete(ip);
 }
 
-async function register(username, password) {
+function register(username, password) {
   const id = validateUsername(username);
   validatePassword(password);
   const db = readUsersDb();
@@ -124,7 +112,7 @@ async function register(username, password) {
   const user = {
     id,
     username: id,
-    passwordHash: await hashPassword(password),
+    passwordHash: hashPassword(password),
     createdAt: new Date().toISOString()
   };
   db.users.push(user);
@@ -132,13 +120,16 @@ async function register(username, password) {
   return user;
 }
 
-async function login(username, password, ip) {
+function login(username, password, ip) {
   checkRateLimit(ip);
   const id = validateUsername(username);
-  if (!password) throw new Error('Usuario o contrasena incorrectos');
+  if (!password) throw new Error('Contrasena incorrecta');
   const user = findUser(id);
-  if (!user || !(await verifyPassword(password, user.passwordHash))) {
-    throw new Error('Usuario o contrasena incorrectos');
+  if (!user) {
+    throw new Error('No existe esa cuenta. Si el servidor se reinicio, crea una cuenta nueva.');
+  }
+  if (!verifyPassword(password, user.passwordHash)) {
+    throw new Error('Contrasena incorrecta');
   }
   resetRateLimit(ip);
   return user;

@@ -141,10 +141,10 @@ app.get('/configure.html', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'configure.html'));
 });
 
-app.post('/api/auth/register', async (req, res) => {
+app.post('/api/auth/register', (req, res) => {
   try {
     checkRateLimitRegister(clientIp(req));
-    const user = await register(req.body.username, req.body.password);
+    const user = register(req.body.username, req.body.password);
     migrateLegacyLists(user.id);
     rebuildIndex();
     setSessionCookie(res, signToken(user.id));
@@ -154,9 +154,9 @@ app.post('/api/auth/register', async (req, res) => {
   }
 });
 
-app.post('/api/auth/login', async (req, res) => {
+app.post('/api/auth/login', (req, res) => {
   try {
-    const user = await login(req.body.username, req.body.password, clientIp(req));
+    const user = login(req.body.username, req.body.password, clientIp(req));
     migrateLegacyLists(user.id);
     rebuildIndex();
     setSessionCookie(res, signToken(user.id));

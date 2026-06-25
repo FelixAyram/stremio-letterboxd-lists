@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const github = require('./github-sync');
 const { readLists, writeLists } = require('./store');
 const { listUserIds } = require('./auth');
 
@@ -28,6 +29,12 @@ function readIndex() {
 }
 
 function writeIndex(data) {
+  fs.mkdirSync(DATA_DIR, { recursive: true });
+  fs.writeFileSync(INDEX_FILE, JSON.stringify(data, null, 2));
+  github.schedulePush();
+}
+
+function writeIndexLocal(data) {
   fs.mkdirSync(DATA_DIR, { recursive: true });
   fs.writeFileSync(INDEX_FILE, JSON.stringify(data, null, 2));
 }
@@ -102,6 +109,8 @@ module.exports = {
   ensureListKey,
   attachKeysToLists,
   rebuildIndex,
+  readIndex,
   manifestUrl,
-  KEY_RE
+  KEY_RE,
+  writeIndexLocal
 };

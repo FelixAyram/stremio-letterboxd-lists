@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const github = require('./github-sync');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const LEGACY_LISTS_FILE = path.join(DATA_DIR, 'lists.json');
@@ -73,12 +74,17 @@ function readLists(userId) {
     } catch {}
   }
 
-  const empty = { lists: [] };
-  writeLists(userId, empty);
-  return empty;
+  return { lists: [] };
 }
 
 function writeLists(userId, data) {
+  ensureUserDirs(userId);
+  const file = listsFile(userId);
+  fs.writeFileSync(file, JSON.stringify(data, null, 2));
+  github.schedulePush();
+}
+
+function writeListsLocal(userId, data) {
   ensureUserDirs(userId);
   fs.writeFileSync(listsFile(userId), JSON.stringify(data, null, 2));
 }
@@ -162,6 +168,7 @@ function writeFilmListCache(userId, listId, payload) {
 module.exports = {
   readLists,
   writeLists,
+  writeListsLocal,
   readListCache,
   writeListCache,
   readFilmListCache,

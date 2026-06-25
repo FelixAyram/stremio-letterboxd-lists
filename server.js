@@ -12,6 +12,7 @@ const {
   listUserIds, findUserById, publicUser, clientIp
 } = require('./src/auth');
 const { lookupKey, attachKeysToLists, rebuildIndex, manifestUrl, isValidKey } = require('./src/keys');
+const github = require('./src/github-sync');
 
 const PORT = process.env.PORT || 7731;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -182,7 +183,8 @@ app.get('/api/info', (req, res) => {
     version: VERSION,
     configureUrl: `${baseUrl(req)}/configure.html`,
     user: user ? publicUser(user) : null,
-    lists: userId ? listsWithManifests(req, userId) : []
+    lists: userId ? listsWithManifests(req, userId) : [],
+    githubSync: github.isEnabled()
   });
 });
 
@@ -269,27 +271,43 @@ app.use('/:key', (req, res, next) => {
   mountAddonRouter(ref.userId, ref.listId)(req, res, next);
 });
 
-const server = app.listen(PORT, HOST, () => {
-  rebuildIndex();
+function preloadUser(userId) {
+  readLists(userId).lists.forEach((l) => getInterfaceForList(userId, l.id));
+  preloadLists(userId);
+}
 
+async function boot() {
+  if (github.isEnabled()) {
+    console.log('[github] Restaurando datos desde el repositorio...');
+    await github.pullOnStartup();
+  }
+  rebuildIndex();
+}
+
+function logStartup() {
   console.log('');
   console.log('  Letterboxd Lists — Addon Stremio v' + VERSION);
   console.log('  =====================================');
   const base = process.env.RENDER_EXTERNAL_URL || `http://127.0.0.1:${PORT}`;
   console.log(`  Configurar:  ${base}/configure.html`);
+  if (github.isEnabled()) console.log('  Persistencia: GitHub (' + (process.env.GITHUB_REPO || 'repo') + ')');
   listUserIds().forEach((uid) => {
     readLists(uid).lists.forEach((l) => {
       if (l.key) console.log(`  ${l.name || l.id}:  ${base}/${l.key}/manifest.json`);
     });
   });
   console.log('');
-
   listUserIds().forEach((uid) => preloadUser(uid));
-});
-
-function preloadUser(userId) {
-  readLists(userId).lists.forEach((l) => getInterfaceForList(userId, l.id));
-  preloadLists(userId);
 }
 
-module.exports = { server };
+let server;
+boot()
+  .then(() => {
+    server = app.listen(PORT, HOST, logStartup);
+  })
+  .catch((e) => {
+    console.error('[boot]', e.message);
+    server = app.listen(PORT, HOST, logStartup);
+  });
+
+module.exports = { get server() { return server; }, boot };

@@ -1,6 +1,9 @@
 node_modules/
 data/cache/
 data/lists.json
+data/users.json
+data/index.json
+data/users/
 *.log
 .DS_Store
 .env

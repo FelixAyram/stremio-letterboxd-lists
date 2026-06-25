@@ -11,5 +11,9 @@ services:
         value: "20"
       - key: SESSION_SECRET
         generateValue: true
+      - key: GITHUB_REPO
+        value: FelixAyram/stremio-letterboxd-lists
+      - key: GITHUB_TOKEN
+        sync: false
       - key: LISTS_JSON
         value: '{"lists":[{"url":"https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/","name":"for when you want to feel something","id":"list-for-when-you-want-to-feel-something"}]}'

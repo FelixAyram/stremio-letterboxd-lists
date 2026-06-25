@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
+const github = require('./github-sync');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const USERS_FILE = path.join(DATA_DIR, 'users.json');
@@ -68,6 +69,12 @@ function readUsersDb() {
 }
 
 function writeUsersDb(data) {
+  ensureDataDir();
+  fs.writeFileSync(USERS_FILE, JSON.stringify(data, null, 2));
+  github.schedulePush();
+}
+
+function writeUsersDbLocal(data) {
   ensureDataDir();
   fs.writeFileSync(USERS_FILE, JSON.stringify(data, null, 2));
 }
@@ -221,5 +228,6 @@ module.exports = {
   findUserById,
   listUserIds,
   publicUser,
-  clientIp
+  clientIp,
+  writeUsersDbLocal
 };

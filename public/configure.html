@@ -39,7 +39,7 @@
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
 
   <div id="loginPanel">
-    <p style="font-size:0.85rem;color:#6a8">En Render (plan gratis) las cuentas pueden borrarse al reiniciar el servidor. Si no puedes entrar, usa <strong>Crear cuenta nueva</strong>.</p>
+    <p style="font-size:0.85rem;color:#6a8">En Render (plan gratis) el servidor se reinicia solo — tus listas se guardan en <strong>GitHub</strong> si configuras <code>GITHUB_TOKEN</code> en Render.</p>
     <div class="auth-box">
       <h2 id="authTitle">Iniciar sesion</h2>
       <label>Usuario</label>
@@ -317,7 +317,7 @@
 
         reloadForm(data.lists);
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'Guardado (v' + (data.version || appVersion || '?') + '). ' + data.lists.length + ' lista(s) activas.';
+        msgEl.textContent = 'Guardado (v' + (data.version || appVersion || '?') + '). ' + data.lists.length + ' lista(s). Sincronizando con GitHub...';
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;
@@ -329,7 +329,9 @@
         appVersion = d.version;
         document.getElementById('appVersion').textContent = 'v' + d.version;
         const note = document.getElementById('manifestVersionNote');
-        if (note) note.textContent = 'Manifests en esta version del servidor: v' + d.version;
+        if (note) {
+          note.textContent = 'Manifests v' + d.version + (d.githubSync ? ' · GitHub sync activo' : ' · GitHub sync inactivo (falta GITHUB_TOKEN)');
+        }
       }
     });
 

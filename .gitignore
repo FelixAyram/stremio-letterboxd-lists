@@ -4,6 +4,7 @@ data/lists.json
 data/users.json
 data/index.json
 data/users/
+data/repo-state.json
 *.log
 .DS_Store
 .env

@@ -102,17 +102,18 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
   }
 
   if (toResolve.length) {
-    console.log(`[${userId}] [catalog] "${title}" — pelis ${skip + 1}-${end} de ${films.length} (${toResolve.length} nuevas)`);
-    const resolved = await resolveFilms(toResolve, null, RESOLVE_CONCURRENCY);
-    for (let j = 0; j < indices.length; j++) {
-      metaByIndex[indices[j]] = resolved[j];
-    }
-    writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length });
-    loadPosterMapFromCache(resolved);
-    listCache.set(cacheKey(userId, listId), metaByIndex);
+    const quick = metasForRange(metaByIndex, films, skip, end);
+    (async () => {
+      const resolved = await resolveFilms(toResolve, null, RESOLVE_CONCURRENCY);
+      for (let j = 0; j < indices.length; j++) {
+        metaByIndex[indices[j]] = resolved[j];
+      }
+      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length });
+      loadPosterMapFromCache(resolved);
+      listCache.set(cacheKey(userId, listId), metaByIndex);
+    })().catch((e) => console.error(`[catalog:bg]`, e.message));
+    return quick;
   }
-
-  return metasForRange(metaByIndex, films, skip, end);
 }
 
 function preloadNextCatalogPage(userId, listConfig, skip) {
@@ -274,5 +275,6 @@ module.exports = {
   clearRuntimeCache,
   getListMetas,
   getFilmList,
+  getCatalogMetas,
   findListConfig
 };

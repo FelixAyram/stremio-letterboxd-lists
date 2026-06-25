@@ -13,6 +13,8 @@ services:
         generateValue: true
       - key: GITHUB_REPO
         value: FelixAyram/stremio-letterboxd-lists
+      - key: GITHUB_STATE_BRANCH
+        value: data
       - key: GITHUB_TOKEN
         sync: false
       - key: GOOGLE_CLIENT_ID

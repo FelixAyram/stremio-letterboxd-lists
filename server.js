@@ -3,13 +3,13 @@ const express = require('express');
 const cors = require('cors');
 const opn = require('opn');
 const { getRouter } = require('stremio-addon-sdk');
-const { getInterfaceForList, preloadLists, clearRuntimeCache, findListConfig, getFilmList } = require('./addon');
+const { getInterfaceForList, preloadLists, clearRuntimeCache, findListConfig, getFilmList, getCatalogMetas } = require('./addon');
 const { fetchFullList, fetchListTitle, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
 const { VERSION } = require('./src/version');
 const { readLists, writeLists, migrateLegacyLists } = require('./src/store');
 const {
   register, login, signToken, authFromRequest, setSessionCookie, clearSessionCookie,
-  listUserIds, findUserById, publicUser, clientIp, findOrCreateGoogleUser
+  listUserIds, findUserById, publicUser, clientIp, findOrCreateGoogleUser, readUsersDb
 } = require('./src/auth');
 const googleAuth = require('./src/google-auth');
 const { lookupKey, attachKeysToLists, rebuildIndex, manifestUrl, isValidKey } = require('./src/keys');
@@ -309,6 +309,14 @@ app.use('/:key', (req, res, next) => {
   mountAddonRouter(ref.userId, ref.listId)(req, res, next);
 });
 
+function warmupAllCatalogs() {
+  for (const user of readUsersDb().users) {
+    for (const list of readLists(user.id).lists) {
+      getCatalogMetas(user.id, list, 0, 30).catch((e) => console.error('[warmup]', list.id, e.message));
+    }
+  }
+}
+
 function preloadUser(userId) {
   readLists(userId).lists.forEach((l) => getInterfaceForList(userId, l.id));
   preloadLists(userId);
@@ -337,6 +345,7 @@ function logStartup() {
   });
   console.log('');
   listUserIds().forEach((uid) => preloadUser(uid));
+  warmupAllCatalogs();
 }
 
 let server;

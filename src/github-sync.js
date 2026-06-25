@@ -3,7 +3,8 @@ const path = require('path');
 
 const REPO = process.env.GITHUB_REPO || 'FelixAyram/stremio-letterboxd-lists';
 const TOKEN = process.env.GITHUB_TOKEN || '';
-const BRANCH = process.env.GITHUB_BRANCH || 'master';
+const CODE_BRANCH = process.env.GITHUB_BRANCH || 'master';
+const STATE_BRANCH = process.env.GITHUB_STATE_BRANCH || 'data';
 const STATE_FILE = 'data/repo-state.json';
 const ROOT = path.join(__dirname, '..');
 
@@ -17,22 +18,57 @@ function isEnabled() {
   return Boolean(TOKEN && REPO);
 }
 
-function apiUrl(repoPath) {
-  const encoded = repoPath.split('/').map(encodeURIComponent).join('/');
-  return `https://api.github.com/repos/${REPO}/contents/${encoded}`;
+function ghHeaders(extra = {}) {
+  return {
+    Authorization: `Bearer ${TOKEN}`,
+    Accept: 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+    'User-Agent': 'stremio-letterboxd-lists-sync',
+    ...extra
+  };
 }
 
-async function ghRequest(repoPath, options = {}) {
-  return fetch(apiUrl(repoPath), {
+function apiUrl(repoPath, ref) {
+  const encoded = repoPath.split('/').map(encodeURIComponent).join('/');
+  const base = `https://api.github.com/repos/${REPO}/contents/${encoded}`;
+  return ref ? `${base}?ref=${encodeURIComponent(ref)}` : base;
+}
+
+async function ghRequest(repoPath, options = {}, ref = STATE_BRANCH) {
+  return fetch(apiUrl(repoPath, ref), {
     ...options,
-    headers: {
-      Authorization: `Bearer ${TOKEN}`,
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      'User-Agent': 'stremio-letterboxd-lists-sync',
-      ...options.headers
-    }
+    headers: ghHeaders(options.headers)
   });
+}
+
+async function ghRef(branch) {
+  return fetch(`https://api.github.com/repos/${REPO}/git/ref/heads/${branch}`, {
+    headers: ghHeaders()
+  });
+}
+
+async function ensureStateBranch() {
+  const existing = await ghRef(STATE_BRANCH);
+  if (existing.ok) return;
+
+  const master = await ghRef(CODE_BRANCH);
+  if (!master.ok) throw new Error(`rama ${CODE_BRANCH} no encontrada`);
+  const { object } = await master.json();
+
+  const create = await fetch(`https://api.github.com/repos/${REPO}/git/refs`, {
+    method: 'POST',
+    headers: ghHeaders({ 'Content-Type': 'application/json' }),
+    body: JSON.stringify({ ref: `refs/heads/${STATE_BRANCH}`, sha: object.sha })
+  });
+  if (!create.ok) {
+    const err = await create.text();
+    throw new Error(`crear rama ${STATE_BRANCH}: ${create.status} ${err.slice(0, 120)}`);
+  }
+  console.log(`[github] rama ${STATE_BRANCH} creada`);
+}
+
+function shaKey(ref) {
+  return `${ref}:${STATE_FILE}`;
 }
 
 function writeLocal(repoPath, content) {
@@ -94,7 +130,7 @@ function pullFromLocalBundle() {
   if (!fs.existsSync(local)) return false;
   try {
     const state = JSON.parse(fs.readFileSync(local, 'utf8'));
-    if (!state.listsByUser || !Object.keys(state.listsByUser).length) return false;
+    if (!stateHasData(state)) return false;
     applyStateToRuntimeFiles(state);
     console.log('[github] datos cargados desde repo-state.json local');
     return true;
@@ -103,29 +139,42 @@ function pullFromLocalBundle() {
   }
 }
 
+async function fetchStateFromRef(ref) {
+  const res = await ghRequest(STATE_FILE, {}, ref);
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`pull ${ref}: ${res.status}`);
+  const meta = await res.json();
+  shaCache.set(shaKey(ref), meta.sha);
+  const content = Buffer.from(meta.content.replace(/\n/g, ''), 'base64').toString('utf8');
+  return JSON.parse(content);
+}
+
 async function pullOnStartup() {
   if (!isEnabled()) return pullFromLocalBundle();
   pulling = true;
   try {
     const local = exportState();
-    const res = await ghRequest(STATE_FILE);
-    if (res.status === 404) {
+    let remote = await fetchStateFromRef(STATE_BRANCH);
+
+    if (!remote) {
+      remote = await fetchStateFromRef(CODE_BRANCH);
+      if (remote && stateHasData(remote)) {
+        console.log('[github] migrando datos de master → rama data');
+        applyStateToRuntimeFiles(remote);
+        await pushState();
+        return true;
+      }
+    }
+
+    if (!remote) {
       if (stateHasData(local)) {
-        console.log('[github] repo sin archivo — subiendo datos locales');
+        console.log('[github] sin archivo remoto — subiendo datos locales');
         await pushState();
         return true;
       }
       console.log('[github] sin datos previos en el repo');
       return false;
     }
-    if (!res.ok) {
-      console.error('[github] pull error:', res.status);
-      return false;
-    }
-    const meta = await res.json();
-    shaCache.set(STATE_FILE, meta.sha);
-    const content = Buffer.from(meta.content.replace(/\n/g, ''), 'base64').toString('utf8');
-    const remote = JSON.parse(content);
 
     if (!stateHasData(remote) && stateHasData(local)) {
       console.log('[github] remoto vacio — subiendo datos locales');
@@ -146,7 +195,7 @@ async function pullOnStartup() {
     }
 
     applyStateToRuntimeFiles(remote);
-    console.log('[github] datos restaurados desde GitHub');
+    console.log(`[github] datos restaurados desde rama ${STATE_BRANCH}`);
     return true;
   } catch (e) {
     console.error('[github] pull:', e.message);
@@ -161,20 +210,22 @@ async function pushState() {
   const content = JSON.stringify(state, null, 2);
   writeLocal(STATE_FILE, content);
 
-  let sha = shaCache.get(STATE_FILE);
+  await ensureStateBranch();
+
+  let sha = shaCache.get(shaKey(STATE_BRANCH));
   if (!sha) {
-    const check = await ghRequest(STATE_FILE);
+    const check = await ghRequest(STATE_FILE, {}, STATE_BRANCH);
     if (check.ok) {
       const data = await check.json();
       sha = data.sha;
-      shaCache.set(STATE_FILE, sha);
+      shaCache.set(shaKey(STATE_BRANCH), sha);
     }
   }
 
   const body = {
     message: `sync: actualizar listas (${state.savedAt})`,
     content: Buffer.from(content, 'utf8').toString('base64'),
-    branch: BRANCH
+    branch: STATE_BRANCH
   };
   if (sha) body.sha = sha;
 
@@ -182,7 +233,7 @@ async function pushState() {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(body)
-  });
+  }, STATE_BRANCH);
 
   if (!res.ok) {
     const err = await res.text();
@@ -191,10 +242,10 @@ async function pushState() {
   }
 
   const data = await res.json();
-  if (data.content?.sha) shaCache.set(STATE_FILE, data.content.sha);
+  if (data.content?.sha) shaCache.set(shaKey(STATE_BRANCH), data.content.sha);
   lastPushError = null;
   lastPushAt = state.savedAt;
-  console.log('[github] datos guardados en GitHub');
+  console.log(`[github] datos guardados en rama ${STATE_BRANCH} (sin redeploy de Render)`);
 }
 
 function schedulePush() {
@@ -224,6 +275,7 @@ async function pushNow() {
 function syncStatus() {
   return {
     enabled: isEnabled(),
+    stateBranch: STATE_BRANCH,
     lastPushAt,
     lastPushError
   };

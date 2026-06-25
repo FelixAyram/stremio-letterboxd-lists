@@ -1,7 +1,11 @@
 {
   "version": 1,
-  "savedAt": null,
-  "users": { "users": [] },
-  "index": { "keys": {} },
+  "savedAt": "2026-06-25T12:29:39.484Z",
+  "users": {
+    "users": []
+  },
+  "index": {
+    "keys": {}
+  },
   "listsByUser": {}
 }

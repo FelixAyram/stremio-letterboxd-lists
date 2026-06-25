@@ -286,5 +286,6 @@ module.exports = {
   listUserIds,
   publicUser,
   clientIp,
+  readUsersDb,
   writeUsersDbLocal
 };

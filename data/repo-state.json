@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "savedAt": "2026-06-25T12:45:18.846Z",
+  "savedAt": "2026-06-25T12:45:42.844Z",
   "users": {
     "users": [
       {
@@ -16,6 +16,18 @@
       "WNN3ftjOm2uOqkTP7Tjb9g": {
         "userId": "ayrammaxigmailcom",
         "listId": "list-for-when-you-want-to-feel-something"
+      },
+      "cMLuRjHAftPdlrg85Ahv3w": {
+        "userId": "ayrammaxigmailcom",
+        "listId": "list-chick-flicks"
+      },
+      "n5KHvSlfetOyihY1v779bQ": {
+        "userId": "ayrammaxigmailcom",
+        "listId": "list-letterboxds-top-500-films"
+      },
+      "wGwRbGH-BXmb0nn7pjrvOQ": {
+        "userId": "ayrammaxigmailcom",
+        "listId": "list-150-highest-rated-kdramas-on-letterboxd"
       }
     }
   },
@@ -27,6 +39,24 @@
           "name": "for when you want to feel something",
           "id": "list-for-when-you-want-to-feel-something",
           "key": "WNN3ftjOm2uOqkTP7Tjb9g"
+        },
+        {
+          "url": "https://letterboxd.com/kaitienk/list/chick-flicks/",
+          "name": "chick flicks",
+          "id": "list-chick-flicks",
+          "key": "cMLuRjHAftPdlrg85Ahv3w"
+        },
+        {
+          "url": "https://letterboxd.com/official/list/letterboxds-top-500-films/",
+          "name": "Letterboxd's Top 500 Films",
+          "id": "list-letterboxds-top-500-films",
+          "key": "n5KHvSlfetOyihY1v779bQ"
+        },
+        {
+          "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
+          "name": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
+          "id": "list-150-highest-rated-kdramas-on-letterboxd",
+          "key": "wGwRbGH-BXmb0nn7pjrvOQ"
         }
       ]
     }

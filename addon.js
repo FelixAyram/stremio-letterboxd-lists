@@ -1,6 +1,6 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
-const { resolveFilms, fetchMeta, getImdbForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache } = require('./src/cinemeta');
+const { resolveFilms, fetchMeta, getImdbForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta } = require('./src/cinemeta');
 const { VERSION } = require('./src/version');
 const { readLists, readListCache, writeListCache, readFilmListCache, writeFilmListCache } = require('./src/store');
 
@@ -9,7 +9,20 @@ const filmListCache = new Map();
 const loading = new Map();
 const interfaceCache = new Map();
 
-const PAGE_SIZE = 50;
+const PAGE_SIZE = 30;
+const RESOLVE_CONCURRENCY = 8;
+
+function parseSkip(extra) {
+  const raw = extra?.skip ?? extra?.Skip ?? '0';
+  const n = parseInt(String(raw), 10);
+  return Number.isFinite(n) && n >= 0 ? n : 0;
+}
+
+function getMetaArrayFromCache(cache, filmsLength) {
+  if (cache?.metaByIndex?.length) return cache.metaByIndex;
+  if (cache?.metas?.length === filmsLength) return cache.metas;
+  return null;
+}
 
 function cacheKey(userId, suffix) {
   return `${userId}:${suffix}`;
@@ -52,24 +65,63 @@ async function getFilmList(userId, listConfig) {
   }
 }
 
+function metasForRange(metaByIndex, films, skip, end) {
+  const out = [];
+  for (let i = skip; i < end; i++) {
+    out.push(metaByIndex[i] || fallbackMeta(films[i]));
+  }
+  return out;
+}
+
 async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) {
   const listId = listConfig.id;
+  const { films, title, url } = await getFilmList(userId, listConfig);
 
-  const disk = readListCache(userId, listId);
-  if (disk?.metas?.length) {
-    loadPosterMapFromCache(disk.metas);
-    listCache.set(cacheKey(userId, listId), disk.metas);
-    const valid = disk.metas.filter((m) => m.id?.startsWith('lbx:'));
-    if (valid.length > skip) return valid.slice(skip, skip + limit);
+  if (skip >= films.length) return [];
+
+  const end = Math.min(skip + limit, films.length);
+  const cache = readListCache(userId, listId);
+  let metaByIndex = getMetaArrayFromCache(cache, films.length);
+
+  if (metaByIndex) {
+    loadPosterMapFromCache(metaByIndex.filter(Boolean));
+    listCache.set(cacheKey(userId, listId), metaByIndex);
+    const allCached = metaByIndex.slice(skip, end).every(Boolean);
+    if (allCached) return metasForRange(metaByIndex, films, skip, end);
   }
 
-  const { films, title } = await getFilmList(userId, listConfig);
-  const batch = films.slice(skip, skip + limit);
-  if (!batch.length) return [];
+  if (!metaByIndex) metaByIndex = new Array(films.length).fill(null);
 
-  console.log(`[${userId}] [catalog] "${title}" — ${skip + 1}-${skip + batch.length} de ${films.length}`);
-  const metas = await resolveFilms(batch, null, 6);
-  return metas.filter((m) => m.id?.startsWith('lbx:'));
+  const toResolve = [];
+  const indices = [];
+  for (let i = skip; i < end; i++) {
+    if (!metaByIndex[i]) {
+      toResolve.push(films[i]);
+      indices.push(i);
+    }
+  }
+
+  if (toResolve.length) {
+    console.log(`[${userId}] [catalog] "${title}" — pelis ${skip + 1}-${end} de ${films.length} (${toResolve.length} nuevas)`);
+    const resolved = await resolveFilms(toResolve, null, RESOLVE_CONCURRENCY);
+    for (let j = 0; j < indices.length; j++) {
+      metaByIndex[indices[j]] = resolved[j];
+    }
+    writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length });
+    loadPosterMapFromCache(resolved);
+    listCache.set(cacheKey(userId, listId), metaByIndex);
+  }
+
+  return metasForRange(metaByIndex, films, skip, end);
+}
+
+function preloadNextCatalogPage(userId, listConfig, skip) {
+  getFilmList(userId, listConfig).then(({ films }) => {
+    const next = skip + PAGE_SIZE;
+    if (next < films.length) {
+      getCatalogMetas(userId, listConfig, next, PAGE_SIZE).catch(() => {});
+    }
+  }).catch(() => {});
 }
 
 async function getListMetas(userId, listConfig) {
@@ -147,9 +199,10 @@ function createBuilderForList(userId, listId) {
     const config = findListConfig(userId, listId);
     if (!config) return { metas: [] };
 
-    const skip = parseInt(extra?.skip || '0', 10) || 0;
+    const skip = parseSkip(extra);
     const metas = await getCatalogMetas(userId, config, skip, PAGE_SIZE);
-    return { metas, cacheMaxAge: 3600 };
+    preloadNextCatalogPage(userId, config, skip);
+    return { metas, cacheMaxAge: 3600, staleRevalidate: 86400 };
   });
 
   builder.defineMetaHandler(async ({ type, id }) => {

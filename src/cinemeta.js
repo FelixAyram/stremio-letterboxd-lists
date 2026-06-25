@@ -107,17 +107,35 @@ async function resolveFilm(film) {
   return metaFromImdb(imdbId, film, fullMeta || hit);
 }
 
+function fallbackMeta(film) {
+  const poster = film.poster || posterBySlug.get(film.slug) || EMPTY_POSTER;
+  return {
+    id: catalogId(film.slug),
+    type: 'movie',
+    name: film.name,
+    poster,
+    posterShape: 'poster',
+    releaseInfo: film.year || ''
+  };
+}
+
+async function resolveFilmOrFallback(film) {
+  try {
+    return (await resolveFilm(film)) || fallbackMeta(film);
+  } catch {
+    return fallbackMeta(film);
+  }
+}
+
 async function resolveFilms(films, onProgress, concurrency = 3) {
   const out = [];
 
   for (let i = 0; i < films.length; i += concurrency) {
     const batch = films.slice(i, i + concurrency);
-    const resolved = await Promise.all(batch.map((f) => resolveFilm(f)));
-    for (const m of resolved) {
-      if (m) out.push(m);
-    }
+    const resolved = await Promise.all(batch.map((f) => resolveFilmOrFallback(f)));
+    out.push(...resolved);
     if (onProgress) onProgress(Math.min(i + concurrency, films.length), films.length);
-    if (i + concurrency < films.length) await sleep(100);
+    if (i + concurrency < films.length) await sleep(80);
   }
 
   return out;
@@ -155,7 +173,9 @@ module.exports = {
   searchMovie,
   fetchMeta,
   resolveFilm,
+  resolveFilmOrFallback,
   resolveFilms,
+  fallbackMeta,
   catalogId,
   getImdbForSlug,
   getLetterboxdPoster,

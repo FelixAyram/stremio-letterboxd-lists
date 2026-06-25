@@ -87,12 +87,26 @@ function cachePath(userId, listId) {
   return path.join(cacheDir(userId), `${listId}.json`);
 }
 
+function isBadMeta(m) {
+  if (!m?.id?.startsWith('lbx:')) return true;
+  if (m.poster && !m.poster.includes('ltrbxd.com') && !m.poster.includes('empty-poster')) return true;
+  if (m.poster && (m.poster.includes('675-675-crop') || m.poster.includes('1200-1200-675'))) return true;
+  return false;
+}
+
 function readListCache(userId, listId) {
   const p = cachePath(userId, listId);
   if (!fs.existsSync(p)) return readLegacyListCache(listId);
   try {
     const data = JSON.parse(fs.readFileSync(p, 'utf8'));
     if (Date.now() - data.cachedAt > 6 * 60 * 60 * 1000) return null;
+
+    if (data.metaByIndex?.length) {
+      const bad = data.metaByIndex.some((m) => m && isBadMeta(m));
+      if (bad) return null;
+      return data;
+    }
+
     const badPoster = data.metas?.some(
       (m) => m.poster && !m.poster.includes('ltrbxd.com') && !m.poster.includes('empty-poster')
     );

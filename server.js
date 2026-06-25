@@ -96,6 +96,7 @@ function activateLists(userId, lists) {
 function mountAddonRouter(userId, listId) {
   return (req, res, next) => {
     sendCors(res);
+    if (req.method === 'OPTIONS') return res.status(204).end();
     if (!findListConfig(userId, listId)) {
       return res.status(404).json({ err: 'lista no encontrada' });
     }

@@ -9,8 +9,9 @@ const { VERSION } = require('./src/version');
 const { readLists, writeLists, migrateLegacyLists } = require('./src/store');
 const {
   register, login, signToken, authFromRequest, setSessionCookie, clearSessionCookie,
-  listUserIds, findUserById, publicUser, clientIp
+  listUserIds, findUserById, publicUser, clientIp, findOrCreateGoogleUser
 } = require('./src/auth');
+const googleAuth = require('./src/google-auth');
 const { lookupKey, attachKeysToLists, rebuildIndex, manifestUrl, isValidKey } = require('./src/keys');
 const github = require('./src/github-sync');
 
@@ -142,6 +143,39 @@ app.get('/configure.html', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'configure.html'));
 });
 
+app.get('/api/auth/google', (req, res) => {
+  if (!googleAuth.isEnabled()) {
+    return res.status(503).json({ error: 'Google login no configurado (falta GOOGLE_CLIENT_ID/SECRET en Render)' });
+  }
+  const state = googleAuth.createState();
+  const redirectUri = `${baseUrl(req)}/api/auth/google/callback`;
+  res.redirect(googleAuth.authUrl(redirectUri, state));
+});
+
+app.get('/api/auth/google/callback', async (req, res) => {
+  try {
+    if (req.query.error) {
+      return res.redirect(`/configure.html?auth_error=${encodeURIComponent(req.query.error)}`);
+    }
+    const { code, state } = req.query;
+    if (!code || !googleAuth.verifyState(state)) {
+      return res.redirect('/configure.html?auth_error=sesion_invalida');
+    }
+    const redirectUri = `${baseUrl(req)}/api/auth/google/callback`;
+    const tokens = await googleAuth.exchangeCode(code, redirectUri);
+    const profile = await googleAuth.fetchProfile(tokens.access_token);
+    const user = findOrCreateGoogleUser(profile);
+    migrateLegacyLists(user.id);
+    rebuildIndex();
+    setSessionCookie(res, signToken(user.id));
+    await github.pushNow();
+    res.redirect('/configure.html?login=ok');
+  } catch (e) {
+    console.error('[google]', e.message);
+    res.redirect(`/configure.html?auth_error=${encodeURIComponent(e.message)}`);
+  }
+});
+
 app.post('/api/auth/register', async (req, res) => {
   try {
     checkRateLimitRegister(clientIp(req));
@@ -186,6 +220,7 @@ app.get('/api/info', (req, res) => {
     user: user ? publicUser(user) : null,
     lists: userId ? listsWithManifests(req, userId) : [],
     githubSync: github.isEnabled(),
+    googleAuth: googleAuth.isEnabled(),
     ...github.syncStatus()
   });
 });
@@ -294,6 +329,7 @@ function logStartup() {
   const base = process.env.RENDER_EXTERNAL_URL || `http://127.0.0.1:${PORT}`;
   console.log(`  Configurar:  ${base}/configure.html`);
   if (github.isEnabled()) console.log('  Persistencia: GitHub (' + (process.env.GITHUB_REPO || 'repo') + ')');
+  if (googleAuth.isEnabled()) console.log('  Login: Google OAuth activo');
   listUserIds().forEach((uid) => {
     readLists(uid).lists.forEach((l) => {
       if (l.key) console.log(`  ${l.name || l.id}:  ${base}/${l.key}/manifest.json`);

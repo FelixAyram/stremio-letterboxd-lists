@@ -15,5 +15,9 @@ services:
         value: FelixAyram/stremio-letterboxd-lists
       - key: GITHUB_TOKEN
         sync: false
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
       - key: LISTS_JSON
         value: '{"lists":[{"url":"https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/","name":"for when you want to feel something","id":"list-for-when-you-want-to-feel-something"}]}'

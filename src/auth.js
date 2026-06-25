@@ -127,6 +127,57 @@ function register(username, password) {
   return user;
 }
 
+function googleUserId(sub) {
+  const base = `g${String(sub).replace(/[^a-zA-Z0-9]/g, '').slice(0, 28)}`;
+  const db = readUsersDb();
+  if (!db.users.some((u) => u.id === base)) return base;
+  let n = 1;
+  while (db.users.some((u) => u.id === `${base}${n}`)) n += 1;
+  return `${base}${n}`.slice(0, 32);
+}
+
+function displayNameFromGoogle(profile) {
+  const fromEmail = (profile.email || '').split('@')[0];
+  const name = (fromEmail || profile.name || 'usuario')
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]/g, '')
+    .slice(0, 32);
+  return name.length >= 3 ? name : `user${String(profile.sub).slice(-6)}`;
+}
+
+function findOrCreateGoogleUser(profile) {
+  if (!profile?.sub) throw new Error('Perfil de Google invalido');
+  const db = readUsersDb();
+  let user = db.users.find((u) => u.googleId === profile.sub);
+  if (!user && profile.email) {
+    user = db.users.find((u) => u.email === profile.email);
+    if (user) {
+      user.googleId = profile.sub;
+      if (profile.picture) user.picture = profile.picture;
+      writeUsersDb(db);
+      return user;
+    }
+  }
+  if (user) {
+    if (profile.picture && user.picture !== profile.picture) {
+      user.picture = profile.picture;
+      writeUsersDb(db);
+    }
+    return user;
+  }
+  user = {
+    id: googleUserId(profile.sub),
+    username: displayNameFromGoogle(profile),
+    email: profile.email || null,
+    googleId: profile.sub,
+    picture: profile.picture || null,
+    createdAt: new Date().toISOString()
+  };
+  db.users.push(user);
+  writeUsersDb(db);
+  return user;
+}
+
 function login(username, password, ip) {
   checkRateLimit(ip);
   const id = validateUsername(username);
@@ -210,7 +261,12 @@ function listUserIds() {
 }
 
 function publicUser(user) {
-  return { username: user.username };
+  return {
+    username: user.username,
+    email: user.email || null,
+    picture: user.picture || null,
+    google: Boolean(user.googleId)
+  };
 }
 
 module.exports = {
@@ -219,6 +275,7 @@ module.exports = {
   validateUsername,
   register,
   login,
+  findOrCreateGoogleUser,
   signToken,
   verifyToken,
   authFromRequest,

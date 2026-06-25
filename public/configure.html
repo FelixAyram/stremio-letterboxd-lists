@@ -33,23 +33,46 @@
     .user-bar { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0; padding: 0.75rem 1rem; background: #1c2228; border-radius: 8px; border: 1px solid #2a3440; }
     .user-bar strong { color: #00e054; }
     #appPanel { display: none; }
+    .login-gate { text-align: center; padding: 2rem 1rem; }
+    .login-gate h2 { margin-bottom: 0.5rem; }
+    .btn-google {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.65rem;
+      background: #fff; color: #3c4043; border: 1px solid #dadce0;
+      padding: 0.75rem 1.25rem; font-size: 1rem; margin-top: 1.25rem;
+      min-width: 260px;
+    }
+    .btn-google:hover { background: #f8f9fa; }
+    .btn-google svg { width: 20px; height: 20px; flex-shrink: 0; }
+    .auth-divider { margin: 1.5rem 0; color: #6a8; font-size: 0.85rem; }
+    .password-auth { text-align: left; margin-top: 0.5rem; }
+    .password-auth.collapsed { display: none; }
+    .user-avatar { width: 28px; height: 28px; border-radius: 50%; vertical-align: middle; margin-right: 0.35rem; }
   </style>
 </head>
 <body>
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
 
   <div id="loginPanel">
-    <p style="font-size:0.85rem;color:#6a8">Usuario: solo letras y numeros (no uses email). Si no tienes cuenta, pulsa <strong>Crear cuenta nueva</strong>.</p>
-    <div class="auth-box">
-      <h2 id="authTitle">Iniciar sesion</h2>
-      <label>Usuario</label>
-      <input type="text" id="authUser" placeholder="ayrammaxi" autocomplete="username">
-      <label>Contrasena</label>
-      <input type="password" id="authPass" placeholder="min. 8 caracteres" autocomplete="current-password" minlength="8">
-      <div class="row">
-        <button type="button" class="btn-green" id="authSubmit">Entrar</button>
+    <div class="auth-box login-gate">
+      <h2>Inicia sesion para continuar</h2>
+      <p style="margin:0;color:#9ab">Tus listas de Letterboxd se guardan en tu cuenta.</p>
+      <button type="button" class="btn-google" id="googleLoginBtn">
+        <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+        Continuar con Google
+      </button>
+      <p class="auth-divider">o</p>
+      <button type="button" class="btn-link" id="showPasswordAuth">Usar usuario y contrasena</button>
+      <div id="passwordAuth" class="password-auth collapsed">
+        <h2 id="authTitle" style="margin-top:1rem">Iniciar sesion</h2>
+        <label>Usuario</label>
+        <input type="text" id="authUser" placeholder="ayrammaxi" autocomplete="username">
+        <label>Contrasena</label>
+        <input type="password" id="authPass" placeholder="min. 8 caracteres" autocomplete="current-password" minlength="8">
+        <div class="row" style="justify-content:center;margin-top:1rem">
+          <button type="button" class="btn-green" id="authSubmit">Entrar</button>
+        </div>
+        <button type="button" class="btn-link" id="authToggle">Crear cuenta nueva</button>
       </div>
-      <button type="button" class="btn-link" id="authToggle">Crear cuenta nueva</button>
       <div id="authMsg" class="msg" style="display:none"></div>
     </div>
   </div>
@@ -86,9 +109,13 @@
     const authTitle = document.getElementById('authTitle');
     const authSubmit = document.getElementById('authSubmit');
     const authToggle = document.getElementById('authToggle');
+    const googleLoginBtn = document.getElementById('googleLoginBtn');
+    const showPasswordAuth = document.getElementById('showPasswordAuth');
+    const passwordAuth = document.getElementById('passwordAuth');
 
     let appVersion = '';
     let registerMode = false;
+    let googleEnabled = false;
 
     async function api(path, options = {}) {
       const r = await fetch(path, {
@@ -113,7 +140,16 @@
     }
 
     function showApp(user) {
-      document.getElementById('currentUser').textContent = user.username;
+      const el = document.getElementById('currentUser');
+      el.innerHTML = '';
+      if (user.picture) {
+        const img = document.createElement('img');
+        img.src = user.picture;
+        img.alt = '';
+        img.className = 'user-avatar';
+        el.appendChild(img);
+      }
+      el.appendChild(document.createTextNode(user.email || user.username));
       loginPanel.style.display = 'none';
       appPanel.style.display = 'block';
       loadLists();
@@ -131,6 +167,20 @@
       showLogin();
       showAuthMsg('Sesion cerrada.', true);
     }
+
+    googleLoginBtn.addEventListener('click', () => {
+      if (!googleEnabled) {
+        showAuthMsg('Google login no configurado en el servidor.', false);
+        return;
+      }
+      window.location.href = '/api/auth/google';
+    });
+
+    showPasswordAuth.addEventListener('click', () => {
+      passwordAuth.classList.remove('collapsed');
+      showPasswordAuth.style.display = 'none';
+      document.querySelector('.auth-divider').style.display = 'none';
+    });
 
     authToggle.addEventListener('click', () => {
       registerMode = !registerMode;
@@ -335,9 +385,26 @@
           note.textContent = 'Manifests v' + d.version + (d.githubSync ? ' · GitHub sync activo' : ' · GitHub sync inactivo (falta GITHUB_TOKEN)');
         }
       }
+      googleEnabled = Boolean(d.googleAuth);
+      if (!googleEnabled) {
+        googleLoginBtn.disabled = true;
+        googleLoginBtn.style.opacity = '0.5';
+        passwordAuth.classList.remove('collapsed');
+        showPasswordAuth.style.display = 'none';
+        document.querySelector('.auth-divider').style.display = 'none';
+        showAuthMsg('Google no configurado — usa usuario y contrasena.', false);
+      }
     });
 
     (async function init() {
+      const params = new URLSearchParams(location.search);
+      if (params.get('login') === 'ok') {
+        history.replaceState({}, '', location.pathname);
+      }
+      if (params.get('auth_error')) {
+        showAuthMsg('Error de Google: ' + decodeURIComponent(params.get('auth_error')), false);
+        history.replaceState({}, '', location.pathname);
+      }
       try {
         const { r, data } = await api('/api/auth/me');
         if (r.ok && data.user) showApp(data.user);

@@ -1,11 +1,34 @@
 {
   "version": 1,
-  "savedAt": "2026-06-25T12:29:39.484Z",
+  "savedAt": "2026-06-25T12:30:15.892Z",
   "users": {
-    "users": []
+    "users": [
+      {
+        "id": "ayrammaxigmailcom",
+        "username": "ayrammaxigmailcom",
+        "passwordHash": "db685d3a3a1109da762e4eac6b086e26$edf2280308984d38833f1ac0069a4a73d96078f0b0607ae6454a957e52a0900151bcc0b701eb322bfd39409457022286fe94731da41297a1708bcbcb8ec3970f",
+        "createdAt": "2026-06-25T12:30:15.890Z"
+      }
+    ]
   },
   "index": {
-    "keys": {}
+    "keys": {
+      "WNN3ftjOm2uOqkTP7Tjb9g": {
+        "userId": "ayrammaxigmailcom",
+        "listId": "list-for-when-you-want-to-feel-something"
+      }
+    }
   },
-  "listsByUser": {}
+  "listsByUser": {
+    "ayrammaxigmailcom": {
+      "lists": [
+        {
+          "url": "https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/",
+          "name": "for when you want to feel something",
+          "id": "list-for-when-you-want-to-feel-something",
+          "key": "WNN3ftjOm2uOqkTP7Tjb9g"
+        }
+      ]
+    }
+  }
 }

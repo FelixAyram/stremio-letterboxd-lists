@@ -221,12 +221,41 @@
       if (e.key === 'Enter') authSubmit.click();
     });
 
-    function copyText(text) {
-      return navigator.clipboard.writeText(text).then(() => {
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.top = '-1000px';
+      document.body.appendChild(ta);
+      ta.select();
+      const ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+      if (!ok) throw new Error('copy failed');
+    }
+
+    async function copyText(text) {
+      if (!text) return;
+      try {
+        if (navigator.clipboard?.writeText) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          fallbackCopy(text);
+        }
         msgEl.className = 'msg ok';
         msgEl.textContent = 'URL copiada.';
-      });
+      } catch {
+        try {
+          fallbackCopy(text);
+          msgEl.className = 'msg ok';
+          msgEl.textContent = 'URL copiada.';
+        } catch {
+          msgEl.className = 'msg err';
+          msgEl.textContent = 'No se pudo copiar. Selecciona la URL con el mouse.';
+        }
+      }
     }
+    window.copyText = copyText;
 
     function reloadForm(lists) {
       listsEl.innerHTML = '';
@@ -240,16 +269,33 @@
         return;
       }
       savedManifestsEl.style.display = 'block';
-      manifestListEl.innerHTML = lists.map(l => `
-        <div class="saved-item">
-          <strong>${(l.name || l.id).replace(/</g, '&lt;')}</strong>
-          <p style="margin:0.4rem 0"><code>${l.manifest}</code></p>
-          <div class="row">
-            <button type="button" class="btn-copy" onclick="copyText(${JSON.stringify(l.manifest)})">Copiar manifest</button>
-            <button type="button" class="btn-red" onclick="removeList(${JSON.stringify(l.id)})">Eliminar</button>
-          </div>
-        </div>
-      `).join('');
+      manifestListEl.innerHTML = '';
+      lists.forEach((l) => {
+        const item = document.createElement('div');
+        item.className = 'saved-item';
+        const title = document.createElement('strong');
+        title.textContent = l.name || l.id;
+        const code = document.createElement('p');
+        code.style.margin = '0.4rem 0';
+        const codeEl = document.createElement('code');
+        codeEl.textContent = l.manifest || '';
+        code.appendChild(codeEl);
+        const row = document.createElement('div');
+        row.className = 'row';
+        const copyBtn = document.createElement('button');
+        copyBtn.type = 'button';
+        copyBtn.className = 'btn-copy';
+        copyBtn.textContent = 'Copiar manifest';
+        copyBtn.addEventListener('click', () => copyText(l.manifest));
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.className = 'btn-red';
+        delBtn.textContent = 'Eliminar';
+        delBtn.addEventListener('click', () => removeList(l.id));
+        row.append(copyBtn, delBtn);
+        item.append(title, code, row);
+        manifestListEl.appendChild(item);
+      });
     }
 
     async function loadLists() {

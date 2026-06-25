@@ -39,11 +39,11 @@
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
 
   <div id="loginPanel">
-    <p style="font-size:0.85rem;color:#6a8">En Render (plan gratis) el servidor se reinicia solo — tus listas se guardan en <strong>GitHub</strong> si configuras <code>GITHUB_TOKEN</code> en Render.</p>
+    <p style="font-size:0.85rem;color:#6a8">Usuario: solo letras y numeros (no uses email). Si no tienes cuenta, pulsa <strong>Crear cuenta nueva</strong>.</p>
     <div class="auth-box">
       <h2 id="authTitle">Iniciar sesion</h2>
       <label>Usuario</label>
-      <input type="text" id="authUser" placeholder="tu_usuario" autocomplete="username">
+      <input type="text" id="authUser" placeholder="ayrammaxi" autocomplete="username">
       <label>Contrasena</label>
       <input type="password" id="authPass" placeholder="min. 8 caracteres" autocomplete="current-password" minlength="8">
       <div class="row">
@@ -158,7 +158,8 @@
         if (!r.ok) throw new Error(data.error || 'Error de autenticacion');
         showApp(data.user);
         msgEl.className = 'msg ok';
-        msgEl.textContent = registerMode ? 'Cuenta creada. Tus listas se guardan solo para este usuario.' : 'Bienvenido de nuevo.';
+        const syncNote = data.githubSynced === false ? ' (aviso: no se pudo sincronizar con GitHub)' : '';
+        msgEl.textContent = (registerMode ? 'Cuenta creada.' : 'Bienvenido de nuevo.') + syncNote;
       } catch (e) {
         showAuthMsg(e.message, false);
       } finally {
@@ -317,7 +318,8 @@
 
         reloadForm(data.lists);
         msgEl.className = 'msg ok';
-        msgEl.textContent = 'Guardado (v' + (data.version || appVersion || '?') + '). ' + data.lists.length + ' lista(s). Sincronizando con GitHub...';
+        const syncNote = data.githubSynced === false ? ' No se pudo sincronizar con GitHub — revisa GITHUB_TOKEN.' : '';
+        msgEl.textContent = 'Guardado (v' + (data.version || appVersion || '?') + '). ' + data.lists.length + ' lista(s).' + syncNote;
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;

@@ -142,20 +142,21 @@ app.get('/configure.html', (_, res) => {
   res.sendFile(path.join(__dirname, 'public', 'configure.html'));
 });
 
-app.post('/api/auth/register', (req, res) => {
+app.post('/api/auth/register', async (req, res) => {
   try {
     checkRateLimitRegister(clientIp(req));
     const user = register(req.body.username, req.body.password);
     migrateLegacyLists(user.id);
     rebuildIndex();
     setSessionCookie(res, signToken(user.id));
-    res.json({ ok: true, user: publicUser(user) });
+    const synced = await github.pushNow();
+    res.json({ ok: true, user: publicUser(user), githubSynced: synced });
   } catch (e) {
     res.status(400).json({ error: e.message });
   }
 });
 
-app.post('/api/auth/login', (req, res) => {
+app.post('/api/auth/login', async (req, res) => {
   try {
     const user = login(req.body.username, req.body.password, clientIp(req));
     migrateLegacyLists(user.id);
@@ -184,7 +185,8 @@ app.get('/api/info', (req, res) => {
     configureUrl: `${baseUrl(req)}/configure.html`,
     user: user ? publicUser(user) : null,
     lists: userId ? listsWithManifests(req, userId) : [],
-    githubSync: github.isEnabled()
+    githubSync: github.isEnabled(),
+    ...github.syncStatus()
   });
 });
 
@@ -209,7 +211,8 @@ app.post('/api/lists', requireAuth, async (req, res) => {
   clearRuntimeCache();
   activateLists(req.userId, finalLists);
 
-  res.json({ ok: true, version: VERSION, lists: listsWithManifests(req, req.userId) });
+  const synced = await github.pushNow();
+  res.json({ ok: true, version: VERSION, lists: listsWithManifests(req, req.userId), githubSynced: synced });
 });
 
 app.delete('/api/lists/:id', requireAuth, (req, res) => {

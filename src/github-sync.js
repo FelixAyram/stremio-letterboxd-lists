@@ -10,6 +10,8 @@ const ROOT = path.join(__dirname, '..');
 const shaCache = new Map();
 let pushTimer = null;
 let pulling = false;
+let lastPushError = null;
+let lastPushAt = null;
 
 function isEnabled() {
   return Boolean(TOKEN && REPO);
@@ -39,15 +41,21 @@ function writeLocal(repoPath, content) {
   fs.writeFileSync(local, content, 'utf8');
 }
 
+function stateHasData(state) {
+  if (!state) return false;
+  if (state.users?.users?.length) return true;
+  if (state.listsByUser && Object.values(state.listsByUser).some((d) => d?.lists?.length)) return true;
+  return false;
+}
+
 function exportState() {
   const { readUsersDb } = require('./auth');
-  const { listUserIds } = require('./auth');
   const { readLists } = require('./store');
   const { readIndex } = require('./keys');
 
   const listsByUser = {};
-  for (const uid of listUserIds()) {
-    listsByUser[uid] = readLists(uid);
+  for (const user of readUsersDb().users) {
+    listsByUser[user.id] = readLists(user.id);
   }
 
   return {
@@ -99,8 +107,14 @@ async function pullOnStartup() {
   if (!isEnabled()) return pullFromLocalBundle();
   pulling = true;
   try {
+    const local = exportState();
     const res = await ghRequest(STATE_FILE);
     if (res.status === 404) {
+      if (stateHasData(local)) {
+        console.log('[github] repo sin archivo — subiendo datos locales');
+        await pushState();
+        return true;
+      }
       console.log('[github] sin datos previos en el repo');
       return false;
     }
@@ -111,8 +125,27 @@ async function pullOnStartup() {
     const meta = await res.json();
     shaCache.set(STATE_FILE, meta.sha);
     const content = Buffer.from(meta.content.replace(/\n/g, ''), 'base64').toString('utf8');
-    const state = JSON.parse(content);
-    applyStateToRuntimeFiles(state);
+    const remote = JSON.parse(content);
+
+    if (!stateHasData(remote) && stateHasData(local)) {
+      console.log('[github] remoto vacio — subiendo datos locales');
+      await pushState();
+      return true;
+    }
+    if (!stateHasData(remote)) {
+      console.log('[github] sin datos en el repo');
+      return false;
+    }
+
+    const remoteTime = remote.savedAt ? Date.parse(remote.savedAt) : 0;
+    const localTime = local.savedAt ? Date.parse(local.savedAt) : 0;
+    if (stateHasData(local) && localTime > remoteTime) {
+      console.log('[github] datos locales mas recientes — subiendo');
+      await pushState();
+      return true;
+    }
+
+    applyStateToRuntimeFiles(remote);
     console.log('[github] datos restaurados desde GitHub');
     return true;
   } catch (e) {
@@ -153,20 +186,47 @@ async function pushState() {
 
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`GitHub push: ${res.status} ${err.slice(0, 200)}`);
+    lastPushError = `GitHub push: ${res.status} ${err.slice(0, 200)}`;
+    throw new Error(lastPushError);
   }
 
   const data = await res.json();
   if (data.content?.sha) shaCache.set(STATE_FILE, data.content.sha);
+  lastPushError = null;
+  lastPushAt = state.savedAt;
   console.log('[github] datos guardados en GitHub');
 }
 
 function schedulePush() {
-  if (!isEnabled()) return;
+  if (!isEnabled() || pulling) return;
   clearTimeout(pushTimer);
   pushTimer = setTimeout(() => {
-    pushState().catch((e) => console.error('[github]', e.message));
+    pushState().catch((e) => {
+      lastPushError = e.message;
+      console.error('[github]', e.message);
+    });
   }, 2000);
+}
+
+async function pushNow() {
+  if (!isEnabled() || pulling) return false;
+  clearTimeout(pushTimer);
+  try {
+    await pushState();
+    return true;
+  } catch (e) {
+    lastPushError = e.message;
+    console.error('[github]', e.message);
+    return false;
+  }
+}
+
+function syncStatus() {
+  return {
+    enabled: isEnabled(),
+    lastPushAt,
+    lastPushError
+  };
 }
 
 module.exports = {
@@ -174,5 +234,7 @@ module.exports = {
   pullOnStartup,
   pullFromLocalBundle,
   schedulePush,
+  pushNow,
+  syncStatus,
   STATE_FILE
 };

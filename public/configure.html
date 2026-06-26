@@ -47,10 +47,31 @@
     .password-auth { text-align: left; margin-top: 0.5rem; }
     .password-auth.collapsed { display: none; }
     .user-avatar { width: 28px; height: 28px; border-radius: 50%; vertical-align: middle; margin-right: 0.35rem; }
+    .server-bar { margin: 1rem 0; padding: 0.85rem 1rem; background: #1c2228; border-radius: 8px; border: 1px solid #2a3440; font-size: 0.85rem; }
+    .server-bar.ok { border-color: #0e4; }
+    .server-bar.warn { border-color: #c90; }
+    .server-bar.err { border-color: #a44; }
+    .server-bar details { margin-top: 0.75rem; color: #9ab; font-size: 0.8rem; }
+    .server-bar summary { cursor: pointer; color: #40bcf4; }
   </style>
 </head>
 <body>
   <h1>Letterboxd Lists para Stremio <span class="version-badge" id="appVersion">v…</span></h1>
+
+  <div class="server-bar" id="serverBar">
+    <span id="serverStatus">Comprobando servidor…</span>
+    <button type="button" class="btn-copy" id="wakeBtn" style="margin-left:0.5rem;display:none">Despertar ahora</button>
+    <details>
+      <summary>¿Stremio no carga? Trucos para mantener el servidor activo</summary>
+      <p style="margin:0.5rem 0 0">Render gratis duerme tras 15 min sin visitas. El primer arranque tarda ~1 min y Stremio no espera.</p>
+      <ol style="margin:0.5rem 0 0 1.2rem;padding:0">
+        <li><strong>Recomendado:</strong> crea monitor gratis en <a href="https://uptimerobot.com" target="_blank" rel="noopener" style="color:#40bcf4">UptimeRobot</a> → HTTP(s) → URL <code id="wakeUrl">…/api/wake</code> → cada 5 min.</li>
+        <li>GitHub Actions ya hace ping cada 5 min (puede retrasarse).</li>
+        <li>Antes de abrir Stremio, pulsa <strong>Despertar ahora</strong> y espera ~30 s.</li>
+        <li>Plan de pago Render (~7 USD/mes): sin sueño.</li>
+      </ol>
+    </details>
+  </div>
 
   <div id="loginPanel">
     <div class="auth-box login-gate">
@@ -93,7 +114,7 @@
     <div class="saved-manifests" id="savedManifests" style="display:none">
       <h2>Tus URLs para Stremio</h2>
       <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. La URL es privada — no muestra tu usuario ni el nombre de la lista.</p>
-      <p style="font-size:0.8rem;color:#6a8;margin-top:0.5rem">Si el catálogo sale vacío en Stremio, el servidor puede estar despertando (~1 min). Recarga Stremio o abre esta página. Un ping automático cada 10 min lo mantiene activo.</p>
+      <p style="font-size:0.8rem;color:#6a8;margin-top:0.5rem">Si el catálogo sale vacío en Stremio, pulsa <strong>Despertar ahora</strong> arriba y espera ~30 s antes de recargar Stremio.</p>
       <p style="font-size:0.8rem;color:#6a8" id="manifestVersionNote"></p>
       <div id="manifestList"></div>
     </div>
@@ -117,6 +138,45 @@
     let appVersion = '';
     let registerMode = false;
     let googleEnabled = false;
+
+    const serverBar = document.getElementById('serverBar');
+    const serverStatus = document.getElementById('serverStatus');
+    const wakeBtn = document.getElementById('wakeBtn');
+    const wakeUrlEl = document.getElementById('wakeUrl');
+
+    wakeUrlEl.textContent = location.origin + '/api/wake';
+
+    async function checkServer(wake = false) {
+      const url = wake ? '/api/wake' : '/api/health';
+      const t0 = performance.now();
+      serverBar.className = 'server-bar';
+      serverStatus.textContent = wake ? 'Despertando servidor y precalentando catálogos…' : 'Comprobando servidor…';
+      try {
+        const r = await fetch(url, { credentials: 'include' });
+        const ms = Math.round(performance.now() - t0);
+        const data = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        const uptime = data.uptime ?? 0;
+        if (ms > 8000 || uptime < 30) {
+          serverBar.className = 'server-bar warn';
+          serverStatus.textContent = 'Servidor activo (arranque en frío: ' + Math.round(ms / 1000) + ' s). Espera ~30 s y abre Stremio.';
+        } else {
+          serverBar.className = 'server-bar ok';
+          serverStatus.textContent = 'Servidor activo (' + ms + ' ms, uptime ' + uptime + ' s). Listo para Stremio.';
+        }
+        wakeBtn.style.display = 'inline-block';
+        return true;
+      } catch (e) {
+        serverBar.className = 'server-bar err';
+        serverStatus.textContent = 'Servidor dormido o lento. Pulsa Despertar y espera ~1 min.';
+        wakeBtn.style.display = 'inline-block';
+        return false;
+      }
+    }
+
+    wakeBtn.addEventListener('click', () => checkServer(true));
+    checkServer(false);
+    setInterval(() => checkServer(false), 5 * 60 * 1000);
 
     async function api(path, options = {}) {
       const r = await fetch(path, {

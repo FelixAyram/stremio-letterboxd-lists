@@ -1,6 +1,6 @@
 {
   "name": "stremio-letterboxd-lists",
-  "version": "1.9.0",
+  "version": "1.9.1",
   "description": "Addon Stremio: listas de Letterboxd como catalogos con metadatos IMDB completos",
   "main": "server.js",
   "scripts": {

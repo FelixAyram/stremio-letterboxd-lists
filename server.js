@@ -211,6 +211,17 @@ app.get('/api/auth/me', requireAuth, (req, res) => {
   res.json({ user: publicUser(findUserById(req.userId)) });
 });
 
+app.get('/api/health', (_, res) => {
+  res.json({ ok: true, uptime: Math.floor(process.uptime()), version: VERSION });
+});
+
+app.get('/api/wake', (_, res) => {
+  sendCors(res);
+  warmupAllCatalogs();
+  listUserIds().forEach((uid) => preloadUser(uid));
+  res.json({ ok: true, warmed: true, uptime: Math.floor(process.uptime()), version: VERSION });
+});
+
 app.get('/api/info', (req, res) => {
   const userId = authFromRequest(req);
   const user = userId ? findUserById(userId) : null;
@@ -313,6 +324,9 @@ function warmupAllCatalogs() {
   for (const user of readUsersDb().users) {
     for (const list of readLists(user.id).lists) {
       getCatalogMetas(user.id, list, 0, 30).catch((e) => console.error('[warmup]', list.id, e.message));
+      if (list.key) {
+        getInterfaceForList(user.id, list.id);
+      }
     }
   }
 }

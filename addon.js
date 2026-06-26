@@ -1,6 +1,6 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
-const { resolveFilms, fetchMeta, getImdbForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta } = require('./src/cinemeta');
+const { resolveFilms, fetchMeta, getImdbForSlug, getMediaTypeForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta } = require('./src/cinemeta');
 const { VERSION } = require('./src/version');
 const { readLists, readListCache, writeListCache, readFilmListCache, writeFilmListCache } = require('./src/store');
 
@@ -108,7 +108,7 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
       for (let j = 0; j < indices.length; j++) {
         metaByIndex[indices[j]] = resolved[j];
       }
-      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length });
+      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 2 });
       loadPosterMapFromCache(resolved);
       listCache.set(cacheKey(userId, listId), metaByIndex);
     })().catch((e) => console.error(`[catalog:bg]`, e.message));
@@ -150,7 +150,7 @@ async function getListMetas(userId, listConfig) {
     });
     console.log(`[ok] ${metas.length} peliculas — "${title}"`);
     listCache.set(memKey, metas);
-    writeListCache(userId, id, { title, url, metas });
+    writeListCache(userId, id, { title, url, metas, cacheSchema: 2 });
     return metas;
   })();
 
@@ -176,14 +176,22 @@ function buildManifestForList(listConfig) {
     logo: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     background: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     resources: ['catalog', 'meta'],
-    types: ['movie'],
+    types: ['movie', 'series'],
     idPrefixes: ['lbx'],
-    catalogs: [{
-      type: 'movie',
-      id: listConfig.id,
-      name,
-      extra: [{ name: 'skip', isRequired: false }]
-    }],
+    catalogs: [
+      {
+        type: 'movie',
+        id: listConfig.id,
+        name,
+        extra: [{ name: 'skip', isRequired: false }]
+      },
+      {
+        type: 'series',
+        id: listConfig.id,
+        name,
+        extra: [{ name: 'skip', isRequired: false }]
+      }
+    ],
     behaviorHints: { configurable: false, configurationRequired: false }
   };
 }
@@ -195,36 +203,48 @@ function createBuilderForList(userId, listId) {
   const builder = new addonBuilder(buildManifestForList(listConfig));
 
   builder.defineCatalogHandler(async ({ type, id, extra }) => {
-    if (type !== 'movie' || id !== listId) return { metas: [] };
+    if (id !== listId) return { metas: [] };
+    if (type !== 'movie' && type !== 'series') return { metas: [] };
 
     const config = findListConfig(userId, listId);
     if (!config) return { metas: [] };
 
     const skip = parseSkip(extra);
     const metas = await getCatalogMetas(userId, config, skip, PAGE_SIZE);
+    const filtered = metas.filter((m) => m.type === type);
     preloadNextCatalogPage(userId, config, skip);
-    return { metas, cacheMaxAge: 3600, staleRevalidate: 86400 };
+    return { metas: filtered, cacheMaxAge: 3600, staleRevalidate: 86400 };
   });
 
   builder.defineMetaHandler(async ({ type, id }) => {
-    if (type !== 'movie') return { meta: null };
+    if (type !== 'movie' && type !== 'series') return { meta: null };
 
     let imdbId = null;
     let slug = null;
+    let mediaType = type;
 
     if (id.startsWith('lbx:')) {
       slug = id.slice(4);
       imdbId = getImdbForSlug(slug);
+      mediaType = getMediaTypeForSlug(slug) || type;
     } else if (id.startsWith('tt')) {
       imdbId = id;
     }
 
     if (!imdbId) return { meta: null };
 
-    const meta = await fetchMeta(imdbId);
+    let meta = await fetchMeta(imdbId, mediaType);
+    if (!meta && mediaType === 'movie') {
+      meta = await fetchMeta(imdbId, 'series');
+      if (meta) mediaType = 'series';
+    } else if (!meta && mediaType === 'series') {
+      meta = await fetchMeta(imdbId, 'movie');
+      if (meta) mediaType = 'movie';
+    }
     if (!meta) return { meta: null };
 
     meta.id = imdbId;
+    meta.type = mediaType;
     const lbxPoster = (slug && getLetterboxdPosterBySlug(slug)) || getLetterboxdPoster(imdbId);
     if (lbxPoster) meta.poster = lbxPoster;
     const lbxBg = getLetterboxdBackground(imdbId);

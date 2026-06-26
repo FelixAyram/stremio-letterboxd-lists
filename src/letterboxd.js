@@ -37,16 +37,27 @@ function parseFilmsFromHtml(html) {
     if (!node.length) return;
 
     const slug = node.attr('data-item-slug');
+    const link = node.attr('data-item-link') || node.attr('data-target-link') || '';
     const name = node.attr('data-item-name') || node.attr('data-item-full-display-name') || slug;
     if (!slug || seen.has(slug)) return;
     seen.add(slug);
+
+    let mediaType = link.includes('/tv/') ? 'series' : 'movie';
+    const posted = node.attr('data-postered-identifier');
+    if (posted) {
+      try {
+        const info = JSON.parse(posted.replace(/&quot;/g, '"'));
+        if (info.type === 'tv' || info.typeName === 'tv' || info.type === 'series') mediaType = 'series';
+      } catch {}
+    }
 
     const parsed = parseTitleYear(name);
     films.push({
       slug,
       name: parsed.title,
       year: parsed.year,
-      displayName: name
+      displayName: name,
+      mediaType
     });
   });
 
@@ -79,6 +90,11 @@ function parseFilmPage(html) {
   const imdb = html.match(/imdb\.com\/title\/(tt\d+)/i);
   const imdbId = imdb ? imdb[1] : null;
 
+  let mediaType = 'movie';
+  if (html.includes('"@type":"TVSeries"') || html.includes('tv-series-badge') || /href="\/tv\//.test(html)) {
+    mediaType = 'series';
+  }
+
   let poster = null;
 
   const filmPosters = [...html.matchAll(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s<>]+/g)];
@@ -100,7 +116,7 @@ function parseFilmPage(html) {
   const backdrop = html.match(/data-backdrop="([^"]+)"/);
   const background = backdrop ? backdrop[1] : null;
 
-  return { imdbId, poster, background };
+  return { imdbId, poster, background, mediaType };
 }
 
 async function fetchFilmPage(slug) {
@@ -111,7 +127,7 @@ async function fetchFilmPage(slug) {
     filmPageCache.set(slug, data);
     return data;
   } catch {
-    const empty = { imdbId: null, poster: null, background: null };
+    const empty = { imdbId: null, poster: null, background: null, mediaType: 'movie' };
     filmPageCache.set(slug, empty);
     return empty;
   }

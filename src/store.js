@@ -100,12 +100,15 @@ function isBadMeta(m) {
   return false;
 }
 
+const CACHE_SCHEMA = 2;
+
 function readListCache(userId, listId) {
   const p = cachePath(userId, listId);
   if (!fs.existsSync(p)) return readLegacyListCache(listId);
   try {
     const data = JSON.parse(fs.readFileSync(p, 'utf8'));
     if (Date.now() - data.cachedAt > 6 * 60 * 60 * 1000) return null;
+    if ((data.cacheSchema || 0) < CACHE_SCHEMA) return null;
 
     if (data.metaByIndex?.length) {
       const bad = data.metaByIndex.some((m) => m && isBadMeta(m));

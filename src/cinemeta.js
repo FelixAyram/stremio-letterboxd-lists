@@ -1,6 +1,14 @@
 const CINEMETA = 'https://v3-cinemeta.strem.io';
 const { fetchMediaPage, sleep } = require('./letterboxd');
 const {
+  EMPTY_POSTER,
+  isLetterboxdPoster,
+  pickLetterboxdPoster,
+  attachPosterToFilm,
+  posterUrlFromLbxId,
+  normalizePosterUrl
+} = require('./posters');
+const {
   scoreCandidate,
   minAcceptScore,
   searchTitleVariants,
@@ -15,7 +23,9 @@ const backgroundByImdb = new Map();
 const slugToImdb = new Map();
 const slugToMedia = new Map();
 
-const EMPTY_POSTER = 'https://s.ltrbxd.com/static/img/empty-poster-230.png';
+function lbxPosterFor(film, imdbId) {
+  return pickLetterboxdPoster(film) || posterBySlug.get(film.slug) || (imdbId && posterByImdb.get(imdbId)) || null;
+}
 
 function catalogId(slug) {
   return `lbx:${slug}`;
@@ -153,16 +163,18 @@ async function resolveMetaType(imdbId, preferType, title, year) {
 function storeFilmMaps(film, imdbId, mediaType = 'movie') {
   slugToImdb.set(film.slug, imdbId);
   slugToMedia.set(film.slug, mediaType);
-  if (film.poster) {
-    posterByImdb.set(imdbId, film.poster);
-    posterBySlug.set(film.slug, film.poster);
+  const poster = lbxPosterFor(film, imdbId);
+  if (poster) {
+    posterByImdb.set(imdbId, poster);
+    posterBySlug.set(film.slug, poster);
+    film.poster = poster;
   }
   if (film.background) backgroundByImdb.set(imdbId, film.background);
 }
 
 function metaFromImdb(imdbId, film, cinemetaHit, mediaType = 'movie') {
-  const poster = film.poster || posterBySlug.get(film.slug) || posterByImdb.get(imdbId) || EMPTY_POSTER;
-  const background = film.background || backgroundByImdb.get(imdbId) || cinemetaHit?.background;
+  const poster = lbxPosterFor(film, imdbId) || EMPTY_POSTER;
+  const background = film.background || backgroundByImdb.get(imdbId) || undefined;
   const type = mediaType === 'series' ? 'series' : 'movie';
 
   return {
@@ -189,7 +201,8 @@ async function resolveFilm(film) {
     mediaType: film.mediaType,
     year: film.year
   });
-  if (lbx.poster) film.poster = lbx.poster;
+  if (lbx.poster) film.poster = normalizePosterUrl(lbx.poster) || lbx.poster;
+  if (lbx.lbxFilmId) film.lbxFilmId = lbx.lbxFilmId;
   if (lbx.background) film.background = lbx.background;
   if (lbx.pageTitle) film.pageTitle = lbx.pageTitle;
   if (lbx.pageYear && !film.year) film.year = lbx.pageYear;
@@ -234,7 +247,8 @@ async function resolveFilm(film) {
 }
 
 function fallbackMeta(film) {
-  const poster = film.poster || posterBySlug.get(film.slug) || EMPTY_POSTER;
+  attachPosterToFilm(film);
+  const poster = lbxPosterFor(film) || EMPTY_POSTER;
   const type =
     film.mediaType === 'series' || film.listPrefersSeries ? 'series' : 'movie';
   return {
@@ -255,7 +269,36 @@ async function resolveFilmOrFallback(film) {
   }
 }
 
+async function ensureLetterboxdPosters(films, concurrency = 6) {
+  const needsPage = [];
+
+  for (const film of films) {
+    attachPosterToFilm(film);
+    if (!isLetterboxdPoster(film.poster)) needsPage.push(film);
+  }
+
+  for (let i = 0; i < needsPage.length; i += concurrency) {
+    const batch = needsPage.slice(i, i + concurrency);
+    await Promise.all(batch.map(async (film) => {
+      try {
+        const lbx = await fetchMediaPage(film.slug, {
+          link: film.link,
+          mediaType: film.mediaType,
+          year: film.year
+        });
+        if (lbx.lbxFilmId) film.lbxFilmId = lbx.lbxFilmId;
+        if (lbx.poster) film.poster = normalizePosterUrl(lbx.poster) || lbx.poster;
+        attachPosterToFilm(film);
+      } catch {}
+    }));
+    if (i + concurrency < needsPage.length) await sleep(40);
+  }
+
+  return films;
+}
+
 async function resolveFilms(films, onProgress, concurrency = 3) {
+  await ensureLetterboxdPosters(films, concurrency);
   const out = [];
 
   for (let i = 0; i < films.length; i += concurrency) {
@@ -293,9 +336,9 @@ function loadPosterMapFromCache(metas) {
   for (const m of metas || []) {
     if (m.id?.startsWith('lbx:')) {
       const slug = m.id.slice(4);
-      if (m.poster?.includes('ltrbxd.com')) posterBySlug.set(slug, m.poster);
+      if (isLetterboxdPoster(m.poster)) posterBySlug.set(slug, m.poster);
     }
-    if (m.imdbId && m.poster?.includes('ltrbxd.com')) posterByImdb.set(m.imdbId, m.poster);
+    if (m.imdbId && isLetterboxdPoster(m.poster)) posterByImdb.set(m.imdbId, m.poster);
     if (m.imdbId && m.background?.includes('ltrbxd.com')) backgroundByImdb.set(m.imdbId, m.background);
     if (m.slug && m.imdbId) slugToImdb.set(m.slug, m.imdbId);
     if (m.id?.startsWith('lbx:') && m.type) slugToMedia.set(m.id.slice(4), m.type);
@@ -309,6 +352,7 @@ module.exports = {
   resolveFilm,
   resolveFilmOrFallback,
   resolveFilms,
+  ensureLetterboxdPosters,
   fallbackMeta,
   catalogId,
   getImdbForSlug,

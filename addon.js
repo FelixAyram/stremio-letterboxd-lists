@@ -1,7 +1,8 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
 const { listPrefersSeries } = require('./src/title-match');
-const { resolveFilms, fetchMeta, getImdbForSlug, getMediaTypeForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta } = require('./src/cinemeta');
+const { resolveFilms, fetchMeta, getImdbForSlug, getMediaTypeForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta, ensureLetterboxdPosters } = require('./src/cinemeta');
+const { isLetterboxdPoster } = require('./src/posters');
 const { VERSION } = require('./src/version');
 const { readLists, readListCache, writeListCache, readFilmListCache, writeFilmListCache } = require('./src/store');
 
@@ -112,13 +113,15 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
   }
 
   if (toResolve.length) {
+    const pageFilms = films.slice(skip, end);
+    await ensureLetterboxdPosters(pageFilms);
     const quick = metasForRange(metaByIndex, films, skip, end);
     (async () => {
       const resolved = await resolveFilms(toResolve, null, RESOLVE_CONCURRENCY);
       for (let j = 0; j < indices.length; j++) {
         metaByIndex[indices[j]] = resolved[j];
       }
-      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 3 });
+      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 4 });
       loadPosterMapFromCache(resolved);
       listCache.set(cacheKey(userId, listId), metaByIndex);
     })().catch((e) => console.error(`[catalog:bg]`, e.message));
@@ -160,7 +163,7 @@ async function getListMetas(userId, listConfig) {
     });
     console.log(`[ok] ${metas.length} peliculas — "${title}"`);
     listCache.set(memKey, metas);
-    writeListCache(userId, id, { title, url, metas, cacheSchema: 3 });
+    writeListCache(userId, id, { title, url, metas, cacheSchema: 4 });
     return metas;
   })();
 
@@ -256,7 +259,11 @@ function createBuilderForList(userId, listId) {
     meta.id = imdbId;
     meta.type = mediaType;
     const lbxPoster = (slug && getLetterboxdPosterBySlug(slug)) || getLetterboxdPoster(imdbId);
-    if (lbxPoster) meta.poster = lbxPoster;
+    if (lbxPoster) {
+      meta.poster = lbxPoster;
+    } else if (!isLetterboxdPoster(meta.poster)) {
+      delete meta.poster;
+    }
     const lbxBg = getLetterboxdBackground(imdbId);
     if (lbxBg) meta.background = lbxBg;
     return { meta };

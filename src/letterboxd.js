@@ -1,4 +1,5 @@
 const cheerio = require('cheerio');
+const { posterUrlFromLbxId, normalizePosterUrl } = require('./posters');
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
@@ -45,7 +46,10 @@ function parsePostedIdentifier(raw) {
       mediaType = 'series';
     }
 
-    return { mediaType, uid };
+    const idMatch = uid.match(/^(?:film|tv):(\d+)$/);
+    const filmId = idMatch ? idMatch[1] : null;
+
+    return { mediaType, uid, filmId };
   } catch {
     return null;
   }
@@ -75,6 +79,13 @@ function parseFilmsFromHtml(html) {
 
     let mediaType = posted?.mediaType || mediaTypeFromLink(link) || 'movie';
 
+    const imgSrc = node.find('img[src*="ltrbxd.com"]').first().attr('src')
+      || node.attr('data-poster-url')
+      || node.attr('data-image');
+    let poster = normalizePosterUrl(imgSrc);
+    const lbxFilmId = posted?.filmId || null;
+    if (!poster && lbxFilmId) poster = posterUrlFromLbxId(lbxFilmId, slug);
+
     const parsed = parseTitleYear(name);
     films.push({
       slug,
@@ -82,7 +93,9 @@ function parseFilmsFromHtml(html) {
       name: parsed.title,
       year: parsed.year,
       displayName: name,
-      mediaType
+      mediaType,
+      lbxFilmId,
+      poster
     });
   });
 
@@ -101,6 +114,11 @@ function parseFilmsFromHtml(html) {
     const posted = parsePostedIdentifier(node.attr('data-postered-identifier'));
     let mediaType = posted?.mediaType || mediaTypeFromLink(link) || 'movie';
 
+    const imgSrc = node.find('img[src*="ltrbxd.com"]').first().attr('src');
+    let poster = normalizePosterUrl(imgSrc);
+    const lbxFilmId = posted?.filmId || null;
+    if (!poster && lbxFilmId) poster = posterUrlFromLbxId(lbxFilmId, slug);
+
     const parsed = parseTitleYear(name);
     films.push({
       slug,
@@ -108,7 +126,9 @@ function parseFilmsFromHtml(html) {
       name: parsed.title,
       year: parsed.year,
       displayName: name,
-      mediaType
+      mediaType,
+      lbxFilmId,
+      poster
     });
   });
 
@@ -175,6 +195,14 @@ function parseFilmPage(html) {
     }
   }
 
+  let lbxFilmId = null;
+  const uidMatch = html.match(/"uid"\s*:\s*"(?:film|tv):(\d+)"/);
+  if (uidMatch) lbxFilmId = uidMatch[1];
+  if (!lbxFilmId) {
+    const pathMatch = html.match(/film-poster\/(?:\d\/)+\d+\/(\d+)-/);
+    if (pathMatch) lbxFilmId = pathMatch[1];
+  }
+
   let poster = null;
 
   const filmPosters = [...html.matchAll(/https:\/\/a\.ltrbxd\.com\/resized\/film-poster\/[^"'\s<>]+/g)];
@@ -193,10 +221,18 @@ function parseFilmPage(html) {
     if (vertical) poster = vertical[0];
   }
 
+  if (!poster && lbxFilmId) {
+    const slugMatch = html.match(/letterboxd\.com\/film\/([^/"']+)/);
+    const pageSlug = slugMatch ? slugMatch[1] : null;
+    if (pageSlug) poster = posterUrlFromLbxId(lbxFilmId, pageSlug);
+  }
+
+  poster = normalizePosterUrl(poster) || poster;
+
   const backdrop = html.match(/data-backdrop="([^"]+)"/);
   const background = backdrop ? backdrop[1] : null;
 
-  return { imdbId, poster, background, mediaType, tmdbId, tmdbType, pageTitle, pageYear };
+  return { imdbId, poster, background, mediaType, tmdbId, tmdbType, pageTitle, pageYear, lbxFilmId };
 }
 
 function pageUrlsForSlug(slug, opts = {}) {

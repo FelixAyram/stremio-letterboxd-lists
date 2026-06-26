@@ -95,12 +95,13 @@ function cachePath(userId, listId) {
 
 function isBadMeta(m) {
   if (!m?.id?.startsWith('lbx:')) return true;
-  if (m.poster && !m.poster.includes('ltrbxd.com') && !m.poster.includes('empty-poster')) return true;
-  if (m.poster && (m.poster.includes('675-675-crop') || m.poster.includes('1200-1200-675'))) return true;
+  if (!m.poster || !m.poster.includes('ltrbxd.com') || m.poster.includes('empty-poster')) return true;
+  if (m.poster.includes('metahub.space') || m.poster.includes('media-amazon.com')) return true;
+  if (m.poster.includes('675-675-crop') || m.poster.includes('1200-1200-675')) return true;
   return false;
 }
 
-const CACHE_SCHEMA = 3;
+const CACHE_SCHEMA = 4;
 
 function readListCache(userId, listId) {
   const p = cachePath(userId, listId);

@@ -1,5 +1,12 @@
 const CINEMETA = 'https://v3-cinemeta.strem.io';
-const { fetchFilmPage, sleep } = require('./letterboxd');
+const { fetchMediaPage, sleep } = require('./letterboxd');
+const {
+  scoreCandidate,
+  minAcceptScore,
+  searchTitleVariants,
+  titleSimilarity,
+  yearMatches
+} = require('./title-match');
 
 const searchCache = new Map();
 const posterByImdb = new Map();
@@ -10,20 +17,16 @@ const slugToMedia = new Map();
 
 const EMPTY_POSTER = 'https://s.ltrbxd.com/static/img/empty-poster-230.png';
 
-function normalizeName(s) {
-  return (s || '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
-}
-
 function catalogId(slug) {
   return `lbx:${slug}`;
 }
 
-async function searchMovie(title, year, retries = 3) {
-  const key = `${title}|${year || ''}`;
+async function searchCatalog(type, title, year, retries = 3) {
+  const key = `${type}|${title}|${year || ''}`;
   if (searchCache.has(key)) return searchCache.get(key);
 
   const query = year ? `${title} ${year}` : title;
-  const url = `${CINEMETA}/catalog/movie/top/search=${encodeURIComponent(query)}.json`;
+  const url = `${CINEMETA}/catalog/${type}/top/search=${encodeURIComponent(query)}.json`;
 
   for (let attempt = 0; attempt < retries; attempt++) {
     try {
@@ -33,77 +36,76 @@ async function searchMovie(title, year, retries = 3) {
         continue;
       }
       const data = await res.json();
-      const metas = data.metas || [];
-      if (!metas.length) break;
-
-      const target = normalizeName(title);
-      let best = metas.find((m) => normalizeName(m.name) === target);
-      if (!best && year) {
-        best = metas.find((m) => normalizeName(m.name) === target && (m.releaseInfo || '').startsWith(year));
-      }
-      if (!best) best = metas[0];
-
-      const result = best?.id?.startsWith('tt') ? best : null;
-      searchCache.set(key, result);
-      return result;
+      const metas = (data.metas || []).filter((m) => m.id?.startsWith('tt')).slice(0, 10);
+      searchCache.set(key, metas);
+      return metas;
     } catch {
       await sleep(300 * (attempt + 1));
     }
   }
 
-  searchCache.set(key, null);
-  return null;
+  searchCache.set(key, []);
+  return [];
 }
 
-async function searchSeries(title, year, retries = 3) {
-  const key = `s|${title}|${year || ''}`;
-  if (searchCache.has(key)) return searchCache.get(key);
+async function searchCinemetaByType(title, year, mediaType, preferType) {
+  const metas = await searchCatalog(mediaType, title, year);
+  let best = null;
+  let bestScore = 0;
 
-  const query = year ? `${title} ${year}` : title;
-  const url = `${CINEMETA}/catalog/series/top/search=${encodeURIComponent(query)}.json`;
-
-  for (let attempt = 0; attempt < retries; attempt++) {
-    try {
-      const res = await fetch(url);
-      if (!res.ok) {
-        await sleep(300 * (attempt + 1));
-        continue;
-      }
-      const data = await res.json();
-      const metas = data.metas || [];
-      if (!metas.length) break;
-
-      const target = normalizeName(title);
-      let best = metas.find((m) => normalizeName(m.name) === target);
-      if (!best && year) {
-        best = metas.find((m) => normalizeName(m.name) === target && (m.releaseInfo || '').startsWith(year));
-      }
-      if (!best) best = metas[0];
-
-      const result = best?.id?.startsWith('tt') ? best : null;
-      searchCache.set(key, result);
-      return result;
-    } catch {
-      await sleep(300 * (attempt + 1));
+  for (const meta of metas) {
+    const score = scoreCandidate(meta, title, year, mediaType, preferType);
+    if (score > bestScore) {
+      bestScore = score;
+      best = meta;
     }
   }
 
-  searchCache.set(key, null);
-  return null;
+  const minScore = minAcceptScore(preferType);
+  if (!best || bestScore < minScore) {
+    return { hit: null, mediaType, score: bestScore };
+  }
+
+  return { hit: best, mediaType, score: bestScore };
 }
 
 async function searchCinemeta(title, year, preferType = 'movie') {
-  const tryMovieFirst = preferType !== 'series';
-  const first = tryMovieFirst ? searchMovie : searchSeries;
-  const second = tryMovieFirst ? searchSeries : searchMovie;
-  const firstType = tryMovieFirst ? 'movie' : 'series';
-  const secondType = tryMovieFirst ? 'series' : 'movie';
+  const [movieResult, seriesResult] = await Promise.all([
+    searchCinemetaByType(title, year, 'movie', preferType),
+    searchCinemetaByType(title, year, 'series', preferType)
+  ]);
 
-  let hit = await first(title, year);
-  if (hit) return { hit, mediaType: firstType };
-  hit = await second(title, year);
-  if (hit) return { hit, mediaType: secondType };
-  return { hit: null, mediaType: preferType };
+  if (movieResult.hit && seriesResult.hit) {
+    return movieResult.score >= seriesResult.score ? movieResult : seriesResult;
+  }
+  return movieResult.hit ? movieResult : seriesResult;
+}
+
+async function searchCinemetaForFilm(film, preferType = 'movie') {
+  const titles = searchTitleVariants(film);
+  const wantsSeries = preferType === 'series' || film.listPrefersSeries;
+
+  async function bestForType(type, scorePrefer) {
+    const scoreType = scorePrefer || type;
+    let best = { hit: null, mediaType: type, score: 0 };
+    for (const title of titles) {
+      const result = await searchCinemetaByType(title, film.year, type, scoreType);
+      if (result.hit && result.score > best.score) best = result;
+      if (best.score >= 0.92) break;
+    }
+    return best;
+  }
+
+  if (wantsSeries) {
+    const seriesBest = await bestForType('series', 'series');
+    if (seriesBest.hit && seriesBest.score >= minAcceptScore('series')) return seriesBest;
+
+    const movieBest = await bestForType('movie', 'movie');
+    if (movieBest.hit && movieBest.score >= 0.78) return movieBest;
+    return seriesBest.hit ? seriesBest : movieBest;
+  }
+
+  return bestForType(preferType, preferType);
 }
 
 async function fetchMeta(imdbId, mediaType = 'movie') {
@@ -117,6 +119,35 @@ async function fetchMeta(imdbId, mediaType = 'movie') {
   } catch {
     return null;
   }
+}
+
+async function resolveMetaType(imdbId, preferType, title, year) {
+  const primary = preferType === 'series' ? 'series' : 'movie';
+  const secondary = primary === 'series' ? 'movie' : 'series';
+
+  let meta = await fetchMeta(imdbId, primary);
+  if (meta) {
+    const sim = titleSimilarity(meta.name, title);
+    if (sim >= 0.35 || !title) return { meta, mediaType: primary };
+  }
+
+  meta = await fetchMeta(imdbId, secondary);
+  if (meta) {
+    const sim = titleSimilarity(meta.name, title);
+    if (sim >= 0.35 || !title) return { meta, mediaType: secondary };
+  }
+
+  if (primary === 'series') {
+    meta = await fetchMeta(imdbId, 'series');
+    if (meta) return { meta, mediaType: 'series' };
+  }
+
+  meta = await fetchMeta(imdbId, primary);
+  if (meta) return { meta, mediaType: primary };
+  meta = await fetchMeta(imdbId, secondary);
+  if (meta) return { meta, mediaType: secondary };
+
+  return { meta: null, mediaType: preferType };
 }
 
 function storeFilmMaps(film, imdbId, mediaType = 'movie') {
@@ -147,28 +178,55 @@ function metaFromImdb(imdbId, film, cinemetaHit, mediaType = 'movie') {
   };
 }
 
+function inferPreferType(film) {
+  if (film.mediaType === 'series' || film.listPrefersSeries) return 'series';
+  return 'movie';
+}
+
 async function resolveFilm(film) {
-  const lbx = await fetchFilmPage(film.slug);
+  const lbx = await fetchMediaPage(film.slug, {
+    link: film.link,
+    mediaType: film.mediaType,
+    year: film.year
+  });
   if (lbx.poster) film.poster = lbx.poster;
   if (lbx.background) film.background = lbx.background;
+  if (lbx.pageTitle) film.pageTitle = lbx.pageTitle;
+  if (lbx.pageYear && !film.year) film.year = lbx.pageYear;
 
-  const preferType = film.mediaType === 'series' || lbx.mediaType === 'series' ? 'series' : 'movie';
-  const { hit, mediaType } = await searchCinemeta(film.name, film.year, preferType);
+  const pageType = lbx.mediaType === 'series' ? 'series' : null;
+  const listType = film.mediaType === 'series' || film.listPrefersSeries ? 'series' : null;
+  const preferType = pageType || listType || 'movie';
 
-  let imdbId = hit?.id || lbx.imdbId;
-  if (!imdbId) return null;
-
-  let fullMeta = hit ? await fetchMeta(hit.id, mediaType) : null;
-  if (!fullMeta && lbx.imdbId) {
-    fullMeta = await fetchMeta(lbx.imdbId, mediaType);
-    if (!fullMeta) {
-      const alt = mediaType === 'movie' ? 'series' : 'movie';
-      fullMeta = await fetchMeta(lbx.imdbId, alt);
-      if (fullMeta) {
-        storeFilmMaps(film, lbx.imdbId, alt);
-        return metaFromImdb(lbx.imdbId, film, fullMeta || hit, alt);
+  if (lbx.imdbId) {
+    const { meta, mediaType } = await resolveMetaType(lbx.imdbId, preferType, film.name, film.year);
+    if (meta) {
+      const sim = titleSimilarity(meta.name, film.name);
+      const yearOk = !film.year || yearMatches(meta.releaseInfo, film.year) > 0;
+      const typeOk = preferType !== 'series' || mediaType === 'series' || sim >= 0.85;
+      if (sim >= 0.35 && yearOk && typeOk) {
+        storeFilmMaps(film, lbx.imdbId, mediaType);
+        return metaFromImdb(lbx.imdbId, film, meta, mediaType);
       }
     }
+  }
+
+  const { hit, mediaType, score } = await searchCinemetaForFilm(film, preferType);
+  if (!hit) return null;
+
+  let imdbId = hit.id;
+  let fullMeta = await fetchMeta(imdbId, mediaType);
+  if (!fullMeta) {
+    const alt = mediaType === 'movie' ? 'series' : 'movie';
+    fullMeta = await fetchMeta(imdbId, alt);
+    if (fullMeta && titleSimilarity(fullMeta.name, film.name) >= 0.35) {
+      storeFilmMaps(film, imdbId, alt);
+      return metaFromImdb(imdbId, film, fullMeta, alt);
+    }
+  }
+
+  if (fullMeta && titleSimilarity(fullMeta.name, film.name) < 0.3 && score < 0.7) {
+    return null;
   }
 
   storeFilmMaps(film, imdbId, mediaType);
@@ -177,7 +235,8 @@ async function resolveFilm(film) {
 
 function fallbackMeta(film) {
   const poster = film.poster || posterBySlug.get(film.slug) || EMPTY_POSTER;
-  const type = film.mediaType === 'series' ? 'series' : 'movie';
+  const type =
+    film.mediaType === 'series' || film.listPrefersSeries ? 'series' : 'movie';
   return {
     id: catalogId(film.slug),
     type,
@@ -244,9 +303,8 @@ function loadPosterMapFromCache(metas) {
 }
 
 module.exports = {
-  searchMovie,
-  searchSeries,
   searchCinemeta,
+  searchCinemetaForFilm,
   fetchMeta,
   resolveFilm,
   resolveFilmOrFallback,

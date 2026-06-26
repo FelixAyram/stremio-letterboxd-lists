@@ -1,5 +1,6 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
+const { listPrefersSeries } = require('./src/title-match');
 const { resolveFilms, fetchMeta, getImdbForSlug, getMediaTypeForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta } = require('./src/cinemeta');
 const { VERSION } = require('./src/version');
 const { readLists, readListCache, writeListCache, readFilmListCache, writeFilmListCache } = require('./src/store');
@@ -35,6 +36,14 @@ async function getFilmList(userId, listConfig) {
 
   const cached = readFilmListCache(userId, listId);
   if (cached?.films?.length) {
+    if (!cached.preferSeries) {
+      cached.preferSeries = listPrefersSeries(cached.title, cached.films);
+      if (cached.preferSeries) {
+        cached.films.forEach((f) => {
+          if (f.mediaType !== 'series') f.listPrefersSeries = true;
+        });
+      }
+    }
     filmListCache.set(memKey, cached);
     return cached;
   }
@@ -49,7 +58,8 @@ async function getFilmList(userId, listConfig) {
       id: list.id,
       title: list.title,
       url: list.url,
-      films: list.films
+      films: list.films,
+      preferSeries: list.preferSeries
     };
     filmListCache.set(memKey, data);
     writeFilmListCache(userId, list.id, data);
@@ -108,7 +118,7 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
       for (let j = 0; j < indices.length; j++) {
         metaByIndex[indices[j]] = resolved[j];
       }
-      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 2 });
+      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 3 });
       loadPosterMapFromCache(resolved);
       listCache.set(cacheKey(userId, listId), metaByIndex);
     })().catch((e) => console.error(`[catalog:bg]`, e.message));
@@ -150,7 +160,7 @@ async function getListMetas(userId, listConfig) {
     });
     console.log(`[ok] ${metas.length} peliculas — "${title}"`);
     listCache.set(memKey, metas);
-    writeListCache(userId, id, { title, url, metas, cacheSchema: 2 });
+    writeListCache(userId, id, { title, url, metas, cacheSchema: 3 });
     return metas;
   })();
 

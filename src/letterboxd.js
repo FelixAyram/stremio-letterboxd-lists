@@ -27,10 +27,66 @@ async function fetchHtml(url) {
   return res.text();
 }
 
+function parsePostedIdentifier(raw) {
+  if (!raw) return null;
+  try {
+    const info = JSON.parse(raw.replace(/&quot;/g, '"'));
+    let mediaType = 'movie';
+    const uid = String(info.uid || info.id || '');
+    const type = String(info.type || info.typeName || info.mediaType || '').toLowerCase();
+
+    if (
+      uid.startsWith('tv:') ||
+      type === 'tv' ||
+      type === 'series' ||
+      type === 'tvseries' ||
+      info.isTv === true
+    ) {
+      mediaType = 'series';
+    }
+
+    return { mediaType, uid };
+  } catch {
+    return null;
+  }
+}
+
+function mediaTypeFromLink(link) {
+  if (!link) return null;
+  if (/\/tv\//.test(link)) return 'series';
+  if (/\/film\//.test(link)) return 'movie';
+  return null;
+}
+
 function parseFilmsFromHtml(html) {
   const $ = cheerio.load(html);
   const films = [];
   const seen = new Set();
+
+  $('[data-item-slug]').each((_, el) => {
+    const node = $(el);
+    const slug = node.attr('data-item-slug');
+    if (!slug || seen.has(slug)) return;
+    seen.add(slug);
+
+    const link = node.attr('data-item-link') || node.attr('data-target-link') || '';
+    const name = node.attr('data-item-name') || node.attr('data-item-full-display-name') || slug;
+    const posted = parsePostedIdentifier(node.attr('data-postered-identifier'));
+
+    let mediaType = posted?.mediaType || mediaTypeFromLink(link) || 'movie';
+
+    const parsed = parseTitleYear(name);
+    films.push({
+      slug,
+      link,
+      name: parsed.title,
+      year: parsed.year,
+      displayName: name,
+      mediaType
+    });
+  });
+
+  if (films.length) return films;
 
   $('li.posteritem, li.listitem').each((_, el) => {
     const node = $(el).find('[data-item-slug]').first();
@@ -42,18 +98,13 @@ function parseFilmsFromHtml(html) {
     if (!slug || seen.has(slug)) return;
     seen.add(slug);
 
-    let mediaType = link.includes('/tv/') ? 'series' : 'movie';
-    const posted = node.attr('data-postered-identifier');
-    if (posted) {
-      try {
-        const info = JSON.parse(posted.replace(/&quot;/g, '"'));
-        if (info.type === 'tv' || info.typeName === 'tv' || info.type === 'series') mediaType = 'series';
-      } catch {}
-    }
+    const posted = parsePostedIdentifier(node.attr('data-postered-identifier'));
+    let mediaType = posted?.mediaType || mediaTypeFromLink(link) || 'movie';
 
     const parsed = parseTitleYear(name);
     films.push({
       slug,
+      link,
       name: parsed.title,
       year: parsed.year,
       displayName: name,
@@ -91,8 +142,37 @@ function parseFilmPage(html) {
   const imdbId = imdb ? imdb[1] : null;
 
   let mediaType = 'movie';
-  if (html.includes('"@type":"TVSeries"') || html.includes('tv-series-badge') || /href="\/tv\//.test(html)) {
+  if (
+    html.includes('"@type":"TVSeries"') ||
+    html.includes('"@type": "TVSeries"') ||
+    html.includes('tv-series-badge') ||
+    /href="\/tv\//.test(html) ||
+    /themoviedb\.org\/tv\//.test(html)
+  ) {
     mediaType = 'series';
+  }
+
+  const tmdb = html.match(/themoviedb\.org\/(tv|movie)\/(\d+)/i);
+  const tmdbType = tmdb ? (tmdb[1].toLowerCase() === 'tv' ? 'series' : 'movie') : null;
+  const tmdbId = tmdb ? tmdb[2] : null;
+  if (tmdbType === 'series') mediaType = 'series';
+
+  let pageTitle = null;
+  let pageYear = null;
+  const og = html.match(/property="og:title"\s+content="([^"]+)"/i);
+  if (og) {
+    const cleaned = og[1].replace(/\s*[-–—]\s*Letterboxd.*$/i, '').trim();
+    const parsed = parseTitleYear(cleaned);
+    pageTitle = parsed.title;
+    pageYear = parsed.year;
+  }
+  if (!pageTitle) {
+    const jsonName = html.match(/"@type":"(?:Movie|TVSeries)"[^}]*"name":"([^"]+)"/);
+    if (jsonName) {
+      const parsed = parseTitleYear(jsonName[1]);
+      pageTitle = parsed.title;
+      pageYear = pageYear || parsed.year;
+    }
   }
 
   let poster = null;
@@ -116,21 +196,64 @@ function parseFilmPage(html) {
   const backdrop = html.match(/data-backdrop="([^"]+)"/);
   const background = backdrop ? backdrop[1] : null;
 
-  return { imdbId, poster, background, mediaType };
+  return { imdbId, poster, background, mediaType, tmdbId, tmdbType, pageTitle, pageYear };
+}
+
+function pageUrlsForSlug(slug, opts = {}) {
+  const urls = [];
+  const add = (path) => {
+    if (!path) return;
+    const full = path.startsWith('http') ? path : `https://letterboxd.com${path}`;
+    if (!urls.includes(full)) urls.push(full);
+  };
+
+  if (opts.link) add(opts.link);
+  if (opts.year) {
+    add(`/film/${slug}-${opts.year}/`);
+    add(`/tv/${slug}-${opts.year}/`);
+  }
+  if (opts.mediaType === 'series') {
+    add(`/tv/${slug}/`);
+    add(`/film/${slug}/`);
+  } else {
+    add(`/film/${slug}/`);
+    add(`/tv/${slug}/`);
+  }
+
+  return urls;
+}
+
+async function fetchMediaPage(slug, opts = {}) {
+  const cacheKey = `${slug}|${opts.link || ''}|${opts.mediaType || ''}|${opts.year || ''}`;
+  if (filmPageCache.has(cacheKey)) return filmPageCache.get(cacheKey);
+
+  const urls = pageUrlsForSlug(slug, opts);
+  let best = null;
+
+  for (const url of urls) {
+    try {
+      const html = await fetchHtml(url);
+      const data = parseFilmPage(html);
+      const yearOk = !opts.year || !data.pageYear || data.pageYear === opts.year;
+      if (data.imdbId && yearOk) {
+        filmPageCache.set(cacheKey, data);
+        return data;
+      }
+      if (!best || (data.mediaType === 'series' && best.mediaType !== 'series')) {
+        best = data;
+      }
+    } catch {
+      // try next URL shape
+    }
+  }
+
+  const result = best || { imdbId: null, poster: null, background: null, mediaType: opts.mediaType || 'movie' };
+  filmPageCache.set(cacheKey, result);
+  return result;
 }
 
 async function fetchFilmPage(slug) {
-  if (filmPageCache.has(slug)) return filmPageCache.get(slug);
-  try {
-    const html = await fetchHtml(`https://letterboxd.com/film/${slug}/`);
-    const data = parseFilmPage(html);
-    filmPageCache.set(slug, data);
-    return data;
-  } catch {
-    const empty = { imdbId: null, poster: null, background: null, mediaType: 'movie' };
-    filmPageCache.set(slug, empty);
-    return empty;
-  }
+  return fetchMediaPage(slug, {});
 }
 
 async function fetchListPage(url) {
@@ -139,7 +262,7 @@ async function fetchListPage(url) {
     html,
     title: getListTitle(html),
     films: parseFilmsFromHtml(html),
-    nextPage: getNextPageUrl(html, url)
+    nextPage: getNextPageUrl(html)
   };
 }
 
@@ -172,7 +295,15 @@ async function fetchFullList(listUrl) {
     if (url) await sleep(400);
   }
 
-  return { id: listIdFromUrl(base), title, url: base, films: allFilms };
+  const { listPrefersSeries } = require('./title-match');
+  const preferSeries = listPrefersSeries(title, allFilms);
+  if (preferSeries) {
+    for (const f of allFilms) {
+      if (f.mediaType !== 'series') f.listPrefersSeries = true;
+    }
+  }
+
+  return { id: listIdFromUrl(base), title, url: base, films: allFilms, preferSeries };
 }
 
 function sleep(ms) {
@@ -180,7 +311,7 @@ function sleep(ms) {
 }
 
 async function fetchImdbId(slug) {
-  const { imdbId } = await fetchFilmPage(slug);
+  const { imdbId } = await fetchMediaPage(slug, {});
   return imdbId;
 }
 
@@ -190,7 +321,9 @@ module.exports = {
   fetchFullList,
   fetchListTitle,
   parseTitleYear,
+  parseFilmsFromHtml,
   fetchImdbId,
   fetchFilmPage,
+  fetchMediaPage,
   sleep
 };

@@ -100,7 +100,7 @@ function isBadMeta(m) {
   return false;
 }
 
-const CACHE_SCHEMA = 2;
+const CACHE_SCHEMA = 3;
 
 function readListCache(userId, listId) {
   const p = cachePath(userId, listId);

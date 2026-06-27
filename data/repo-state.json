@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:12:22.553Z",
+  "savedAt": "2026-06-27T20:12:33.285Z",
   "users": {
     "users": [
       {
@@ -16473,7 +16473,7 @@
           "filmsCount": 150,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591140545,
+          "cachedAt": 1782591151276,
           "metaByIndex": [
             {
               "id": "lbx:when-life-gives-you-tangerines-2025",
@@ -17194,6 +17194,246 @@
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9674954.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:as-you-stood-by",
+              "type": "series",
+              "name": "As You Stood By",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33550045.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:vagabond-2019",
+              "type": "series",
+              "name": "Vagabond",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8523042.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:blind-2022-1",
+              "type": "series",
+              "name": "Blind",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21631058.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:queen-of-tears-2024",
+              "type": "series",
+              "name": "Queen of Tears",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27668559.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:law-school",
+              "type": "series",
+              "name": "Law School",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13885336.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:welcome-to-samdal-ri",
+              "type": "series",
+              "name": "Welcome to Samdal-ri",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26653824.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:seoul-busters",
+              "type": "series",
+              "name": "Seoul Busters",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32482847.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:bad-and-crazy",
+              "type": "series",
+              "name": "Bad and Crazy",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15146202.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:empress-ki",
+              "type": "series",
+              "name": "Empress Ki",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3322566.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2013"
+            },
+            {
+              "id": "lbx:my-perfect-stranger",
+              "type": "series",
+              "name": "My Perfect Stranger",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26351388.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:tale-of-the-nine-tailed-1938",
+              "type": "series",
+              "name": "Tale of the Nine Tailed 1938",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27329405.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:inspector-koo",
+              "type": "series",
+              "name": "Inspector Koo",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14731794.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:a-time-called-you",
+              "type": "series",
+              "name": "A Time Called You",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21627438.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:the-judge-from-hell",
+              "type": "series",
+              "name": "The Judge from Hell",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33255143.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:friendly-rivalry",
+              "type": "series",
+              "name": "Friendly Rivalry",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35683421.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:dear-x",
+              "type": "series",
+              "name": "Dear X",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37890201.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:all-of-us-are-dead",
+              "type": "series",
+              "name": "All of Us Are Dead",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14169960.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:we-are-all-trying-here",
+              "type": "series",
+              "name": "We Are All Trying Here",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36732944.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:live-2018-2",
+              "type": "series",
+              "name": "Live",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7976532.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:vigilante-2023-1",
+              "type": "series",
+              "name": "Vigilante",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27458539.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:one-dollar-lawyer",
+              "type": "series",
+              "name": "One Dollar Lawyer",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22248254.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:the-uncanny-counter",
+              "type": "series",
+              "name": "The Uncanny Counter",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13273826.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:pyramid-game",
+              "type": "series",
+              "name": "Pyramid Game",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29311421.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:when-the-camellia-blooms",
+              "type": "series",
+              "name": "When the Camellia Blooms",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10826064.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:defendant-2017",
+              "type": "series",
+              "name": "Defendant",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6256692.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2017"
+            },
+            {
+              "id": "lbx:flex-x-cop",
+              "type": "series",
+              "name": "Flex x Cop",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30413181.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:can-this-love-be-translated",
+              "type": "series",
+              "name": "Can This Love Be Translated?",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30293074.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:while-you-were-sleeping-2017",
+              "type": "series",
+              "name": "While You Were Sleeping",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6256484.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2017"
+            },
+            {
+              "id": "lbx:the-wonderfools",
+              "type": "series",
+              "name": "The WONDERfools",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt34440854.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:bon-appetit-your-majesty",
+              "type": "series",
+              "name": "Bon Appétit, Your Majesty",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37600136.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
             }
           ]
         },

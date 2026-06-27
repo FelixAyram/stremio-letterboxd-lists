@@ -92,13 +92,27 @@ function searchTitleVariants(film) {
   return [...out];
 }
 
-const SERIES_LIST_HINTS = /kdrama|k-drama|tv\s*show|television|mini-?series|series\b|dramas?\b|anime\s*series/i;
+const SERIES_LIST_HINTS = /k-?dramas?|tv\s*shows?|television|mini-?series|anime\s*series/i;
 
 function listPrefersSeries(title, films = []) {
   if (SERIES_LIST_HINTS.test(title || '')) return true;
   if (!films.length) return false;
   const seriesCount = films.filter((f) => f.mediaType === 'series').length;
   return seriesCount / films.length >= 0.3;
+}
+
+function listHasSeries(films = [], title = '') {
+  if (!films.length) return false;
+  if (listPrefersSeries(title, films)) return true;
+  return films.some((f) => f.mediaType === 'series');
+}
+
+function listHasMovies(films = [], title = '') {
+  if (!films.length) return true;
+  if (listPrefersSeries(title, films)) {
+    return films.some((f) => f.mediaType !== 'series');
+  }
+  return films.some((f) => f.mediaType !== 'series') || !listHasSeries(films, title);
 }
 
 module.exports = {
@@ -108,5 +122,7 @@ module.exports = {
   scoreCandidate,
   minAcceptScore,
   searchTitleVariants,
-  listPrefersSeries
+  listPrefersSeries,
+  listHasSeries,
+  listHasMovies
 };

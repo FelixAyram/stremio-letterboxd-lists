@@ -1,6 +1,6 @@
 const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
-const { listPrefersSeries } = require('./src/title-match');
+const { listPrefersSeries, listHasSeries, listHasMovies } = require('./src/title-match');
 const { resolveFilms, fetchMeta, getImdbForSlug, getMediaTypeForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta, ensureLetterboxdPosters } = require('./src/cinemeta');
 const { isAllowedPoster, isRpdbMode } = require('./src/posters');
 const tmdb = require('./src/tmdb');
@@ -70,6 +70,7 @@ async function getFilmList(userId, listConfig) {
     };
     filmListCache.set(memKey, data);
     writeFilmListCache(userId, list.id, data);
+    clearInterfaceCacheForList(userId, listId);
     console.log(`[${userId}] ${list.films.length} peliculas en "${list.title}"`);
     return data;
   })();
@@ -197,8 +198,44 @@ function findListConfig(userId, listId) {
   return readLists(userId).lists.find((l) => l.id === listId);
 }
 
-function buildManifestForList(listConfig) {
-  const name = listConfig.name || listConfig.title || 'Letterboxd List';
+function buildManifestForList(listConfig, filmData = null) {
+  const name = listConfig.name || listConfig.title || filmData?.title || 'Letterboxd List';
+  const films = filmData?.films || [];
+  const title = filmData?.title || name;
+  const hasSeries = listHasSeries(films, title);
+  const hasMovies = listHasMovies(films, title);
+
+  const catalogs = [];
+  const types = [];
+
+  if (hasMovies) {
+    catalogs.push({
+      type: 'movie',
+      id: listConfig.id,
+      name,
+      extra: [{ name: 'skip', isRequired: false }]
+    });
+    types.push('movie');
+  }
+  if (hasSeries) {
+    catalogs.push({
+      type: 'series',
+      id: listConfig.id,
+      name,
+      extra: [{ name: 'skip', isRequired: false }]
+    });
+    types.push('series');
+  }
+  if (!catalogs.length) {
+    catalogs.push({
+      type: 'movie',
+      id: listConfig.id,
+      name,
+      extra: [{ name: 'skip', isRequired: false }]
+    });
+    types.push('movie');
+  }
+
   return {
     id: `community.letterboxd.${listConfig.id}`,
     version: VERSION,
@@ -207,31 +244,23 @@ function buildManifestForList(listConfig) {
     logo: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     background: 'https://s.ltrbxd.com/static/img/letterboxd-decal-dots-neg-rgb-100px.png',
     resources: ['catalog', 'meta'],
-    types: ['movie', 'series'],
+    types,
     idPrefixes: ['lbx'],
-    catalogs: [
-      {
-        type: 'movie',
-        id: listConfig.id,
-        name,
-        extra: [{ name: 'skip', isRequired: false }]
-      },
-      {
-        type: 'series',
-        id: listConfig.id,
-        name,
-        extra: [{ name: 'skip', isRequired: false }]
-      }
-    ],
+    catalogs,
     behaviorHints: { configurable: false, configurationRequired: false }
   };
 }
 
-function createBuilderForList(userId, listId) {
+function createBuilderForList(userId, listId, filmData = null) {
   const listConfig = findListConfig(userId, listId);
   if (!listConfig) throw new Error(`Lista no encontrada: ${listId}`);
 
-  const builder = new addonBuilder(buildManifestForList(listConfig));
+  if (!filmData) {
+    const listKey = listConfig.id;
+    filmData = filmListCache.get(cacheKey(userId, listKey)) || readFilmListCache(userId, listKey);
+  }
+
+  const builder = new addonBuilder(buildManifestForList(listConfig, filmData));
 
   builder.defineCatalogHandler(async ({ type, id, extra }) => {
     if (id !== listId) return { metas: [] };
@@ -293,15 +322,28 @@ function createBuilderForList(userId, listId) {
   return builder;
 }
 
+function clearInterfaceCacheForList(userId, listId) {
+  const prefix = `${userId}|${listId}|`;
+  for (const key of interfaceCache.keys()) {
+    if (key.startsWith(prefix)) interfaceCache.delete(key);
+  }
+}
+
 function getInterfaceForList(userId, listId) {
   const config = findListConfig(userId, listId);
   if (!config) return null;
 
-  const key = `${userId}|${listId}|${config.url}|${config.name || ''}`;
+  const filmData = filmListCache.get(cacheKey(userId, listId)) || readFilmListCache(userId, listId);
+  const films = filmData?.films || [];
+  const title = filmData?.title || config.name || '';
+  const seriesFlag = listHasSeries(films, title) ? 's' : '';
+  const movieFlag = listHasMovies(films, title) ? 'm' : '';
+  const key = `${userId}|${listId}|${config.url}|${config.name || ''}|${films.length}|${seriesFlag}${movieFlag}`;
+
   const cached = interfaceCache.get(key);
   if (cached) return cached;
 
-  const iface = createBuilderForList(userId, listId).getInterface();
+  const iface = createBuilderForList(userId, listId, filmData).getInterface();
   interfaceCache.set(key, iface);
   return iface;
 }
@@ -309,7 +351,8 @@ function getInterfaceForList(userId, listId) {
 function buildManifest(userId, listId) {
   const config = findListConfig(userId, listId);
   if (!config) return null;
-  return buildManifestForList(config);
+  const filmData = filmListCache.get(cacheKey(userId, listId)) || readFilmListCache(userId, listId);
+  return buildManifestForList(config, filmData);
 }
 
 function preloadLists(userId) {

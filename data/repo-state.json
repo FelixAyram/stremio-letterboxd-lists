@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "savedAt": "2026-06-27T18:33:39.050Z",
+  "savedAt": "2026-06-27T18:54:44.907Z",
   "users": {
     "users": [
       {
@@ -28,6 +28,10 @@
       "wGwRbGH-BXmb0nn7pjrvOQ": {
         "userId": "ayrammaxigmailcom",
         "listId": "list-150-highest-rated-kdramas-on-letterboxd"
+      },
+      "A8ERmr3l2GTRrkrsiDK9xA": {
+        "userId": "ayrammaxigmailcom",
+        "listId": "list-get-busy-dying-or-get-busy-watching-2018s"
       }
     }
   },
@@ -57,6 +61,12 @@
           "name": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
           "id": "list-150-highest-rated-kdramas-on-letterboxd",
           "key": "wGwRbGH-BXmb0nn7pjrvOQ"
+        },
+        {
+          "url": "https://letterboxd.com/axelhagne/list/get-busy-dying-or-get-busy-watching-2018s/",
+          "name": "Get Busy Dying or Get Busy Watching 2018's Most Essential Movies",
+          "id": "list-get-busy-dying-or-get-busy-watching-2018s",
+          "key": "A8ERmr3l2GTRrkrsiDK9xA"
         }
       ]
     }

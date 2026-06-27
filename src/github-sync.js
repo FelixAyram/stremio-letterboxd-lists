@@ -86,20 +86,24 @@ function stateHasData(state) {
 
 function exportState() {
   const { readUsersDb } = require('./auth');
-  const { readLists } = require('./store');
+  const { readLists, exportUserCaches } = require('./store');
   const { readIndex } = require('./keys');
 
   const listsByUser = {};
+  const cachesByUser = {};
   for (const user of readUsersDb().users) {
     listsByUser[user.id] = readLists(user.id);
+    const caches = exportUserCaches(user.id);
+    if (caches) cachesByUser[user.id] = caches;
   }
 
   return {
-    version: 1,
+    version: 2,
     savedAt: new Date().toISOString(),
     users: readUsersDb(),
     index: readIndex(),
-    listsByUser
+    listsByUser,
+    cachesByUser
   };
 }
 
@@ -107,7 +111,7 @@ function importState(state) {
   if (!state?.version) return false;
 
   const { writeUsersDbLocal } = require('./auth');
-  const { writeListsLocal } = require('./store');
+  const { writeListsLocal, importUserCaches } = require('./store');
   const { writeIndexLocal } = require('./keys');
 
   if (state.users) writeUsersDbLocal(state.users);
@@ -115,6 +119,10 @@ function importState(state) {
 
   for (const [uid, data] of Object.entries(state.listsByUser || {})) {
     if (data?.lists) writeListsLocal(uid, data);
+  }
+
+  for (const [uid, caches] of Object.entries(state.cachesByUser || {})) {
+    importUserCaches(uid, caches);
   }
 
   return true;
@@ -223,7 +231,7 @@ async function pushState() {
   }
 
   const body = {
-    message: `sync: actualizar listas (${state.savedAt})`,
+    message: `sync: listas y cache (${state.savedAt})`,
     content: Buffer.from(content, 'utf8').toString('base64'),
     branch: STATE_BRANCH
   };

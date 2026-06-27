@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const github = require('./github-sync');
+const { normalizeListUrl } = require('./letterboxd');
 
 const DATA_DIR = path.join(__dirname, '..', 'data');
 const LEGACY_LISTS_FILE = path.join(DATA_DIR, 'lists.json');
@@ -106,15 +107,33 @@ function isBadMeta(m) {
   return false;
 }
 
-const CACHE_SCHEMA = 6;
+const CACHE_SCHEMA = 7;
 
-function readListCache(userId, listId) {
+function cacheTtlMs(data) {
+  if (data?.persisted) return 0;
+  const envTtl = parseInt(process.env.CACHE_TTL_MS || '', 10);
+  if (Number.isFinite(envTtl)) return envTtl;
+  return 6 * 60 * 60 * 1000;
+}
+
+function isCacheExpired(data) {
+  const ttl = cacheTtlMs(data);
+  if (!ttl) return false;
+  return Date.now() - (data.cachedAt || 0) > ttl;
+}
+
+function readListCache(userId, listId, opts = {}) {
   const p = cachePath(userId, listId);
   if (!fs.existsSync(p)) return readLegacyListCache(listId);
   try {
     const data = JSON.parse(fs.readFileSync(p, 'utf8'));
-    if (Date.now() - data.cachedAt > 6 * 60 * 60 * 1000) return null;
+    if (isCacheExpired(data)) return null;
     if ((data.cacheSchema || 0) < CACHE_SCHEMA) return null;
+
+    if (opts.listUrl && data.listUrl) {
+      if (normalizeListUrl(opts.listUrl) !== normalizeListUrl(data.listUrl)) return null;
+    }
+    if (opts.filmsCount && data.filmsCount && data.filmsCount !== opts.filmsCount) return null;
 
     if (data.metaByIndex?.length) {
       const bad = data.metaByIndex.some((m) => m && isBadMeta(m));
@@ -144,9 +163,15 @@ function readLegacyListCache(listId) {
   return null;
 }
 
-function writeListCache(userId, listId, payload) {
+function writeListCache(userId, listId, payload, opts = {}) {
   ensureUserDirs(userId);
-  fs.writeFileSync(cachePath(userId, listId), JSON.stringify({ ...payload, cachedAt: Date.now() }, null, 2));
+  const data = {
+    ...payload,
+    cachedAt: Date.now(),
+    cacheSchema: payload.cacheSchema || CACHE_SCHEMA
+  };
+  fs.writeFileSync(cachePath(userId, listId), JSON.stringify(data, null, 2));
+  if (opts.syncGithub !== false && github.isEnabled()) github.schedulePush();
 }
 
 function filmListCachePath(userId, listId) {
@@ -169,9 +194,132 @@ function readFilmListCache(userId, listId) {
   return null;
 }
 
-function writeFilmListCache(userId, listId, payload) {
+function writeFilmListCache(userId, listId, payload, opts = {}) {
   ensureUserDirs(userId);
-  fs.writeFileSync(filmListCachePath(userId, listId), JSON.stringify({ ...payload, cachedAt: Date.now() }, null, 2));
+  fs.writeFileSync(
+    filmListCachePath(userId, listId),
+    JSON.stringify({ ...payload, cachedAt: Date.now() }, null, 2)
+  );
+  if (opts.syncGithub !== false && github.isEnabled()) github.schedulePush();
+}
+
+function compactMeta(m) {
+  if (!m?.id) return null;
+  return {
+    id: m.id,
+    type: m.type,
+    name: m.name,
+    poster: m.poster,
+    posterShape: m.posterShape || 'poster',
+    releaseInfo: m.releaseInfo || ''
+  };
+}
+
+function compactFilm(f) {
+  if (!f?.slug) return null;
+  const out = {
+    slug: f.slug,
+    name: f.name,
+    year: f.year,
+    mediaType: f.mediaType,
+    link: f.link
+  };
+  if (f.listPrefersSeries) out.listPrefersSeries = true;
+  if (f.poster) out.poster = f.poster;
+  return out;
+}
+
+function exportUserCaches(userId) {
+  const dir = cacheDir(userId);
+  if (!fs.existsSync(dir)) return null;
+
+  const filmLists = {};
+  const metas = {};
+  let hasAny = false;
+
+  for (const file of fs.readdirSync(dir)) {
+    try {
+      if (file.endsWith('-films.json')) {
+        const listId = file.slice(0, -'-films.json'.length);
+        const raw = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+        if (!raw?.films?.length) continue;
+        filmLists[listId] = {
+          id: raw.id,
+          title: raw.title,
+          url: raw.url,
+          preferSeries: raw.preferSeries,
+          cachedAt: raw.cachedAt,
+          films: raw.films.map(compactFilm).filter(Boolean)
+        };
+        hasAny = true;
+      } else if (file.endsWith('.json')) {
+        const listId = file.slice(0, -'.json'.length);
+        const raw = JSON.parse(fs.readFileSync(path.join(dir, file), 'utf8'));
+        const arr = raw.metaByIndex || raw.metas;
+        if (!arr?.length) continue;
+        metas[listId] = {
+          title: raw.title,
+          url: raw.url,
+          listUrl: raw.listUrl,
+          filmsCount: raw.filmsCount || arr.length,
+          cacheSchema: raw.cacheSchema || CACHE_SCHEMA,
+          persisted: true,
+          cachedAt: raw.cachedAt,
+          metaByIndex: arr.map(compactMeta).filter(Boolean)
+        };
+        hasAny = true;
+      }
+    } catch {}
+  }
+
+  return hasAny ? { filmLists, metas } : null;
+}
+
+function importUserCaches(userId, caches) {
+  if (!caches) return;
+  ensureUserDirs(userId);
+
+  for (const [listId, data] of Object.entries(caches.filmLists || {})) {
+    if (!data?.films?.length) continue;
+    writeFilmListCache(
+      userId,
+      listId,
+      {
+        id: data.id || listId,
+        title: data.title,
+        url: data.url,
+        preferSeries: data.preferSeries,
+        films: data.films,
+        cachedAt: data.cachedAt || Date.now()
+      },
+      { syncGithub: false }
+    );
+  }
+
+  for (const [listId, data] of Object.entries(caches.metas || {})) {
+    if (!data?.metaByIndex?.length) continue;
+    writeListCache(
+      userId,
+      listId,
+      {
+        title: data.title,
+        url: data.url,
+        listUrl: data.listUrl,
+        filmsCount: data.filmsCount || data.metaByIndex.length,
+        metaByIndex: data.metaByIndex,
+        persisted: true,
+        cacheSchema: CACHE_SCHEMA,
+        cachedAt: data.cachedAt || Date.now()
+      },
+      { syncGithub: false }
+    );
+  }
+}
+
+function deleteListCache(userId, listId) {
+  for (const p of [cachePath(userId, listId), filmListCachePath(userId, listId)]) {
+    if (fs.existsSync(p)) fs.unlinkSync(p);
+  }
 }
 
 module.exports = {
@@ -182,7 +330,11 @@ module.exports = {
   writeListCache,
   readFilmListCache,
   writeFilmListCache,
+  exportUserCaches,
+  importUserCaches,
+  deleteListCache,
   migrateLegacyLists,
   readLegacyLists,
-  sanitizeUserId
+  sanitizeUserId,
+  CACHE_SCHEMA
 };

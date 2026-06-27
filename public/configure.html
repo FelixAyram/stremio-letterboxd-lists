@@ -103,7 +103,7 @@
       <span>Sesion: <strong id="currentUser"></strong></span>
       <button type="button" class="btn-red" onclick="logout()">Cerrar sesion</button>
     </div>
-    <p>Agrega listas con <strong>+ Agregar lista</strong>. Al guardar, <strong>no se borran las anteriores</strong> — cada una tiene su manifest.</p>
+    <p>Agrega listas con <strong>+ Agregar lista</strong>. Al guardar se precalientan y se guardan en GitHub para cargas rapidas en Stremio.</p>
 
     <h2>Agregar listas</h2>
     <div id="lists"></div>
@@ -114,7 +114,7 @@
     <div class="saved-manifests" id="savedManifests" style="display:none">
       <h2>Tus URLs para Stremio</h2>
       <p style="font-size:0.85rem">Addons → + → pega cada URL → Install. La URL es privada — no muestra tu usuario ni el nombre de la lista.</p>
-      <p style="font-size:0.8rem;color:#6a8;margin-top:0.5rem">Si el catálogo sale vacío en Stremio, pulsa <strong>Despertar ahora</strong> arriba y espera ~30 s antes de recargar Stremio.</p>
+      <p style="font-size:0.8rem;color:#6a8;margin-top:0.5rem">Tras <strong>Guardar listas</strong>, espera a que termine el precalentado (barra de progreso abajo). Luego Stremio carga al instante incluso si el servidor estaba dormido.</p>
       <p style="font-size:0.8rem;color:#6a8" id="manifestVersionNote"></p>
       <div id="manifestList"></div>
     </div>
@@ -439,6 +439,44 @@
       }
     }
 
+    async function pollWarmStatus() {
+      for (let i = 0; i < 900; i++) {
+        await new Promise((r) => setTimeout(r, 2000));
+        const { r, data } = await api('/api/warm-status');
+        if (!r.ok) continue;
+        if (data.status === 'running') {
+          const p = data.progress;
+          let detail = '';
+          if (p?.phase === 'resolve' && p.total) {
+            detail = ` — ${p.current}/${p.total} titulos`;
+          } else if (p?.phase === 'sync') {
+            detail = ' — subiendo a GitHub';
+          } else if (p?.phase === 'scrape') {
+            detail = ' — leyendo Letterboxd';
+          }
+          msgEl.className = 'msg';
+          msgEl.textContent = `Precalentando "${data.current || 'lista'}" (${data.listIndex || '?'}/${data.listTotal || '?'})${detail}…`;
+          continue;
+        }
+        if (data.status === 'done') {
+          const syncNote = data.githubSynced === false
+            ? ' Aviso: no se pudo sincronizar con GitHub.'
+            : ' Cache en GitHub — Stremio deberia cargar al instante.';
+          msgEl.className = 'msg ok';
+          msgEl.textContent = 'Precalentado y guardado (v' + (appVersion || '?') + ').' + syncNote;
+          return;
+        }
+        if (data.status === 'error') {
+          msgEl.className = 'msg err';
+          msgEl.textContent = 'Error al precalentar: ' + (data.error || 'desconocido');
+          return;
+        }
+        if (data.status === 'idle') return;
+      }
+      msgEl.className = 'msg err';
+      msgEl.textContent = 'El precalentado tarda mas de lo esperado. Revisa el servidor o vuelve a guardar.';
+    }
+
     async function save() {
       const items = [...listsEl.querySelectorAll('.list-item')];
       const lists = items.map(el => ({
@@ -474,9 +512,13 @@
         }
 
         reloadForm(data.lists);
-        msgEl.className = 'msg ok';
-        const syncNote = data.githubSynced === false ? ' No se pudo sincronizar con GitHub — revisa GITHUB_TOKEN.' : '';
-        msgEl.textContent = 'Guardado (v' + (data.version || appVersion || '?') + '). ' + data.lists.length + ' lista(s).' + syncNote;
+        if (data.warming) {
+          await pollWarmStatus();
+        } else {
+          msgEl.className = 'msg ok';
+          const syncNote = data.githubSynced === false ? ' No se pudo sincronizar con GitHub — revisa GITHUB_TOKEN.' : '';
+          msgEl.textContent = 'Guardado (v' + (data.version || appVersion || '?') + '). ' + data.lists.length + ' lista(s).' + syncNote;
+        }
       } catch (e) {
         msgEl.className = 'msg err';
         msgEl.textContent = e.message;
@@ -490,7 +532,7 @@
         const note = document.getElementById('manifestVersionNote');
         if (note) {
           note.textContent = 'Manifests v' + d.version
-            + (d.githubSync ? ' · GitHub sync' : '')
+            + (d.githubSync ? ' · GitHub sync + cache' : '')
             + (d.tmdb ? ' · TMDB' : '')
             + (d.tvdb ? ' · TVDB' : '')
             + (d.rpdb ? ' · RPDB posters' : '')

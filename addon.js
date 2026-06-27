@@ -1,5 +1,5 @@
 const { addonBuilder } = require('stremio-addon-sdk');
-const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
+const { fetchFullList, listIdFromUrl, normalizeListUrl } = require('./src/letterboxd');
 const { listPrefersSeries, listHasSeries, listHasMovies } = require('./src/title-match');
 const { resolveFilms, fetchMeta, getImdbForSlug, getMediaTypeForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta, ensureLetterboxdPosters } = require('./src/cinemeta');
 const { isAllowedPoster, isRpdbMode } = require('./src/posters');
@@ -7,7 +7,7 @@ const tmdb = require('./src/tmdb');
 const rpdb = require('./src/rpdb');
 const tvdb = require('./src/tvdb');
 const { VERSION } = require('./src/version');
-const { readLists, readListCache, writeListCache, readFilmListCache, writeFilmListCache } = require('./src/store');
+const { readLists, readListCache, writeListCache, readFilmListCache, writeFilmListCache, CACHE_SCHEMA } = require('./src/store');
 
 const listCache = new Map();
 const filmListCache = new Map();
@@ -97,7 +97,10 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
   if (skip >= films.length) return [];
 
   const end = Math.min(skip + limit, films.length);
-  const cache = readListCache(userId, listId);
+  const cache = readListCache(userId, listId, {
+    listUrl: url,
+    filmsCount: films.length
+  });
   let metaByIndex = getMetaArrayFromCache(cache, films.length);
 
   if (metaByIndex) {
@@ -124,7 +127,15 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
       for (let j = 0; j < indices.length; j++) {
         metaByIndex[indices[j]] = resolved[j];
       }
-      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 6 });
+      writeListCache(userId, listId, {
+        title,
+        url,
+        listUrl: normalizeListUrl(url),
+        metaByIndex,
+        filmsCount: films.length,
+        cacheSchema: CACHE_SCHEMA,
+        persisted: Boolean(metaByIndex.every(Boolean))
+      });
       loadPosterMapFromCache(resolved);
       listCache.set(cacheKey(userId, listId), metaByIndex);
       return metasForRange(metaByIndex, films, skip, end);
@@ -138,12 +149,22 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
       for (let j = 0; j < indices.length; j++) {
         metaByIndex[indices[j]] = resolved[j];
       }
-      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 6 });
+      writeListCache(userId, listId, {
+        title,
+        url,
+        listUrl: normalizeListUrl(url),
+        metaByIndex,
+        filmsCount: films.length,
+        cacheSchema: CACHE_SCHEMA,
+        persisted: Boolean(metaByIndex.every(Boolean))
+      });
       loadPosterMapFromCache(resolved);
       listCache.set(cacheKey(userId, listId), metaByIndex);
     })().catch((e) => console.error(`[catalog:bg]`, e.message));
     return quick;
   }
+
+  return metasForRange(metaByIndex, films, skip, end);
 }
 
 function preloadNextCatalogPage(userId, listConfig, skip) {
@@ -181,7 +202,14 @@ async function getListMetas(userId, listConfig) {
     });
     console.log(`[ok] ${metas.length} peliculas — "${title}"`);
     listCache.set(memKey, metas);
-    writeListCache(userId, id, { title, url, metas, cacheSchema: 6 });
+    writeListCache(userId, id, {
+      title,
+      url,
+      listUrl: normalizeListUrl(url),
+      metas,
+      filmsCount: films.length,
+      cacheSchema: CACHE_SCHEMA
+    });
     return metas;
   })();
 
@@ -373,6 +401,60 @@ function clearRuntimeCache() {
   interfaceCache.clear();
 }
 
+async function warmupListCache(userId, listConfig, onProgress) {
+  const listId = listConfig.id;
+  const memKey = cacheKey(userId, listId);
+
+  filmListCache.delete(memKey);
+  listCache.delete(memKey);
+
+  onProgress?.({ phase: 'scrape', current: 0, total: 1 });
+  console.log(`[warmup:${userId}] Scrape: ${listConfig.url}`);
+  const list = await fetchFullList(listConfig.url);
+  const data = {
+    id: list.id,
+    title: list.title,
+    url: list.url,
+    films: list.films,
+    preferSeries: list.preferSeries
+  };
+  filmListCache.set(memKey, data);
+  writeFilmListCache(userId, list.id, data, { syncGithub: false });
+  clearInterfaceCacheForList(userId, listId);
+
+  onProgress?.({ phase: 'resolve', current: 0, total: list.films.length });
+  console.log(`[warmup:${userId}] Resolviendo ${list.films.length} — "${list.title}"`);
+  const metaByIndex = await resolveFilms(list.films, (n, t) => {
+    onProgress?.({ phase: 'resolve', current: n, total: t });
+    if (n % 50 === 0 || n === t) console.log(`  [warmup] ${n}/${t}`);
+  }, RESOLVE_CONCURRENCY);
+
+  const listUrl = normalizeListUrl(listConfig.url);
+  writeListCache(
+    userId,
+    listId,
+    {
+      title: list.title,
+      url: list.url,
+      listUrl,
+      metaByIndex,
+      filmsCount: list.films.length,
+      cacheSchema: CACHE_SCHEMA,
+      persisted: true
+    },
+    { syncGithub: false }
+  );
+
+  loadPosterMapFromCache(metaByIndex.filter(Boolean));
+  listCache.set(memKey, metaByIndex);
+  clearInterfaceCacheForList(userId, listId);
+  getInterfaceForList(userId, listId);
+
+  const resolvedCount = metaByIndex.filter(Boolean).length;
+  console.log(`[warmup:${userId}] ok "${list.title}" — ${resolvedCount}/${list.films.length}`);
+  return { filmsCount: list.films.length, resolvedCount };
+}
+
 module.exports = {
   getInterfaceForList,
   buildManifest,
@@ -382,5 +464,6 @@ module.exports = {
   getListMetas,
   getFilmList,
   getCatalogMetas,
-  findListConfig
+  findListConfig,
+  warmupListCache
 };

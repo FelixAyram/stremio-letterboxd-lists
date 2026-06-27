@@ -6,7 +6,7 @@ const { getRouter } = require('stremio-addon-sdk');
 const { getInterfaceForList, preloadLists, clearRuntimeCache, findListConfig, getFilmList, getCatalogMetas } = require('./addon');
 const { fetchFullList, fetchListTitle, normalizeListUrl, listIdFromUrl } = require('./src/letterboxd');
 const { VERSION } = require('./src/version');
-const { readLists, writeLists, migrateLegacyLists } = require('./src/store');
+const { readLists, writeLists, migrateLegacyLists, deleteListCache } = require('./src/store');
 const {
   register, login, signToken, authFromRequest, setSessionCookie, clearSessionCookie,
   listUserIds, findUserById, publicUser, clientIp, findOrCreateGoogleUser, readUsersDb
@@ -14,6 +14,7 @@ const {
 const googleAuth = require('./src/google-auth');
 const { lookupKey, attachKeysToLists, rebuildIndex, manifestUrl, isValidKey } = require('./src/keys');
 const github = require('./src/github-sync');
+const { startWarmup, getWarmStatus } = require('./src/warmup');
 const tmdb = require('./src/tmdb');
 const tvdb = require('./src/tvdb');
 const rpdb = require('./src/rpdb');
@@ -254,6 +255,10 @@ app.get('/api/info', (req, res) => {
   });
 });
 
+app.get('/api/warm-status', requireAuth, (req, res) => {
+  res.json(getWarmStatus(req.userId));
+});
+
 app.get('/api/lists', requireAuth, (req, res) => {
   res.json({ lists: listsWithManifests(req, req.userId) });
 });
@@ -261,6 +266,8 @@ app.get('/api/lists', requireAuth, (req, res) => {
 app.post('/api/lists', requireAuth, async (req, res) => {
   const incoming = await resolveIncomingLists(req.userId, req.body.lists);
   if (!incoming.length) return res.status(400).json({ error: 'Agrega al menos una URL de Letterboxd' });
+
+  const previousIds = new Set(readLists(req.userId).lists.map((l) => l.id));
 
   let finalLists;
   if (req.body.replace) {
@@ -271,21 +278,36 @@ app.post('/api/lists', requireAuth, async (req, res) => {
     finalLists = attachKeysToLists(req.userId, [...byId.values()]);
   }
 
+  const finalIds = new Set(finalLists.map((l) => l.id));
+  for (const id of previousIds) {
+    if (!finalIds.has(id)) deleteListCache(req.userId, id);
+  }
+
   persistLists(req.userId, finalLists);
   clearRuntimeCache();
   activateLists(req.userId, finalLists);
 
   const synced = await github.pushNow();
-  res.json({ ok: true, version: VERSION, lists: listsWithManifests(req, req.userId), githubSynced: synced });
+  startWarmup(req.userId, finalLists);
+
+  res.json({
+    ok: true,
+    version: VERSION,
+    lists: listsWithManifests(req, req.userId),
+    githubSynced: synced,
+    warming: true
+  });
 });
 
-app.delete('/api/lists/:id', requireAuth, (req, res) => {
+app.delete('/api/lists/:id', requireAuth, async (req, res) => {
   const id = req.params.id;
   const finalLists = readLists(req.userId).lists.filter((l) => l.id !== id);
+  deleteListCache(req.userId, id);
   persistLists(req.userId, finalLists);
   clearRuntimeCache();
   activateLists(req.userId, finalLists);
-  res.json({ ok: true, version: VERSION, lists: listsWithManifests(req, req.userId) });
+  const synced = await github.pushNow();
+  res.json({ ok: true, version: VERSION, lists: listsWithManifests(req, req.userId), githubSynced: synced });
 });
 
 app.get('/api/preview', requireAuth, async (req, res) => {

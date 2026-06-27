@@ -43,13 +43,12 @@ async function getFilmList(userId, listConfig) {
 
   const cached = readFilmListCache(userId, listId);
   if (cached?.films?.length) {
-    if (!cached.preferSeries) {
-      cached.preferSeries = listPrefersSeries(cached.title, cached.films);
-      if (cached.preferSeries) {
-        cached.films.forEach((f) => {
-          if (f.mediaType !== 'series') f.listPrefersSeries = true;
-        });
-      }
+    cached.preferSeries =
+      cached.preferSeries || listPrefersSeries(cached.title, cached.films, listConfig.url);
+    if (cached.preferSeries) {
+      cached.films.forEach((f) => {
+        if (f.mediaType !== 'series') f.listPrefersSeries = true;
+      });
     }
     filmListCache.set(memKey, cached);
     return cached;
@@ -202,8 +201,10 @@ function buildManifestForList(listConfig, filmData = null) {
   const name = listConfig.name || listConfig.title || filmData?.title || 'Letterboxd List';
   const films = filmData?.films || [];
   const title = filmData?.title || name;
-  const hasSeries = listHasSeries(films, title);
-  const hasMovies = listHasMovies(films, title);
+  const url = listConfig.url || filmData?.url || '';
+  const preferSeries = filmData?.preferSeries || listPrefersSeries(title, films, url);
+  const hasSeries = listHasSeries(films, title, url, preferSeries);
+  const hasMovies = listHasMovies(films, title, url, preferSeries);
 
   const catalogs = [];
   const types = [];
@@ -227,13 +228,14 @@ function buildManifestForList(listConfig, filmData = null) {
     types.push('series');
   }
   if (!catalogs.length) {
+    const fallbackType = preferSeries || listPrefersSeries(title, films, url) ? 'series' : 'movie';
     catalogs.push({
-      type: 'movie',
+      type: fallbackType,
       id: listConfig.id,
       name,
       extra: [{ name: 'skip', isRequired: false }]
     });
-    types.push('movie');
+    types.push(fallbackType);
   }
 
   return {
@@ -336,9 +338,11 @@ function getInterfaceForList(userId, listId) {
   const filmData = filmListCache.get(cacheKey(userId, listId)) || readFilmListCache(userId, listId);
   const films = filmData?.films || [];
   const title = filmData?.title || config.name || '';
-  const seriesFlag = listHasSeries(films, title) ? 's' : '';
-  const movieFlag = listHasMovies(films, title) ? 'm' : '';
-  const key = `${userId}|${listId}|${config.url}|${config.name || ''}|${films.length}|${seriesFlag}${movieFlag}`;
+  const url = config.url || filmData?.url || '';
+  const preferSeries = filmData?.preferSeries || listPrefersSeries(title, films, url);
+  const seriesFlag = listHasSeries(films, title, url, preferSeries) ? 's' : '';
+  const movieFlag = listHasMovies(films, title, url, preferSeries) ? 'm' : '';
+  const key = `${userId}|${listId}|${config.url}|${config.name || ''}|${films.length}|${preferSeries ? 'p' : ''}${seriesFlag}${movieFlag}`;
 
   const cached = interfaceCache.get(key);
   if (cached) return cached;

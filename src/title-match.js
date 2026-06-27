@@ -92,27 +92,29 @@ function searchTitleVariants(film) {
   return [...out];
 }
 
-const SERIES_LIST_HINTS = /k-?dramas?|tv\s*shows?|television|mini-?series|anime\s*series/i;
+const SERIES_LIST_HINTS = /k-?dramas?|korean\s*drama|tv\s*shows?|television|mini-?series|anime\s*series/i;
 
-function listPrefersSeries(title, films = []) {
+function listPrefersSeries(title, films = [], url = '') {
   if (SERIES_LIST_HINTS.test(title || '')) return true;
+  if (SERIES_LIST_HINTS.test(url || '')) return true;
   if (!films.length) return false;
   const seriesCount = films.filter((f) => f.mediaType === 'series').length;
   return seriesCount / films.length >= 0.3;
 }
 
-function listHasSeries(films = [], title = '') {
+function listHasSeries(films = [], title = '', url = '', preferSeries = false) {
+  if (preferSeries || listPrefersSeries(title, films, url)) return true;
   if (!films.length) return false;
-  if (listPrefersSeries(title, films)) return true;
-  return films.some((f) => f.mediaType === 'series');
+  return films.some((f) => f.mediaType === 'series' || f.listPrefersSeries);
 }
 
-function listHasMovies(films = [], title = '') {
-  if (!films.length) return true;
-  if (listPrefersSeries(title, films)) {
-    return films.some((f) => f.mediaType !== 'series');
+function listHasMovies(films = [], title = '', url = '', preferSeries = false) {
+  const prefers = preferSeries || listPrefersSeries(title, films, url);
+  if (prefers) {
+    return films.some((f) => !f.listPrefersSeries && f.mediaType !== 'series');
   }
-  return films.some((f) => f.mediaType !== 'series') || !listHasSeries(films, title);
+  if (!films.length) return true;
+  return films.some((f) => f.mediaType !== 'series') || !listHasSeries(films, title, url, preferSeries);
 }
 
 module.exports = {

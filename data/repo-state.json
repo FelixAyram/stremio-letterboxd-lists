@@ -1,6 +1,6 @@
 {
-  "version": 1,
-  "savedAt": "2026-06-27T19:52:35.127Z",
+  "version": 2,
+  "savedAt": "2026-06-27T20:07:09.277Z",
   "users": {
     "users": [
       {
@@ -80,5 +80,6 @@
         }
       ]
     }
-  }
+  },
+  "cachesByUser": {}
 }

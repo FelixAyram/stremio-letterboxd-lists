@@ -4,7 +4,7 @@ const tmdb = require('./tmdb');
 const EMPTY_POSTER = 'https://s.ltrbxd.com/static/img/empty-poster-230.png';
 
 function posterMode() {
-  return (process.env.POSTER_MODE || 'letterboxd+rpdb').toLowerCase();
+  return (process.env.POSTER_MODE || 'rpdb').toLowerCase();
 }
 
 function isLetterboxdPoster(url) {
@@ -66,7 +66,7 @@ function pickDisplayPoster(film, imdbId, extras = {}) {
   const tmdbPoster = extras.tmdbPoster || null;
 
   if (mode === 'rpdb') {
-    return rpdbPoster || lbx || tmdbPoster || EMPTY_POSTER;
+    return rpdbPoster || EMPTY_POSTER;
   }
   if (mode === 'letterboxd') {
     return lbx || rpdbPoster || tmdbPoster || EMPTY_POSTER;

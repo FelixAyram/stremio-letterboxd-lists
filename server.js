@@ -249,7 +249,7 @@ app.get('/api/info', (req, res) => {
     tmdb: tmdb.isEnabled(),
     tvdb: tvdb.isEnabled(),
     rpdb: rpdb.isEnabled(),
-    posterMode: process.env.POSTER_MODE || 'letterboxd+rpdb',
+    posterMode: process.env.POSTER_MODE || 'rpdb',
     ...github.syncStatus()
   });
 });

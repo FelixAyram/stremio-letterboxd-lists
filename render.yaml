@@ -34,7 +34,7 @@ services:
       - key: PRELOAD_NEXT_PAGE
         value: "false"
       - key: POSTER_MODE
-        value: letterboxd+rpdb
+        value: rpdb
       - key: RPDB_POSTER_TYPE
         value: poster-default
       - key: TMDB_API_KEY

@@ -124,7 +124,7 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
       for (let j = 0; j < indices.length; j++) {
         metaByIndex[indices[j]] = resolved[j];
       }
-      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 5 });
+      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 6 });
       loadPosterMapFromCache(resolved);
       listCache.set(cacheKey(userId, listId), metaByIndex);
     })().catch((e) => console.error(`[catalog:bg]`, e.message));
@@ -167,7 +167,7 @@ async function getListMetas(userId, listConfig) {
     });
     console.log(`[ok] ${metas.length} peliculas — "${title}"`);
     listCache.set(memKey, metas);
-    writeListCache(userId, id, { title, url, metas, cacheSchema: 5 });
+    writeListCache(userId, id, { title, url, metas, cacheSchema: 6 });
     return metas;
   })();
 

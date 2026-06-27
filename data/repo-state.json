@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:11:23.775Z",
+  "savedAt": "2026-06-27T20:11:28.976Z",
   "users": {
     "users": [
       {
@@ -16466,6 +16466,257 @@
         }
       },
       "metas": {
+        "list-150-highest-rated-kdramas-on-letterboxd": {
+          "title": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
+          "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
+          "listUrl": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
+          "filmsCount": 150,
+          "cacheSchema": 7,
+          "persisted": true,
+          "cachedAt": 1782591085279,
+          "metaByIndex": [
+            {
+              "id": "lbx:when-life-gives-you-tangerines-2025",
+              "type": "series",
+              "name": "When Life Gives You Tangerines",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26471411.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:reply-1988",
+              "type": "series",
+              "name": "Reply 1988",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5182866.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2015"
+            },
+            {
+              "id": "lbx:move-to-heaven",
+              "type": "series",
+              "name": "Move to Heaven",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11052470.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:twinkling-watermelon",
+              "type": "series",
+              "name": "Twinkling Watermelon",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27446493.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:weak-hero",
+              "type": "series",
+              "name": "Weak Hero",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20234568.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:my-mister",
+              "type": "series",
+              "name": "My Mister",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7923710.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:moving-2023-1",
+              "type": "series",
+              "name": "Moving",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt24640580.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:my-dearest-2023",
+              "type": "series",
+              "name": "My Dearest",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26228190.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:mouse-2021-1",
+              "type": "series",
+              "name": "Mouse",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13634792.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:twenty-five-twenty-one",
+              "type": "series",
+              "name": "Twenty Five Twenty One",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt17513352.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:daily-dose-of-sunshine",
+              "type": "series",
+              "name": "Daily Dose of Sunshine",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26258202.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:dp-2021",
+              "type": "series",
+              "name": "D.P.",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13024974.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:love-in-the-big-city-2024",
+              "type": "series",
+              "name": "Love In The Big City",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30143510.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:the-glory",
+              "type": "series",
+              "name": "The Glory",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21344706.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:my-liberation-notes",
+              "type": "series",
+              "name": "My Liberation Notes",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15146130.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:mr-sunshine-2018",
+              "type": "series",
+              "name": "Mr. Sunshine",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7094780.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:crash-landing-on-you",
+              "type": "series",
+              "name": "Crash Landing on You",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10850932.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:jeongnyeon-the-star-is-born",
+              "type": "series",
+              "name": "Jeongnyeon: The Star is Born",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28197611.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:the-trauma-code-heroes-on-call-2025",
+              "type": "series",
+              "name": "The Trauma Code: Heroes on Call",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28106730.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:weightlifting-fairy-kim-bok-joo",
+              "type": "series",
+              "name": "Weightlifting Fairy Kim Bok-joo",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6157148.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:strangers-from-hell",
+              "type": "series",
+              "name": "Strangers from Hell",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10613844.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:beyond-evil-2021",
+              "type": "series",
+              "name": "Beyond Evil",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13634872.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:lovely-runner",
+              "type": "series",
+              "name": "Lovely Runner",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31324295.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:youth-of-may",
+              "type": "series",
+              "name": "Youth of May",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14166666.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:scarlet-heart-ryeo",
+              "type": "series",
+              "name": "Scarlet Heart: Ryeo",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5320412.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:signal-2016",
+              "type": "series",
+              "name": "Signal",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5332206.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:prison-playbook",
+              "type": "series",
+              "name": "Prison Playbook",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7622902.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2017"
+            },
+            {
+              "id": "lbx:the-good-bad-mother",
+              "type": "series",
+              "name": "The Good Bad Mother",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27042206.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:our-unwritten-seoul",
+              "type": "series",
+              "name": "Our Unwritten Seoul",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36724865.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:under-the-queens-umbrella",
+              "type": "series",
+              "name": "Under the Queen's Umbrella",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22265394.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            }
+          ]
+        },
         "list-2003": {
           "title": "2003",
           "url": "https://letterboxd.com/thewickerman/list/2003/",
@@ -18213,6 +18464,257 @@
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1405365.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2012"
+            }
+          ]
+        },
+        "list-get-busy-dying-or-get-busy-watching-2018s": {
+          "title": "Get Busy Dying or Get Busy Watching 2018's Most Essential Movies",
+          "url": "https://letterboxd.com/axelhagne/list/get-busy-dying-or-get-busy-watching-2018s/",
+          "listUrl": "https://letterboxd.com/axelhagne/list/get-busy-dying-or-get-busy-watching-2018s/",
+          "filmsCount": 97,
+          "cacheSchema": 7,
+          "persisted": true,
+          "cachedAt": 1782591086877,
+          "metaByIndex": [
+            {
+              "id": "lbx:spider-man-into-the-spider-verse",
+              "type": "movie",
+              "name": "Spider-Man: Into the Spider-Verse",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4633694.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:the-favourite",
+              "type": "movie",
+              "name": "The Favourite",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5083738.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:roma-2018",
+              "type": "movie",
+              "name": "Roma",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6155172.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:minding-the-gap",
+              "type": "movie",
+              "name": "Minding the Gap",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7476236.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:if-beale-street-could-talk",
+              "type": "movie",
+              "name": "If Beale Street Could Talk",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7125860.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:shoplifters",
+              "type": "movie",
+              "name": "Shoplifters",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8075192.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:a-star-is-born-2018",
+              "type": "movie",
+              "name": "A Star Is Born",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1517451.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:skate-kitchen",
+              "type": "movie",
+              "name": "Skate Kitchen",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7545566.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:blindspotting",
+              "type": "movie",
+              "name": "Blindspotting",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7242142.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:free-solo",
+              "type": "movie",
+              "name": "Free Solo",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7775622.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:eighth-grade",
+              "type": "movie",
+              "name": "Eighth Grade",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7014006.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:burning-2018",
+              "type": "movie",
+              "name": "Burning",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7282468.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:an-elephant-sitting-still",
+              "type": "movie",
+              "name": "An Elephant Sitting Still",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8020896.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:ash-is-purest-white",
+              "type": "movie",
+              "name": "Ash Is Purest White",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7298400.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:mission-impossible-fallout",
+              "type": "movie",
+              "name": "Mission: Impossible - Fallout",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4912910.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:hereditary",
+              "type": "movie",
+              "name": "Hereditary",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7784604.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:first-man",
+              "type": "movie",
+              "name": "First Man",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1213641.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:widows-2018",
+              "type": "movie",
+              "name": "Widows",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4218572.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:thunder-road-2018",
+              "type": "movie",
+              "name": "Thunder Road",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7738450.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:suspiria-2018",
+              "type": "movie",
+              "name": "Suspiria",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1034415.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:climax-2018",
+              "type": "movie",
+              "name": "Climax",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8359848.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:sorry-to-bother-you",
+              "type": "movie",
+              "name": "Sorry to Bother You",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5688932.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:leave-no-trace",
+              "type": "movie",
+              "name": "Leave No Trace",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3892172.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:a-quiet-place-2018",
+              "type": "movie",
+              "name": "A Quiet Place",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6644200.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:happy-as-lazzaro",
+              "type": "movie",
+              "name": "Happy as Lazzaro",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6752992.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:mid90s",
+              "type": "movie",
+              "name": "mid90s",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5613484.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:green-book",
+              "type": "movie",
+              "name": "Green Book",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6966692.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:three-identical-strangers",
+              "type": "movie",
+              "name": "Three Identical Strangers",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7664504.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:us-and-them-2018",
+              "type": "movie",
+              "name": "Us and Them",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8033592.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:creed-ii",
+              "type": "movie",
+              "name": "Creed II",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6343314.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
             }
           ]
         }

@@ -14,6 +14,9 @@ const {
 const googleAuth = require('./src/google-auth');
 const { lookupKey, attachKeysToLists, rebuildIndex, manifestUrl, isValidKey } = require('./src/keys');
 const github = require('./src/github-sync');
+const tmdb = require('./src/tmdb');
+const tvdb = require('./src/tvdb');
+const rpdb = require('./src/rpdb');
 const { memoryStatus, checkMemoryPressure, registerMemoryPressureHandler, startMemoryWatchdog } = require('./src/resource-guard');
 const { clearFilmPageCache } = require('./src/letterboxd');
 const { clearSearchCache } = require('./src/cinemeta');
@@ -243,6 +246,10 @@ app.get('/api/info', (req, res) => {
     lists: userId ? listsWithManifests(req, userId) : [],
     githubSync: github.isEnabled(),
     googleAuth: googleAuth.isEnabled(),
+    tmdb: tmdb.isEnabled(),
+    tvdb: tvdb.isEnabled(),
+    rpdb: rpdb.isEnabled(),
+    posterMode: process.env.POSTER_MODE || 'letterboxd+rpdb',
     ...github.syncStatus()
   });
 });

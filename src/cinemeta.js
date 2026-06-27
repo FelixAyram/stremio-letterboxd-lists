@@ -4,11 +4,15 @@ const { LruCache } = require('./lru-cache');
 const {
   EMPTY_POSTER,
   isLetterboxdPoster,
+  isAllowedPoster,
   pickLetterboxdPoster,
   attachPosterToFilm,
+  pickDisplayPoster,
   posterUrlFromLbxId,
   normalizePosterUrl
 } = require('./posters');
+const tmdb = require('./tmdb');
+const tvdb = require('./tvdb');
 const {
   scoreCandidate,
   minAcceptScore,
@@ -24,8 +28,8 @@ const backgroundByImdb = new Map();
 const slugToImdb = new Map();
 const slugToMedia = new Map();
 
-function lbxPosterFor(film, imdbId) {
-  return pickLetterboxdPoster(film) || posterBySlug.get(film.slug) || (imdbId && posterByImdb.get(imdbId)) || null;
+function lbxPosterFor(film, imdbId, extras = {}) {
+  return pickDisplayPoster(film, imdbId, extras);
 }
 
 function catalogId(slug) {
@@ -161,39 +165,50 @@ async function resolveMetaType(imdbId, preferType, title, year) {
   return { meta: null, mediaType: preferType };
 }
 
-function storeFilmMaps(film, imdbId, mediaType = 'movie') {
+function storeFilmMaps(film, imdbId, mediaType = 'movie', extras = {}) {
   slugToImdb.set(film.slug, imdbId);
   slugToMedia.set(film.slug, mediaType);
-  const poster = lbxPosterFor(film, imdbId);
-  if (poster) {
+  const poster = lbxPosterFor(film, imdbId, { ...extras, mediaType });
+  if (poster && poster !== EMPTY_POSTER) {
     posterByImdb.set(imdbId, poster);
     posterBySlug.set(film.slug, poster);
     film.poster = poster;
   }
   if (film.background) backgroundByImdb.set(imdbId, film.background);
+  if (extras.tmdbId) film.tmdbId = extras.tmdbId;
 }
 
-function metaFromImdb(imdbId, film, cinemetaHit, mediaType = 'movie') {
-  const poster = lbxPosterFor(film, imdbId) || EMPTY_POSTER;
-  const background = film.background || backgroundByImdb.get(imdbId) || undefined;
+function metaFromImdb(imdbId, film, metaHit, mediaType = 'movie', extras = {}) {
+  const poster = lbxPosterFor(film, imdbId, { ...extras, mediaType });
+  const background =
+    film.background ||
+    backgroundByImdb.get(imdbId) ||
+    extras.tmdbBackground ||
+    metaHit?.background;
   const type = mediaType === 'series' ? 'series' : 'movie';
 
   return {
     id: catalogId(film.slug),
     type,
-    name: cinemetaHit?.name || film.name,
+    name: metaHit?.name || film.name,
     poster,
     background,
     posterShape: 'poster',
-    releaseInfo: cinemetaHit?.releaseInfo || film.year || '',
-    imdbRating: cinemetaHit?.imdbRating,
-    description: cinemetaHit?.description
+    releaseInfo: metaHit?.releaseInfo || film.year || '',
+    imdbRating: metaHit?.imdbRating,
+    description: metaHit?.description
   };
 }
 
 function inferPreferType(film) {
   if (film.mediaType === 'series' || film.listPrefersSeries) return 'series';
   return 'movie';
+}
+
+async function buildMetaFromResolution(film, imdbId, mediaType, metaHit, extras = {}) {
+  if (extras.tmdbBackground && !film.background) film.background = extras.tmdbBackground;
+  storeFilmMaps(film, imdbId, mediaType, extras);
+  return metaFromImdb(imdbId, film, metaHit, mediaType, extras);
 }
 
 async function resolveFilm(film) {
@@ -219,13 +234,37 @@ async function resolveFilm(film) {
       const yearOk = !film.year || yearMatches(meta.releaseInfo, film.year) > 0;
       const typeOk = preferType !== 'series' || mediaType === 'series' || sim >= 0.85;
       if (sim >= 0.35 && yearOk && typeOk) {
-        storeFilmMaps(film, lbx.imdbId, mediaType);
-        return metaFromImdb(lbx.imdbId, film, meta, mediaType);
+        const tmdbInfo = tmdb.isEnabled() ? await tmdb.lookupImdbOnTmdb(lbx.imdbId, mediaType) : null;
+        return buildMetaFromResolution(film, lbx.imdbId, mediaType, meta, {
+          tmdbId: tmdbInfo?.tmdbId,
+          tmdbPoster: tmdbInfo?.poster,
+          tmdbBackground: tmdbInfo?.background
+        });
       }
     }
   }
 
+  if (tmdb.isEnabled()) {
+    const tmdbHit = await tmdb.searchTmdbForFilm(film, preferType);
+    if (tmdbHit?.imdbId) {
+      const meta = await fetchMeta(tmdbHit.imdbId, tmdbHit.mediaType);
+      return buildMetaFromResolution(film, tmdbHit.imdbId, tmdbHit.mediaType, meta || tmdbHit.meta, {
+        tmdbId: tmdbHit.tmdbId,
+        tmdbPoster: tmdbHit.poster,
+        tmdbBackground: tmdbHit.background
+      });
+    }
+  }
+
   const { hit, mediaType, score } = await searchCinemetaForFilm(film, preferType);
+  if (!hit && preferType === 'series' && tvdb.isEnabled()) {
+    const tvHit = await tvdb.searchSeries(film.pageTitle || film.name, film.year);
+    if (tvHit?.imdbId) {
+      const meta = await fetchMeta(tvHit.imdbId, 'series');
+      return buildMetaFromResolution(film, tvHit.imdbId, 'series', meta || { name: tvHit.name, releaseInfo: tvHit.releaseInfo }, {});
+    }
+  }
+
   if (!hit) return null;
 
   let imdbId = hit.id;
@@ -234,8 +273,7 @@ async function resolveFilm(film) {
     const alt = mediaType === 'movie' ? 'series' : 'movie';
     fullMeta = await fetchMeta(imdbId, alt);
     if (fullMeta && titleSimilarity(fullMeta.name, film.name) >= 0.35) {
-      storeFilmMaps(film, imdbId, alt);
-      return metaFromImdb(imdbId, film, fullMeta, alt);
+      return buildMetaFromResolution(film, imdbId, alt, fullMeta, {});
     }
   }
 
@@ -243,8 +281,12 @@ async function resolveFilm(film) {
     return null;
   }
 
-  storeFilmMaps(film, imdbId, mediaType);
-  return metaFromImdb(imdbId, film, fullMeta || hit, mediaType);
+  const tmdbInfo = tmdb.isEnabled() ? await tmdb.lookupImdbOnTmdb(imdbId, mediaType) : null;
+  return buildMetaFromResolution(film, imdbId, mediaType, fullMeta || hit, {
+    tmdbId: tmdbInfo?.tmdbId,
+    tmdbPoster: tmdbInfo?.poster,
+    tmdbBackground: tmdbInfo?.background
+  });
 }
 
 function fallbackMeta(film) {
@@ -337,9 +379,9 @@ function loadPosterMapFromCache(metas) {
   for (const m of metas || []) {
     if (m.id?.startsWith('lbx:')) {
       const slug = m.id.slice(4);
-      if (isLetterboxdPoster(m.poster)) posterBySlug.set(slug, m.poster);
+      if (isAllowedPoster(m.poster)) posterBySlug.set(slug, m.poster);
     }
-    if (m.imdbId && isLetterboxdPoster(m.poster)) posterByImdb.set(m.imdbId, m.poster);
+    if (m.imdbId && isAllowedPoster(m.poster)) posterByImdb.set(m.imdbId, m.poster);
     if (m.imdbId && m.background?.includes('ltrbxd.com')) backgroundByImdb.set(m.imdbId, m.background);
     if (m.slug && m.imdbId) slugToImdb.set(m.slug, m.imdbId);
     if (m.id?.startsWith('lbx:') && m.type) slugToMedia.set(m.id.slice(4), m.type);
@@ -348,6 +390,8 @@ function loadPosterMapFromCache(metas) {
 
 function clearSearchCache() {
   searchCache.clear();
+  tmdb.clearTmdbCache();
+  tvdb.clearTvdbCache();
 }
 
 module.exports = {

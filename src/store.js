@@ -95,13 +95,18 @@ function cachePath(userId, listId) {
 
 function isBadMeta(m) {
   if (!m?.id?.startsWith('lbx:')) return true;
-  if (!m.poster || !m.poster.includes('ltrbxd.com') || m.poster.includes('empty-poster')) return true;
+  if (!m.poster || m.poster.includes('empty-poster')) return true;
   if (m.poster.includes('metahub.space') || m.poster.includes('media-amazon.com')) return true;
   if (m.poster.includes('675-675-crop') || m.poster.includes('1200-1200-675')) return true;
+  const ok =
+    m.poster.includes('ltrbxd.com') ||
+    m.poster.includes('ratingposterdb.com') ||
+    m.poster.includes('image.tmdb.org');
+  if (!ok) return true;
   return false;
 }
 
-const CACHE_SCHEMA = 4;
+const CACHE_SCHEMA = 5;
 
 function readListCache(userId, listId) {
   const p = cachePath(userId, listId);

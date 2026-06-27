@@ -1,7 +1,26 @@
+const rpdb = require('./rpdb');
+const tmdb = require('./tmdb');
+
 const EMPTY_POSTER = 'https://s.ltrbxd.com/static/img/empty-poster-230.png';
+
+function posterMode() {
+  return (process.env.POSTER_MODE || 'letterboxd+rpdb').toLowerCase();
+}
 
 function isLetterboxdPoster(url) {
   return Boolean(url && url.includes('ltrbxd.com') && !url.includes('empty-poster'));
+}
+
+function isRpdbPoster(url) {
+  return Boolean(url && url.includes('ratingposterdb.com'));
+}
+
+function isAllowedPoster(url) {
+  if (!url || url.includes('empty-poster')) return false;
+  if (isLetterboxdPoster(url)) return true;
+  if (isRpdbPoster(url) && rpdb.isEnabled()) return true;
+  if (url.includes('image.tmdb.org') && tmdb.isEnabled()) return true;
+  return false;
 }
 
 function posterUrlFromLbxId(filmId, slug) {
@@ -35,6 +54,27 @@ function pickLetterboxdPoster(film) {
   return null;
 }
 
+function pickRpdbPoster(imdbId, tmdbId, mediaType) {
+  if (!rpdb.isEnabled() || !imdbId) return null;
+  return rpdb.posterUrl(imdbId) || (tmdbId ? rpdb.posterUrlTmdb(tmdbId, mediaType) : null);
+}
+
+function pickDisplayPoster(film, imdbId, extras = {}) {
+  const mode = posterMode();
+  const lbx = pickLetterboxdPoster(film);
+  const rpdbPoster = pickRpdbPoster(imdbId, extras.tmdbId, extras.mediaType || film.mediaType);
+  const tmdbPoster = extras.tmdbPoster || null;
+
+  if (mode === 'rpdb') {
+    return rpdbPoster || lbx || tmdbPoster || EMPTY_POSTER;
+  }
+  if (mode === 'letterboxd') {
+    return lbx || rpdbPoster || tmdbPoster || EMPTY_POSTER;
+  }
+  // letterboxd+rpdb (default)
+  return lbx || rpdbPoster || tmdbPoster || EMPTY_POSTER;
+}
+
 function attachPosterToFilm(film) {
   const poster = pickLetterboxdPoster(film);
   if (poster) film.poster = poster;
@@ -44,8 +84,12 @@ function attachPosterToFilm(film) {
 module.exports = {
   EMPTY_POSTER,
   isLetterboxdPoster,
+  isRpdbPoster,
+  isAllowedPoster,
   posterUrlFromLbxId,
   normalizePosterUrl,
   pickLetterboxdPoster,
+  pickRpdbPoster,
+  pickDisplayPoster,
   attachPosterToFilm
 };

@@ -489,7 +489,12 @@
         document.getElementById('appVersion').textContent = 'v' + d.version;
         const note = document.getElementById('manifestVersionNote');
         if (note) {
-          note.textContent = 'Manifests v' + d.version + (d.githubSync ? ' · GitHub sync activo' : ' · GitHub sync inactivo (falta GITHUB_TOKEN)');
+          note.textContent = 'Manifests v' + d.version
+            + (d.githubSync ? ' · GitHub sync' : '')
+            + (d.tmdb ? ' · TMDB' : '')
+            + (d.tvdb ? ' · TVDB' : '')
+            + (d.rpdb ? ' · RPDB posters' : '')
+            + (d.posterMode ? ' · posters: ' + d.posterMode : '');
         }
       }
       googleEnabled = Boolean(d.googleAuth);

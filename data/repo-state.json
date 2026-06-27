@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "savedAt": "2026-06-27T19:47:00.225Z",
+  "savedAt": "2026-06-27T19:52:35.127Z",
   "users": {
     "users": [
       {
@@ -32,6 +32,10 @@
       "A8ERmr3l2GTRrkrsiDK9xA": {
         "userId": "ayrammaxigmailcom",
         "listId": "list-get-busy-dying-or-get-busy-watching-2018s"
+      },
+      "Ch05OFJYPVsorGUpXMv11w": {
+        "userId": "ayrammaxigmailcom",
+        "listId": "list-2003"
       }
     }
   },
@@ -67,6 +71,12 @@
           "name": "Get Busy Dying or Get Busy Watching 2018's Most Essential Movies",
           "id": "list-get-busy-dying-or-get-busy-watching-2018s",
           "key": "A8ERmr3l2GTRrkrsiDK9xA"
+        },
+        {
+          "url": "https://letterboxd.com/thewickerman/list/2003/",
+          "name": "2003",
+          "id": "list-2003",
+          "key": "Ch05OFJYPVsorGUpXMv11w"
         }
       ]
     }

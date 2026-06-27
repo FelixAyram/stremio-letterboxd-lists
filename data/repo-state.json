@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:12:02.036Z",
+  "savedAt": "2026-06-27T20:12:22.553Z",
   "users": {
     "users": [
       {
@@ -16473,7 +16473,7 @@
           "filmsCount": 150,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591120025,
+          "cachedAt": 1782591140545,
           "metaByIndex": [
             {
               "id": "lbx:when-life-gives-you-tangerines-2025",
@@ -16954,6 +16954,246 @@
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12451520.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:our-beloved-summer",
+              "type": "series",
+              "name": "Our Beloved Summer",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15026724.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:chicago-typewriter",
+              "type": "series",
+              "name": "Chicago Typewriter",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6516076.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2017"
+            },
+            {
+              "id": "lbx:juvenile-justice-2022",
+              "type": "series",
+              "name": "Juvenile Justice",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15553922.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:nine-puzzles",
+              "type": "series",
+              "name": "Nine Puzzles",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29927351.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:a-shop-for-killers",
+              "type": "series",
+              "name": "A Shop for Killers",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26450613.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:good-boy-2025-2",
+              "type": "series",
+              "name": "Good Boy",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32361930.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:study-group",
+              "type": "series",
+              "name": "Study Group",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35304338.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:boyhood-2023",
+              "type": "series",
+              "name": "Boyhood",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28486727.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:extraordinary-attorney-woo",
+              "type": "series",
+              "name": "Extraordinary Attorney Woo",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20869502.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:way-back-love",
+              "type": "series",
+              "name": "Way Back Love",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33578048.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:mother-2018-1",
+              "type": "series",
+              "name": "Mother",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7795226.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:happiness-2021-1",
+              "type": "series",
+              "name": "Happiness",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14979052.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:coffee-prince-2007",
+              "type": "series",
+              "name": "Coffee Prince",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1772685.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2007"
+            },
+            {
+              "id": "lbx:little-women-2022-1",
+              "type": "series",
+              "name": "Little Women",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21828868.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:its-okay-thats-love",
+              "type": "series",
+              "name": "It's Okay, That's Love",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4031224.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2014"
+            },
+            {
+              "id": "lbx:revenant-2023",
+              "type": "series",
+              "name": "Revenant",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22263470.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:our-movie-2025",
+              "type": "series",
+              "name": "Our Movie",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36807294.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:navillera",
+              "type": "series",
+              "name": "Navillera",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13885302.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:the-devil-judge",
+              "type": "series",
+              "name": "The Devil Judge",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14169770.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:business-proposal",
+              "type": "series",
+              "name": "Business Proposal",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14819828.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:life-on-mars-2018",
+              "type": "series",
+              "name": "Life on Mars",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8236544.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:pro-bono-2025",
+              "type": "series",
+              "name": "Pro Bono",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39012462.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:racket-boys",
+              "type": "series",
+              "name": "Racket Boys",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14482414.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:the-guest-2018-1",
+              "type": "series",
+              "name": "The Guest",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8801670.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:dear-my-friends",
+              "type": "series",
+              "name": "Dear My Friends",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5689030.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:the-price-of-confession",
+              "type": "series",
+              "name": "The Price of Confession",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37218592.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:spirit-fingers",
+              "type": "series",
+              "name": "Spirit Fingers",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26773414.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:family-matters-2024",
+              "type": "series",
+              "name": "Family Matters",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31510539.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:in-your-radiant-season",
+              "type": "series",
+              "name": "In Your Radiant Season",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39369595.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:the-fiery-priest",
+              "type": "series",
+              "name": "The Fiery Priest",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9674954.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
             }
           ]
         },

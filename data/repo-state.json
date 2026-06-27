@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:11:28.976Z",
+  "savedAt": "2026-06-27T20:11:32.783Z",
   "users": {
     "users": [
       {
@@ -3337,7 +3337,7 @@
           "title": "chick flicks",
           "url": "https://letterboxd.com/kaitienk/list/chick-flicks/",
           "preferSeries": false,
-          "cachedAt": 1782591051983,
+          "cachedAt": 1782591090684,
           "films": [
             {
               "slug": "10-things-i-hate-about-you",

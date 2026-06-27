@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:11:56.686Z",
+  "savedAt": "2026-06-27T20:12:02.036Z",
   "users": {
     "users": [
       {
@@ -16473,7 +16473,7 @@
           "filmsCount": 150,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591085279,
+          "cachedAt": 1782591120025,
           "metaByIndex": [
             {
               "id": "lbx:when-life-gives-you-tangerines-2025",
@@ -16714,6 +16714,246 @@
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22265394.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:taxi-driver-2021",
+              "type": "series",
+              "name": "Taxi Driver",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13759970.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:mr-plankton",
+              "type": "series",
+              "name": "Mr. Plankton",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27539317.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:summer-strike",
+              "type": "series",
+              "name": "Summer Strike",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23788642.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:the-worst-of-evil",
+              "type": "series",
+              "name": "The Worst of Evil",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20600022.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:flower-of-evil-2020",
+              "type": "series",
+              "name": "Flower of Evil",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11691684.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:incomplete-life",
+              "type": "series",
+              "name": "Incomplete Life",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4240730.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2014"
+            },
+            {
+              "id": "lbx:bloodhounds-2023",
+              "type": "series",
+              "name": "Bloodhounds",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26315487.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:light-shop-2024",
+              "type": "series",
+              "name": "Light Shop",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31014115.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:lost-2021-1",
+              "type": "series",
+              "name": "Lost",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14609588.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:through-the-darkness-2022",
+              "type": "series",
+              "name": "Through the Darkness",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15007172.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:tomorrow-2022-1",
+              "type": "series",
+              "name": "Tomorrow",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt18926162.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:my-name",
+              "type": "series",
+              "name": "My Name",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12940504.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:deaths-game",
+              "type": "series",
+              "name": "Death's Game",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26225038.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:the-king-of-pigs-2022",
+              "type": "series",
+              "name": "The King of Pigs",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt19818310.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:mr-queen",
+              "type": "series",
+              "name": "Mr. Queen",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13400006.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:be-melodramatic",
+              "type": "series",
+              "name": "Be Melodramatic",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10559276.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:sky-castle",
+              "type": "series",
+              "name": "SKY Castle",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9151274.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:guardian-the-lonely-and-great-god",
+              "type": "series",
+              "name": "Guardian: The Lonely and Great God",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5994364.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:vincenzo",
+              "type": "series",
+              "name": "Vincenzo",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13433812.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:hi-bye-mama",
+              "type": "series",
+              "name": "Hi Bye, Mama!",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11804034.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:our-blues",
+              "type": "series",
+              "name": "Our Blues",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt19115260.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:stove-league",
+              "type": "series",
+              "name": "Stove League",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11378124.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:the-red-sleeve",
+              "type": "series",
+              "name": "The Red Sleeve",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14687200.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:strong-woman-do-bong-soon",
+              "type": "series",
+              "name": "Strong Woman Do Bong-Soon",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6263222.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2017"
+            },
+            {
+              "id": "lbx:resident-playbook",
+              "type": "series",
+              "name": "Resident Playbook",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31171500.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:the-winning-try",
+              "type": "series",
+              "name": "The Winning Try",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37509384.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:love-for-loves-sake-2024",
+              "type": "series",
+              "name": "Love For Love's Sake",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31067227.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:hometown-cha-cha-cha",
+              "type": "series",
+              "name": "Hometown Cha-Cha-Cha",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14518756.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:you-and-everything-else",
+              "type": "series",
+              "name": "You and Everything Else",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31014107.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:its-okay-to-not-be-okay",
+              "type": "series",
+              "name": "It's Okay to Not Be Okay",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12451520.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
             }
           ]
         },

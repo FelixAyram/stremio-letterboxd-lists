@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:11:13.382Z",
+  "savedAt": "2026-06-27T20:11:23.775Z",
   "users": {
     "users": [
       {
@@ -84,6 +84,1365 @@
   "cachesByUser": {
     "ayrammaxigmailcom": {
       "filmLists": {
+        "list-150-highest-rated-kdramas-on-letterboxd": {
+          "id": "list-150-highest-rated-kdramas-on-letterboxd",
+          "title": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
+          "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
+          "preferSeries": true,
+          "cachedAt": 1782591075781,
+          "films": [
+            {
+              "slug": "when-life-gives-you-tangerines-2025",
+              "name": "When Life Gives You Tangerines",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/when-life-gives-you-tangerines-2025/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/3/1/3/1/1/1331311-when-life-gives-you-tangerines-2025-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "reply-1988",
+              "name": "Reply 1988",
+              "year": "2015",
+              "mediaType": "movie",
+              "link": "/film/reply-1988/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/0/8/0/2/730802-reply-1988-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "move-to-heaven",
+              "name": "Move to Heaven",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/move-to-heaven/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/4/6/0/3/3/746033-move-to-heaven-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "twinkling-watermelon",
+              "name": "Twinkling Watermelon",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/twinkling-watermelon/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/8/9/5/2/6/1089526-twinkling-watermelon-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "weak-hero",
+              "name": "Weak Hero",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/weak-hero/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/4/7/9/0/2/947902-weak-hero-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "my-mister",
+              "name": "My Mister",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/my-mister/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/1/9/3/7/721937-my-mister-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "moving-2023-1",
+              "name": "Moving",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/moving-2023-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/6/7/7/8/2/1067782-moving-2023-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "my-dearest-2023",
+              "name": "My Dearest",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/my-dearest-2023/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/9/9/1/0/2/1099102-my-dearest-2023-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mouse-2021-1",
+              "name": "Mouse",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/mouse-2021-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/6/6/3/2/3/766323-mouse-2021-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "twenty-five-twenty-one",
+              "name": "Twenty Five Twenty One",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/twenty-five-twenty-one/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/6/1/9/0/5/861905-twenty-five-twenty-one-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "daily-dose-of-sunshine",
+              "name": "Daily Dose of Sunshine",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/daily-dose-of-sunshine/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/8/6/3/1/6/1086316-daily-dose-of-sunshine-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "dp-2021",
+              "name": "D.P.",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/dp-2021/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/8/0/3/9/0/780390-dp-2021-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "love-in-the-big-city-2024",
+              "name": "Love In The Big City",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/love-in-the-big-city-2024/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/6/1/7/1/1/1261711-love-in-the-big-city-2024-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-glory",
+              "name": "The Glory",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/the-glory/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/8/9/8/2/7/989827-the-glory-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "my-liberation-notes",
+              "name": "My Liberation Notes",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/my-liberation-notes/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/8/5/7/5/1/885751-my-liberation-notes-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mr-sunshine-2018",
+              "name": "Mr. Sunshine",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/mr-sunshine-2018/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/4/7/5/5/734755-mr-sunshine-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "crash-landing-on-you",
+              "name": "Crash Landing on You",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/crash-landing-on-you/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/0/8/0/3/730803-crash-landing-on-you-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "jeongnyeon-the-star-is-born",
+              "name": "Jeongnyeon: The Star is Born",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/jeongnyeon-the-star-is-born/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/5/5/6/7/1275567-jeongnyeon-the-star-is-born-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-trauma-code-heroes-on-call-2025",
+              "name": "The Trauma Code: Heroes on Call",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/the-trauma-code-heroes-on-call-2025/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/0/5/4/9/6/1305496-the-trauma-code-heroes-on-call-2025-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "weightlifting-fairy-kim-bok-joo",
+              "name": "Weightlifting Fairy Kim Bok-joo",
+              "year": "2016",
+              "mediaType": "movie",
+              "link": "/film/weightlifting-fairy-kim-bok-joo/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/4/7/4/7/734747-weightlifting-fairy-kim-bok-joo-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "strangers-from-hell",
+              "name": "Strangers from Hell",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/strangers-from-hell/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/1/9/4/6/721946-strangers-from-hell-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "beyond-evil-2021",
+              "name": "Beyond Evil",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/beyond-evil-2021/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/7/2/1/5/737215-beyond-evil-2021-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "lovely-runner",
+              "name": "Lovely Runner",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/lovely-runner/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/7/9/8/2/8/1179828-lovely-runner-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "youth-of-may",
+              "name": "Youth of May",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/youth-of-may/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/5/3/4/4/3/753443-youth-of-may-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "scarlet-heart-ryeo",
+              "name": "Scarlet Heart: Ryeo",
+              "year": "2016",
+              "mediaType": "movie",
+              "link": "/film/scarlet-heart-ryeo/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/9/8/2/8/729828-scarlet-heart-ryeo-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "signal-2016",
+              "name": "Signal",
+              "year": "2016",
+              "mediaType": "movie",
+              "link": "/film/signal-2016/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/3/2/2/9/723229-signal-2016-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "prison-playbook",
+              "name": "Prison Playbook",
+              "year": "2017",
+              "mediaType": "movie",
+              "link": "/film/prison-playbook/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/0/8/0/1/730801-prison-playbook-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-good-bad-mother",
+              "name": "The Good Bad Mother",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/the-good-bad-mother/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/2/5/2/4/6/1025246-the-good-bad-mother-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "our-unwritten-seoul",
+              "name": "Our Unwritten Seoul",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/our-unwritten-seoul/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/8/2/8/8/1/1382881-our-unwritten-seoul-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "under-the-queens-umbrella",
+              "name": "Under the Queen's Umbrella",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/under-the-queens-umbrella/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/5/5/3/1/7/955317-under-the-queens-umbrella-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "taxi-driver-2021",
+              "name": "Taxi Driver",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/taxi-driver-2021/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/5/1/2/7/5/751275-taxi-driver-2021-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mr-plankton",
+              "name": "Mr. Plankton",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/mr-plankton/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/3/4/2/4/1273424-mr-plankton-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "summer-strike",
+              "name": "Summer Strike",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/summer-strike/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/6/6/9/0/8/966908-summer-strike-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-worst-of-evil",
+              "name": "The Worst of Evil",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/the-worst-of-evil/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/8/1/7/2/9/1081729-the-worst-of-evil-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "flower-of-evil-2020",
+              "name": "Flower of Evil",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/flower-of-evil-2020/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/1/9/4/0/721940-flower-of-evil-2020-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "incomplete-life",
+              "name": "Incomplete Life",
+              "year": "2014",
+              "mediaType": "movie",
+              "link": "/film/incomplete-life/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/9/8/1/6/729816-incomplete-life-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "bloodhounds-2023",
+              "name": "Bloodhounds",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/bloodhounds-2023/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/2/5/3/6/2/1025362-bloodhounds-2023-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "light-shop-2024",
+              "name": "Light Shop",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/light-shop-2024/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/8/8/7/0/3/1288703-light-shop-2024-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "lost-2021-1",
+              "name": "Lost",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/lost-2021-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/1/0/1/0/5/810105-lost-2021-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "through-the-darkness-2022",
+              "name": "Through the Darkness",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/through-the-darkness-2022/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/5/3/3/3/6/853336-through-the-darkness-2022-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "tomorrow-2022-1",
+              "name": "Tomorrow",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/tomorrow-2022-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/8/1/7/1/9/881719-tomorrow-2022-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "my-name",
+              "name": "My Name",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/my-name/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/9/6/8/0/4/796804-my-name-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "deaths-game",
+              "name": "Death's Game",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/deaths-game/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/1/6/0/6/5/1116065-deaths-game-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-king-of-pigs-2022",
+              "name": "The King of Pigs",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/the-king-of-pigs-2022/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/7/0/3/2/5/870325-the-king-of-pigs-2022-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mr-queen",
+              "name": "Mr. Queen",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/mr-queen/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/9/8/3/7/729837-mr-queen-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "be-melodramatic",
+              "name": "Be Melodramatic",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/be-melodramatic/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/6/0/1/8/736018-be-melodramatic-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "sky-castle",
+              "name": "SKY Castle",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/sky-castle/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/8/0/5/3/728053-sky-castle-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "guardian-the-lonely-and-great-god",
+              "name": "Guardian: The Lonely and Great God",
+              "year": "2016",
+              "mediaType": "movie",
+              "link": "/film/guardian-the-lonely-and-great-god/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/3/7/9/7/733797-guardian-the-lonely-and-great-god-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "vincenzo",
+              "name": "Vincenzo",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/vincenzo/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/4/1/2/2/6/741226-vincenzo-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "hi-bye-mama",
+              "name": "Hi Bye, Mama!",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/hi-bye-mama/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/4/6/0/3/8/746038-hi-bye-mama-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "our-blues",
+              "name": "Our Blues",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/our-blues/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/8/8/6/0/3/888603-our-blues-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "stove-league",
+              "name": "Stove League",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/stove-league/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/7/2/4/0/737240-stove-league-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-red-sleeve",
+              "name": "The Red Sleeve",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/the-red-sleeve/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/2/7/7/4/6/827746-the-red-sleeve-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "strong-woman-do-bong-soon",
+              "name": "Strong Woman Do Bong-Soon",
+              "year": "2017",
+              "mediaType": "movie",
+              "link": "/film/strong-woman-do-bong-soon/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/5/9/6/2/735962-strong-woman-do-bong-soon-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "resident-playbook",
+              "name": "Resident Playbook",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/resident-playbook/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/6/4/5/2/0/1364520-resident-playbook-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-winning-try",
+              "name": "The Winning Try",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/the-winning-try/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/0/3/5/8/1/1403581-the-winning-try-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "love-for-loves-sake-2024",
+              "name": "Love For Love's Sake",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/love-for-loves-sake-2024/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/2/2/2/9/3/1122293-love-for-loves-sake-2024-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "hometown-cha-cha-cha",
+              "name": "Hometown Cha-Cha-Cha",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/hometown-cha-cha-cha/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/9/7/1/4/4/797144-hometown-cha-cha-cha-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "you-and-everything-else",
+              "name": "You and Everything Else",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/you-and-everything-else/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/2/1/7/6/4/1421764-you-and-everything-else-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "its-okay-to-not-be-okay",
+              "name": "It's Okay to Not Be Okay",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/its-okay-to-not-be-okay/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/9/8/2/1/729821-its-okay-to-not-be-okay-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "our-beloved-summer",
+              "name": "Our Beloved Summer",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/our-beloved-summer/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/3/6/7/3/3/836733-our-beloved-summer-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "chicago-typewriter",
+              "name": "Chicago Typewriter",
+              "year": "2017",
+              "mediaType": "movie",
+              "link": "/film/chicago-typewriter/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/1/1/6/5/3/711653-chicago-typewriter-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "juvenile-justice-2022",
+              "name": "Juvenile Justice",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/juvenile-justice-2022/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/4/8/9/0/6/848906-juvenile-justice-2022-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "nine-puzzles",
+              "name": "Nine Puzzles",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/nine-puzzles/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/7/2/3/5/7/1372357-nine-puzzles-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "a-shop-for-killers",
+              "name": "A Shop for Killers",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/a-shop-for-killers/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/2/4/8/7/5/1124875-a-shop-for-killers-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "good-boy-2025-2",
+              "name": "Good Boy",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/good-boy-2025-2/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/9/3/6/2/2/1393622-good-boy-2025-2-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "study-group",
+              "name": "Study Group",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/study-group/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/1/4/9/1/2/1314912-study-group-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "boyhood-2023",
+              "name": "Boyhood",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/boyhood-2023/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/0/9/6/5/7/1109657-boyhood-2023-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "extraordinary-attorney-woo",
+              "name": "Extraordinary Attorney Woo",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/extraordinary-attorney-woo/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/1/5/9/5/3/915953-extraordinary-attorney-woo-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "way-back-love",
+              "name": "Way Back Love",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/way-back-love/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/4/5/6/6/4/1345664-way-back-love-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mother-2018-1",
+              "name": "Mother",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/mother-2018-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/9/8/0/5/729805-mother-2018-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "happiness-2021-1",
+              "name": "Happiness",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/happiness-2021-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/2/3/1/4/7/823147-happiness-2021-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "coffee-prince-2007",
+              "name": "Coffee Prince",
+              "year": "2007",
+              "mediaType": "movie",
+              "link": "/film/coffee-prince-2007/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/6/0/1/6/736016-coffee-prince-2007-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "little-women-2022-1",
+              "name": "Little Women",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/little-women-2022-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/3/2/0/4/2/932042-little-women-2022-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "its-okay-thats-love",
+              "name": "It's Okay, That's Love",
+              "year": "2014",
+              "mediaType": "movie",
+              "link": "/film/its-okay-thats-love/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/3/2/2/5/723225-its-okay-thats-love-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "revenant-2023",
+              "name": "Revenant",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/revenant-2023/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/4/5/3/5/8/1045358-revenant-2023-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "our-movie-2025",
+              "name": "Our Movie",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/our-movie-2025/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/9/3/6/2/1/1393621-our-movie-2025-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "navillera",
+              "name": "Navillera",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/navillera/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/7/2/3/6/737236-navillera-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-devil-judge",
+              "name": "The Devil Judge",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/the-devil-judge/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/7/8/3/7/2/778372-the-devil-judge-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "business-proposal",
+              "name": "Business Proposal",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/business-proposal/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/6/2/8/1/7/862817-business-proposal-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "life-on-mars-2018",
+              "name": "Life on Mars",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/life-on-mars-2018/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/7/2/4/1/737241-life-on-mars-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "pro-bono-2025",
+              "name": "Pro Bono",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/pro-bono-2025/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/7/0/8/3/8/1470838-pro-bono-2025-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "racket-boys",
+              "name": "Racket Boys",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/racket-boys/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/7/3/8/2/2/773822-racket-boys-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-guest-2018-1",
+              "name": "The Guest",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-guest-2018-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/4/4/2/0/9/744209-the-guest-2018-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "dear-my-friends",
+              "name": "Dear My Friends",
+              "year": "2016",
+              "mediaType": "movie",
+              "link": "/film/dear-my-friends/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/3/2/3/1/723231-dear-my-friends-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-price-of-confession",
+              "name": "The Price of Confession",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/the-price-of-confession/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/6/8/5/1/5/1468515-the-price-of-confession-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "spirit-fingers",
+              "name": "Spirit Fingers",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/spirit-fingers/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/5/9/2/2/9/1459229-spirit-fingers-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "family-matters-2024",
+              "name": "Family Matters",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/family-matters-2024/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/9/8/9/7/7/1298977-family-matters-2024-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "in-your-radiant-season",
+              "name": "In Your Radiant Season",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/in-your-radiant-season/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/2/8/3/4/7/1528347-in-your-radiant-season-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-fiery-priest",
+              "name": "The Fiery Priest",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/the-fiery-priest/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/9/5/3/1/739531-the-fiery-priest-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "as-you-stood-by",
+              "name": "As You Stood By",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/as-you-stood-by/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/5/1/1/9/3/1451193-as-you-stood-by-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "vagabond-2019",
+              "name": "Vagabond",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/vagabond-2019/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/7/2/4/2/737242-vagabond-2019-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "blind-2022-1",
+              "name": "Blind",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/blind-2022-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/4/2/4/4/4/942444-blind-2022-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "queen-of-tears-2024",
+              "name": "Queen of Tears",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/queen-of-tears-2024/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/6/4/1/2/5/1164125-queen-of-tears-2024-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "law-school",
+              "name": "Law School",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/law-school/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/5/4/1/3/7/754137-law-school-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "welcome-to-samdal-ri",
+              "name": "Welcome to Samdal-ri",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/welcome-to-samdal-ri/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/1/7/9/4/0/1117940-welcome-to-samdal-ri-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "seoul-busters",
+              "name": "Seoul Busters",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/seoul-busters/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/3/5/0/6/1273506-seoul-busters-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "bad-and-crazy",
+              "name": "Bad and Crazy",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/bad-and-crazy/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/3/9/8/0/2/839802-bad-and-crazy-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "empress-ki",
+              "name": "Empress Ki",
+              "year": "2013",
+              "mediaType": "movie",
+              "link": "/film/empress-ki/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/9/8/1/7/729817-empress-ki-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "my-perfect-stranger",
+              "name": "My Perfect Stranger",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/my-perfect-stranger/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/3/3/1/1/3/1033113-my-perfect-stranger-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "tale-of-the-nine-tailed-1938",
+              "name": "Tale of the Nine Tailed 1938",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/tale-of-the-nine-tailed-1938/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/3/9/3/7/6/1039376-tale-of-the-nine-tailed-1938-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "inspector-koo",
+              "name": "Inspector Koo",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/inspector-koo/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/2/1/9/2/7/821927-inspector-koo-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "a-time-called-you",
+              "name": "A Time Called You",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/a-time-called-you/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/6/2/4/3/5/1062435-a-time-called-you-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-judge-from-hell",
+              "name": "The Judge from Hell",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/the-judge-from-hell/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/3/4/6/1/1273461-the-judge-from-hell-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "friendly-rivalry",
+              "name": "Friendly Rivalry",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/friendly-rivalry/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/1/6/6/8/3/1316683-friendly-rivalry-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "dear-x",
+              "name": "Dear X",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/dear-x/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/5/8/2/7/3/1458273-dear-x-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "all-of-us-are-dead",
+              "name": "All of Us Are Dead",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/all-of-us-are-dead/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/3/9/7/9/5/839795-all-of-us-are-dead-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "we-are-all-trying-here",
+              "name": "We Are All Trying Here",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/we-are-all-trying-here/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/4/3/7/3/5/1543735-we-are-all-trying-here-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "live-2018-2",
+              "name": "Live",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/live-2018-2/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/4/6/2/9/2/746292-live-2018-2-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "vigilante-2023-1",
+              "name": "Vigilante",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/vigilante-2023-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/9/9/1/3/9/1099139-vigilante-2023-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "one-dollar-lawyer",
+              "name": "One Dollar Lawyer",
+              "year": "2022",
+              "mediaType": "movie",
+              "link": "/film/one-dollar-lawyer/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/9/4/4/3/5/3/944353-one-dollar-lawyer-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-uncanny-counter",
+              "name": "The Uncanny Counter",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/the-uncanny-counter/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/7/2/2/6/737226-the-uncanny-counter-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "pyramid-game",
+              "name": "Pyramid Game",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/pyramid-game/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/4/6/6/7/6/1146676-pyramid-game-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "when-the-camellia-blooms",
+              "name": "When the Camellia Blooms",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/when-the-camellia-blooms/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/1/9/3/9/721939-when-the-camellia-blooms-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "defendant-2017",
+              "name": "Defendant",
+              "year": "2017",
+              "mediaType": "movie",
+              "link": "/film/defendant-2017/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/7/2/1/4/737214-defendant-2017-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "flex-x-cop",
+              "name": "Flex x Cop",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/flex-x-cop/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/5/3/4/8/2/1153482-flex-x-cop-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "can-this-love-be-translated",
+              "name": "Can This Love Be Translated?",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/can-this-love-be-translated/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/8/8/0/2/9/1488029-can-this-love-be-translated-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "while-you-were-sleeping-2017",
+              "name": "While You Were Sleeping",
+              "year": "2017",
+              "mediaType": "movie",
+              "link": "/film/while-you-were-sleeping-2017/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/3/8/0/0/733800-while-you-were-sleeping-2017-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-wonderfools",
+              "name": "The WONDERfools",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/the-wonderfools/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/5/9/4/0/4/1559404-the-wonderfools-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "bon-appetit-your-majesty",
+              "name": "Bon Appétit, Your Majesty",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/bon-appetit-your-majesty/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/1/6/4/5/5/1416455-bon-appetit-your-majesty-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mine-2021-1",
+              "name": "Mine",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/mine-2021-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/6/0/1/7/2/760172-mine-2021-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "descendants-of-the-sun",
+              "name": "Descendants of the Sun",
+              "year": "2016",
+              "mediaType": "movie",
+              "link": "/film/descendants-of-the-sun/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/8/0/4/9/728049-descendants-of-the-sun-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "extraordinary-you",
+              "name": "Extraordinary You",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/extraordinary-you/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/6/0/1/1/736011-extraordinary-you-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "extracurricular-2020",
+              "name": "Extracurricular",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/extracurricular-2020/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/4/7/3/6/0/747360-extracurricular-2020-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "family-by-choice",
+              "name": "Family by Choice",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/family-by-choice/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/2/7/9/2/0/5/1279205-family-by-choice-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "undercover-miss-hong",
+              "name": "Undercover Miss Hong",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/undercover-miss-hong/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/8/8/9/1/4/1488914-undercover-miss-hong-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "snowdrop",
+              "name": "Snowdrop",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/snowdrop/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/3/9/8/0/4/839804-snowdrop-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "six-flying-dragons",
+              "name": "Six Flying Dragons",
+              "year": "2015",
+              "mediaType": "movie",
+              "link": "/film/six-flying-dragons/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/9/8/0/1/729801-six-flying-dragons-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "tunnel-2017",
+              "name": "Tunnel",
+              "year": "2017",
+              "mediaType": "movie",
+              "link": "/film/tunnel-2017/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/1/9/4/3/721943-tunnel-2017-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "if-wishes-could-kill",
+              "name": "If Wishes Could Kill",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/if-wishes-could-kill/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/4/5/4/1/3/1545413-if-wishes-could-kill-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "kill-me-heal-me",
+              "name": "Kill Me, Heal Me",
+              "year": "2015",
+              "mediaType": "movie",
+              "link": "/film/kill-me-heal-me/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/5/9/9/2/735992-kill-me-heal-me-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "hello-my-twenties",
+              "name": "Hello, My Twenties!",
+              "year": "2016",
+              "mediaType": "movie",
+              "link": "/film/hello-my-twenties/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/4/6/9/9/4/8/1469948-hello-my-twenties-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "head-over-heels-2025",
+              "name": "Head Over Heels",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/head-over-heels-2025/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/9/0/7/6/8/1390768-head-over-heels-2025-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "arthdal-chronicles",
+              "name": "Arthdal Chronicles",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/arthdal-chronicles/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/8/4/7/2/1/7/847217-arthdal-chronicles-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "hotel-del-luna",
+              "name": "Hotel Del Luna",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/hotel-del-luna/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/0/0/6/8/730068-hotel-del-luna-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "karma-2025",
+              "name": "Karma",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/karma-2025/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/3/7/6/2/2/1337622-karma-2025-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "tell-me-that-you-love-me-2023",
+              "name": "Tell Me That You Love Me",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/tell-me-that-you-love-me-2023/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/1/6/1/0/7/1116107-tell-me-that-you-love-me-2023-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "see-you-in-my-19th-life",
+              "name": "See You in My 19th Life",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/see-you-in-my-19th-life/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/4/1/5/9/1/1041591-see-you-in-my-19th-life-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-light-in-your-eyes",
+              "name": "The Light in Your Eyes",
+              "year": "2019",
+              "mediaType": "movie",
+              "link": "/film/the-light-in-your-eyes/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/2/3/2/2/2/723222-the-light-in-your-eyes-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "undercover-high-school",
+              "name": "Undercover High School",
+              "year": "2025",
+              "mediaType": "movie",
+              "link": "/film/undercover-high-school/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/3/3/4/3/2/2/1334322-undercover-high-school-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "reply-1997",
+              "name": "Reply 1997",
+              "year": "2012",
+              "mediaType": "movie",
+              "link": "/film/reply-1997/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/6/0/2/5/736025-reply-1997-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "connection-2024-1",
+              "name": "Connection",
+              "year": "2024",
+              "mediaType": "movie",
+              "link": "/film/connection-2024-1/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/1/9/5/7/0/1/1195701-connection-2024-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-world-of-the-married",
+              "name": "The World of the Married",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/the-world-of-the-married/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/3/8/0/4/733804-the-world-of-the-married-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "something-in-the-rain",
+              "name": "Something in the Rain",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/something-in-the-rain/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/6/0/1/7/736017-something-in-the-rain-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-art-of-sarah",
+              "name": "The Art of Sarah",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/the-art-of-sarah/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/0/3/8/0/5/1503805-the-art-of-sarah-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "reply-1994",
+              "name": "Reply 1994",
+              "year": "2013",
+              "mediaType": "movie",
+              "link": "/film/reply-1994/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/6/0/2/3/736023-reply-1994-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "perfect-crown",
+              "name": "Perfect Crown",
+              "year": "2026",
+              "mediaType": "movie",
+              "link": "/film/perfect-crown/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/5/4/2/0/8/7/1542087-perfect-crown-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mask-girl-2023",
+              "name": "Mask Girl",
+              "year": "2023",
+              "mediaType": "movie",
+              "link": "/film/mask-girl-2023/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/0/5/2/2/8/9/1052289-mask-girl-2023-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "sweet-home-2020",
+              "name": "Sweet Home",
+              "year": "2020",
+              "mediaType": "movie",
+              "link": "/film/sweet-home-2020/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/3/5/0/9/9/735099-sweet-home-2020-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "squid-game",
+              "name": "Squid Game",
+              "year": "2021",
+              "mediaType": "movie",
+              "link": "/film/squid-game/",
+              "listPrefersSeries": true,
+              "poster": "https://a.ltrbxd.com/resized/film-poster/7/8/7/1/8/1/787181-squid-game-0-230-0-345-crop.jpg"
+            }
+          ]
+        },
         "list-2003": {
           "id": "list-2003",
           "title": "2003",
@@ -10311,6 +11670,791 @@
             }
           ]
         },
+        "list-get-busy-dying-or-get-busy-watching-2018s": {
+          "id": "list-get-busy-dying-or-get-busy-watching-2018s",
+          "title": "Get Busy Dying or Get Busy Watching 2018's Most Essential Movies",
+          "url": "https://letterboxd.com/axelhagne/list/get-busy-dying-or-get-busy-watching-2018s/",
+          "preferSeries": false,
+          "cachedAt": 1782591081582,
+          "films": [
+            {
+              "slug": "spider-man-into-the-spider-verse",
+              "name": "Spider-Man: Into the Spider-Verse",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/spider-man-into-the-spider-verse/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/5/1/9/4/3/251943-spider-man-into-the-spider-verse-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-favourite",
+              "name": "The Favourite",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-favourite/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/1/0/7/0/5/310705-the-favourite-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "roma-2018",
+              "name": "Roma",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/roma-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/5/9/8/5/9/359859-roma-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "minding-the-gap",
+              "name": "Minding the Gap",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/minding-the-gap/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/4/5/6/420456-minding-the-gap-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "if-beale-street-could-talk",
+              "name": "If Beale Street Could Talk",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/if-beale-street-could-talk/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/9/7/5/7/8/397578-if-beale-street-could-talk-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "shoplifters",
+              "name": "Shoplifters",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/shoplifters/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/5/1/2/9/435129-shoplifters-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "a-star-is-born-2018",
+              "name": "A Star Is Born",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/a-star-is-born-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/6/1/1/0/8/261108-a-star-is-born-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "skate-kitchen",
+              "name": "Skate Kitchen",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/skate-kitchen/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/2/0/9/5/422095-skate-kitchen-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "blindspotting",
+              "name": "Blindspotting",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/blindspotting/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/4/5/0/420450-blindspotting-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "free-solo",
+              "name": "Free Solo",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/free-solo/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/4/4/6/1/7/444617-free-solo-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "eighth-grade",
+              "name": "Eighth Grade",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/eighth-grade/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/4/5/1/420451-eighth-grade-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "burning-2018",
+              "name": "Burning",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/burning-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/2/0/3/5/422035-burning-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "an-elephant-sitting-still",
+              "name": "An Elephant Sitting Still",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/an-elephant-sitting-still/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/9/6/2/8/429628-an-elephant-sitting-still-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "ash-is-purest-white",
+              "name": "Ash Is Purest White",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/ash-is-purest-white/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/4/0/5/6/374056-ash-is-purest-white-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mission-impossible-fallout",
+              "name": "Mission: Impossible – Fallout",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/mission-impossible-fallout/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/8/3/2/7/3/283273-mission-impossible-fallout-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "hereditary",
+              "name": "Hereditary",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/hereditary/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/4/3/4/8/424348-hereditary-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "first-man",
+              "name": "First Man",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/first-man/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/0/5/8/1/1/305811-first-man-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "widows-2018",
+              "name": "Widows",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/widows-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/3/6/0/6/6/336066-widows-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "thunder-road-2018",
+              "name": "Thunder Road",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/thunder-road-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/2/3/3/5/432335-thunder-road-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "suspiria-2018",
+              "name": "Suspiria",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/suspiria-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/9/3/0/6/6/293066-suspiria-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "climax-2018",
+              "name": "Climax",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/climax-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/6/8/7/3/436873-climax-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "sorry-to-bother-you",
+              "name": "Sorry to Bother You",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/sorry-to-bother-you/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/5/8/2/7/1/358271-sorry-to-bother-you-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "leave-no-trace",
+              "name": "Leave No Trace",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/leave-no-trace/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/6/0/4/1/376041-leave-no-trace-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "a-quiet-place-2018",
+              "name": "A Quiet Place",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/a-quiet-place-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/9/6/8/7/379687-a-quiet-place-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "happy-as-lazzaro",
+              "name": "Happy as Lazzaro",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/happy-as-lazzaro/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/2/4/3/3/412433-happy-as-lazzaro-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mid90s",
+              "name": "mid90s",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/mid90s/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/0/4/5/1/370451-mid90s-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "green-book",
+              "name": "Green Book",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/green-book/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/7/0/3/420703-green-book-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "three-identical-strangers",
+              "name": "Three Identical Strangers",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/three-identical-strangers/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/4/5/8/420458-three-identical-strangers-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "us-and-them-2018",
+              "name": "Us and Them",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/us-and-them-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/8/6/2/0/438620-us-and-them-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "creed-ii",
+              "name": "Creed II",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/creed-ii/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/1/4/3/9/411439-creed-ii-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "bad-times-at-the-el-royale",
+              "name": "Bad Times at the El Royale",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/bad-times-at-the-el-royale/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/8/4/7/3/378473-bad-times-at-the-el-royale-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "wont-you-be-my-neighbor",
+              "name": "Won't You Be My Neighbor?",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/wont-you-be-my-neighbor/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/4/7/1/420471-wont-you-be-my-neighbor-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-hate-u-give",
+              "name": "The Hate U Give",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-hate-u-give/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/0/1/5/2/6/401526-the-hate-u-give-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-house-that-jack-built-2018",
+              "name": "The House That Jack Built",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-house-that-jack-built-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/3/2/4/3/2/332432-the-house-that-jack-built-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "upgrade",
+              "name": "Upgrade",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/upgrade/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/0/6/3/3/430633-upgrade-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-tale",
+              "name": "The Tale",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-tale/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/0/5/3/4/2/305342-the-tale-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "american-animals",
+              "name": "American Animals",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/american-animals/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/5/6/3/420563-american-animals-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-other-side-of-the-wind",
+              "name": "The Other Side of the Wind",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-other-side-of-the-wind/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/2/6/8/3/3/226833-the-other-side-of-the-wind-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "grass-2018",
+              "name": "Grass",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/grass-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/9/3/8/1/429381-grass-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-wild-pear-tree",
+              "name": "The Wild Pear Tree",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-wild-pear-tree/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/5/2/2/9/5/352295-the-wild-pear-tree-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "searching-2018",
+              "name": "Searching",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/searching-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/4/6/7/420467-searching-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "annihilation",
+              "name": "Annihilation",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/annihilation/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/2/7/7/8/4/227784-annihilation-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "cam",
+              "name": "Cam",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/cam/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/5/1/4/8/2/451482-cam-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-ballad-of-buster-scruggs",
+              "name": "The Ballad of Buster Scruggs",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-ballad-of-buster-scruggs/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/7/0/6/1/467061-the-ballad-of-buster-scruggs-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "we-the-animals",
+              "name": "We the Animals",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/we-the-animals/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/0/4/6/8/420468-we-the-animals-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "madelines-madeline",
+              "name": "Madeline's Madeline",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/madelines-madeline/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/0/0/3/0/0/400300-madelines-madeline-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "a-family-tour",
+              "name": "A Family Tour",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/a-family-tour/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/6/5/6/4/7/465647-a-family-tour-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "long-days-journey-into-night-2018",
+              "name": "Long Day's Journey Into Night",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/long-days-journey-into-night-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/7/4/6/9/417469-long-days-journey-into-night-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "vox-lux",
+              "name": "Vox Lux",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/vox-lux/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/6/2/3/6/1/362361-vox-lux-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "under-the-silver-lake",
+              "name": "Under the Silver Lake",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/under-the-silver-lake/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/3/0/8/1/0/330810-under-the-silver-lake-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "beautiful-boy-2018",
+              "name": "Beautiful Boy",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/beautiful-boy-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/8/4/0/5/8/384058-beautiful-boy-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "at-eternitys-gate",
+              "name": "At Eternity's Gate",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/at-eternitys-gate/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/2/0/9/6/422096-at-eternitys-gate-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-sisters-brothers",
+              "name": "The Sisters Brothers",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-sisters-brothers/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/2/7/4/0/372740-the-sisters-brothers-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "asako-i-ii",
+              "name": "Asako I & II",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/asako-i-ii/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/8/5/3/3/418533-asako-i-ii-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "rivers-edge-2018",
+              "name": "River's Edge",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/rivers-edge-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/8/0/4/3/418043-rivers-edge-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "our-time-2018-1",
+              "name": "Our Time",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/our-time-2018-1/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/2/3/7/8/4/323784-our-time-2018-1-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-man-who-killed-don-quixote",
+              "name": "The Man Who Killed Don Quixote",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-man-who-killed-don-quixote/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/2/5/0/0/4/225004-the-man-who-killed-don-quixote-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "destroyer-2018",
+              "name": "Destroyer",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/destroyer-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/0/2/8/7/9/402879-destroyer-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-mule-2018",
+              "name": "The Mule",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-mule-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/4/0/6/8/434068-the-mule-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "sunset-2018",
+              "name": "Sunset",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/sunset-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/3/3/3/0/9/333309-sunset-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "boy-erased",
+              "name": "Boy Erased",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/boy-erased/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/0/3/8/2/6/403826-boy-erased-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "when-she-runs",
+              "name": "When She Runs",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/when-she-runs/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/4/2/2/4/9/442249-when-she-runs-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "wildlife-2018",
+              "name": "Wildlife",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/wildlife-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/5/1/7/1/5/351715-wildlife-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "cold-war-2018",
+              "name": "Cold War",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/cold-war-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/3/0/1/8/373018-cold-war-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-death-life-of-john-f-donovan",
+              "name": "The Death & Life of John F. Donovan",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-death-life-of-john-f-donovan/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/1/8/2/3/1/218231-the-death-life-of-john-f-donovan-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "mandy-2018",
+              "name": "Mandy",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/mandy-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/9/2/6/5/4/392654-mandy-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-legacy-of-a-whitetail-deer-hunter",
+              "name": "The Legacy of a Whitetail Deer Hunter",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-legacy-of-a-whitetail-deer-hunter/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/3/8/3/3/7/238337-the-legacy-of-a-whitetail-deer-hunter-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-old-man-the-gun",
+              "name": "The Old Man & the Gun",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-old-man-the-gun/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/6/2/4/9/8/362498-the-old-man-the-gun-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "vice-2018",
+              "name": "Vice",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/vice-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/6/2/3/6/5/362365-vice-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "crazy-rich-asians",
+              "name": "Crazy Rich Asians",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/crazy-rich-asians/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/8/7/2/3/8/387238-crazy-rich-asians-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "high-life-2018",
+              "name": "High Life",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/high-life-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/1/2/2/0/3/312203-high-life-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "isle-of-dogs-2018",
+              "name": "Isle of Dogs",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/isle-of-dogs-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/3/3/4/4/8/333448-isle-of-dogs-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-image-book",
+              "name": "The Image Book",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-image-book/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/4/8/0/5/7/348057-the-image-book-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-miseducation-of-cameron-post",
+              "name": "The Miseducation of Cameron Post",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-miseducation-of-cameron-post/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/6/0/0/2/8/360028-the-miseducation-of-cameron-post-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-clovehitch-killer",
+              "name": "The Clovehitch Killer",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-clovehitch-killer/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/7/3/3/1/9/473319-the-clovehitch-killer-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "border-2018",
+              "name": "Border",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/border-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/4/7/5/1/4/447514-border-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "damsel-2018",
+              "name": "Damsel",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/damsel-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/4/8/0/4/6/348046-damsel-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "summer-of-84",
+              "name": "Summer of 84",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/summer-of-84/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/0/1/6/8/7/401687-summer-of-84-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "support-the-girls",
+              "name": "Support the Girls",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/support-the-girls/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/8/8/1/2/9/388129-support-the-girls-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "private-life-2018",
+              "name": "Private Life",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/private-life-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/9/0/2/2/7/390227-private-life-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "lizzie-2018",
+              "name": "Lizzie",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/lizzie-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/9/1/4/5/3/391453-lizzie-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "blockers",
+              "name": "Blockers",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/blockers/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/0/4/3/1/370431-blockers-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "game-night",
+              "name": "Game Night",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/game-night/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/7/8/0/4/8/378048-game-night-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "black-panther",
+              "name": "Black Panther",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/black-panther/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/0/9/3/8/3/209383-black-panther-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "hale-county-this-morning-this-evening",
+              "name": "Hale County This Morning, This Evening",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/hale-county-this-morning-this-evening/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/2/1/3/1/9/421319-hale-county-this-morning-this-evening-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "avengers-infinity-war",
+              "name": "Avengers: Infinity War",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/avengers-infinity-war/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/2/2/6/6/6/1/226661-avengers-infinity-war-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "black-mirror-bandersnatch",
+              "name": "Black Mirror: Bandersnatch",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/black-mirror-bandersnatch/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/9/8/0/4/4/498044-black-mirror-bandersnatch-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "bohemian-rhapsody",
+              "name": "Bohemian Rhapsody",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/bohemian-rhapsody/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/5/8/2/2/2/358222-bohemian-rhapsody-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "incredibles-2",
+              "name": "Incredibles 2",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/incredibles-2/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/1/8/4/0/6/1/184061-incredibles-2-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "the-night-comes-for-us",
+              "name": "The Night Comes for Us",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/the-night-comes-for-us/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/8/2/2/2/5/382225-the-night-comes-for-us-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "tully-2018",
+              "name": "Tully",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/tully-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/3/5/3/2/2/335322-tully-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "bird-box",
+              "name": "Bird Box",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/bird-box/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/4/0/2/0/2/340202-bird-box-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "can-you-ever-forgive-me",
+              "name": "Can You Ever Forgive Me?",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/can-you-ever-forgive-me/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/3/3/6/5/5/5/336555-can-you-ever-forgive-me-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "nancy",
+              "name": "Nancy",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/nancy/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/1/8/4/9/411849-nancy-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "black-mother",
+              "name": "Black Mother",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/black-mother/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/3/0/9/6/3/430963-black-mother-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "dogman-2018",
+              "name": "Dogman",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/dogman-2018/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/1/4/1/1/4/414114-dogman-2018-0-230-0-345-crop.jpg"
+            },
+            {
+              "slug": "they-shall-not-grow-old",
+              "name": "They Shall Not Grow Old",
+              "year": "2018",
+              "mediaType": "movie",
+              "link": "/film/they-shall-not-grow-old/",
+              "poster": "https://a.ltrbxd.com/resized/film-poster/4/7/2/4/6/5/472465-they-shall-not-grow-old-0-230-0-345-crop.jpg"
+            }
+          ]
+        },
         "list-letterboxds-top-500-films": {
           "id": "list-letterboxds-top-500-films",
           "title": "Letterboxd's Top 500 Films",
@@ -14322,6 +16466,257 @@
         }
       },
       "metas": {
+        "list-2003": {
+          "title": "2003",
+          "url": "https://letterboxd.com/thewickerman/list/2003/",
+          "listUrl": "https://letterboxd.com/thewickerman/list/2003/",
+          "filmsCount": 235,
+          "cacheSchema": 7,
+          "persisted": true,
+          "cachedAt": 1782591079575,
+          "metaByIndex": [
+            {
+              "id": "lbx:kill-bill-vol-1",
+              "type": "movie",
+              "name": "Kill Bill: Vol. 1",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0266697.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:the-lord-of-the-rings-the-return-of-the-king",
+              "type": "movie",
+              "name": "The Lord of the Rings: The Return of the King",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0167260.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:pirates-of-the-caribbean-the-curse-of-the-black-pearl",
+              "type": "movie",
+              "name": "Pirates of the Caribbean: The Curse of the Black Pearl",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0325980.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:oldboy",
+              "type": "movie",
+              "name": "Oldboy",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0364569.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:tokyo-godfathers",
+              "type": "movie",
+              "name": "Tokyo Godfathers",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0388473.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:big-fish",
+              "type": "movie",
+              "name": "Big Fish",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0319061.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:johnny-english",
+              "type": "movie",
+              "name": "Johnny English",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0274166.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:gozu",
+              "type": "movie",
+              "name": "Gozu",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0361668.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:school-of-rock",
+              "type": "movie",
+              "name": "The School of Rock",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0332379.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:finding-nemo",
+              "type": "movie",
+              "name": "Finding Nemo",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0266543.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:once-upon-a-time-in-mexico",
+              "type": "movie",
+              "name": "Once Upon a Time in Mexico",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0285823.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:spring-summer-fall-winter-and-spring",
+              "type": "movie",
+              "name": "Spring, Summer, Fall, Winter... and Spring",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0374546.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:11-14",
+              "type": "movie",
+              "name": "11:14",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0331811.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2004"
+            },
+            {
+              "id": "lbx:holes",
+              "type": "movie",
+              "name": "Holes",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0311289.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:blackball",
+              "type": "movie",
+              "name": "Blackball",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0337879.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:old-school",
+              "type": "movie",
+              "name": "Old School",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0302886.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:bad-santa",
+              "type": "movie",
+              "name": "Bad Santa",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0307987.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:the-cooler",
+              "type": "movie",
+              "name": "The Cooler",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0318374.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:a-mighty-wind",
+              "type": "movie",
+              "name": "A Mighty Wind",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0310281.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:jeepers-creepers-2",
+              "type": "movie",
+              "name": "Jeepers Creepers 2",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0301470.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:all-the-real-girls",
+              "type": "movie",
+              "name": "All the Real Girls",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0299458.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:looney-tunes-back-in-action",
+              "type": "movie",
+              "name": "Looney Tunes: Back in Action",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0318155.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:intolerable-cruelty",
+              "type": "movie",
+              "name": "Intolerable Cruelty",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0138524.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:identity",
+              "type": "movie",
+              "name": "Identity",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0309698.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:monster",
+              "type": "movie",
+              "name": "Monster",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0340855.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:the-matrix-reloaded",
+              "type": "movie",
+              "name": "The Matrix Reloaded",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0234215.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:open-range",
+              "type": "movie",
+              "name": "Open Range",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0316356.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:good-bye-lenin",
+              "type": "movie",
+              "name": "Good Bye, Lenin!",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0301357.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:travellers-and-magicians",
+              "type": "movie",
+              "name": "Travellers and Magicians",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0378906.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:cold-mountain",
+              "type": "movie",
+              "name": "Cold Mountain",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0159365.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            }
+          ]
+        },
         "list-for-when-you-want-to-feel-something": {
           "title": "for when you want to feel something",
           "url": "https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/",

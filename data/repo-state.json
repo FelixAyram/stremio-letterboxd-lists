@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:11:34.944Z",
+  "savedAt": "2026-06-27T20:11:56.686Z",
   "users": {
     "users": [
       {
@@ -16965,6 +16965,257 @@
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0159365.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2003"
+            }
+          ]
+        },
+        "list-chick-flicks": {
+          "title": "chick flicks",
+          "url": "https://letterboxd.com/kaitienk/list/chick-flicks/",
+          "listUrl": "https://letterboxd.com/kaitienk/list/chick-flicks/",
+          "filmsCount": 854,
+          "cacheSchema": 7,
+          "persisted": true,
+          "cachedAt": 1782591114678,
+          "metaByIndex": [
+            {
+              "id": "lbx:10-things-i-hate-about-you",
+              "type": "movie",
+              "name": "10 Things I Hate About You",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0147800.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1999"
+            },
+            {
+              "id": "lbx:theres-something-about-mary",
+              "type": "movie",
+              "name": "There's Something About Mary",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0129387.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1998"
+            },
+            {
+              "id": "lbx:never-been-kissed",
+              "type": "movie",
+              "name": "Never Been Kissed",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0151738.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1999"
+            },
+            {
+              "id": "lbx:bridget-joness-baby",
+              "type": "movie",
+              "name": "Bridget Jones's Baby",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1473832.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:bridesmaids",
+              "type": "movie",
+              "name": "Bridesmaids",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1478338.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2011"
+            },
+            {
+              "id": "lbx:bridget-jones-mad-about-the-boy",
+              "type": "movie",
+              "name": "Bridget Jones: Mad About the Boy",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32063050.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:down-with-love",
+              "type": "movie",
+              "name": "Down with Love",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0309530.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2003"
+            },
+            {
+              "id": "lbx:13-going-on-30-3",
+              "type": "movie",
+              "name": "13 Going on 30",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0337563.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2004"
+            },
+            {
+              "id": "lbx:miss-congeniality",
+              "type": "movie",
+              "name": "Miss Congeniality",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0212346.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2000"
+            },
+            {
+              "id": "lbx:to-all-the-boys-ive-loved-before",
+              "type": "movie",
+              "name": "To All the Boys I've Loved Before",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3846674.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:27-dresses",
+              "type": "movie",
+              "name": "27 Dresses",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0988595.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2008"
+            },
+            {
+              "id": "lbx:the-back-up-plan",
+              "type": "movie",
+              "name": "The Back-up Plan",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1212436.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2010"
+            },
+            {
+              "id": "lbx:bride-wars",
+              "type": "movie",
+              "name": "Bride Wars",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0901476.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2009"
+            },
+            {
+              "id": "lbx:barefoot-in-the-park",
+              "type": "movie",
+              "name": "Barefoot in the Park",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0061385.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1967"
+            },
+            {
+              "id": "lbx:sisters-2015",
+              "type": "movie",
+              "name": "Sisters",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1850457.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2015"
+            },
+            {
+              "id": "lbx:step-sisters",
+              "type": "movie",
+              "name": "Step Sisters",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5267472.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:mothers-day-2016",
+              "type": "movie",
+              "name": "Mother's Day",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4824302.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:betting-on-the-bride",
+              "type": "movie",
+              "name": "Betting on the Bride",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7429362.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2017"
+            },
+            {
+              "id": "lbx:bratz",
+              "type": "movie",
+              "name": "Bratz",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0804452.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2007"
+            },
+            {
+              "id": "lbx:drive-me-crazy",
+              "type": "movie",
+              "name": "Drive Me Crazy",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0164114.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1999"
+            },
+            {
+              "id": "lbx:the-wedding-banquet-2025",
+              "type": "movie",
+              "name": "The Wedding Banquet",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32214413.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:the-first-time-2012",
+              "type": "movie",
+              "name": "The First Time",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1763303.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2012"
+            },
+            {
+              "id": "lbx:its-a-boy-girl-thing",
+              "type": "movie",
+              "name": "It's a Boy Girl Thing",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0482527.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2006"
+            },
+            {
+              "id": "lbx:love-wrecked",
+              "type": "movie",
+              "name": "Lovewrecked",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0409011.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2005"
+            },
+            {
+              "id": "lbx:something-from-tiffanys",
+              "type": "movie",
+              "name": "Something from Tiffany's",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16233952.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2022"
+            },
+            {
+              "id": "lbx:cant-buy-me-love",
+              "type": "movie",
+              "name": "Can't Buy Me Love",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0092718.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1987"
+            },
+            {
+              "id": "lbx:cow-belles",
+              "type": "movie",
+              "name": "Cow Belles",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0489007.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2006"
+            },
+            {
+              "id": "lbx:win-a-date-with-tad-hamilton",
+              "type": "movie",
+              "name": "Win a Date with Tad Hamilton!",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0335559.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2004"
+            },
+            {
+              "id": "lbx:imagine-me-you",
+              "type": "movie",
+              "name": "Imagine Me & You",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0421994.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2005"
+            },
+            {
+              "id": "lbx:beauty-the-briefcase",
+              "type": "movie",
+              "name": "Beauty & the Briefcase",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1493842.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2010"
             }
           ]
         },

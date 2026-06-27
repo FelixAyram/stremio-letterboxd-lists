@@ -8,7 +8,8 @@ const {
   pickLetterboxdPoster,
   attachPosterToFilm,
   pickDisplayPoster,
-  posterUrlFromLbxId,
+  posterMode,
+  isRpdbMode,
   normalizePosterUrl
 } = require('./posters');
 const tmdb = require('./tmdb');
@@ -304,7 +305,66 @@ function fallbackMeta(film) {
   };
 }
 
+async function resolveFilmFast(film) {
+  const preferType = inferPreferType(film);
+  const cachedImdb = getImdbForSlug(film.slug);
+
+  if (cachedImdb) {
+    const mediaType = getMediaTypeForSlug(film.slug);
+    const meta = await fetchMeta(cachedImdb, mediaType);
+    return buildMetaFromResolution(film, cachedImdb, mediaType, meta, {});
+  }
+
+  if (tmdb.isEnabled()) {
+    const tmdbHit = await tmdb.searchTmdbForFilm(film, preferType);
+    if (tmdbHit?.imdbId) {
+      return buildMetaFromResolution(film, tmdbHit.imdbId, tmdbHit.mediaType, {
+        name: tmdbHit.meta?.name || film.name,
+        releaseInfo: tmdbHit.meta?.releaseInfo || film.year || '',
+        description: tmdbHit.meta?.overview,
+        imdbRating: tmdbHit.meta?.vote_average ? String(tmdbHit.meta.vote_average) : undefined
+      }, { tmdbId: tmdbHit.tmdbId });
+    }
+  }
+
+  const { hit, mediaType } = await searchCinemetaForFilm(film, preferType);
+  if (hit) {
+    return buildMetaFromResolution(film, hit.id, mediaType, hit, {});
+  }
+
+  if (preferType === 'series' && tvdb.isEnabled()) {
+    const tvHit = await tvdb.searchSeries(film.pageTitle || film.name, film.year);
+    if (tvHit?.imdbId) {
+      return buildMetaFromResolution(film, tvHit.imdbId, 'series', {
+        name: tvHit.name,
+        releaseInfo: tvHit.releaseInfo
+      }, {});
+    }
+  }
+
+  const lbx = await fetchMediaPage(film.slug, {
+    link: film.link,
+    mediaType: film.mediaType,
+    year: film.year
+  });
+  if (lbx.imdbId) {
+    const { meta, mediaType: mt } = await resolveMetaType(lbx.imdbId, preferType, film.name, film.year);
+    if (meta) return buildMetaFromResolution(film, lbx.imdbId, mt, meta, {});
+  }
+
+  return fallbackMeta(film);
+}
+
+async function resolveFilmOrFallbackFast(film) {
+  try {
+    return await resolveFilmFast(film);
+  } catch {
+    return fallbackMeta(film);
+  }
+}
+
 async function resolveFilmOrFallback(film) {
+  if (isRpdbMode()) return resolveFilmOrFallbackFast(film);
   try {
     return (await resolveFilm(film)) || fallbackMeta(film);
   } catch {
@@ -313,6 +373,7 @@ async function resolveFilmOrFallback(film) {
 }
 
 async function ensureLetterboxdPosters(films, concurrency = parseInt(process.env.POSTER_CONCURRENCY || '3', 10)) {
+  if (isRpdbMode()) return films;
   const needsPage = [];
 
   for (const film of films) {
@@ -341,15 +402,19 @@ async function ensureLetterboxdPosters(films, concurrency = parseInt(process.env
 }
 
 async function resolveFilms(films, onProgress, concurrency = 3) {
-  await ensureLetterboxdPosters(films, concurrency);
+  if (!isRpdbMode()) {
+    await ensureLetterboxdPosters(films, concurrency);
+  }
+  const batchDelay = isRpdbMode() ? 25 : 80;
   const out = [];
 
   for (let i = 0; i < films.length; i += concurrency) {
     const batch = films.slice(i, i + concurrency);
-    const resolved = await Promise.all(batch.map((f) => resolveFilmOrFallback(f)));
+    const resolver = isRpdbMode() ? resolveFilmOrFallbackFast : resolveFilmOrFallback;
+    const resolved = await Promise.all(batch.map((f) => resolver(f)));
     out.push(...resolved);
     if (onProgress) onProgress(Math.min(i + concurrency, films.length), films.length);
-    if (i + concurrency < films.length) await sleep(80);
+    if (i + concurrency < films.length) await sleep(batchDelay);
   }
 
   return out;
@@ -400,6 +465,8 @@ module.exports = {
   fetchMeta,
   resolveFilm,
   resolveFilmOrFallback,
+  resolveFilmFast,
+  resolveFilmOrFallbackFast,
   resolveFilms,
   ensureLetterboxdPosters,
   fallbackMeta,

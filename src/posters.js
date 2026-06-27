@@ -7,6 +7,10 @@ function posterMode() {
   return (process.env.POSTER_MODE || 'rpdb').toLowerCase();
 }
 
+function isRpdbMode() {
+  return posterMode() === 'rpdb';
+}
+
 function isLetterboxdPoster(url) {
   return Boolean(url && url.includes('ltrbxd.com') && !url.includes('empty-poster'));
 }
@@ -91,5 +95,7 @@ module.exports = {
   pickLetterboxdPoster,
   pickRpdbPoster,
   pickDisplayPoster,
-  attachPosterToFilm
+  attachPosterToFilm,
+  posterMode,
+  isRpdbMode
 };

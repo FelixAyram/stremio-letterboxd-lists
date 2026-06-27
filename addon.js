@@ -2,7 +2,7 @@ const { addonBuilder } = require('stremio-addon-sdk');
 const { fetchFullList, listIdFromUrl } = require('./src/letterboxd');
 const { listPrefersSeries } = require('./src/title-match');
 const { resolveFilms, fetchMeta, getImdbForSlug, getMediaTypeForSlug, getLetterboxdPoster, getLetterboxdPosterBySlug, getLetterboxdBackground, loadPosterMapFromCache, fallbackMeta, ensureLetterboxdPosters } = require('./src/cinemeta');
-const { isAllowedPoster } = require('./src/posters');
+const { isAllowedPoster, isRpdbMode } = require('./src/posters');
 const tmdb = require('./src/tmdb');
 const rpdb = require('./src/rpdb');
 const tvdb = require('./src/tvdb');
@@ -15,7 +15,10 @@ const loading = new Map();
 const interfaceCache = new Map();
 
 const PAGE_SIZE = 30;
-const RESOLVE_CONCURRENCY = parseInt(process.env.RESOLVE_CONCURRENCY || '3', 10);
+const RESOLVE_CONCURRENCY = parseInt(
+  process.env.RESOLVE_CONCURRENCY || (process.env.POSTER_MODE === 'rpdb' || !process.env.POSTER_MODE ? '10' : '3'),
+  10
+);
 
 function parseSkip(extra) {
   const raw = extra?.skip ?? extra?.Skip ?? '0';
@@ -116,6 +119,17 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
   }
 
   if (toResolve.length) {
+    if (isRpdbMode()) {
+      const resolved = await resolveFilms(toResolve, null, RESOLVE_CONCURRENCY);
+      for (let j = 0; j < indices.length; j++) {
+        metaByIndex[indices[j]] = resolved[j];
+      }
+      writeListCache(userId, listId, { title, url, metaByIndex, filmsCount: films.length, cacheSchema: 6 });
+      loadPosterMapFromCache(resolved);
+      listCache.set(cacheKey(userId, listId), metaByIndex);
+      return metasForRange(metaByIndex, films, skip, end);
+    }
+
     const pageFilms = films.slice(skip, end);
     await ensureLetterboxdPosters(pageFilms);
     const quick = metasForRange(metaByIndex, films, skip, end);

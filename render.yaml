@@ -22,7 +22,7 @@ services:
       - key: GOOGLE_CLIENT_SECRET
         sync: false
       - key: RESOLVE_CONCURRENCY
-        value: "3"
+        value: "10"
       - key: POSTER_CONCURRENCY
         value: "3"
       - key: MAX_HEAVY_OPS

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:12:33.285Z",
+  "savedAt": "2026-06-27T20:12:51.047Z",
   "users": {
     "users": [
       {
@@ -16473,7 +16473,7 @@
           "filmsCount": 150,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591151276,
+          "cachedAt": 1782591169037,
           "metaByIndex": [
             {
               "id": "lbx:when-life-gives-you-tangerines-2025",
@@ -17434,6 +17434,246 @@
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37600136.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:mine-2021-1",
+              "type": "series",
+              "name": "Mine",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14023192.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:descendants-of-the-sun",
+              "type": "series",
+              "name": "Descendants of the Sun",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4925000.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:extraordinary-you",
+              "type": "series",
+              "name": "Extraordinary You",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10826102.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:extracurricular-2020",
+              "type": "series",
+              "name": "Extracurricular",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10262630.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:family-by-choice",
+              "type": "series",
+              "name": "Family by Choice",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30365813.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:undercover-miss-hong",
+              "type": "series",
+              "name": "Undercover Miss Hong",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39219419.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:snowdrop",
+              "type": "series",
+              "name": "Snowdrop",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13304700.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
+            },
+            {
+              "id": "lbx:six-flying-dragons",
+              "type": "series",
+              "name": "Six Flying Dragons",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5079024.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2015"
+            },
+            {
+              "id": "lbx:tunnel-2017",
+              "type": "series",
+              "name": "Tunnel",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6356086.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2017"
+            },
+            {
+              "id": "lbx:if-wishes-could-kill",
+              "type": "series",
+              "name": "If Wishes Could Kill",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36104233.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:kill-me-heal-me",
+              "type": "series",
+              "name": "Kill Me, Heal Me",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4339192.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2015"
+            },
+            {
+              "id": "lbx:hello-my-twenties",
+              "type": "series",
+              "name": "Hello, My Twenties!",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5858892.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016"
+            },
+            {
+              "id": "lbx:head-over-heels-2025",
+              "type": "series",
+              "name": "Head Over Heels",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37146661.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:arthdal-chronicles",
+              "type": "series",
+              "name": "Arthdal Chronicles",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8750956.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:hotel-del-luna",
+              "type": "series",
+              "name": "Hotel Del Luna",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10220588.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:karma-2025",
+              "type": "series",
+              "name": "Karma",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29921070.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:tell-me-that-you-love-me-2023",
+              "type": "series",
+              "name": "Tell Me That You Love Me",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29569080.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:see-you-in-my-19th-life",
+              "type": "series",
+              "name": "See You in My 19th Life",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27838483.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:the-light-in-your-eyes",
+              "type": "series",
+              "name": "The Light in Your Eyes",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9466968.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2019"
+            },
+            {
+              "id": "lbx:undercover-high-school",
+              "type": "series",
+              "name": "Undercover High School",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33364760.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2025"
+            },
+            {
+              "id": "lbx:reply-1997",
+              "type": "series",
+              "name": "Reply 1997",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2782216.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2012"
+            },
+            {
+              "id": "lbx:connection-2024-1",
+              "type": "series",
+              "name": "Connection",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30422566.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2024"
+            },
+            {
+              "id": "lbx:the-world-of-the-married",
+              "type": "series",
+              "name": "The World of the Married",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12042964.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:something-in-the-rain",
+              "type": "series",
+              "name": "Something in the Rain",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8078816.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2018"
+            },
+            {
+              "id": "lbx:the-art-of-sarah",
+              "type": "series",
+              "name": "The Art of Sarah",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35149250.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:reply-1994",
+              "type": "series",
+              "name": "Reply 1994",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3357586.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2013"
+            },
+            {
+              "id": "lbx:perfect-crown",
+              "type": "series",
+              "name": "Perfect Crown",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39333617.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2026"
+            },
+            {
+              "id": "lbx:mask-girl-2023",
+              "type": "series",
+              "name": "Mask Girl",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26258200.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2023"
+            },
+            {
+              "id": "lbx:sweet-home-2020",
+              "type": "series",
+              "name": "Sweet Home",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11612120.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020"
+            },
+            {
+              "id": "lbx:squid-game",
+              "type": "series",
+              "name": "Squid Game",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10919420.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2021"
             }
           ]
         },

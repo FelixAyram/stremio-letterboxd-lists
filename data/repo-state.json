@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-06-27T20:11:32.783Z",
+  "savedAt": "2026-06-27T20:11:34.944Z",
   "users": {
     "users": [
       {
@@ -16724,7 +16724,7 @@
           "filmsCount": 235,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591079575,
+          "cachedAt": 1782591092936,
           "metaByIndex": [
             {
               "id": "lbx:kill-bill-vol-1",
@@ -16793,7 +16793,7 @@
             {
               "id": "lbx:school-of-rock",
               "type": "movie",
-              "name": "The School of Rock",
+              "name": "School of Rock",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0332379.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2003"
@@ -16828,7 +16828,7 @@
               "name": "11:14",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0331811.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2003"
             },
             {
               "id": "lbx:holes",
@@ -16945,7 +16945,7 @@
             {
               "id": "lbx:good-bye-lenin",
               "type": "movie",
-              "name": "Good Bye, Lenin!",
+              "name": "Good Bye Lenin!",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0301357.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2003"
@@ -16953,7 +16953,7 @@
             {
               "id": "lbx:travellers-and-magicians",
               "type": "movie",
-              "name": "Travellers and Magicians",
+              "name": "Travelers and Magicians",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0378906.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2003"

@@ -1,4 +1,4 @@
-# Render free: duerme tras 15 min sin tráfico. Ping cada 5 min.
+# Render free: duerme tras 15 min sin tráfico. Ping ligero cada 5 min (sin warmup).
 name: Keep Render awake
 
 on:
@@ -14,10 +14,9 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     steps:
-      - name: Wake server + warm catalogs
+      - name: Ping servidor (solo health — evita OOM)
         run: |
           BASE="https://stremio-letterboxd-lists.onrender.com"
-          curl -fsS --max-time 120 "$BASE/api/health" -o /dev/null
-          curl -fsS --max-time 180 "$BASE/api/wake" -o /dev/null
-          curl -fsS --max-time 120 "$BASE/manifest.json" -o /dev/null
+          curl -fsS --max-time 60 "$BASE/api/health" -o /dev/null
+          curl -fsS --max-time 60 "$BASE/manifest.json" -o /dev/null
           echo "OK $(date -u +%Y-%m-%dT%H:%M:%SZ)"

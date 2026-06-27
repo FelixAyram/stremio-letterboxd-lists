@@ -12,7 +12,7 @@ const loading = new Map();
 const interfaceCache = new Map();
 
 const PAGE_SIZE = 30;
-const RESOLVE_CONCURRENCY = 8;
+const RESOLVE_CONCURRENCY = parseInt(process.env.RESOLVE_CONCURRENCY || '3', 10);
 
 function parseSkip(extra) {
   const raw = extra?.skip ?? extra?.Skip ?? '0';
@@ -130,6 +130,7 @@ async function getCatalogMetas(userId, listConfig, skip = 0, limit = PAGE_SIZE) 
 }
 
 function preloadNextCatalogPage(userId, listConfig, skip) {
+  if (process.env.PRELOAD_NEXT_PAGE === 'false') return;
   getFilmList(userId, listConfig).then(({ films }) => {
     const next = skip + PAGE_SIZE;
     if (next < films.length) {
@@ -292,6 +293,7 @@ function buildManifest(userId, listId) {
 }
 
 function preloadLists(userId) {
+  if (process.env.PRELOAD_ON_START === 'false') return;
   readLists(userId).lists.forEach((list) => {
     getFilmList(userId, list).catch((e) => console.error(`[preload:${userId}]`, e.message));
   });

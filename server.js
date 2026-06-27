@@ -14,6 +14,9 @@ const {
 const googleAuth = require('./src/google-auth');
 const { lookupKey, attachKeysToLists, rebuildIndex, manifestUrl, isValidKey } = require('./src/keys');
 const github = require('./src/github-sync');
+const { memoryStatus, checkMemoryPressure, registerMemoryPressureHandler, startMemoryWatchdog } = require('./src/resource-guard');
+const { clearFilmPageCache } = require('./src/letterboxd');
+const { clearSearchCache } = require('./src/cinemeta');
 
 const PORT = process.env.PORT || 7731;
 const HOST = process.env.HOST || '0.0.0.0';
@@ -89,10 +92,7 @@ function persistLists(userId, lists) {
 }
 
 function activateLists(userId, lists) {
-  lists.forEach((l) => {
-    getInterfaceForList(userId, l.id);
-    getFilmList(userId, l).catch((e) => console.error(`[preload:${userId}]`, l.id, e.message));
-  });
+  lists.forEach((l) => getInterfaceForList(userId, l.id));
 }
 
 function mountAddonRouter(userId, listId) {
@@ -212,14 +212,25 @@ app.get('/api/auth/me', requireAuth, (req, res) => {
 });
 
 app.get('/api/health', (_, res) => {
-  res.json({ ok: true, uptime: Math.floor(process.uptime()), version: VERSION });
+  const mem = memoryStatus();
+  if (mem.critical) {
+    return res.status(503).json({ ok: false, ...mem, version: VERSION });
+  }
+  res.json({ ok: true, uptime: Math.floor(process.uptime()), version: VERSION, ...mem });
 });
 
 app.get('/api/wake', (_, res) => {
   sendCors(res);
-  warmupAllCatalogs();
-  listUserIds().forEach((uid) => preloadUser(uid));
-  res.json({ ok: true, warmed: true, uptime: Math.floor(process.uptime()), version: VERSION });
+  const mem = memoryStatus();
+  res.json({
+    ok: true,
+    awake: true,
+    warmed: false,
+    uptime: Math.floor(process.uptime()),
+    version: VERSION,
+    ...mem,
+    note: 'Ping ligero — sin precalentar listas (evita OOM en Render free)'
+  });
 });
 
 app.get('/api/info', (req, res) => {
@@ -321,19 +332,24 @@ app.use('/:key', (req, res, next) => {
 });
 
 function warmupAllCatalogs() {
+  if (process.env.WARMUP_CATALOGS === 'false') return;
+  let delay = 0;
   for (const user of readUsersDb().users) {
     for (const list of readLists(user.id).lists) {
-      getCatalogMetas(user.id, list, 0, 30).catch((e) => console.error('[warmup]', list.id, e.message));
-      if (list.key) {
-        getInterfaceForList(user.id, list.id);
-      }
+      const uid = user.id;
+      const cfg = list;
+      setTimeout(() => {
+        getCatalogMetas(uid, cfg, 0, 30).catch((e) => console.error('[warmup]', cfg.id, e.message));
+      }, delay);
+      delay += 8000;
+      if (list.key) getInterfaceForList(user.id, list.id);
     }
   }
 }
 
 function preloadUser(userId) {
   readLists(userId).lists.forEach((l) => getInterfaceForList(userId, l.id));
-  preloadLists(userId);
+  if (process.env.PRELOAD_ON_START !== 'false') preloadLists(userId);
 }
 
 async function boot() {
@@ -358,13 +374,39 @@ function logStartup() {
     });
   });
   console.log('');
-  listUserIds().forEach((uid) => preloadUser(uid));
-  warmupAllCatalogs();
+  listUserIds().forEach((uid) => {
+    readLists(uid).lists.forEach((l) => {
+      if (l.key) getInterfaceForList(uid, l.id);
+    });
+  });
+  if (process.env.WARMUP_ON_START === 'true') {
+    setTimeout(() => {
+      listUserIds().forEach((uid) => preloadUser(uid));
+      warmupAllCatalogs();
+    }, 15000);
+  }
 }
+
+registerMemoryPressureHandler(() => {
+  clearRuntimeCache();
+  clearFilmPageCache();
+  clearSearchCache();
+});
+
+process.on('unhandledRejection', (err) => {
+  console.error('[unhandledRejection]', err?.message || err);
+  checkMemoryPressure();
+});
+
+process.on('uncaughtException', (err) => {
+  console.error('[uncaughtException]', err?.message || err);
+  checkMemoryPressure();
+});
 
 let server;
 boot()
   .then(() => {
+    startMemoryWatchdog(45000);
     server = app.listen(PORT, HOST, logStartup);
   })
   .catch((e) => {

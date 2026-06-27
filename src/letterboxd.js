@@ -1,9 +1,11 @@
 const cheerio = require('cheerio');
 const { posterUrlFromLbxId, normalizePosterUrl } = require('./posters');
+const { LruCache } = require('./lru-cache');
+const { runHeavy } = require('./resource-guard');
 
 const UA = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36';
 
-const filmPageCache = new Map();
+const filmPageCache = new LruCache(parseInt(process.env.FILM_PAGE_CACHE_SIZE || '250', 10));
 
 function normalizeListUrl(url) {
   let u = url.trim();
@@ -309,6 +311,10 @@ async function fetchListTitle(listUrl) {
 }
 
 async function fetchFullList(listUrl) {
+  return runHeavy(() => fetchFullListInner(listUrl), 'fetchFullList');
+}
+
+async function fetchFullListInner(listUrl) {
   const base = normalizeListUrl(listUrl);
   const allFilms = [];
   const seen = new Set();
@@ -342,6 +348,10 @@ async function fetchFullList(listUrl) {
   return { id: listIdFromUrl(base), title, url: base, films: allFilms, preferSeries };
 }
 
+function clearFilmPageCache() {
+  filmPageCache.clear();
+}
+
 function sleep(ms) {
   return new Promise((r) => setTimeout(r, ms));
 }
@@ -361,5 +371,6 @@ module.exports = {
   fetchImdbId,
   fetchFilmPage,
   fetchMediaPage,
+  clearFilmPageCache,
   sleep
 };

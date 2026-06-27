@@ -4,7 +4,7 @@ services:
     runtime: node
     plan: free
     buildCommand: npm install
-    startCommand: node server.js
+    startCommand: node --max-old-space-size=384 server.js
     healthCheckPath: /api/health
     envVars:
       - key: NODE_VERSION
@@ -21,5 +21,17 @@ services:
         sync: false
       - key: GOOGLE_CLIENT_SECRET
         sync: false
+      - key: RESOLVE_CONCURRENCY
+        value: "3"
+      - key: POSTER_CONCURRENCY
+        value: "3"
+      - key: MAX_HEAVY_OPS
+        value: "2"
+      - key: PRELOAD_ON_START
+        value: "false"
+      - key: WARMUP_ON_START
+        value: "false"
+      - key: PRELOAD_NEXT_PAGE
+        value: "false"
       - key: LISTS_JSON
         value: '{"lists":[{"url":"https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/","name":"for when you want to feel something","id":"list-for-when-you-want-to-feel-something"}]}'

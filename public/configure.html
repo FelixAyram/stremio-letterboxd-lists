@@ -65,7 +65,7 @@
       <summary>¿Stremio no carga? Trucos para mantener el servidor activo</summary>
       <p style="margin:0.5rem 0 0">Render gratis duerme tras 15 min sin visitas. El primer arranque tarda ~1 min y Stremio no espera.</p>
       <ol style="margin:0.5rem 0 0 1.2rem;padding:0">
-        <li><strong>Recomendado:</strong> crea monitor gratis en <a href="https://uptimerobot.com" target="_blank" rel="noopener" style="color:#40bcf4">UptimeRobot</a> → HTTP(s) → URL <code id="wakeUrl">…/api/wake</code> → cada 5 min.</li>
+        <li><strong>Recomendado:</strong> monitor en <a href="https://uptimerobot.com" target="_blank" rel="noopener" style="color:#40bcf4">UptimeRobot</a> → URL <code id="wakeUrl">…/api/health</code> → cada 5 min (ping ligero, no sobrecarga el servidor).</li>
         <li>GitHub Actions ya hace ping cada 5 min (puede retrasarse).</li>
         <li>Antes de abrir Stremio, pulsa <strong>Despertar ahora</strong> y espera ~30 s.</li>
         <li>Plan de pago Render (~7 USD/mes): sin sueño.</li>
@@ -144,7 +144,7 @@
     const wakeBtn = document.getElementById('wakeBtn');
     const wakeUrlEl = document.getElementById('wakeUrl');
 
-    wakeUrlEl.textContent = location.origin + '/api/wake';
+    wakeUrlEl.textContent = location.origin + '/api/health';
 
     async function checkServer(wake = false) {
       const url = wake ? '/api/wake' : '/api/health';

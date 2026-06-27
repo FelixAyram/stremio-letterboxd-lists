@@ -1,5 +1,6 @@
 const CINEMETA = 'https://v3-cinemeta.strem.io';
 const { fetchMediaPage, sleep } = require('./letterboxd');
+const { LruCache } = require('./lru-cache');
 const {
   EMPTY_POSTER,
   isLetterboxdPoster,
@@ -16,7 +17,7 @@ const {
   yearMatches
 } = require('./title-match');
 
-const searchCache = new Map();
+const searchCache = new LruCache(parseInt(process.env.SEARCH_CACHE_SIZE || '400', 10));
 const posterByImdb = new Map();
 const posterBySlug = new Map();
 const backgroundByImdb = new Map();
@@ -269,7 +270,7 @@ async function resolveFilmOrFallback(film) {
   }
 }
 
-async function ensureLetterboxdPosters(films, concurrency = 6) {
+async function ensureLetterboxdPosters(films, concurrency = parseInt(process.env.POSTER_CONCURRENCY || '3', 10)) {
   const needsPage = [];
 
   for (const film of films) {
@@ -345,6 +346,10 @@ function loadPosterMapFromCache(metas) {
   }
 }
 
+function clearSearchCache() {
+  searchCache.clear();
+}
+
 module.exports = {
   searchCinemeta,
   searchCinemetaForFilm,
@@ -360,5 +365,6 @@ module.exports = {
   getLetterboxdPoster,
   getLetterboxdPosterBySlug,
   getLetterboxdBackground,
-  loadPosterMapFromCache
+  loadPosterMapFromCache,
+  clearSearchCache
 };

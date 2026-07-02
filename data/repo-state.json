@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-07-02T21:28:21.442Z",
+  "savedAt": "2026-07-02T21:36:54.412Z",
   "users": {
     "users": [
       {
@@ -89,7 +89,7 @@
           "title": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
           "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
           "preferSeries": true,
-          "cachedAt": 1783027588417,
+          "cachedAt": 1783028212213,
           "films": [
             {
               "slug": "when-life-gives-you-tangerines-2025",
@@ -1448,7 +1448,7 @@
           "title": "2003",
           "url": "https://letterboxd.com/thewickerman/list/2003/",
           "preferSeries": false,
-          "cachedAt": 1783027588417,
+          "cachedAt": 1783028212214,
           "films": [
             {
               "slug": "kill-bill-vol-1",
@@ -3337,7 +3337,7 @@
           "title": "chick flicks",
           "url": "https://letterboxd.com/kaitienk/list/chick-flicks/",
           "preferSeries": false,
-          "cachedAt": 1783027588419,
+          "cachedAt": 1783028212214,
           "films": [
             {
               "slug": "10-things-i-hate-about-you",
@@ -10178,7 +10178,7 @@
           "title": "for when you want to feel something",
           "url": "https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/",
           "preferSeries": false,
-          "cachedAt": 1783027588421,
+          "cachedAt": 1783028212304,
           "films": [
             {
               "slug": "cha-cha-real-smooth",
@@ -11675,7 +11675,7 @@
           "title": "Get Busy Dying or Get Busy Watching 2018's Most Essential Movies",
           "url": "https://letterboxd.com/axelhagne/list/get-busy-dying-or-get-busy-watching-2018s/",
           "preferSeries": false,
-          "cachedAt": 1783027588421,
+          "cachedAt": 1783028212305,
           "films": [
             {
               "slug": "spider-man-into-the-spider-verse",
@@ -12460,7 +12460,7 @@
           "title": "Letterboxd's Top 500 Films",
           "url": "https://letterboxd.com/official/list/letterboxds-top-500-films/",
           "preferSeries": false,
-          "cachedAt": 1783027588421,
+          "cachedAt": 1783028212305,
           "films": [
             {
               "slug": "harakiri",
@@ -16473,7 +16473,7 @@
           "filmsCount": 150,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1783027588511,
+          "cachedAt": 1783028212307,
           "metaByIndex": [
             {
               "id": "lbx:when-life-gives-you-tangerines-2025",
@@ -16481,7 +16481,8 @@
               "name": "When Life Gives You Tangerines",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26471411.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "when-life-gives-you-tangerines-2025"
             },
             {
               "id": "lbx:reply-1988",
@@ -16489,7 +16490,8 @@
               "name": "Reply 1988",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5182866.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "reply-1988"
             },
             {
               "id": "lbx:move-to-heaven",
@@ -16497,7 +16499,8 @@
               "name": "Move to Heaven",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11052470.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "move-to-heaven"
             },
             {
               "id": "lbx:twinkling-watermelon",
@@ -16505,7 +16508,8 @@
               "name": "Twinkling Watermelon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27446493.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "twinkling-watermelon"
             },
             {
               "id": "lbx:weak-hero",
@@ -16513,7 +16517,8 @@
               "name": "Weak Hero",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20234568.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "weak-hero"
             },
             {
               "id": "lbx:my-mister",
@@ -16521,7 +16526,8 @@
               "name": "My Mister",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7923710.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "my-mister"
             },
             {
               "id": "lbx:moving-2023-1",
@@ -16529,7 +16535,8 @@
               "name": "Moving",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt24640580.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "moving-2023-1"
             },
             {
               "id": "lbx:my-dearest-2023",
@@ -16537,7 +16544,8 @@
               "name": "My Dearest",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26228190.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "my-dearest-2023"
             },
             {
               "id": "lbx:mouse-2021-1",
@@ -16545,7 +16553,8 @@
               "name": "Mouse",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13634792.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "mouse-2021-1"
             },
             {
               "id": "lbx:twenty-five-twenty-one",
@@ -16553,7 +16562,8 @@
               "name": "Twenty Five Twenty One",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt17513352.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "twenty-five-twenty-one"
             },
             {
               "id": "lbx:daily-dose-of-sunshine",
@@ -16561,7 +16571,8 @@
               "name": "Daily Dose of Sunshine",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26258202.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "daily-dose-of-sunshine"
             },
             {
               "id": "lbx:dp-2021",
@@ -16569,7 +16580,8 @@
               "name": "D.P.",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13024974.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "dp-2021"
             },
             {
               "id": "lbx:love-in-the-big-city-2024",
@@ -16577,7 +16589,8 @@
               "name": "Love In The Big City",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30143510.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "love-in-the-big-city-2024"
             },
             {
               "id": "lbx:the-glory",
@@ -16585,7 +16598,8 @@
               "name": "The Glory",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21344706.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "the-glory"
             },
             {
               "id": "lbx:my-liberation-notes",
@@ -16593,7 +16607,8 @@
               "name": "My Liberation Notes",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15146130.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "my-liberation-notes"
             },
             {
               "id": "lbx:mr-sunshine-2018",
@@ -16601,7 +16616,8 @@
               "name": "Mr. Sunshine",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7094780.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "mr-sunshine-2018"
             },
             {
               "id": "lbx:crash-landing-on-you",
@@ -16609,7 +16625,8 @@
               "name": "Crash Landing on You",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10850932.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "crash-landing-on-you"
             },
             {
               "id": "lbx:jeongnyeon-the-star-is-born",
@@ -16617,7 +16634,8 @@
               "name": "Jeongnyeon: The Star is Born",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28197611.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "jeongnyeon-the-star-is-born"
             },
             {
               "id": "lbx:the-trauma-code-heroes-on-call-2025",
@@ -16625,7 +16643,8 @@
               "name": "The Trauma Code: Heroes on Call",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28106730.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "the-trauma-code-heroes-on-call-2025"
             },
             {
               "id": "lbx:weightlifting-fairy-kim-bok-joo",
@@ -16633,7 +16652,8 @@
               "name": "Weightlifting Fairy Kim Bok-joo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6157148.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "weightlifting-fairy-kim-bok-joo"
             },
             {
               "id": "lbx:strangers-from-hell",
@@ -16641,7 +16661,8 @@
               "name": "Strangers from Hell",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10613844.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "strangers-from-hell"
             },
             {
               "id": "lbx:beyond-evil-2021",
@@ -16649,7 +16670,8 @@
               "name": "Beyond Evil",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13634872.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "beyond-evil-2021"
             },
             {
               "id": "lbx:lovely-runner",
@@ -16657,7 +16679,8 @@
               "name": "Lovely Runner",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31324295.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "lovely-runner"
             },
             {
               "id": "lbx:youth-of-may",
@@ -16665,7 +16688,8 @@
               "name": "Youth of May",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14166666.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "youth-of-may"
             },
             {
               "id": "lbx:scarlet-heart-ryeo",
@@ -16673,7 +16697,8 @@
               "name": "Scarlet Heart: Ryeo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5320412.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "scarlet-heart-ryeo"
             },
             {
               "id": "lbx:signal-2016",
@@ -16681,7 +16706,8 @@
               "name": "Signal",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5332206.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "signal-2016"
             },
             {
               "id": "lbx:prison-playbook",
@@ -16689,7 +16715,8 @@
               "name": "Prison Playbook",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7622902.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "prison-playbook"
             },
             {
               "id": "lbx:the-good-bad-mother",
@@ -16697,7 +16724,8 @@
               "name": "The Good Bad Mother",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27042206.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "the-good-bad-mother"
             },
             {
               "id": "lbx:our-unwritten-seoul",
@@ -16705,7 +16733,8 @@
               "name": "Our Unwritten Seoul",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36724865.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "our-unwritten-seoul"
             },
             {
               "id": "lbx:under-the-queens-umbrella",
@@ -16713,7 +16742,8 @@
               "name": "Under the Queen's Umbrella",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22265394.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "under-the-queens-umbrella"
             },
             {
               "id": "lbx:taxi-driver-2021",
@@ -16721,7 +16751,8 @@
               "name": "Taxi Driver",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13759970.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "taxi-driver-2021"
             },
             {
               "id": "lbx:mr-plankton",
@@ -16729,7 +16760,8 @@
               "name": "Mr. Plankton",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27539317.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "mr-plankton"
             },
             {
               "id": "lbx:summer-strike",
@@ -16737,7 +16769,8 @@
               "name": "Summer Strike",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt23788642.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "summer-strike"
             },
             {
               "id": "lbx:the-worst-of-evil",
@@ -16745,7 +16778,8 @@
               "name": "The Worst of Evil",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20600022.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "the-worst-of-evil"
             },
             {
               "id": "lbx:flower-of-evil-2020",
@@ -16753,7 +16787,8 @@
               "name": "Flower of Evil",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11691684.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "flower-of-evil-2020"
             },
             {
               "id": "lbx:incomplete-life",
@@ -16761,7 +16796,8 @@
               "name": "Incomplete Life",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4240730.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "incomplete-life"
             },
             {
               "id": "lbx:bloodhounds-2023",
@@ -16769,7 +16805,8 @@
               "name": "Bloodhounds",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26315487.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "bloodhounds-2023"
             },
             {
               "id": "lbx:light-shop-2024",
@@ -16777,7 +16814,8 @@
               "name": "Light Shop",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31014115.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "light-shop-2024"
             },
             {
               "id": "lbx:lost-2021-1",
@@ -16785,7 +16823,8 @@
               "name": "Lost",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14609588.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "lost-2021-1"
             },
             {
               "id": "lbx:through-the-darkness-2022",
@@ -16793,7 +16832,8 @@
               "name": "Through the Darkness",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15007172.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "through-the-darkness-2022"
             },
             {
               "id": "lbx:tomorrow-2022-1",
@@ -16801,7 +16841,8 @@
               "name": "Tomorrow",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt18926162.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "tomorrow-2022-1"
             },
             {
               "id": "lbx:my-name",
@@ -16809,7 +16850,8 @@
               "name": "My Name",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12940504.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "my-name"
             },
             {
               "id": "lbx:deaths-game",
@@ -16817,7 +16859,8 @@
               "name": "Death's Game",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26225038.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "deaths-game"
             },
             {
               "id": "lbx:the-king-of-pigs-2022",
@@ -16825,7 +16868,8 @@
               "name": "The King of Pigs",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt19818310.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "the-king-of-pigs-2022"
             },
             {
               "id": "lbx:mr-queen",
@@ -16833,7 +16877,8 @@
               "name": "Mr. Queen",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13400006.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "mr-queen"
             },
             {
               "id": "lbx:be-melodramatic",
@@ -16841,7 +16886,8 @@
               "name": "Be Melodramatic",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10559276.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "be-melodramatic"
             },
             {
               "id": "lbx:sky-castle",
@@ -16849,7 +16895,8 @@
               "name": "SKY Castle",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9151274.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "sky-castle"
             },
             {
               "id": "lbx:guardian-the-lonely-and-great-god",
@@ -16857,7 +16904,8 @@
               "name": "Guardian: The Lonely and Great God",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5994364.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "guardian-the-lonely-and-great-god"
             },
             {
               "id": "lbx:vincenzo",
@@ -16865,7 +16913,8 @@
               "name": "Vincenzo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13433812.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "vincenzo"
             },
             {
               "id": "lbx:hi-bye-mama",
@@ -16873,7 +16922,8 @@
               "name": "Hi Bye, Mama!",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11804034.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "hi-bye-mama"
             },
             {
               "id": "lbx:our-blues",
@@ -16881,7 +16931,8 @@
               "name": "Our Blues",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt19115260.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "our-blues"
             },
             {
               "id": "lbx:stove-league",
@@ -16889,7 +16940,8 @@
               "name": "Stove League",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11378124.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "stove-league"
             },
             {
               "id": "lbx:the-red-sleeve",
@@ -16897,7 +16949,8 @@
               "name": "The Red Sleeve",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14687200.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "the-red-sleeve"
             },
             {
               "id": "lbx:strong-woman-do-bong-soon",
@@ -16905,7 +16958,8 @@
               "name": "Strong Woman Do Bong-Soon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6263222.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "strong-woman-do-bong-soon"
             },
             {
               "id": "lbx:resident-playbook",
@@ -16913,7 +16967,8 @@
               "name": "Resident Playbook",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31171500.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "resident-playbook"
             },
             {
               "id": "lbx:the-winning-try",
@@ -16921,7 +16976,8 @@
               "name": "The Winning Try",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37509384.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "the-winning-try"
             },
             {
               "id": "lbx:love-for-loves-sake-2024",
@@ -16929,7 +16985,8 @@
               "name": "Love For Love's Sake",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31067227.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "love-for-loves-sake-2024"
             },
             {
               "id": "lbx:hometown-cha-cha-cha",
@@ -16937,7 +16994,8 @@
               "name": "Hometown Cha-Cha-Cha",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14518756.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "hometown-cha-cha-cha"
             },
             {
               "id": "lbx:you-and-everything-else",
@@ -16945,7 +17003,8 @@
               "name": "You and Everything Else",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31014107.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "you-and-everything-else"
             },
             {
               "id": "lbx:its-okay-to-not-be-okay",
@@ -16953,7 +17012,8 @@
               "name": "It's Okay to Not Be Okay",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12451520.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "its-okay-to-not-be-okay"
             },
             {
               "id": "lbx:our-beloved-summer",
@@ -16961,7 +17021,8 @@
               "name": "Our Beloved Summer",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15026724.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "our-beloved-summer"
             },
             {
               "id": "lbx:chicago-typewriter",
@@ -16969,7 +17030,8 @@
               "name": "Chicago Typewriter",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6516076.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "chicago-typewriter"
             },
             {
               "id": "lbx:juvenile-justice-2022",
@@ -16977,7 +17039,8 @@
               "name": "Juvenile Justice",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15553922.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "juvenile-justice-2022"
             },
             {
               "id": "lbx:nine-puzzles",
@@ -16985,7 +17048,8 @@
               "name": "Nine Puzzles",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29927351.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "nine-puzzles"
             },
             {
               "id": "lbx:a-shop-for-killers",
@@ -16993,7 +17057,8 @@
               "name": "A Shop for Killers",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26450613.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "a-shop-for-killers"
             },
             {
               "id": "lbx:good-boy-2025-2",
@@ -17001,7 +17066,8 @@
               "name": "Good Boy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32361930.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "good-boy-2025-2"
             },
             {
               "id": "lbx:study-group",
@@ -17009,7 +17075,8 @@
               "name": "Study Group",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35304338.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "study-group"
             },
             {
               "id": "lbx:boyhood-2023",
@@ -17017,7 +17084,8 @@
               "name": "Boyhood",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt28486727.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "boyhood-2023"
             },
             {
               "id": "lbx:extraordinary-attorney-woo",
@@ -17025,7 +17093,8 @@
               "name": "Extraordinary Attorney Woo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt20869502.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "extraordinary-attorney-woo"
             },
             {
               "id": "lbx:way-back-love",
@@ -17033,7 +17102,8 @@
               "name": "Way Back Love",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33578048.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "way-back-love"
             },
             {
               "id": "lbx:mother-2018-1",
@@ -17041,7 +17111,8 @@
               "name": "Mother",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7795226.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "mother-2018-1"
             },
             {
               "id": "lbx:happiness-2021-1",
@@ -17049,7 +17120,8 @@
               "name": "Happiness",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14979052.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "happiness-2021-1"
             },
             {
               "id": "lbx:coffee-prince-2007",
@@ -17057,7 +17129,8 @@
               "name": "Coffee Prince",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1772685.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "coffee-prince-2007"
             },
             {
               "id": "lbx:little-women-2022-1",
@@ -17065,7 +17138,8 @@
               "name": "Little Women",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21828868.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "little-women-2022-1"
             },
             {
               "id": "lbx:its-okay-thats-love",
@@ -17073,7 +17147,8 @@
               "name": "It's Okay, That's Love",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4031224.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "its-okay-thats-love"
             },
             {
               "id": "lbx:revenant-2023",
@@ -17081,7 +17156,8 @@
               "name": "Revenant",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22263470.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "revenant-2023"
             },
             {
               "id": "lbx:our-movie-2025",
@@ -17089,7 +17165,8 @@
               "name": "Our Movie",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36807294.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "our-movie-2025"
             },
             {
               "id": "lbx:navillera",
@@ -17097,7 +17174,8 @@
               "name": "Navillera",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13885302.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "navillera"
             },
             {
               "id": "lbx:the-devil-judge",
@@ -17105,7 +17183,8 @@
               "name": "The Devil Judge",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14169770.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "the-devil-judge"
             },
             {
               "id": "lbx:business-proposal",
@@ -17113,7 +17192,8 @@
               "name": "Business Proposal",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14819828.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "business-proposal"
             },
             {
               "id": "lbx:life-on-mars-2018",
@@ -17121,7 +17201,8 @@
               "name": "Life on Mars",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8236544.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "life-on-mars-2018"
             },
             {
               "id": "lbx:pro-bono-2025",
@@ -17129,7 +17210,8 @@
               "name": "Pro Bono",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39012462.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "pro-bono-2025"
             },
             {
               "id": "lbx:racket-boys",
@@ -17137,7 +17219,8 @@
               "name": "Racket Boys",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14482414.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "racket-boys"
             },
             {
               "id": "lbx:the-guest-2018-1",
@@ -17145,7 +17228,8 @@
               "name": "The Guest",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8801670.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "the-guest-2018-1"
             },
             {
               "id": "lbx:dear-my-friends",
@@ -17153,7 +17237,8 @@
               "name": "Dear My Friends",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5689030.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "dear-my-friends"
             },
             {
               "id": "lbx:the-price-of-confession",
@@ -17161,7 +17246,8 @@
               "name": "The Price of Confession",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37218592.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "the-price-of-confession"
             },
             {
               "id": "lbx:spirit-fingers",
@@ -17169,7 +17255,8 @@
               "name": "Spirit Fingers",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26773414.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "spirit-fingers"
             },
             {
               "id": "lbx:family-matters-2024",
@@ -17177,7 +17264,8 @@
               "name": "Family Matters",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31510539.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "family-matters-2024"
             },
             {
               "id": "lbx:in-your-radiant-season",
@@ -17185,7 +17273,8 @@
               "name": "In Your Radiant Season",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39369595.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "in-your-radiant-season"
             },
             {
               "id": "lbx:the-fiery-priest",
@@ -17193,7 +17282,8 @@
               "name": "The Fiery Priest",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9674954.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "the-fiery-priest"
             },
             {
               "id": "lbx:as-you-stood-by",
@@ -17201,7 +17291,8 @@
               "name": "As You Stood By",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33550045.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "as-you-stood-by"
             },
             {
               "id": "lbx:vagabond-2019",
@@ -17209,7 +17300,8 @@
               "name": "Vagabond",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8523042.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "vagabond-2019"
             },
             {
               "id": "lbx:blind-2022-1",
@@ -17217,7 +17309,8 @@
               "name": "Blind",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21631058.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "blind-2022-1"
             },
             {
               "id": "lbx:queen-of-tears-2024",
@@ -17225,7 +17318,8 @@
               "name": "Queen of Tears",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27668559.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "queen-of-tears-2024"
             },
             {
               "id": "lbx:law-school",
@@ -17233,7 +17327,8 @@
               "name": "Law School",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13885336.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "law-school"
             },
             {
               "id": "lbx:welcome-to-samdal-ri",
@@ -17241,7 +17336,8 @@
               "name": "Welcome to Samdal-ri",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26653824.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "welcome-to-samdal-ri"
             },
             {
               "id": "lbx:seoul-busters",
@@ -17249,7 +17345,8 @@
               "name": "Seoul Busters",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32482847.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "seoul-busters"
             },
             {
               "id": "lbx:bad-and-crazy",
@@ -17257,7 +17354,8 @@
               "name": "Bad and Crazy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15146202.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "bad-and-crazy"
             },
             {
               "id": "lbx:empress-ki",
@@ -17265,7 +17363,8 @@
               "name": "Empress Ki",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3322566.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "empress-ki"
             },
             {
               "id": "lbx:my-perfect-stranger",
@@ -17273,7 +17372,8 @@
               "name": "My Perfect Stranger",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26351388.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "my-perfect-stranger"
             },
             {
               "id": "lbx:tale-of-the-nine-tailed-1938",
@@ -17281,7 +17381,8 @@
               "name": "Tale of the Nine Tailed 1938",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27329405.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "tale-of-the-nine-tailed-1938"
             },
             {
               "id": "lbx:inspector-koo",
@@ -17289,7 +17390,8 @@
               "name": "Inspector Koo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14731794.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "inspector-koo"
             },
             {
               "id": "lbx:a-time-called-you",
@@ -17297,7 +17399,8 @@
               "name": "A Time Called You",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21627438.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "a-time-called-you"
             },
             {
               "id": "lbx:the-judge-from-hell",
@@ -17305,7 +17408,8 @@
               "name": "The Judge from Hell",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33255143.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "the-judge-from-hell"
             },
             {
               "id": "lbx:friendly-rivalry",
@@ -17313,7 +17417,8 @@
               "name": "Friendly Rivalry",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35683421.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "friendly-rivalry"
             },
             {
               "id": "lbx:dear-x",
@@ -17321,7 +17426,8 @@
               "name": "Dear X",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37890201.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "dear-x"
             },
             {
               "id": "lbx:all-of-us-are-dead",
@@ -17329,7 +17435,8 @@
               "name": "All of Us Are Dead",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14169960.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "all-of-us-are-dead"
             },
             {
               "id": "lbx:we-are-all-trying-here",
@@ -17337,7 +17444,8 @@
               "name": "We Are All Trying Here",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36732944.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "we-are-all-trying-here"
             },
             {
               "id": "lbx:live-2018-2",
@@ -17345,7 +17453,8 @@
               "name": "Live",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7976532.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "live-2018-2"
             },
             {
               "id": "lbx:vigilante-2023-1",
@@ -17353,7 +17462,8 @@
               "name": "Vigilante",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27458539.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "vigilante-2023-1"
             },
             {
               "id": "lbx:one-dollar-lawyer",
@@ -17361,7 +17471,8 @@
               "name": "One Dollar Lawyer",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22248254.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "one-dollar-lawyer"
             },
             {
               "id": "lbx:the-uncanny-counter",
@@ -17369,7 +17480,8 @@
               "name": "The Uncanny Counter",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13273826.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "the-uncanny-counter"
             },
             {
               "id": "lbx:pyramid-game",
@@ -17377,7 +17489,8 @@
               "name": "Pyramid Game",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29311421.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "pyramid-game"
             },
             {
               "id": "lbx:when-the-camellia-blooms",
@@ -17385,7 +17498,8 @@
               "name": "When the Camellia Blooms",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10826064.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "when-the-camellia-blooms"
             },
             {
               "id": "lbx:defendant-2017",
@@ -17393,7 +17507,8 @@
               "name": "Defendant",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6256692.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "defendant-2017"
             },
             {
               "id": "lbx:flex-x-cop",
@@ -17401,7 +17516,8 @@
               "name": "Flex x Cop",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30413181.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "flex-x-cop"
             },
             {
               "id": "lbx:can-this-love-be-translated",
@@ -17409,7 +17525,8 @@
               "name": "Can This Love Be Translated?",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30293074.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "can-this-love-be-translated"
             },
             {
               "id": "lbx:while-you-were-sleeping-2017",
@@ -17417,7 +17534,8 @@
               "name": "While You Were Sleeping",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6256484.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "while-you-were-sleeping-2017"
             },
             {
               "id": "lbx:the-wonderfools",
@@ -17425,7 +17543,8 @@
               "name": "The WONDERfools",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt34440854.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "the-wonderfools"
             },
             {
               "id": "lbx:bon-appetit-your-majesty",
@@ -17433,7 +17552,8 @@
               "name": "Bon Appétit, Your Majesty",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37600136.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "bon-appetit-your-majesty"
             },
             {
               "id": "lbx:mine-2021-1",
@@ -17441,7 +17561,8 @@
               "name": "Mine",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14023192.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "mine-2021-1"
             },
             {
               "id": "lbx:descendants-of-the-sun",
@@ -17449,7 +17570,8 @@
               "name": "Descendants of the Sun",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4925000.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "descendants-of-the-sun"
             },
             {
               "id": "lbx:extraordinary-you",
@@ -17457,7 +17579,8 @@
               "name": "Extraordinary You",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10826102.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "extraordinary-you"
             },
             {
               "id": "lbx:extracurricular-2020",
@@ -17465,7 +17588,8 @@
               "name": "Extracurricular",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10262630.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "extracurricular-2020"
             },
             {
               "id": "lbx:family-by-choice",
@@ -17473,7 +17597,8 @@
               "name": "Family by Choice",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30365813.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "family-by-choice"
             },
             {
               "id": "lbx:undercover-miss-hong",
@@ -17481,7 +17606,8 @@
               "name": "Undercover Miss Hong",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39219419.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "undercover-miss-hong"
             },
             {
               "id": "lbx:snowdrop",
@@ -17489,7 +17615,8 @@
               "name": "Snowdrop",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13304700.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "snowdrop"
             },
             {
               "id": "lbx:six-flying-dragons",
@@ -17497,7 +17624,8 @@
               "name": "Six Flying Dragons",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5079024.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "six-flying-dragons"
             },
             {
               "id": "lbx:tunnel-2017",
@@ -17505,7 +17633,8 @@
               "name": "Tunnel",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6356086.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "tunnel-2017"
             },
             {
               "id": "lbx:if-wishes-could-kill",
@@ -17513,7 +17642,8 @@
               "name": "If Wishes Could Kill",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt36104233.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "if-wishes-could-kill"
             },
             {
               "id": "lbx:kill-me-heal-me",
@@ -17521,7 +17651,8 @@
               "name": "Kill Me, Heal Me",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4339192.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "kill-me-heal-me"
             },
             {
               "id": "lbx:hello-my-twenties",
@@ -17529,7 +17660,8 @@
               "name": "Hello, My Twenties!",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5858892.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "hello-my-twenties"
             },
             {
               "id": "lbx:head-over-heels-2025",
@@ -17537,7 +17669,8 @@
               "name": "Head Over Heels",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37146661.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "head-over-heels-2025"
             },
             {
               "id": "lbx:arthdal-chronicles",
@@ -17545,7 +17678,8 @@
               "name": "Arthdal Chronicles",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8750956.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "arthdal-chronicles"
             },
             {
               "id": "lbx:hotel-del-luna",
@@ -17553,7 +17687,8 @@
               "name": "Hotel Del Luna",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10220588.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "hotel-del-luna"
             },
             {
               "id": "lbx:karma-2025",
@@ -17561,7 +17696,8 @@
               "name": "Karma",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29921070.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "karma-2025"
             },
             {
               "id": "lbx:tell-me-that-you-love-me-2023",
@@ -17569,7 +17705,8 @@
               "name": "Tell Me That You Love Me",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt29569080.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "tell-me-that-you-love-me-2023"
             },
             {
               "id": "lbx:see-you-in-my-19th-life",
@@ -17577,7 +17714,8 @@
               "name": "See You in My 19th Life",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt27838483.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "see-you-in-my-19th-life"
             },
             {
               "id": "lbx:the-light-in-your-eyes",
@@ -17585,7 +17723,8 @@
               "name": "The Light in Your Eyes",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9466968.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "the-light-in-your-eyes"
             },
             {
               "id": "lbx:undercover-high-school",
@@ -17593,7 +17732,8 @@
               "name": "Undercover High School",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt33364760.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "undercover-high-school"
             },
             {
               "id": "lbx:reply-1997",
@@ -17601,7 +17741,8 @@
               "name": "Reply 1997",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2782216.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "reply-1997"
             },
             {
               "id": "lbx:connection-2024-1",
@@ -17609,7 +17750,8 @@
               "name": "Connection",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt30422566.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "connection-2024-1"
             },
             {
               "id": "lbx:the-world-of-the-married",
@@ -17617,7 +17759,8 @@
               "name": "The World of the Married",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt12042964.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "the-world-of-the-married"
             },
             {
               "id": "lbx:something-in-the-rain",
@@ -17625,7 +17768,8 @@
               "name": "Something in the Rain",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8078816.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "something-in-the-rain"
             },
             {
               "id": "lbx:the-art-of-sarah",
@@ -17633,7 +17777,8 @@
               "name": "The Art of Sarah",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt35149250.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "the-art-of-sarah"
             },
             {
               "id": "lbx:reply-1994",
@@ -17641,7 +17786,8 @@
               "name": "Reply 1994",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3357586.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "reply-1994"
             },
             {
               "id": "lbx:perfect-crown",
@@ -17649,7 +17795,8 @@
               "name": "Perfect Crown",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt39333617.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "perfect-crown"
             },
             {
               "id": "lbx:mask-girl-2023",
@@ -17657,7 +17804,8 @@
               "name": "Mask Girl",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt26258200.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "mask-girl-2023"
             },
             {
               "id": "lbx:sweet-home-2020",
@@ -17665,7 +17813,8 @@
               "name": "Sweet Home",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11612120.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "sweet-home-2020"
             },
             {
               "id": "lbx:squid-game",
@@ -17673,7 +17822,8 @@
               "name": "Squid Game",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10919420.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "squid-game"
             }
           ]
         },
@@ -17684,7 +17834,7 @@
           "filmsCount": 235,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1783027588512,
+          "cachedAt": 1783028212307,
           "metaByIndex": [
             {
               "id": "lbx:kill-bill-vol-1",
@@ -17692,7 +17842,8 @@
               "name": "Kill Bill: Vol. 1",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0266697.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "kill-bill-vol-1"
             },
             {
               "id": "lbx:the-lord-of-the-rings-the-return-of-the-king",
@@ -17700,7 +17851,8 @@
               "name": "The Lord of the Rings: The Return of the King",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0167260.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "the-lord-of-the-rings-the-return-of-the-king"
             },
             {
               "id": "lbx:pirates-of-the-caribbean-the-curse-of-the-black-pearl",
@@ -17708,7 +17860,8 @@
               "name": "Pirates of the Caribbean: The Curse of the Black Pearl",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0325980.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "pirates-of-the-caribbean-the-curse-of-the-black-pearl"
             },
             {
               "id": "lbx:oldboy",
@@ -17716,7 +17869,8 @@
               "name": "Oldboy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0364569.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "oldboy"
             },
             {
               "id": "lbx:tokyo-godfathers",
@@ -17724,7 +17878,8 @@
               "name": "Tokyo Godfathers",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0388473.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "tokyo-godfathers"
             },
             {
               "id": "lbx:big-fish",
@@ -17732,7 +17887,8 @@
               "name": "Big Fish",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0319061.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "big-fish"
             },
             {
               "id": "lbx:johnny-english",
@@ -17740,7 +17896,8 @@
               "name": "Johnny English",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0274166.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "johnny-english"
             },
             {
               "id": "lbx:gozu",
@@ -17748,7 +17905,8 @@
               "name": "Gozu",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0361668.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "gozu"
             },
             {
               "id": "lbx:school-of-rock",
@@ -17756,7 +17914,8 @@
               "name": "School of Rock",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0332379.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "school-of-rock"
             },
             {
               "id": "lbx:finding-nemo",
@@ -17764,7 +17923,8 @@
               "name": "Finding Nemo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0266543.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "finding-nemo"
             },
             {
               "id": "lbx:once-upon-a-time-in-mexico",
@@ -17772,7 +17932,8 @@
               "name": "Once Upon a Time in Mexico",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0285823.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "once-upon-a-time-in-mexico"
             },
             {
               "id": "lbx:spring-summer-fall-winter-and-spring",
@@ -17780,7 +17941,8 @@
               "name": "Spring, Summer, Fall, Winter... and Spring",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0374546.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "spring-summer-fall-winter-and-spring"
             },
             {
               "id": "lbx:11-14",
@@ -17788,7 +17950,8 @@
               "name": "11:14",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0331811.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "11-14"
             },
             {
               "id": "lbx:holes",
@@ -17796,7 +17959,8 @@
               "name": "Holes",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0311289.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "holes"
             },
             {
               "id": "lbx:blackball",
@@ -17804,7 +17968,8 @@
               "name": "Blackball",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0337879.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "blackball"
             },
             {
               "id": "lbx:old-school",
@@ -17812,7 +17977,8 @@
               "name": "Old School",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0302886.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "old-school"
             },
             {
               "id": "lbx:bad-santa",
@@ -17820,7 +17986,8 @@
               "name": "Bad Santa",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0307987.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "bad-santa"
             },
             {
               "id": "lbx:the-cooler",
@@ -17828,7 +17995,8 @@
               "name": "The Cooler",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0318374.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "the-cooler"
             },
             {
               "id": "lbx:a-mighty-wind",
@@ -17836,7 +18004,8 @@
               "name": "A Mighty Wind",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0310281.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "a-mighty-wind"
             },
             {
               "id": "lbx:jeepers-creepers-2",
@@ -17844,7 +18013,8 @@
               "name": "Jeepers Creepers 2",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0301470.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "jeepers-creepers-2"
             },
             {
               "id": "lbx:all-the-real-girls",
@@ -17852,7 +18022,8 @@
               "name": "All the Real Girls",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0299458.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "all-the-real-girls"
             },
             {
               "id": "lbx:looney-tunes-back-in-action",
@@ -17860,7 +18031,8 @@
               "name": "Looney Tunes: Back in Action",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0318155.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "looney-tunes-back-in-action"
             },
             {
               "id": "lbx:intolerable-cruelty",
@@ -17868,7 +18040,8 @@
               "name": "Intolerable Cruelty",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0138524.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "intolerable-cruelty"
             },
             {
               "id": "lbx:identity",
@@ -17876,7 +18049,8 @@
               "name": "Identity",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0309698.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "identity"
             },
             {
               "id": "lbx:monster",
@@ -17884,7 +18058,8 @@
               "name": "Monster",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0340855.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "monster"
             },
             {
               "id": "lbx:the-matrix-reloaded",
@@ -17892,7 +18067,8 @@
               "name": "The Matrix Reloaded",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0234215.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "the-matrix-reloaded"
             },
             {
               "id": "lbx:open-range",
@@ -17900,7 +18076,8 @@
               "name": "Open Range",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0316356.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "open-range"
             },
             {
               "id": "lbx:good-bye-lenin",
@@ -17908,7 +18085,8 @@
               "name": "Good Bye Lenin!",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0301357.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "good-bye-lenin"
             },
             {
               "id": "lbx:travellers-and-magicians",
@@ -17916,7 +18094,8 @@
               "name": "Travelers and Magicians",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0378906.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "travellers-and-magicians"
             },
             {
               "id": "lbx:cold-mountain",
@@ -17924,7 +18103,8 @@
               "name": "Cold Mountain",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0159365.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "cold-mountain"
             }
           ]
         },
@@ -17935,7 +18115,7 @@
           "filmsCount": 854,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1783027588512,
+          "cachedAt": 1783028212308,
           "metaByIndex": [
             {
               "id": "lbx:10-things-i-hate-about-you",
@@ -17943,7 +18123,8 @@
               "name": "10 Things I Hate About You",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0147800.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1999"
+              "releaseInfo": "1999",
+              "slug": "10-things-i-hate-about-you"
             },
             {
               "id": "lbx:theres-something-about-mary",
@@ -17951,7 +18132,8 @@
               "name": "There's Something About Mary",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0129387.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1998"
+              "releaseInfo": "1998",
+              "slug": "theres-something-about-mary"
             },
             {
               "id": "lbx:never-been-kissed",
@@ -17959,7 +18141,8 @@
               "name": "Never Been Kissed",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0151738.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1999"
+              "releaseInfo": "1999",
+              "slug": "never-been-kissed"
             },
             {
               "id": "lbx:bridget-joness-baby",
@@ -17967,7 +18150,8 @@
               "name": "Bridget Jones's Baby",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1473832.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "bridget-joness-baby"
             },
             {
               "id": "lbx:bridesmaids",
@@ -17975,7 +18159,8 @@
               "name": "Bridesmaids",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1478338.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2011"
+              "releaseInfo": "2011",
+              "slug": "bridesmaids"
             },
             {
               "id": "lbx:bridget-jones-mad-about-the-boy",
@@ -17983,7 +18168,8 @@
               "name": "Bridget Jones: Mad About the Boy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32063050.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "bridget-jones-mad-about-the-boy"
             },
             {
               "id": "lbx:down-with-love",
@@ -17991,7 +18177,8 @@
               "name": "Down with Love",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0309530.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "down-with-love"
             },
             {
               "id": "lbx:13-going-on-30-3",
@@ -17999,7 +18186,8 @@
               "name": "13 Going on 30",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0337563.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2004",
+              "slug": "13-going-on-30-3"
             },
             {
               "id": "lbx:miss-congeniality",
@@ -18007,7 +18195,8 @@
               "name": "Miss Congeniality",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0212346.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2000"
+              "releaseInfo": "2000",
+              "slug": "miss-congeniality"
             },
             {
               "id": "lbx:to-all-the-boys-ive-loved-before",
@@ -18015,7 +18204,8 @@
               "name": "To All the Boys I've Loved Before",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3846674.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "to-all-the-boys-ive-loved-before"
             },
             {
               "id": "lbx:27-dresses",
@@ -18023,7 +18213,8 @@
               "name": "27 Dresses",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0988595.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2008"
+              "releaseInfo": "2008",
+              "slug": "27-dresses"
             },
             {
               "id": "lbx:the-back-up-plan",
@@ -18031,7 +18222,8 @@
               "name": "The Back-up Plan",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1212436.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2010"
+              "releaseInfo": "2010",
+              "slug": "the-back-up-plan"
             },
             {
               "id": "lbx:bride-wars",
@@ -18039,7 +18231,8 @@
               "name": "Bride Wars",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0901476.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2009"
+              "releaseInfo": "2009",
+              "slug": "bride-wars"
             },
             {
               "id": "lbx:barefoot-in-the-park",
@@ -18047,7 +18240,8 @@
               "name": "Barefoot in the Park",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0061385.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1967"
+              "releaseInfo": "1967",
+              "slug": "barefoot-in-the-park"
             },
             {
               "id": "lbx:sisters-2015",
@@ -18055,7 +18249,8 @@
               "name": "Sisters",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1850457.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "sisters-2015"
             },
             {
               "id": "lbx:step-sisters",
@@ -18063,7 +18258,8 @@
               "name": "Step Sisters",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5267472.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "step-sisters"
             },
             {
               "id": "lbx:mothers-day-2016",
@@ -18071,7 +18267,8 @@
               "name": "Mother's Day",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4824302.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "mothers-day-2016"
             },
             {
               "id": "lbx:betting-on-the-bride",
@@ -18079,7 +18276,8 @@
               "name": "Betting on the Bride",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7429362.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "betting-on-the-bride"
             },
             {
               "id": "lbx:bratz",
@@ -18087,7 +18285,8 @@
               "name": "Bratz",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0804452.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "bratz"
             },
             {
               "id": "lbx:drive-me-crazy",
@@ -18095,7 +18294,8 @@
               "name": "Drive Me Crazy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0164114.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1999"
+              "releaseInfo": "1999",
+              "slug": "drive-me-crazy"
             },
             {
               "id": "lbx:the-wedding-banquet-2025",
@@ -18103,7 +18303,8 @@
               "name": "The Wedding Banquet",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt32214413.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "the-wedding-banquet-2025"
             },
             {
               "id": "lbx:the-first-time-2012",
@@ -18111,7 +18312,8 @@
               "name": "The First Time",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1763303.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "the-first-time-2012"
             },
             {
               "id": "lbx:its-a-boy-girl-thing",
@@ -18119,7 +18321,8 @@
               "name": "It's a Boy Girl Thing",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0482527.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2006"
+              "releaseInfo": "2006",
+              "slug": "its-a-boy-girl-thing"
             },
             {
               "id": "lbx:love-wrecked",
@@ -18127,7 +18330,8 @@
               "name": "Lovewrecked",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0409011.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2005"
+              "releaseInfo": "2005",
+              "slug": "love-wrecked"
             },
             {
               "id": "lbx:something-from-tiffanys",
@@ -18135,7 +18339,8 @@
               "name": "Something from Tiffany's",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt16233952.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "something-from-tiffanys"
             },
             {
               "id": "lbx:cant-buy-me-love",
@@ -18143,7 +18348,8 @@
               "name": "Can't Buy Me Love",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0092718.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1987"
+              "releaseInfo": "1987",
+              "slug": "cant-buy-me-love"
             },
             {
               "id": "lbx:cow-belles",
@@ -18151,7 +18357,8 @@
               "name": "Cow Belles",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0489007.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2006"
+              "releaseInfo": "2006",
+              "slug": "cow-belles"
             },
             {
               "id": "lbx:win-a-date-with-tad-hamilton",
@@ -18159,7 +18366,8 @@
               "name": "Win a Date with Tad Hamilton!",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0335559.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2004",
+              "slug": "win-a-date-with-tad-hamilton"
             },
             {
               "id": "lbx:imagine-me-you",
@@ -18167,7 +18375,8 @@
               "name": "Imagine Me & You",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0421994.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2005"
+              "releaseInfo": "2005",
+              "slug": "imagine-me-you"
             },
             {
               "id": "lbx:beauty-the-briefcase",
@@ -18175,7 +18384,8 @@
               "name": "Beauty & the Briefcase",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1493842.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2010"
+              "releaseInfo": "2010",
+              "slug": "beauty-the-briefcase"
             }
           ]
         },
@@ -18186,7 +18396,7 @@
           "filmsCount": 186,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1783027588512,
+          "cachedAt": 1783028212308,
           "metaByIndex": [
             {
               "id": "lbx:cha-cha-real-smooth",
@@ -18194,7 +18404,8 @@
               "name": "Cha Cha Real Smooth",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14376344.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "cha-cha-real-smooth"
             },
             {
               "id": "lbx:chef",
@@ -18202,7 +18413,8 @@
               "name": "Chef",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2883512.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "chef"
             },
             {
               "id": "lbx:fantastic-mr-fox",
@@ -18210,7 +18422,8 @@
               "name": "Fantastic Mr. Fox",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0432283.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2009"
+              "releaseInfo": "2009",
+              "slug": "fantastic-mr-fox"
             },
             {
               "id": "lbx:little-miss-sunshine",
@@ -18218,7 +18431,8 @@
               "name": "Little Miss Sunshine",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0449059.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2006"
+              "releaseInfo": "2006",
+              "slug": "little-miss-sunshine"
             },
             {
               "id": "lbx:my-life-as-a-zucchini",
@@ -18226,7 +18440,8 @@
               "name": "My Life as a Zucchini",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2321405.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "my-life-as-a-zucchini"
             },
             {
               "id": "lbx:the-edge-of-seventeen",
@@ -18234,7 +18449,8 @@
               "name": "The Edge of Seventeen",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1878870.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "the-edge-of-seventeen"
             },
             {
               "id": "lbx:dead-poets-society",
@@ -18242,7 +18458,8 @@
               "name": "Dead Poets Society",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0097165.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1989"
+              "releaseInfo": "1989",
+              "slug": "dead-poets-society"
             },
             {
               "id": "lbx:still-alice",
@@ -18250,7 +18467,8 @@
               "name": "Still Alice",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3316960.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "still-alice"
             },
             {
               "id": "lbx:life-of-pi",
@@ -18258,7 +18476,8 @@
               "name": "Life of Pi",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0454876.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "life-of-pi"
             },
             {
               "id": "lbx:good-will-hunting",
@@ -18266,7 +18485,8 @@
               "name": "Good Will Hunting",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0119217.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1997"
+              "releaseInfo": "1997",
+              "slug": "good-will-hunting"
             },
             {
               "id": "lbx:pride-2014",
@@ -18274,7 +18494,8 @@
               "name": "Pride",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3169706.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "pride-2014"
             },
             {
               "id": "lbx:roman-holiday",
@@ -18282,7 +18503,8 @@
               "name": "Roman Holiday",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0046250.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1953"
+              "releaseInfo": "1953",
+              "slug": "roman-holiday"
             },
             {
               "id": "lbx:eighth-grade",
@@ -18290,7 +18512,8 @@
               "name": "Eighth Grade",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7014006.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "eighth-grade"
             },
             {
               "id": "lbx:lucky-2017",
@@ -18298,7 +18521,8 @@
               "name": "Lucky",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5859238.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "lucky-2017"
             },
             {
               "id": "lbx:the-peanut-butter-falcon",
@@ -18306,7 +18530,8 @@
               "name": "The Peanut Butter Falcon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4364194.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "the-peanut-butter-falcon"
             },
             {
               "id": "lbx:columbus-2017",
@@ -18314,7 +18539,8 @@
               "name": "Columbus",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5990474.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "columbus-2017"
             },
             {
               "id": "lbx:pride-prejudice",
@@ -18322,7 +18548,8 @@
               "name": "Pride & Prejudice",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0414387.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2005"
+              "releaseInfo": "2005",
+              "slug": "pride-prejudice"
             },
             {
               "id": "lbx:atonement",
@@ -18330,7 +18557,8 @@
               "name": "Atonement",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0783233.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "atonement"
             },
             {
               "id": "lbx:short-term-12-2013",
@@ -18338,7 +18566,8 @@
               "name": "Short Term 12",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2370248.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "short-term-12-2013"
             },
             {
               "id": "lbx:gifted-2017",
@@ -18346,7 +18575,8 @@
               "name": "Gifted",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4481414.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "gifted-2017"
             },
             {
               "id": "lbx:brooklyn",
@@ -18354,7 +18584,8 @@
               "name": "Brooklyn",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2381111.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "brooklyn"
             },
             {
               "id": "lbx:carol-2015",
@@ -18362,7 +18593,8 @@
               "name": "Carol",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2402927.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "carol-2015"
             },
             {
               "id": "lbx:free-solo",
@@ -18370,7 +18602,8 @@
               "name": "Free Solo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7775622.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "free-solo"
             },
             {
               "id": "lbx:the-theory-of-everything-2014",
@@ -18378,7 +18611,8 @@
               "name": "The Theory of Everything",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2980516.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "the-theory-of-everything-2014"
             },
             {
               "id": "lbx:chungking-express",
@@ -18386,7 +18620,8 @@
               "name": "Chungking Express",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0109424.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1994"
+              "releaseInfo": "1994",
+              "slug": "chungking-express"
             },
             {
               "id": "lbx:about-time",
@@ -18394,7 +18629,8 @@
               "name": "About Time",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2194499.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "about-time"
             },
             {
               "id": "lbx:the-perks-of-being-a-wallflower",
@@ -18402,7 +18638,8 @@
               "name": "The Perks of Being a Wallflower",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1659337.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "the-perks-of-being-a-wallflower"
             },
             {
               "id": "lbx:boyhood",
@@ -18410,7 +18647,8 @@
               "name": "Boyhood",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1065073.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "boyhood"
             },
             {
               "id": "lbx:the-spectacular-now",
@@ -18418,7 +18656,8 @@
               "name": "The Spectacular Now",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1714206.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "the-spectacular-now"
             },
             {
               "id": "lbx:the-garden-of-words",
@@ -18426,7 +18665,8 @@
               "name": "The Garden of Words",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2591814.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "the-garden-of-words"
             },
             {
               "id": "lbx:the-kings-of-summer",
@@ -18434,7 +18674,8 @@
               "name": "The Kings of Summer",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2179116.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "the-kings-of-summer"
             },
             {
               "id": "lbx:the-life-aquatic-with-steve-zissou",
@@ -18442,7 +18683,8 @@
               "name": "The Life Aquatic with Steve Zissou",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0362270.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2004",
+              "slug": "the-life-aquatic-with-steve-zissou"
             },
             {
               "id": "lbx:fallen-angels",
@@ -18450,7 +18692,8 @@
               "name": "Fallen Angels",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0112913.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1995"
+              "releaseInfo": "1995",
+              "slug": "fallen-angels"
             },
             {
               "id": "lbx:parasite-2019",
@@ -18458,7 +18701,8 @@
               "name": "Parasite",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6751668.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "parasite-2019"
             },
             {
               "id": "lbx:im-thinking-of-ending-things",
@@ -18466,7 +18710,8 @@
               "name": "I'm Thinking of Ending Things",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7939766.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "im-thinking-of-ending-things"
             },
             {
               "id": "lbx:the-worst-person-in-the-world",
@@ -18474,7 +18719,8 @@
               "name": "The Worst Person in the World",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10370710.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "the-worst-person-in-the-world"
             },
             {
               "id": "lbx:raya-and-the-last-dragon",
@@ -18482,7 +18728,8 @@
               "name": "Raya and the Last Dragon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5109280.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "raya-and-the-last-dragon"
             },
             {
               "id": "lbx:half-nelson",
@@ -18490,7 +18737,8 @@
               "name": "Half Nelson",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0468489.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2006"
+              "releaseInfo": "2006",
+              "slug": "half-nelson"
             },
             {
               "id": "lbx:gods-own-country-2017",
@@ -18498,7 +18746,8 @@
               "name": "God's Own Country",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5635086.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "gods-own-country-2017"
             },
             {
               "id": "lbx:awakenings",
@@ -18506,7 +18755,8 @@
               "name": "Awakenings",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0099077.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1990"
+              "releaseInfo": "1990",
+              "slug": "awakenings"
             },
             {
               "id": "lbx:minari",
@@ -18514,7 +18764,8 @@
               "name": "Minari",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10633456.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "minari"
             },
             {
               "id": "lbx:manchester-by-the-sea",
@@ -18522,7 +18773,8 @@
               "name": "Manchester by the Sea",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4034228.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "manchester-by-the-sea"
             },
             {
               "id": "lbx:as-good-as-it-gets",
@@ -18530,7 +18782,8 @@
               "name": "As Good as It Gets",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0119822.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1997"
+              "releaseInfo": "1997",
+              "slug": "as-good-as-it-gets"
             },
             {
               "id": "lbx:the-secret-life-of-walter-mitty-2013",
@@ -18538,7 +18791,8 @@
               "name": "The Secret Life of Walter Mitty",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0359950.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "the-secret-life-of-walter-mitty-2013"
             },
             {
               "id": "lbx:dallas-buyers-club",
@@ -18546,7 +18800,8 @@
               "name": "Dallas Buyers Club",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0790636.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "dallas-buyers-club"
             },
             {
               "id": "lbx:begin-again",
@@ -18554,7 +18809,8 @@
               "name": "Begin Again",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1980929.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "begin-again"
             },
             {
               "id": "lbx:stuck-in-love",
@@ -18562,7 +18818,8 @@
               "name": "Stuck in Love",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2205697.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "stuck-in-love"
             },
             {
               "id": "lbx:loving-vincent",
@@ -18570,7 +18827,8 @@
               "name": "Loving Vincent",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3262342.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "loving-vincent"
             },
             {
               "id": "lbx:hunt-for-the-wilderpeople",
@@ -18578,7 +18836,8 @@
               "name": "Hunt for the Wilderpeople",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4698684.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "hunt-for-the-wilderpeople"
             },
             {
               "id": "lbx:people-we-meet-on-vacation",
@@ -18586,7 +18845,8 @@
               "name": "People We Meet on Vacation",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt22740896.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2026"
+              "releaseInfo": "2026",
+              "slug": "people-we-meet-on-vacation"
             },
             {
               "id": "lbx:the-florida-project",
@@ -18594,7 +18854,8 @@
               "name": "The Florida Project",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5649144.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "the-florida-project"
             },
             {
               "id": "lbx:american-honey",
@@ -18602,7 +18863,8 @@
               "name": "American Honey",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3721936.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "american-honey"
             },
             {
               "id": "lbx:moonrise-kingdom",
@@ -18610,7 +18872,8 @@
               "name": "Moonrise Kingdom",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1748122.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "moonrise-kingdom"
             },
             {
               "id": "lbx:sing-street",
@@ -18618,7 +18881,8 @@
               "name": "Sing Street",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3544112.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "sing-street"
             },
             {
               "id": "lbx:room-2015",
@@ -18626,7 +18890,8 @@
               "name": "Room",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3170832.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "room-2015"
             },
             {
               "id": "lbx:midsommar",
@@ -18634,7 +18899,8 @@
               "name": "Midsommar",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8772262.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "midsommar"
             },
             {
               "id": "lbx:me-and-earl-and-the-dying-girl",
@@ -18642,7 +18908,8 @@
               "name": "Me and Earl and the Dying Girl",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2582496.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "me-and-earl-and-the-dying-girl"
             },
             {
               "id": "lbx:the-skeleton-twins",
@@ -18650,7 +18917,8 @@
               "name": "The Skeleton Twins",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1571249.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "the-skeleton-twins"
             },
             {
               "id": "lbx:wonder-2017",
@@ -18658,7 +18926,8 @@
               "name": "Wonder",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2543472.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "wonder-2017"
             },
             {
               "id": "lbx:500-days-of-summer",
@@ -18666,7 +18935,8 @@
               "name": "(500) Days of Summer",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1022603.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2009"
+              "releaseInfo": "2009",
+              "slug": "500-days-of-summer"
             },
             {
               "id": "lbx:the-way-way-back",
@@ -18674,7 +18944,8 @@
               "name": "The Way Way Back",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1727388.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "the-way-way-back"
             },
             {
               "id": "lbx:up",
@@ -18682,7 +18953,8 @@
               "name": "Up",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1049413.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2009"
+              "releaseInfo": "2009",
+              "slug": "up"
             },
             {
               "id": "lbx:i-swear",
@@ -18690,7 +18962,8 @@
               "name": "I Swear",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt31514146.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2025"
+              "releaseInfo": "2025",
+              "slug": "i-swear"
             },
             {
               "id": "lbx:call-me-by-your-name",
@@ -18698,7 +18971,8 @@
               "name": "Call Me by Your Name",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5726616.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "call-me-by-your-name"
             },
             {
               "id": "lbx:kikis-delivery-service",
@@ -18706,7 +18980,8 @@
               "name": "Kiki's Delivery Service",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0097814.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1989"
+              "releaseInfo": "1989",
+              "slug": "kikis-delivery-service"
             },
             {
               "id": "lbx:whisper-of-the-heart",
@@ -18714,7 +18989,8 @@
               "name": "Whisper of the Heart",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0113824.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1995"
+              "releaseInfo": "1995",
+              "slug": "whisper-of-the-heart"
             },
             {
               "id": "lbx:the-truman-show",
@@ -18722,7 +18998,8 @@
               "name": "The Truman Show",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0120382.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1998"
+              "releaseInfo": "1998",
+              "slug": "the-truman-show"
             },
             {
               "id": "lbx:fish-tank",
@@ -18730,7 +19007,8 @@
               "name": "Fish Tank",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1232776.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2009"
+              "releaseInfo": "2009",
+              "slug": "fish-tank"
             },
             {
               "id": "lbx:wolf-children",
@@ -18738,7 +19016,8 @@
               "name": "Wolf Children",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2140203.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "wolf-children"
             },
             {
               "id": "lbx:a-silent-voice-the-movie",
@@ -18746,7 +19025,8 @@
               "name": "A Silent Voice: The Movie",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5323662.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "a-silent-voice-the-movie"
             },
             {
               "id": "lbx:when-marnie-was-there",
@@ -18754,7 +19034,8 @@
               "name": "When Marnie Was There",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3398268.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "when-marnie-was-there"
             },
             {
               "id": "lbx:coda-2021",
@@ -18762,7 +19043,8 @@
               "name": "CODA",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10366460.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "coda-2021"
             },
             {
               "id": "lbx:aftersun",
@@ -18770,7 +19052,8 @@
               "name": "Aftersun",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt19770238.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "aftersun"
             },
             {
               "id": "lbx:a-real-pain",
@@ -18778,7 +19061,8 @@
               "name": "A Real Pain",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21823606.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2024"
+              "releaseInfo": "2024",
+              "slug": "a-real-pain"
             },
             {
               "id": "lbx:waves-2019",
@@ -18786,7 +19070,8 @@
               "name": "Waves",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8652728.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "waves-2019"
             },
             {
               "id": "lbx:stand-by-me",
@@ -18794,7 +19079,8 @@
               "name": "Stand by Me",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0092005.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1986"
+              "releaseInfo": "1986",
+              "slug": "stand-by-me"
             },
             {
               "id": "lbx:eternal-sunshine-of-the-spotless-mind",
@@ -18802,7 +19088,8 @@
               "name": "Eternal Sunshine of the Spotless Mind",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0338013.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2004",
+              "slug": "eternal-sunshine-of-the-spotless-mind"
             },
             {
               "id": "lbx:captain-fantastic",
@@ -18810,7 +19097,8 @@
               "name": "Captain Fantastic",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3553976.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "captain-fantastic"
             },
             {
               "id": "lbx:the-lion-king",
@@ -18818,7 +19106,8 @@
               "name": "The Lion King",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0110357.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1994"
+              "releaseInfo": "1994",
+              "slug": "the-lion-king"
             },
             {
               "id": "lbx:babyteeth",
@@ -18826,7 +19115,8 @@
               "name": "Babyteeth",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8399664.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "babyteeth"
             },
             {
               "id": "lbx:the-shape-of-water",
@@ -18834,7 +19124,8 @@
               "name": "The Shape of Water",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5580390.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "the-shape-of-water"
             },
             {
               "id": "lbx:little-fish-2020",
@@ -18842,7 +19133,8 @@
               "name": "Little Fish",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9735470.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "little-fish-2020"
             },
             {
               "id": "lbx:blade-runner-2049",
@@ -18850,7 +19142,8 @@
               "name": "Blade Runner 2049",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1856101.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "blade-runner-2049"
             },
             {
               "id": "lbx:coco-2017",
@@ -18858,7 +19151,8 @@
               "name": "Coco",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2380307.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "coco-2017"
             },
             {
               "id": "lbx:5-centimeters-per-second",
@@ -18866,7 +19160,8 @@
               "name": "5 Centimeters per Second",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0983213.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "5-centimeters-per-second"
             },
             {
               "id": "lbx:the-lovely-bones",
@@ -18874,7 +19169,8 @@
               "name": "The Lovely Bones",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0380510.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2009"
+              "releaseInfo": "2009",
+              "slug": "the-lovely-bones"
             },
             {
               "id": "lbx:your-name",
@@ -18882,7 +19178,8 @@
               "name": "Your Name.",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5311514.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "your-name"
             },
             {
               "id": "lbx:the-boy-in-the-striped-pyjamas",
@@ -18890,7 +19187,8 @@
               "name": "The Boy in the Striped Pyjamas",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0914798.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2008"
+              "releaseInfo": "2008",
+              "slug": "the-boy-in-the-striped-pyjamas"
             },
             {
               "id": "lbx:howls-moving-castle",
@@ -18898,7 +19196,8 @@
               "name": "Howl's Moving Castle",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0347149.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2004",
+              "slug": "howls-moving-castle"
             },
             {
               "id": "lbx:brokeback-mountain",
@@ -18906,7 +19205,8 @@
               "name": "Brokeback Mountain",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0388795.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2005"
+              "releaseInfo": "2005",
+              "slug": "brokeback-mountain"
             },
             {
               "id": "lbx:paddington-2",
@@ -18914,7 +19214,8 @@
               "name": "Paddington 2",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4468740.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "paddington-2"
             },
             {
               "id": "lbx:pieces-of-april",
@@ -18922,7 +19223,8 @@
               "name": "Pieces of April",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0311648.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "pieces-of-april"
             },
             {
               "id": "lbx:moonlight-2016",
@@ -18930,7 +19232,8 @@
               "name": "Moonlight",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4975722.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "moonlight-2016"
             },
             {
               "id": "lbx:how-to-train-your-dragon-the-hidden-world",
@@ -18938,7 +19241,8 @@
               "name": "How to Train Your Dragon: The Hidden World",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2386490.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "how-to-train-your-dragon-the-hidden-world"
             },
             {
               "id": "lbx:soul-2020",
@@ -18946,7 +19250,8 @@
               "name": "Soul",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2948372.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "soul-2020"
             },
             {
               "id": "lbx:bridge-to-terabithia",
@@ -18954,7 +19259,8 @@
               "name": "Bridge to Terabithia",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0398808.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "bridge-to-terabithia"
             },
             {
               "id": "lbx:joy-2015",
@@ -18962,7 +19268,8 @@
               "name": "Joy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2446980.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "joy-2015"
             },
             {
               "id": "lbx:perfect-blue",
@@ -18970,7 +19277,8 @@
               "name": "Perfect Blue",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0156887.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1998"
+              "releaseInfo": "1998",
+              "slug": "perfect-blue"
             },
             {
               "id": "lbx:onward-2020",
@@ -18978,7 +19286,8 @@
               "name": "Onward",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7146812.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "onward-2020"
             },
             {
               "id": "lbx:walle",
@@ -18986,7 +19295,8 @@
               "name": "WALL·E",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0910970.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2008"
+              "releaseInfo": "2008",
+              "slug": "walle"
             },
             {
               "id": "lbx:la-la-land",
@@ -18994,7 +19304,8 @@
               "name": "La La Land",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3783958.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "la-la-land"
             },
             {
               "id": "lbx:the-neon-demon",
@@ -19002,7 +19313,8 @@
               "name": "The Neon Demon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1974419.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "the-neon-demon"
             },
             {
               "id": "lbx:kubo-and-the-two-strings",
@@ -19010,7 +19322,8 @@
               "name": "Kubo and the Two Strings",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4302938.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "kubo-and-the-two-strings"
             },
             {
               "id": "lbx:interstellar",
@@ -19018,7 +19331,8 @@
               "name": "Interstellar",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0816692.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "interstellar"
             },
             {
               "id": "lbx:blue-valentine",
@@ -19026,7 +19340,8 @@
               "name": "Blue Valentine",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1120985.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2010"
+              "releaseInfo": "2010",
+              "slug": "blue-valentine"
             },
             {
               "id": "lbx:drive-2011",
@@ -19034,7 +19349,8 @@
               "name": "Drive",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0780504.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2011"
+              "releaseInfo": "2011",
+              "slug": "drive-2011"
             },
             {
               "id": "lbx:under-the-skin-2013",
@@ -19042,7 +19358,8 @@
               "name": "Under the Skin",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1441395.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "under-the-skin-2013"
             },
             {
               "id": "lbx:whiplash-2014",
@@ -19050,7 +19367,8 @@
               "name": "Whiplash",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2582802.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "whiplash-2014"
             },
             {
               "id": "lbx:mary-and-max",
@@ -19058,7 +19376,8 @@
               "name": "Mary and Max",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0978762.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2009"
+              "releaseInfo": "2009",
+              "slug": "mary-and-max"
             },
             {
               "id": "lbx:captain-phillips",
@@ -19066,7 +19385,8 @@
               "name": "Captain Phillips",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1535109.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "captain-phillips"
             },
             {
               "id": "lbx:uncut-gems",
@@ -19074,7 +19394,8 @@
               "name": "Uncut Gems",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5727208.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "uncut-gems"
             },
             {
               "id": "lbx:spirited-away",
@@ -19082,7 +19403,8 @@
               "name": "Spirited Away",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0245429.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2001"
+              "releaseInfo": "2001",
+              "slug": "spirited-away"
             },
             {
               "id": "lbx:1917",
@@ -19090,7 +19412,8 @@
               "name": "1917",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8579674.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "1917"
             },
             {
               "id": "lbx:requiem-for-a-dream",
@@ -19098,7 +19421,8 @@
               "name": "Requiem for a Dream",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0180093.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2000"
+              "releaseInfo": "2000",
+              "slug": "requiem-for-a-dream"
             },
             {
               "id": "lbx:black-swan",
@@ -19106,7 +19430,8 @@
               "name": "Black Swan",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0947798.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2010"
+              "releaseInfo": "2010",
+              "slug": "black-swan"
             },
             {
               "id": "lbx:silver-linings-playbook",
@@ -19114,7 +19439,8 @@
               "name": "Silver Linings Playbook",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1045658.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "silver-linings-playbook"
             },
             {
               "id": "lbx:princess-mononoke",
@@ -19122,7 +19448,8 @@
               "name": "Princess Mononoke",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0119698.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1997"
+              "releaseInfo": "1997",
+              "slug": "princess-mononoke"
             },
             {
               "id": "lbx:dunkirk-2017",
@@ -19130,7 +19457,8 @@
               "name": "Dunkirk",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5013056.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "dunkirk-2017"
             },
             {
               "id": "lbx:arrival-2016",
@@ -19138,7 +19466,8 @@
               "name": "Arrival",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2543164.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "arrival-2016"
             },
             {
               "id": "lbx:its-such-a-beautiful-day",
@@ -19146,7 +19475,8 @@
               "name": "It's Such a Beautiful Day",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2396224.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "its-such-a-beautiful-day"
             },
             {
               "id": "lbx:freedom-writers",
@@ -19154,7 +19484,8 @@
               "name": "Freedom Writers",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0463998.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "freedom-writers"
             },
             {
               "id": "lbx:before-sunset",
@@ -19162,7 +19493,8 @@
               "name": "Before Sunset",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0381681.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2004",
+              "slug": "before-sunset"
             },
             {
               "id": "lbx:the-intouchables",
@@ -19170,7 +19502,8 @@
               "name": "The Intouchables",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1675434.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2011"
+              "releaseInfo": "2011",
+              "slug": "the-intouchables"
             },
             {
               "id": "lbx:au-revoir-les-enfants",
@@ -19178,7 +19511,8 @@
               "name": "Au Revoir les Enfants",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0092593.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1987"
+              "releaseInfo": "1987",
+              "slug": "au-revoir-les-enfants"
             },
             {
               "id": "lbx:the-curious-case-of-benjamin-button",
@@ -19186,7 +19520,8 @@
               "name": "The Curious Case of Benjamin Button",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0421715.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2008"
+              "releaseInfo": "2008",
+              "slug": "the-curious-case-of-benjamin-button"
             },
             {
               "id": "lbx:portrait-of-a-lady-on-fire",
@@ -19194,7 +19529,8 @@
               "name": "Portrait of a Lady on Fire",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8613070.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "portrait-of-a-lady-on-fire"
             },
             {
               "id": "lbx:another-round",
@@ -19202,7 +19538,8 @@
               "name": "Another Round",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10288566.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "another-round"
             },
             {
               "id": "lbx:the-iron-claw-2023",
@@ -19210,7 +19547,8 @@
               "name": "The Iron Claw",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt21064584.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "the-iron-claw-2023"
             },
             {
               "id": "lbx:the-hunt-2012",
@@ -19218,7 +19556,8 @@
               "name": "The Hunt",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2106476.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "the-hunt-2012"
             },
             {
               "id": "lbx:the-fabelmans",
@@ -19226,7 +19565,8 @@
               "name": "The Fabelmans",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14208870.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "the-fabelmans"
             },
             {
               "id": "lbx:the-chorus",
@@ -19234,7 +19574,8 @@
               "name": "The Chorus",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0372824.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2004"
+              "releaseInfo": "2004",
+              "slug": "the-chorus"
             },
             {
               "id": "lbx:little-women-2019",
@@ -19242,7 +19583,8 @@
               "name": "Little Women",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3281548.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "little-women-2019"
             },
             {
               "id": "lbx:my-neighbor-totoro",
@@ -19250,7 +19592,8 @@
               "name": "My Neighbor Totoro",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0096283.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1988"
+              "releaseInfo": "1988",
+              "slug": "my-neighbor-totoro"
             },
             {
               "id": "lbx:the-imitation-game",
@@ -19258,7 +19601,8 @@
               "name": "The Imitation Game",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2084970.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "the-imitation-game"
             },
             {
               "id": "lbx:sound-of-metal",
@@ -19266,7 +19610,8 @@
               "name": "Sound of Metal",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5363618.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "sound-of-metal"
             },
             {
               "id": "lbx:brigsby-bear",
@@ -19274,7 +19619,8 @@
               "name": "Brigsby Bear",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5805752.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "brigsby-bear"
             },
             {
               "id": "lbx:good-time",
@@ -19282,7 +19628,8 @@
               "name": "Good Time",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4846232.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "good-time"
             },
             {
               "id": "lbx:frances-ha",
@@ -19290,7 +19637,8 @@
               "name": "Frances Ha",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2347569.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "frances-ha"
             },
             {
               "id": "lbx:love-simon",
@@ -19298,7 +19646,8 @@
               "name": "Love, Simon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5164432.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "love-simon"
             },
             {
               "id": "lbx:her",
@@ -19306,7 +19655,8 @@
               "name": "Her",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1798709.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "her"
             },
             {
               "id": "lbx:jackie-2016",
@@ -19314,7 +19664,8 @@
               "name": "Jackie",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1619029.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "jackie-2016"
             },
             {
               "id": "lbx:mulan",
@@ -19322,7 +19673,8 @@
               "name": "Mulan",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0120762.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1998"
+              "releaseInfo": "1998",
+              "slug": "mulan"
             },
             {
               "id": "lbx:amelie",
@@ -19330,7 +19682,8 @@
               "name": "Amélie",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0211915.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2001"
+              "releaseInfo": "2001",
+              "slug": "amelie"
             },
             {
               "id": "lbx:jojo-rabbit",
@@ -19338,7 +19691,8 @@
               "name": "Jojo Rabbit",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2584384.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "jojo-rabbit"
             },
             {
               "id": "lbx:babylon-2022",
@@ -19346,7 +19700,8 @@
               "name": "Babylon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10640346.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "babylon-2022"
             },
             {
               "id": "lbx:what-maisie-knew",
@@ -19354,7 +19709,8 @@
               "name": "What Maisie Knew",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1932767.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "what-maisie-knew"
             },
             {
               "id": "lbx:lost-in-translation",
@@ -19362,7 +19718,8 @@
               "name": "Lost in Translation",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0335266.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2003"
+              "releaseInfo": "2003",
+              "slug": "lost-in-translation"
             },
             {
               "id": "lbx:everything-everywhere-all-at-once",
@@ -19370,7 +19727,8 @@
               "name": "Everything Everywhere All at Once",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6710474.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "everything-everywhere-all-at-once"
             },
             {
               "id": "lbx:raw-2016",
@@ -19378,7 +19736,8 @@
               "name": "Raw",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4954522.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "raw-2016"
             },
             {
               "id": "lbx:lars-and-the-real-girl",
@@ -19386,7 +19745,8 @@
               "name": "Lars and the Real Girl",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0805564.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "lars-and-the-real-girl"
             },
             {
               "id": "lbx:a-walk-to-remember",
@@ -19394,7 +19754,8 @@
               "name": "A Walk to Remember",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0281358.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2002"
+              "releaseInfo": "2002",
+              "slug": "a-walk-to-remember"
             },
             {
               "id": "lbx:palo-alto",
@@ -19402,7 +19763,8 @@
               "name": "Palo Alto",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2479800.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "palo-alto"
             },
             {
               "id": "lbx:before-sunrise",
@@ -19410,7 +19772,8 @@
               "name": "Before Sunrise",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0112471.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1995"
+              "releaseInfo": "1995",
+              "slug": "before-sunrise"
             },
             {
               "id": "lbx:marriage-story-2019",
@@ -19418,7 +19781,8 @@
               "name": "Marriage Story",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7653254.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "marriage-story-2019"
             },
             {
               "id": "lbx:lovesong-2016",
@@ -19426,7 +19790,8 @@
               "name": "Lovesong",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4305148.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "lovesong-2016"
             },
             {
               "id": "lbx:lady-bird",
@@ -19434,7 +19799,8 @@
               "name": "Lady Bird",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4925292.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2017"
+              "releaseInfo": "2017",
+              "slug": "lady-bird"
             },
             {
               "id": "lbx:honey-boy",
@@ -19442,7 +19808,8 @@
               "name": "Honey Boy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8151874.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "honey-boy"
             },
             {
               "id": "lbx:a-monster-calls",
@@ -19450,7 +19817,8 @@
               "name": "A Monster Calls",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3416532.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "a-monster-calls"
             },
             {
               "id": "lbx:the-banshees-of-inisherin",
@@ -19458,7 +19826,8 @@
               "name": "The Banshees of Inisherin",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt11813216.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "the-banshees-of-inisherin"
             },
             {
               "id": "lbx:maine",
@@ -19466,7 +19835,8 @@
               "name": "Maine",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7316358.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "maine"
             },
             {
               "id": "lbx:past-lives",
@@ -19474,7 +19844,8 @@
               "name": "Past Lives",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt13238346.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "past-lives"
             },
             {
               "id": "lbx:like-crazy",
@@ -19482,7 +19853,8 @@
               "name": "Like Crazy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1758692.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2011"
+              "releaseInfo": "2011",
+              "slug": "like-crazy"
             },
             {
               "id": "lbx:the-tree-of-life-2011",
@@ -19490,7 +19862,8 @@
               "name": "The Tree of Life",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0478304.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2011"
+              "releaseInfo": "2011",
+              "slug": "the-tree-of-life-2011"
             },
             {
               "id": "lbx:the-farewell-2019",
@@ -19498,7 +19871,8 @@
               "name": "The Farewell",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8637428.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2019"
+              "releaseInfo": "2019",
+              "slug": "the-farewell-2019"
             },
             {
               "id": "lbx:palm-springs-2020",
@@ -19506,7 +19880,8 @@
               "name": "Palm Springs",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9484998.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2020"
+              "releaseInfo": "2020",
+              "slug": "palm-springs-2020"
             },
             {
               "id": "lbx:i-origins",
@@ -19514,7 +19889,8 @@
               "name": "I Origins",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2884206.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "i-origins"
             },
             {
               "id": "lbx:the-holdovers",
@@ -19522,7 +19898,8 @@
               "name": "The Holdovers",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt14849194.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2023"
+              "releaseInfo": "2023",
+              "slug": "the-holdovers"
             },
             {
               "id": "lbx:the-lobster",
@@ -19530,7 +19907,8 @@
               "name": "The Lobster",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3464902.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "the-lobster"
             },
             {
               "id": "lbx:marcel-the-shell-with-shoes-on-2021",
@@ -19538,7 +19916,8 @@
               "name": "Marcel the Shell with Shoes On",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt15339456.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "marcel-the-shell-with-shoes-on-2021"
             },
             {
               "id": "lbx:beautiful-boy-2018",
@@ -19546,7 +19925,8 @@
               "name": "Beautiful Boy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1226837.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "beautiful-boy-2018"
             },
             {
               "id": "lbx:when-harry-met-sally",
@@ -19554,7 +19934,8 @@
               "name": "When Harry Met Sally...",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0098635.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1989"
+              "releaseInfo": "1989",
+              "slug": "when-harry-met-sally"
             },
             {
               "id": "lbx:if-beale-street-could-talk",
@@ -19562,7 +19943,8 @@
               "name": "If Beale Street Could Talk",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7125860.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "if-beale-street-could-talk"
             },
             {
               "id": "lbx:ratatouille",
@@ -19570,7 +19952,8 @@
               "name": "Ratatouille",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0382932.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2007"
+              "releaseInfo": "2007",
+              "slug": "ratatouille"
             },
             {
               "id": "lbx:life-is-beautiful",
@@ -19578,7 +19961,8 @@
               "name": "Life Is Beautiful",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0118799.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "1997"
+              "releaseInfo": "1997",
+              "slug": "life-is-beautiful"
             },
             {
               "id": "lbx:roma-2018",
@@ -19586,7 +19970,8 @@
               "name": "Roma",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6155172.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "roma-2018"
             },
             {
               "id": "lbx:cmon-cmon",
@@ -19594,7 +19979,8 @@
               "name": "C'mon C'mon",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10986222.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2021"
+              "releaseInfo": "2021",
+              "slug": "cmon-cmon"
             },
             {
               "id": "lbx:punch-drunk-love",
@@ -19602,7 +19988,8 @@
               "name": "Punch-Drunk Love",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0272338.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2002"
+              "releaseInfo": "2002",
+              "slug": "punch-drunk-love"
             },
             {
               "id": "lbx:big-hero-6",
@@ -19610,7 +19997,8 @@
               "name": "Big Hero 6",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2245084.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "big-hero-6"
             },
             {
               "id": "lbx:12-years-a-slave",
@@ -19618,7 +20006,8 @@
               "name": "12 Years a Slave",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2024544.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2013"
+              "releaseInfo": "2013",
+              "slug": "12-years-a-slave"
             },
             {
               "id": "lbx:50-50",
@@ -19626,7 +20015,8 @@
               "name": "50/50",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1306980.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2011"
+              "releaseInfo": "2011",
+              "slug": "50-50"
             },
             {
               "id": "lbx:inside-out-2015",
@@ -19634,7 +20024,8 @@
               "name": "Inside Out",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2096673.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2015"
+              "releaseInfo": "2015",
+              "slug": "inside-out-2015"
             },
             {
               "id": "lbx:lion",
@@ -19642,7 +20033,8 @@
               "name": "Lion",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3741834.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2016"
+              "releaseInfo": "2016",
+              "slug": "lion"
             },
             {
               "id": "lbx:the-pursuit-of-happyness",
@@ -19650,7 +20042,8 @@
               "name": "The Pursuit of Happyness",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0454921.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2006"
+              "releaseInfo": "2006",
+              "slug": "the-pursuit-of-happyness"
             },
             {
               "id": "lbx:mommy-2014",
@@ -19658,7 +20051,8 @@
               "name": "Mommy",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3612616.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2014"
+              "releaseInfo": "2014",
+              "slug": "mommy-2014"
             },
             {
               "id": "lbx:bones-and-all",
@@ -19666,7 +20060,8 @@
               "name": "Bones and All",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt10168670.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2022"
+              "releaseInfo": "2022",
+              "slug": "bones-and-all"
             },
             {
               "id": "lbx:celeste-jesse-forever",
@@ -19674,7 +20069,8 @@
               "name": "Celeste & Jesse Forever",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1405365.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2012"
+              "releaseInfo": "2012",
+              "slug": "celeste-jesse-forever"
             }
           ]
         },
@@ -19685,7 +20081,7 @@
           "filmsCount": 97,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1783027588512,
+          "cachedAt": 1783028212308,
           "metaByIndex": [
             {
               "id": "lbx:spider-man-into-the-spider-verse",
@@ -19693,7 +20089,8 @@
               "name": "Spider-Man: Into the Spider-Verse",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4633694.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "spider-man-into-the-spider-verse"
             },
             {
               "id": "lbx:the-favourite",
@@ -19701,7 +20098,8 @@
               "name": "The Favourite",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5083738.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "the-favourite"
             },
             {
               "id": "lbx:roma-2018",
@@ -19709,7 +20107,8 @@
               "name": "Roma",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6155172.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "roma-2018"
             },
             {
               "id": "lbx:minding-the-gap",
@@ -19717,7 +20116,8 @@
               "name": "Minding the Gap",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7476236.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "minding-the-gap"
             },
             {
               "id": "lbx:if-beale-street-could-talk",
@@ -19725,7 +20125,8 @@
               "name": "If Beale Street Could Talk",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7125860.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "if-beale-street-could-talk"
             },
             {
               "id": "lbx:shoplifters",
@@ -19733,7 +20134,8 @@
               "name": "Shoplifters",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8075192.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "shoplifters"
             },
             {
               "id": "lbx:a-star-is-born-2018",
@@ -19741,7 +20143,8 @@
               "name": "A Star Is Born",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1517451.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "a-star-is-born-2018"
             },
             {
               "id": "lbx:skate-kitchen",
@@ -19749,7 +20152,8 @@
               "name": "Skate Kitchen",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7545566.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "skate-kitchen"
             },
             {
               "id": "lbx:blindspotting",
@@ -19757,7 +20161,8 @@
               "name": "Blindspotting",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7242142.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "blindspotting"
             },
             {
               "id": "lbx:free-solo",
@@ -19765,7 +20170,8 @@
               "name": "Free Solo",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7775622.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "free-solo"
             },
             {
               "id": "lbx:eighth-grade",
@@ -19773,7 +20179,8 @@
               "name": "Eighth Grade",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7014006.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "eighth-grade"
             },
             {
               "id": "lbx:burning-2018",
@@ -19781,7 +20188,8 @@
               "name": "Burning",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7282468.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "burning-2018"
             },
             {
               "id": "lbx:an-elephant-sitting-still",
@@ -19789,7 +20197,8 @@
               "name": "An Elephant Sitting Still",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8020896.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "an-elephant-sitting-still"
             },
             {
               "id": "lbx:ash-is-purest-white",
@@ -19797,7 +20206,8 @@
               "name": "Ash Is Purest White",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7298400.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "ash-is-purest-white"
             },
             {
               "id": "lbx:mission-impossible-fallout",
@@ -19805,7 +20215,8 @@
               "name": "Mission: Impossible - Fallout",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4912910.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "mission-impossible-fallout"
             },
             {
               "id": "lbx:hereditary",
@@ -19813,7 +20224,8 @@
               "name": "Hereditary",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7784604.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "hereditary"
             },
             {
               "id": "lbx:first-man",
@@ -19821,7 +20233,8 @@
               "name": "First Man",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1213641.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "first-man"
             },
             {
               "id": "lbx:widows-2018",
@@ -19829,7 +20242,8 @@
               "name": "Widows",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt4218572.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "widows-2018"
             },
             {
               "id": "lbx:thunder-road-2018",
@@ -19837,7 +20251,8 @@
               "name": "Thunder Road",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7738450.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "thunder-road-2018"
             },
             {
               "id": "lbx:suspiria-2018",
@@ -19845,7 +20260,8 @@
               "name": "Suspiria",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1034415.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "suspiria-2018"
             },
             {
               "id": "lbx:climax-2018",
@@ -19853,7 +20269,8 @@
               "name": "Climax",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8359848.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "climax-2018"
             },
             {
               "id": "lbx:sorry-to-bother-you",
@@ -19861,7 +20278,8 @@
               "name": "Sorry to Bother You",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5688932.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "sorry-to-bother-you"
             },
             {
               "id": "lbx:leave-no-trace",
@@ -19869,7 +20287,8 @@
               "name": "Leave No Trace",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3892172.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "leave-no-trace"
             },
             {
               "id": "lbx:a-quiet-place-2018",
@@ -19877,7 +20296,8 @@
               "name": "A Quiet Place",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6644200.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "a-quiet-place-2018"
             },
             {
               "id": "lbx:happy-as-lazzaro",
@@ -19885,7 +20305,8 @@
               "name": "Happy as Lazzaro",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6752992.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "happy-as-lazzaro"
             },
             {
               "id": "lbx:mid90s",
@@ -19893,7 +20314,8 @@
               "name": "mid90s",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt5613484.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "mid90s"
             },
             {
               "id": "lbx:green-book",
@@ -19901,7 +20323,8 @@
               "name": "Green Book",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6966692.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "green-book"
             },
             {
               "id": "lbx:three-identical-strangers",
@@ -19909,7 +20332,8 @@
               "name": "Three Identical Strangers",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt7664504.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "three-identical-strangers"
             },
             {
               "id": "lbx:us-and-them-2018",
@@ -19917,7 +20341,8 @@
               "name": "Us and Them",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt8033592.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "us-and-them-2018"
             },
             {
               "id": "lbx:creed-ii",
@@ -19925,7 +20350,8 @@
               "name": "Creed II",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt6343314.jpg?fallback=true",
               "posterShape": "poster",
-              "releaseInfo": "2018"
+              "releaseInfo": "2018",
+              "slug": "creed-ii"
             }
           ]
         }

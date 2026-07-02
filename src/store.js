@@ -205,7 +205,7 @@ function writeFilmListCache(userId, listId, payload, opts = {}) {
 
 function compactMeta(m) {
   if (!m?.id) return null;
-  return {
+  const out = {
     id: m.id,
     type: m.type,
     name: m.name,
@@ -213,6 +213,9 @@ function compactMeta(m) {
     posterShape: m.posterShape || 'poster',
     releaseInfo: m.releaseInfo || ''
   };
+  if (m.imdbId) out.imdbId = m.imdbId;
+  if (m.id.startsWith('lbx:')) out.slug = m.slug || m.id.slice(4);
+  return out;
 }
 
 function compactFilm(f) {

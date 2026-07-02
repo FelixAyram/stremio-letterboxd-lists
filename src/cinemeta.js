@@ -190,6 +190,7 @@ function metaFromImdb(imdbId, film, metaHit, mediaType = 'movie', extras = {}) {
 
   return {
     id: catalogId(film.slug),
+    imdbId,
     type,
     name: metaHit?.name || film.name,
     poster,
@@ -443,14 +444,93 @@ function getLetterboxdBackground(imdbId) {
 function loadPosterMapFromCache(metas) {
   for (const m of metas || []) {
     if (m.id?.startsWith('lbx:')) {
-      const slug = m.id.slice(4);
+      const slug = m.slug || m.id.slice(4);
       if (isAllowedPoster(m.poster)) posterBySlug.set(slug, m.poster);
+      if (m.imdbId) {
+        slugToImdb.set(slug, m.imdbId);
+        if (isAllowedPoster(m.poster)) posterByImdb.set(m.imdbId, m.poster);
+      }
+      if (m.type) slugToMedia.set(slug, m.type);
+    } else if (m.imdbId && isAllowedPoster(m.poster)) {
+      posterByImdb.set(m.imdbId, m.poster);
     }
-    if (m.imdbId && isAllowedPoster(m.poster)) posterByImdb.set(m.imdbId, m.poster);
     if (m.imdbId && m.background?.includes('ltrbxd.com')) backgroundByImdb.set(m.imdbId, m.background);
     if (m.slug && m.imdbId) slugToImdb.set(m.slug, m.imdbId);
-    if (m.id?.startsWith('lbx:') && m.type) slugToMedia.set(m.id.slice(4), m.type);
   }
+}
+
+const META_DETAIL_FIELDS = [
+  'name', 'poster', 'background', 'posterShape', 'logo', 'releaseInfo', 'imdbRating',
+  'description', 'genres', 'director', 'cast', 'links', 'runtime', 'released',
+  'trailers', 'trailerStreams', 'behaviorHints'
+];
+
+function asStringArray(value) {
+  if (value == null) return undefined;
+  if (Array.isArray(value)) return value.map(String).filter(Boolean);
+  return [String(value)].filter(Boolean);
+}
+
+function sanitizeMetaForStremio(raw, { id, type }) {
+  const meta = { id, type };
+  for (const key of META_DETAIL_FIELDS) {
+    if (raw?.[key] === undefined || raw?.[key] === null) continue;
+    meta[key] = raw[key];
+  }
+  for (const key of ['genres', 'director', 'cast']) {
+    const normalized = asStringArray(meta[key]);
+    if (normalized?.length) meta[key] = normalized;
+    else delete meta[key];
+  }
+  if (!meta.name) meta.name = raw?.name || id.replace(/^lbx:/, '').replace(/-/g, ' ');
+  if (!meta.posterShape) meta.posterShape = 'poster';
+  if (meta.releaseInfo != null) meta.releaseInfo = String(meta.releaseInfo);
+  if (meta.imdbRating != null) meta.imdbRating = String(meta.imdbRating);
+  if (meta.runtime != null) meta.runtime = String(meta.runtime);
+  return meta;
+}
+
+async function resolveImdbForSlug(slug, opts = {}) {
+  let imdbId = slugToImdb.get(slug);
+  let mediaType = slugToMedia.get(slug) || opts.type || 'movie';
+  if (imdbId) return { imdbId, mediaType, slug };
+
+  for (const m of opts.cachedMetas || []) {
+    if (!m?.id?.startsWith('lbx:')) continue;
+    const mSlug = m.slug || m.id.slice(4);
+    if (mSlug !== slug) continue;
+    if (m.imdbId) {
+      slugToImdb.set(slug, m.imdbId);
+      if (m.type) slugToMedia.set(slug, m.type);
+      return { imdbId: m.imdbId, mediaType: m.type || mediaType, slug, preview: m };
+    }
+  }
+
+  if (opts.film) {
+    await resolveFilmFast(opts.film);
+    imdbId = slugToImdb.get(slug);
+    mediaType = slugToMedia.get(slug) || mediaType;
+    if (imdbId) return { imdbId, mediaType, slug };
+  }
+
+  const lbx = await fetchMediaPage(slug, {
+    link: opts.film?.link,
+    mediaType: opts.film?.mediaType,
+    year: opts.film?.year
+  });
+  if (lbx?.imdbId) {
+    const resolved = await resolveMetaType(lbx.imdbId, mediaType, opts.film?.name || lbx.title, opts.film?.year);
+    if (resolved.meta) {
+      storeFilmMaps(
+        opts.film || { slug, name: lbx.title || slug, year: opts.film?.year },
+        lbx.imdbId,
+        resolved.mediaType
+      );
+      return { imdbId: lbx.imdbId, mediaType: resolved.mediaType, slug };
+    }
+  }
+
+  return null;
 }
 
 function clearSearchCache() {
@@ -477,5 +557,7 @@ module.exports = {
   getLetterboxdPosterBySlug,
   getLetterboxdBackground,
   loadPosterMapFromCache,
+  sanitizeMetaForStremio,
+  resolveImdbForSlug,
   clearSearchCache
 };

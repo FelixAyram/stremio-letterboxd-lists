@@ -85,7 +85,13 @@ function findUserById(userId) {
 
 function findUser(username) {
   const id = normalizeUsername(username);
-  return findUserById(id);
+  let user = findUserById(id);
+  if (user) return user;
+  const email = (username || '').trim().toLowerCase();
+  if (email.includes('@')) {
+    return readUsersDb().users.find((u) => (u.email || '').toLowerCase() === email) || null;
+  }
+  return null;
 }
 
 function clientIp(req) {
@@ -180,11 +186,10 @@ function findOrCreateGoogleUser(profile) {
 
 function login(username, password, ip) {
   checkRateLimit(ip);
-  const id = validateUsername(username);
   if (!password) throw new Error('Contrasena incorrecta');
-  const user = findUser(id);
+  const user = findUser(username);
   if (!user) {
-    throw new Error('No existe esa cuenta. Si el servidor se reinicio, crea una cuenta nueva.');
+    throw new Error('No existe esa cuenta. Si acabas de registrarte, espera unos segundos e intenta de nuevo.');
   }
   if (!verifyPassword(password, user.passwordHash)) {
     throw new Error('Contrasena incorrecta');

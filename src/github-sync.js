@@ -11,6 +11,7 @@ const ROOT = path.join(__dirname, '..');
 const shaCache = new Map();
 let pushTimer = null;
 let pulling = false;
+let pullComplete = false;
 let lastPushError = null;
 let lastPushAt = null;
 
@@ -158,7 +159,10 @@ async function fetchStateFromRef(ref) {
 }
 
 async function pullOnStartup() {
-  if (!isEnabled()) return pullFromLocalBundle();
+  if (!isEnabled()) {
+    pullComplete = true;
+    return pullFromLocalBundle();
+  }
   pulling = true;
   try {
     const local = exportState();
@@ -194,14 +198,6 @@ async function pullOnStartup() {
       return false;
     }
 
-    const remoteTime = remote.savedAt ? Date.parse(remote.savedAt) : 0;
-    const localTime = local.savedAt ? Date.parse(local.savedAt) : 0;
-    if (stateHasData(local) && localTime > remoteTime) {
-      console.log('[github] datos locales mas recientes — subiendo');
-      await pushState();
-      return true;
-    }
-
     applyStateToRuntimeFiles(remote);
     console.log(`[github] datos restaurados desde rama ${STATE_BRANCH}`);
     return true;
@@ -210,11 +206,27 @@ async function pullOnStartup() {
     return false;
   } finally {
     pulling = false;
+    pullComplete = true;
   }
 }
 
 async function pushState() {
   const state = exportState();
+  if (!stateHasData(state)) {
+    try {
+      const remote = await fetchStateFromRef(STATE_BRANCH);
+      if (stateHasData(remote)) {
+        lastPushError = 'Bloqueado: no sobrescribir backup remoto con estado vacio';
+        console.warn('[github]', lastPushError);
+        return false;
+      }
+    } catch (e) {
+      lastPushError = `No se pudo verificar remoto antes de push: ${e.message}`;
+      console.warn('[github]', lastPushError);
+      return false;
+    }
+  }
+
   const content = JSON.stringify(state, null, 2);
   writeLocal(STATE_FILE, content);
 
@@ -257,7 +269,7 @@ async function pushState() {
 }
 
 function schedulePush() {
-  if (!isEnabled() || pulling) return;
+  if (!isEnabled() || pulling || !pullComplete) return;
   clearTimeout(pushTimer);
   pushTimer = setTimeout(() => {
     pushState().catch((e) => {
@@ -268,7 +280,7 @@ function schedulePush() {
 }
 
 async function pushNow() {
-  if (!isEnabled() || pulling) return false;
+  if (!isEnabled() || pulling || !pullComplete) return false;
   clearTimeout(pushTimer);
   try {
     await pushState();

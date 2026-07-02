@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-07-02T21:20:26.215Z",
+  "savedAt": "2026-07-02T21:26:30.626Z",
   "users": {
     "users": [
       {
@@ -62,7 +62,7 @@
         },
         {
           "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
-          "name": "150 Highest-Rated Kdramas on Letterboxd \ud83c\uddf0\ud83c\uddf7",
+          "name": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
           "id": "list-150-highest-rated-kdramas-on-letterboxd",
           "key": "wGwRbGH-BXmb0nn7pjrvOQ"
         },
@@ -86,10 +86,10 @@
       "filmLists": {
         "list-150-highest-rated-kdramas-on-letterboxd": {
           "id": "list-150-highest-rated-kdramas-on-letterboxd",
-          "title": "150 Highest-Rated Kdramas on Letterboxd \ud83c\uddf0\ud83c\uddf7",
+          "title": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
           "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
           "preferSeries": true,
-          "cachedAt": 1782591075781,
+          "cachedAt": 1783027588417,
           "films": [
             {
               "slug": "when-life-gives-you-tangerines-2025",
@@ -1164,7 +1164,7 @@
             },
             {
               "slug": "bon-appetit-your-majesty",
-              "name": "Bon App\u00e9tit, Your Majesty",
+              "name": "Bon Appétit, Your Majesty",
               "year": "2025",
               "mediaType": "movie",
               "link": "/film/bon-appetit-your-majesty/",
@@ -1448,7 +1448,7 @@
           "title": "2003",
           "url": "https://letterboxd.com/thewickerman/list/2003/",
           "preferSeries": false,
-          "cachedAt": 1782591070277,
+          "cachedAt": 1783027588417,
           "films": [
             {
               "slug": "kill-bill-vol-1",
@@ -2700,7 +2700,7 @@
             },
             {
               "slug": "pokemon-jirachi-wish-maker",
-              "name": "Pok\u00e9mon: Jirachi Wish Maker",
+              "name": "Pokémon: Jirachi Wish Maker",
               "year": "2003",
               "mediaType": "movie",
               "link": "/film/pokemon-jirachi-wish-maker/",
@@ -2860,7 +2860,7 @@
             },
             {
               "slug": "lara-croft-tomb-raider-the-cradle-of-life",
-              "name": "Lara Croft: Tomb Raider \u2013 The Cradle of Life",
+              "name": "Lara Croft: Tomb Raider – The Cradle of Life",
               "year": "2003",
               "mediaType": "movie",
               "link": "/film/lara-croft-tomb-raider-the-cradle-of-life/",
@@ -3337,7 +3337,7 @@
           "title": "chick flicks",
           "url": "https://letterboxd.com/kaitienk/list/chick-flicks/",
           "preferSeries": false,
-          "cachedAt": 1782591090684,
+          "cachedAt": 1783027588419,
           "films": [
             {
               "slug": "10-things-i-hate-about-you",
@@ -8445,7 +8445,7 @@
             },
             {
               "slug": "the-twilight-saga-breaking-dawn-part-1",
-              "name": "The Twilight Saga: Breaking Dawn \u2013 Part 1",
+              "name": "The Twilight Saga: Breaking Dawn – Part 1",
               "year": "2011",
               "mediaType": "movie",
               "link": "/film/the-twilight-saga-breaking-dawn-part-1/",
@@ -9829,7 +9829,7 @@
             },
             {
               "slug": "the-twilight-saga-breaking-dawn-part-2",
-              "name": "The Twilight Saga: Breaking Dawn \u2013 Part 2",
+              "name": "The Twilight Saga: Breaking Dawn – Part 2",
               "year": "2012",
               "mediaType": "movie",
               "link": "/film/the-twilight-saga-breaking-dawn-part-2/",
@@ -10178,7 +10178,7 @@
           "title": "for when you want to feel something",
           "url": "https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/",
           "preferSeries": false,
-          "cachedAt": 1782591026873,
+          "cachedAt": 1783027588421,
           "films": [
             {
               "slug": "cha-cha-real-smooth",
@@ -10974,7 +10974,7 @@
             },
             {
               "slug": "walle",
-              "name": "WALL\u00b7E",
+              "name": "WALL·E",
               "year": "2008",
               "mediaType": "movie",
               "link": "/film/walle/",
@@ -11318,7 +11318,7 @@
             },
             {
               "slug": "amelie",
-              "name": "Am\u00e9lie",
+              "name": "Amélie",
               "year": "2001",
               "mediaType": "movie",
               "link": "/film/amelie/",
@@ -11675,7 +11675,7 @@
           "title": "Get Busy Dying or Get Busy Watching 2018's Most Essential Movies",
           "url": "https://letterboxd.com/axelhagne/list/get-busy-dying-or-get-busy-watching-2018s/",
           "preferSeries": false,
-          "cachedAt": 1782591081582,
+          "cachedAt": 1783027588421,
           "films": [
             {
               "slug": "spider-man-into-the-spider-verse",
@@ -11791,7 +11791,7 @@
             },
             {
               "slug": "mission-impossible-fallout",
-              "name": "Mission: Impossible \u2013 Fallout",
+              "name": "Mission: Impossible – Fallout",
               "year": "2018",
               "mediaType": "movie",
               "link": "/film/mission-impossible-fallout/",
@@ -12460,7 +12460,7 @@
           "title": "Letterboxd's Top 500 Films",
           "url": "https://letterboxd.com/official/list/letterboxds-top-500-films/",
           "preferSeries": false,
-          "cachedAt": 1782591060977,
+          "cachedAt": 1783027588421,
           "films": [
             {
               "slug": "harakiri",
@@ -13328,7 +13328,7 @@
             },
             {
               "slug": "chainsaw-man-the-movie-reze-arc",
-              "name": "Chainsaw Man \u2013 The Movie: Reze Arc",
+              "name": "Chainsaw Man – The Movie: Reze Arc",
               "year": "2025",
               "mediaType": "movie",
               "link": "/film/chainsaw-man-the-movie-reze-arc/",
@@ -13944,7 +13944,7 @@
             },
             {
               "slug": "life-and-nothing-more",
-              "name": "Life, and Nothing More\u2026",
+              "name": "Life, and Nothing More…",
               "year": "1992",
               "mediaType": "movie",
               "link": "/film/life-and-nothing-more/",
@@ -14056,7 +14056,7 @@
             },
             {
               "slug": "8-half",
-              "name": "8\u00bd",
+              "name": "8½",
               "year": "1963",
               "mediaType": "movie",
               "link": "/film/8-half/",
@@ -14432,7 +14432,7 @@
             },
             {
               "slug": "walle",
-              "name": "WALL\u00b7E",
+              "name": "WALL·E",
               "year": "2008",
               "mediaType": "movie",
               "link": "/film/walle/",
@@ -14808,7 +14808,7 @@
             },
             {
               "slug": "le-samourai",
-              "name": "Le Samoura\u00ef",
+              "name": "Le Samouraï",
               "year": "1967",
               "mediaType": "movie",
               "link": "/film/le-samourai/",
@@ -14880,7 +14880,7 @@
             },
             {
               "slug": "y-tu-mama-tambien",
-              "name": "Y Tu Mam\u00e1 Tambi\u00e9n",
+              "name": "Y Tu Mamá También",
               "year": "2001",
               "mediaType": "movie",
               "link": "/film/y-tu-mama-tambien/",
@@ -15088,7 +15088,7 @@
             },
             {
               "slug": "gangs-of-wasseypur-part-2",
-              "name": "Gangs of Wasseypur \u2013 Part 2",
+              "name": "Gangs of Wasseypur – Part 2",
               "year": "2012",
               "mediaType": "movie",
               "link": "/film/gangs-of-wasseypur-part-2/",
@@ -15240,7 +15240,7 @@
             },
             {
               "slug": "nausicaa-of-the-valley-of-the-wind",
-              "name": "Nausica\u00e4 of the Valley of the Wind",
+              "name": "Nausicaä of the Valley of the Wind",
               "year": "1984",
               "mediaType": "movie",
               "link": "/film/nausicaa-of-the-valley-of-the-wind/",
@@ -15256,7 +15256,7 @@
             },
             {
               "slug": "amelie",
-              "name": "Am\u00e9lie",
+              "name": "Amélie",
               "year": "2001",
               "mediaType": "movie",
               "link": "/film/amelie/",
@@ -15360,7 +15360,7 @@
             },
             {
               "slug": "celine-and-julie-go-boating",
-              "name": "C\u00e9line and Julie Go Boating",
+              "name": "Céline and Julie Go Boating",
               "year": "1974",
               "mediaType": "movie",
               "link": "/film/celine-and-julie-go-boating/",
@@ -15576,7 +15576,7 @@
             },
             {
               "slug": "cleo-from-5-to-7",
-              "name": "Cl\u00e9o from 5 to 7",
+              "name": "Cléo from 5 to 7",
               "year": "1962",
               "mediaType": "movie",
               "link": "/film/cleo-from-5-to-7/",
@@ -15616,7 +15616,7 @@
             },
             {
               "slug": "gueros",
-              "name": "G\u00fceros",
+              "name": "Güeros",
               "year": "2014",
               "mediaType": "movie",
               "link": "/film/gueros/",
@@ -16467,13 +16467,13 @@
       },
       "metas": {
         "list-150-highest-rated-kdramas-on-letterboxd": {
-          "title": "150 Highest-Rated Kdramas on Letterboxd \ud83c\uddf0\ud83c\uddf7",
+          "title": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
           "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
           "listUrl": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
           "filmsCount": 150,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591169037,
+          "cachedAt": 1783027588511,
           "metaByIndex": [
             {
               "id": "lbx:when-life-gives-you-tangerines-2025",
@@ -17430,7 +17430,7 @@
             {
               "id": "lbx:bon-appetit-your-majesty",
               "type": "series",
-              "name": "Bon App\u00e9tit, Your Majesty",
+              "name": "Bon Appétit, Your Majesty",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt37600136.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2025"
@@ -17684,7 +17684,7 @@
           "filmsCount": 235,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591092936,
+          "cachedAt": 1783027588512,
           "metaByIndex": [
             {
               "id": "lbx:kill-bill-vol-1",
@@ -17935,7 +17935,7 @@
           "filmsCount": 854,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591114678,
+          "cachedAt": 1783027588512,
           "metaByIndex": [
             {
               "id": "lbx:10-things-i-hate-about-you",
@@ -18186,7 +18186,7 @@
           "filmsCount": 186,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591034676,
+          "cachedAt": 1783027588512,
           "metaByIndex": [
             {
               "id": "lbx:cha-cha-real-smooth",
@@ -18983,7 +18983,7 @@
             {
               "id": "lbx:walle",
               "type": "movie",
-              "name": "WALL\u00b7E",
+              "name": "WALL·E",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0910970.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2008"
@@ -19327,7 +19327,7 @@
             {
               "id": "lbx:amelie",
               "type": "movie",
-              "name": "Am\u00e9lie",
+              "name": "Amélie",
               "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0211915.jpg?fallback=true",
               "posterShape": "poster",
               "releaseInfo": "2001"
@@ -19685,7 +19685,7 @@
           "filmsCount": 97,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1782591086877,
+          "cachedAt": 1783027588512,
           "metaByIndex": [
             {
               "id": "lbx:spider-man-into-the-spider-verse",

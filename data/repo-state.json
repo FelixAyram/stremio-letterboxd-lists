@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-08-19T04:00:44.007Z",
+  "savedAt": "2026-08-19T04:01:00.307Z",
   "users": {
     "users": [
       {
@@ -29877,6 +29877,317 @@
               "posterShape": "poster",
               "releaseInfo": "2018",
               "slug": "creed-ii"
+            }
+          ]
+        },
+        "list-pinterest": {
+          "title": "pinterest",
+          "url": "https://letterboxd.com/avagreen/list/pinterest/",
+          "listUrl": "https://letterboxd.com/avagreen/list/pinterest/",
+          "filmsCount": 129,
+          "cacheSchema": 7,
+          "persisted": true,
+          "cachedAt": 1787112057979,
+          "metaByIndex": [
+            {
+              "id": "lbx:rolls-royce-baby",
+              "type": "movie",
+              "name": "Baby",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt9760852.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2020",
+              "imdbId": "tt9760852",
+              "slug": "rolls-royce-baby"
+            },
+            {
+              "id": "lbx:stoker",
+              "type": "movie",
+              "name": "Stoker",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1682180.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2013",
+              "imdbId": "tt1682180",
+              "slug": "stoker"
+            },
+            {
+              "id": "lbx:renoir",
+              "type": "movie",
+              "name": "Renoir",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2150332.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2012",
+              "imdbId": "tt2150332",
+              "slug": "renoir"
+            },
+            {
+              "id": "lbx:detachment",
+              "type": "movie",
+              "name": "Detachment",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1683526.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2011",
+              "imdbId": "tt1683526",
+              "slug": "detachment"
+            },
+            {
+              "id": "lbx:four-adventures-of-reinette-and-mirabelle",
+              "type": "movie",
+              "name": "Four Adventures of Reinette and Mirabelle",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0090565.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1987",
+              "imdbId": "tt0090565",
+              "slug": "four-adventures-of-reinette-and-mirabelle"
+            },
+            {
+              "id": "lbx:happiness-1965",
+              "type": "movie",
+              "name": "Le bonheur",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0145682.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1934",
+              "imdbId": "tt0145682",
+              "slug": "happiness-1965"
+            },
+            {
+              "id": "lbx:populaire",
+              "type": "movie",
+              "name": "Populaire",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2070776.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2012",
+              "imdbId": "tt2070776",
+              "slug": "populaire"
+            },
+            {
+              "id": "lbx:restless",
+              "type": "movie",
+              "name": "Restless",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt1498569.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2011",
+              "imdbId": "tt1498569",
+              "slug": "restless"
+            },
+            {
+              "id": "lbx:kids",
+              "type": "movie",
+              "name": "Kids",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0113540.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1995",
+              "imdbId": "tt0113540",
+              "slug": "kids"
+            },
+            {
+              "id": "lbx:the-bitter-tears-of-petra-von-kant",
+              "type": "movie",
+              "name": "The Bitter Tears of Petra von Kant",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0068278.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1972",
+              "imdbId": "tt0068278",
+              "slug": "the-bitter-tears-of-petra-von-kant"
+            },
+            {
+              "id": "lbx:un-chien-andalou",
+              "type": "movie",
+              "name": "Un Chien Andalou",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0020530.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1929",
+              "imdbId": "tt0020530",
+              "slug": "un-chien-andalou"
+            },
+            {
+              "id": "lbx:red-desert",
+              "type": "movie",
+              "name": "Red Desert",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0058003.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1964",
+              "imdbId": "tt0058003",
+              "slug": "red-desert"
+            },
+            {
+              "id": "lbx:maurice",
+              "type": "movie",
+              "name": "Maurice",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0093512.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1987",
+              "imdbId": "tt0093512",
+              "slug": "maurice"
+            },
+            {
+              "id": "lbx:the-love-witch",
+              "type": "movie",
+              "name": "The Love Witch",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt3908142.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2016",
+              "imdbId": "tt3908142",
+              "slug": "the-love-witch"
+            },
+            {
+              "id": "lbx:mystery-train",
+              "type": "movie",
+              "name": "Mystery Train",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0097940.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1989",
+              "imdbId": "tt0097940",
+              "slug": "mystery-train"
+            },
+            {
+              "id": "lbx:the-weeping-meadow",
+              "type": "movie",
+              "name": "The Weeping Meadow",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0366721.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2004",
+              "imdbId": "tt0366721",
+              "slug": "the-weeping-meadow"
+            },
+            {
+              "id": "lbx:picnic-at-hanging-rock",
+              "type": "movie",
+              "name": "Picnic at Hanging Rock",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0073540.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1975",
+              "imdbId": "tt0073540",
+              "slug": "picnic-at-hanging-rock"
+            },
+            {
+              "id": "lbx:through-a-glass-darkly",
+              "type": "movie",
+              "name": "Through a Glass Darkly",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0055499.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1961",
+              "imdbId": "tt0055499",
+              "slug": "through-a-glass-darkly"
+            },
+            {
+              "id": "lbx:the-beekeeper",
+              "type": "movie",
+              "name": "The Beekeeper",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0091506.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1986",
+              "imdbId": "tt0091506",
+              "slug": "the-beekeeper"
+            },
+            {
+              "id": "lbx:jealousy-2013",
+              "type": "movie",
+              "name": "Jealousy",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt2511670.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "2013",
+              "imdbId": "tt2511670",
+              "slug": "jealousy-2013"
+            },
+            {
+              "id": "lbx:love-in-the-afternoon-1972",
+              "type": "movie",
+              "name": "Love in the Afternoon",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0068205.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1972",
+              "imdbId": "tt0068205",
+              "slug": "love-in-the-afternoon-1972"
+            },
+            {
+              "id": "lbx:the-arrangement",
+              "type": "movie",
+              "name": "The Arrangement",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0064041.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1969",
+              "imdbId": "tt0064041",
+              "slug": "the-arrangement"
+            },
+            {
+              "id": "lbx:boyfriends-and-girlfriends",
+              "type": "movie",
+              "name": "Boyfriends and Girlfriends",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0092550.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1987",
+              "imdbId": "tt0092550",
+              "slug": "boyfriends-and-girlfriends"
+            },
+            {
+              "id": "lbx:nostalgia-1983",
+              "type": "movie",
+              "name": "Nostalghia",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0086022.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1983",
+              "imdbId": "tt0086022",
+              "slug": "nostalgia-1983"
+            },
+            {
+              "id": "lbx:claires-knee",
+              "type": "movie",
+              "name": "Claire's Knee",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0065772.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1970",
+              "imdbId": "tt0065772",
+              "slug": "claires-knee"
+            },
+            {
+              "id": "lbx:a-summers-tale",
+              "type": "movie",
+              "name": "A Summer's Tale",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0115940.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1996",
+              "imdbId": "tt0115940",
+              "slug": "a-summers-tale"
+            },
+            {
+              "id": "lbx:la-collectionneuse",
+              "type": "movie",
+              "name": "La Collectionneuse",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0061495.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1967",
+              "imdbId": "tt0061495",
+              "slug": "la-collectionneuse"
+            },
+            {
+              "id": "lbx:mirror",
+              "type": "movie",
+              "name": "Mirror",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0072443.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1975",
+              "imdbId": "tt0072443",
+              "slug": "mirror"
+            },
+            {
+              "id": "lbx:the-little-mermaid-1976",
+              "type": "movie",
+              "name": "The Little Mermaid",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0074846.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1976",
+              "imdbId": "tt0074846",
+              "slug": "the-little-mermaid-1976"
+            },
+            {
+              "id": "lbx:contempt",
+              "type": "movie",
+              "name": "Contempt",
+              "poster": "https://api.ratingposterdb.com/t0-free-rpdb/imdb/poster-default/tt0057345.jpg?fallback=true",
+              "posterShape": "poster",
+              "releaseInfo": "1963",
+              "imdbId": "tt0057345",
+              "slug": "contempt"
             }
           ]
         }

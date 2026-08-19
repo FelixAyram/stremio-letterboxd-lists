@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-08-19T03:55:36.036Z",
+  "savedAt": "2026-08-19T03:56:00.013Z",
   "users": {
     "users": [
       {
@@ -36,6 +36,10 @@
       "Ch05OFJYPVsorGUpXMv11w": {
         "userId": "ayrammaxigmailcom",
         "listId": "list-2003"
+      },
+      "3-6oFTD8rkidt491yKncuA": {
+        "userId": "ayrammaxigmailcom",
+        "listId": "list-pinterest"
       }
     }
   },
@@ -77,6 +81,12 @@
           "name": "2003",
           "id": "list-2003",
           "key": "Ch05OFJYPVsorGUpXMv11w"
+        },
+        {
+          "url": "https://letterboxd.com/avagreen/list/pinterest/",
+          "name": "pinterest",
+          "id": "list-pinterest",
+          "key": "3-6oFTD8rkidt491yKncuA"
         }
       ]
     }

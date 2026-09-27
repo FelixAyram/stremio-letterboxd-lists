@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-08-19T04:02:19.210Z",
+  "savedAt": "2026-09-27T16:22:21.240Z",
   "users": {
     "users": [
       {
@@ -99,7 +99,7 @@
           "title": "150 Highest-Rated Kdramas on Letterboxd 🇰🇷",
           "url": "https://letterboxd.com/asfriansyah/list/150-highest-rated-kdramas-on-letterboxd/",
           "preferSeries": true,
-          "cachedAt": 1787112037910,
+          "cachedAt": 1790526139034,
           "films": [
             {
               "slug": "when-life-gives-you-tangerines-2025",
@@ -1458,7 +1458,7 @@
           "title": "2003",
           "url": "https://letterboxd.com/thewickerman/list/2003/",
           "preferSeries": false,
-          "cachedAt": 1787112081211,
+          "cachedAt": 1790526139034,
           "films": [
             {
               "slug": "kill-bill-vol-1",
@@ -3355,7 +3355,7 @@
           "title": "chick flicks",
           "url": "https://letterboxd.com/kaitienk/list/chick-flicks/",
           "preferSeries": false,
-          "cachedAt": 1787111808109,
+          "cachedAt": 1790526139035,
           "films": [
             {
               "slug": "10-things-i-hate-about-you",
@@ -10196,7 +10196,7 @@
           "title": "for when you want to feel something",
           "url": "https://letterboxd.com/ellefnning/list/for-when-you-want-to-feel-something/",
           "preferSeries": false,
-          "cachedAt": 1787111766106,
+          "cachedAt": 1790526139037,
           "films": [
             {
               "slug": "cha-cha-real-smooth",
@@ -11701,7 +11701,7 @@
           "title": "Get Busy Dying or Get Busy Watching 2018's Most Essential Movies",
           "url": "https://letterboxd.com/axelhagne/list/get-busy-dying-or-get-busy-watching-2018s/",
           "preferSeries": false,
-          "cachedAt": 1787112062804,
+          "cachedAt": 1790526139038,
           "films": [
             {
               "slug": "spider-man-into-the-spider-verse",
@@ -12486,7 +12486,7 @@
           "title": "Letterboxd's Top 500 Films",
           "url": "https://letterboxd.com/official/list/letterboxds-top-500-films/",
           "preferSeries": false,
-          "cachedAt": 1787111953706,
+          "cachedAt": 1790526139038,
           "films": [
             {
               "slug": "harakiri",
@@ -16495,7 +16495,7 @@
           "title": "pinterest",
           "url": "https://letterboxd.com/avagreen/list/pinterest/",
           "preferSeries": false,
-          "cachedAt": 1787112120310,
+          "cachedAt": 1790526139128,
           "films": [
             {
               "slug": "rolls-royce-baby",
@@ -17540,7 +17540,7 @@
           "filmsCount": 150,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1787112061406,
+          "cachedAt": 1790526139129,
           "metaByIndex": [
             {
               "id": "lbx:when-life-gives-you-tangerines-2025",
@@ -19051,7 +19051,7 @@
           "filmsCount": 236,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1787112115852,
+          "cachedAt": 1790526139129,
           "metaByIndex": [
             {
               "id": "lbx:kill-bill-vol-1",
@@ -21422,7 +21422,7 @@
           "filmsCount": 854,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1787111943994,
+          "cachedAt": 1790526139130,
           "metaByIndex": [
             {
               "id": "lbx:10-things-i-hate-about-you",
@@ -29973,7 +29973,7 @@
           "filmsCount": 187,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1787111791386,
+          "cachedAt": 1790526139131,
           "metaByIndex": [
             {
               "id": "lbx:cha-cha-real-smooth",
@@ -31854,7 +31854,7 @@
           "filmsCount": 97,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1787112076943,
+          "cachedAt": 1790526139131,
           "metaByIndex": [
             {
               "id": "lbx:spider-man-into-the-spider-verse",
@@ -32835,7 +32835,7 @@
           "filmsCount": 129,
           "cacheSchema": 7,
           "persisted": true,
-          "cachedAt": 1787112139017,
+          "cachedAt": 1790526139132,
           "metaByIndex": [
             {
               "id": "lbx:rolls-royce-baby",

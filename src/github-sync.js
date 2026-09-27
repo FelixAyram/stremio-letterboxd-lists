@@ -148,14 +148,39 @@ function pullFromLocalBundle() {
   }
 }
 
+function decodeBase64(content) {
+  return Buffer.from(String(content || '').replace(/\n/g, ''), 'base64').toString('utf8');
+}
+
+async function fetchBlobText(sha) {
+  const res = await fetch(`https://api.github.com/repos/${REPO}/git/blobs/${sha}`, {
+    headers: ghHeaders()
+  });
+  if (!res.ok) throw new Error(`blob: ${res.status}`);
+  const blob = await res.json();
+  if (!blob.content) throw new Error('blob sin contenido');
+  return blob.encoding === 'base64' ? decodeBase64(blob.content) : String(blob.content);
+}
+
 async function fetchStateFromRef(ref) {
   const res = await ghRequest(STATE_FILE, {}, ref);
   if (res.status === 404) return null;
   if (!res.ok) throw new Error(`pull ${ref}: ${res.status}`);
   const meta = await res.json();
-  shaCache.set(shaKey(ref), meta.sha);
-  const content = Buffer.from(meta.content.replace(/\n/g, ''), 'base64').toString('utf8');
-  return JSON.parse(content);
+  if (meta.sha) shaCache.set(shaKey(ref), meta.sha);
+
+  let text = meta.content ? decodeBase64(meta.content) : '';
+  if (!text && meta.sha) {
+    console.log(`[github] ${STATE_FILE} supera 1MB (${meta.size || '?'} bytes) — leyendo blob`);
+    text = await fetchBlobText(meta.sha);
+  }
+  if (!text && meta.download_url) {
+    const raw = await fetch(meta.download_url, { headers: ghHeaders() });
+    if (!raw.ok) throw new Error(`raw: ${raw.status}`);
+    text = await raw.text();
+  }
+  if (!text) throw new Error('contenido vacio');
+  return JSON.parse(text);
 }
 
 async function pullOnStartup() {
